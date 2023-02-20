@@ -1,0 +1,4 @@
+<map id="Object" name="Object">
+<area shape="rect" id="node1" title=" " alt="" coords="23,321,118,443"/>
+<area shape="rect" id="node2" href="$classTexture.html" title="Class representing a texture Contains usefull methods to simplify use of SDL_Texture." alt="" coords="5,5,136,259"/>
+</map>

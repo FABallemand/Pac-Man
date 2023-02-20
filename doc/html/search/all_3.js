@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['screen_5fheight_4',['screen_height',['../pacman_8cpp.html#a57e664f982f5b029447728449c714dfc',1,'pacman.cpp']]],
-  ['screen_5fwidth_5',['screen_width',['../pacman_8cpp.html#ad823d6a435854e9bd5ef85271ab737d6',1,'pacman.cpp']]]
+  ['free_16',['free',['../classTexture.html#a46d06aec832e5a954f1c8ca957c2c6e5',1,'Texture::free()'],['../classWindow.html#afa44e46e782872aeec65950f0a7ae6ae',1,'Window::free()']]],
+  ['fullscreen_17',['fullscreen',['../classWindow.html#ac57b3bc884a8c3cba7528260a3d63f32',1,'Window']]]
 ];

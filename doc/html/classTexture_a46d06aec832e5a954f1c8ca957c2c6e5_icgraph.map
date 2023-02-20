@@ -1,0 +1,5 @@
+<map id="Texture::free" name="Texture::free">
+<area shape="rect" id="node1" title="Deallocates texture." alt="" coords="216,31,320,57"/>
+<area shape="rect" id="node2" href="$classTexture.html#a1781a183f67fc77aab9bf9c73c18039f" title="Loads image at specified path." alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node3" href="$classTexture.html#a09c4bcb7462f64c1d20fa69dba3cee8a" title=" " alt="" coords="18,56,155,83"/>
+</map>

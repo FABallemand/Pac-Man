@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['main_9',['main',['../pacman_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'pacman.cpp']]]
+  ['createrenderer_135',['createRenderer',['../classWindow.html#a750dbfb438e7a3d494611427e520944b',1,'Window']]],
+  ['createsurface_136',['createSurface',['../classWindow.html#a969f0f7cf790405f31d56be955479526',1,'Window']]],
+  ['createwindow_137',['createWindow',['../classWindow.html#a4d13d477777da7e07057d0b320ae96a0',1,'Window']]]
 ];

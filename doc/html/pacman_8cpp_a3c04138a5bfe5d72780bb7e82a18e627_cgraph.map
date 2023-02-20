@@ -1,0 +1,9 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,60,133"/>
+<area shape="rect" id="node2" href="$SDL__utils_8h.html#a022a60d15efe2c011f69b13f2734b8a6" title=" " alt="" coords="110,69,178,96"/>
+<area shape="rect" id="node6" href="$SDL__utils_8h.html#af9b30eb29c850f10227da063f3490b86" title="Free window and quit SDL (and SDL subsystems)" alt="" coords="108,132,180,159"/>
+<area shape="rect" id="node3" href="$classWindow.html#a750dbfb438e7a3d494611427e520944b" title="Creates renderer." alt="" coords="228,5,409,32"/>
+<area shape="rect" id="node4" href="$classWindow.html#a4d13d477777da7e07057d0b320ae96a0" title="Creates window." alt="" coords="231,56,406,83"/>
+<area shape="rect" id="node5" href="$display__utils_8h.html#ac497e2eb789d342d518cbe19322f847c" title="Print error message in stderr." alt="" coords="277,107,360,133"/>
+<area shape="rect" id="node7" href="$classWindow.html#afa44e46e782872aeec65950f0a7ae6ae" title="Deallocates." alt="" coords="265,157,372,184"/>
+</map>
