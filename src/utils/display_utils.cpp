@@ -1,6 +1,6 @@
 #include "display_utils.h"
 
-using namespace std;
+#define DEBUG 1
 
 void printError(const char *fmt, ...)
 {
@@ -9,7 +9,7 @@ void printError(const char *fmt, ...)
     va_start(args, fmt);
     vsnprintf(buffer, sizeof(buffer), fmt, args);
     va_end(args);
-    cerr << BRED << "ERROR: " << RESET << buffer << endl;
+    std::cerr << BRED << "ERROR: " << RESET << buffer << std::endl;
 }
 
 void printWarning(const char *fmt, ...)
@@ -19,5 +19,15 @@ void printWarning(const char *fmt, ...)
     va_start(args, fmt);
     vsnprintf(buffer, sizeof(buffer), fmt, args);
     va_end(args);
-    cerr << BORANGE << "WARNING: " << RESET << buffer << endl;
+    std::cerr << BORANGE << "WARNING: " << RESET << buffer << std::endl;
+}
+
+void printInfo(const char *fmt, ...)
+{
+    char buffer[4096];
+    va_list args;
+    va_start(args, fmt);
+    vsnprintf(buffer, sizeof(buffer), fmt, args);
+    va_end(args);
+    std::cerr << BBLUE << "INFO: " << RESET << buffer << std::endl;
 }

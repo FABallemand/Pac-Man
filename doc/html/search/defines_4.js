@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['purple_206',['PURPLE',['../display__utils_8h.html#a0bb0b009e7a7390473ace4d98bd843c0',1,'display_utils.h']]]
+  ['orange_221',['ORANGE',['../display__utils_8h.html#ac5b6e19bf06822021f35602c59658de3',1,'display_utils.h']]]
 ];

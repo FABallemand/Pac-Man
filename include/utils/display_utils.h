@@ -31,4 +31,9 @@ void printError(const char *fmt, ...);
  */
 void printWarning(const char *fmt, ...);
 
+/**
+ * \brief Print information message in stdout
+ */
+void printInfo(const char *fmt, ...);
+
 #endif

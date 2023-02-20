@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['white_209',['WHITE',['../display__utils_8h.html#a87b537f5fa5c109d3c05c13d6b18f382',1,'display_utils.h']]]
+  ['red_223',['RED',['../display__utils_8h.html#a8d23feea868a983c8c2b661e1e16972f',1,'display_utils.h']]],
+  ['reset_224',['RESET',['../display__utils_8h.html#ab702106cf3b3e96750b6845ded4e0299',1,'display_utils.h']]]
 ];

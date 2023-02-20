@@ -1661,7 +1661,8 @@ CMakeFiles/pacman.dir/src/game/ghost.cpp.o: ../src/game/ghost.cpp \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../include/utils/display_utils.h
 
 CMakeFiles/pacman.dir/src/game/object.cpp.o: ../src/game/object.cpp \
   /usr/include/stdc-predef.h \
@@ -2013,7 +2014,8 @@ CMakeFiles/pacman.dir/src/game/object.cpp.o: ../src/game/object.cpp \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../include/utils/display_utils.h
 
 CMakeFiles/pacman.dir/src/game/pac_gomme.cpp.o: ../src/game/pac_gomme.cpp \
   /usr/include/stdc-predef.h \
@@ -2366,7 +2368,8 @@ CMakeFiles/pacman.dir/src/game/pac_gomme.cpp.o: ../src/game/pac_gomme.cpp \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../include/utils/display_utils.h
 
 CMakeFiles/pacman.dir/src/game/pac_man.cpp.o: ../src/game/pac_man.cpp \
   /usr/include/stdc-predef.h \
@@ -2719,7 +2722,8 @@ CMakeFiles/pacman.dir/src/game/pac_man.cpp.o: ../src/game/pac_man.cpp \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../include/utils/display_utils.h
 
 CMakeFiles/pacman.dir/src/game/super_pac_gomme.cpp.o: ../src/game/super_pac_gomme.cpp \
   /usr/include/stdc-predef.h \
@@ -3073,7 +3077,8 @@ CMakeFiles/pacman.dir/src/game/super_pac_gomme.cpp.o: ../src/game/super_pac_gomm
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc
+  /usr/include/c++/11/bits/sstream.tcc \
+  ../include/utils/display_utils.h
 
 CMakeFiles/pacman.dir/src/pacman.cpp.o: ../src/pacman.cpp \
   /usr/include/stdc-predef.h \

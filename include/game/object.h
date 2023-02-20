@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "texture.h"
+#include "display_utils.h"
 
 /**
  * \enum Direction
@@ -14,7 +15,8 @@ enum Direction
     UP,
     DOWN,
     LEFT,
-    RIGHT
+    RIGHT,
+    UNKNOWN
 };
 
 class Object
@@ -22,9 +24,25 @@ class Object
 public:
     Object();
 
-    Object(int x, int y, int w, int h, Direction direction, Texture &texture);
+    Object(int x, int y, int w, int h, Direction direction, std::string texture_path, Window &window);
 
-    Object(SDL_Rect &position, Direction direction, Texture &texture);
+    Object(SDL_Rect &position, Direction direction, std::string texture_path, Window &window);
+
+    // SDL_Rect &getPosition() const;
+
+    int getX() const;
+
+    int getY() const;
+
+    int getW() const;
+
+    int getH() const;
+
+    Direction getDirection() const;
+
+    // Texture &getTexture() const;
+
+    void setDirection(Direction direction);
 
 private:
     SDL_Rect position_;   //!< World coordinates (x, y) and dimensions (w, h)
