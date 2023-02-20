@@ -129,6 +129,19 @@ pacman/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/build
 .PHONY : pacman/fast
 
+#=============================================================================
+# Target rules for targets named doc_doxygen
+
+# Build rule for target.
+doc_doxygen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 doc_doxygen
+.PHONY : doc_doxygen
+
+# fast build rule for target.
+doc_doxygen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/doc_doxygen.dir/build.make CMakeFiles/doc_doxygen.dir/build
+.PHONY : doc_doxygen/fast
+
 src/SDL_utils/SDL_utils.o: src/SDL_utils/SDL_utils.cpp.o
 .PHONY : src/SDL_utils/SDL_utils.o
 
@@ -401,6 +414,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... doc_doxygen"
 	@echo "... pacman"
 	@echo "... src/SDL_utils/SDL_utils.o"
 	@echo "... src/SDL_utils/SDL_utils.i"
