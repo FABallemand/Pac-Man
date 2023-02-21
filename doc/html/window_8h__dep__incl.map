@@ -1,19 +1,17 @@
 <map id="/home/fabien/TPS/2A/Programmation Avancée/Pac&#45;Man/include/SDL_utils/window.h" name="/home/fabien/TPS/2A/Programmation Avancée/Pac&#45;Man/include/SDL_utils/window.h">
-<area shape="rect" id="node1" title=" " alt="" coords="504,5,700,76"/>
-<area shape="rect" id="node2" href="$SDL__utils_8h.html" title=" " alt="" coords="272,124,468,195"/>
-<area shape="rect" id="node5" href="$texture_8h.html" title=" " alt="" coords="504,124,700,195"/>
-<area shape="rect" id="node17" href="$window_8cpp.html" title=" " alt="" coords="725,124,911,195"/>
-<area shape="rect" id="node3" href="$pacman_8cpp.html" title=" " alt="" coords="66,250,253,306"/>
-<area shape="rect" id="node4" href="$SDL__utils_8cpp.html" title=" " alt="" coords="277,243,463,313"/>
-<area shape="rect" id="node6" href="$object_8h.html" title=" " alt="" coords="487,250,717,306"/>
-<area shape="rect" id="node16" href="$texture_8cpp.html" title=" " alt="" coords="741,243,927,313"/>
-<area shape="rect" id="node7" href="$ghost_8h.html" title=" " alt="" coords="129,369,355,425"/>
-<area shape="rect" id="node9" href="$pac__gomme_8h.html" title=" " alt="" coords="378,361,578,432"/>
-<area shape="rect" id="node13" href="$pac__man_8h.html" title=" " alt="" coords="602,369,850,425"/>
-<area shape="rect" id="node15" href="$object_8cpp.html" title=" " alt="" coords="874,369,1090,425"/>
-<area shape="rect" id="node8" href="$ghost_8cpp.html" title=" " alt="" coords="5,487,217,543"/>
-<area shape="rect" id="node10" href="$super__pac__gomme_8h.html" title=" " alt="" coords="242,480,455,551"/>
-<area shape="rect" id="node12" href="$pac__gomme_8cpp.html" title=" " alt="" coords="479,487,735,543"/>
-<area shape="rect" id="node11" href="$super__pac__gomme_8cpp.html" title=" " alt="" coords="255,599,442,669"/>
-<area shape="rect" id="node14" href="$pac__man_8cpp.html" title=" " alt="" coords="759,487,994,543"/>
+<area shape="rect" id="node1" title=" " alt="" coords="531,5,727,76"/>
+<area shape="rect" id="node2" href="$SDL__utils_8h.html" title=" " alt="" coords="299,124,495,195"/>
+<area shape="rect" id="node5" href="$texture_8h.html" title=" " alt="" coords="531,124,727,195"/>
+<area shape="rect" id="node15" href="$window_8cpp.html" title=" " alt="" coords="752,124,939,195"/>
+<area shape="rect" id="node3" href="$pacman_8cpp.html" title=" " alt="" coords="93,250,280,306"/>
+<area shape="rect" id="node4" href="$SDL__utils_8cpp.html" title=" " alt="" coords="304,243,491,313"/>
+<area shape="rect" id="node6" href="$object_8h.html" title=" " alt="" coords="515,250,744,306"/>
+<area shape="rect" id="node14" href="$texture_8cpp.html" title=" " alt="" coords="768,243,955,313"/>
+<area shape="rect" id="node7" href="$pac__gomme_8h.html" title=" " alt="" coords="271,361,471,432"/>
+<area shape="rect" id="node11" href="$pac__man_8h.html" title=" " alt="" coords="505,369,753,425"/>
+<area shape="rect" id="node13" href="$object_8cpp.html" title=" " alt="" coords="777,369,993,425"/>
+<area shape="rect" id="node8" href="$super__pac__gomme_8h.html" title=" " alt="" coords="5,480,219,551"/>
+<area shape="rect" id="node10" href="$pac__gomme_8cpp.html" title=" " alt="" coords="243,487,499,543"/>
+<area shape="rect" id="node9" href="$super__pac__gomme_8cpp.html" title=" " alt="" coords="19,599,205,669"/>
+<area shape="rect" id="node12" href="$pac__man_8cpp.html" title=" " alt="" coords="523,487,757,543"/>
 </map>

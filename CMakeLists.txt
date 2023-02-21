@@ -18,17 +18,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 target_sources(${PROJECT_NAME}
                PRIVATE
+               # Project
                src/${PROJECT_NAME}.cpp
+               # SDL
                src/SDL_utils/SDL_utils.cpp
                src/SDL_utils/window.cpp
                src/SDL_utils/texture.cpp
                src/SDL_utils/timer.cpp
+               # Utils
                src/utils/display_utils.cpp
+               # Game
+               src/game/game.cpp
                src/game/object.cpp
                src/game/pac_man.cpp
-               src/game/ghost.cpp
-               src/game/pac_gomme.cpp
-               src/game/super_pac_gomme.cpp)
+               src/game/ghosts/ghost.cpp
+               src/game/ghosts/blinky.cpp
+               src/game/ghosts/clyde.cpp
+               src/game/ghosts/inky.cpp
+               src/game/ghosts/pinky.cpp
+               src/game/pac_gommes/pac_gomme.cpp
+               src/game/pac_gommes/super_pac_gomme.cpp)
 
 target_include_directories(${PROJECT_NAME}
                            PRIVATE
@@ -36,7 +45,9 @@ target_include_directories(${PROJECT_NAME}
                            include
                            include/SDL_utils
                            include/utils
-                           include/game)
+                           include/game
+                           include/game/ghosts
+                           include/game/pac_gommes)
 
 target_compile_definitions(${PROJECT_NAME}
                            PRIVATE
@@ -48,19 +59,19 @@ target_link_libraries(${PROJECT_NAME}
 
 ## DOCUMENTATION ##
 
-option(BUILD_DOC "Build documentation" ON)
+# option(BUILD_DOC "Build documentation" ON)
 
-find_package(Doxygen)
-if (DOXYGEN_FOUND)
-    set(DOXYGEN_IN ../Doxyfile)
+# find_package(Doxygen)
+# if (DOXYGEN_FOUND)
+#     set(DOXYGEN_IN ../Doxyfile)
 
-    message("Doxygen build started")
+#     message("Doxygen build started")
 
-    add_custom_target(doc_doxygen ALL
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
-        WORKING_DIRECTORY ../doc
-        COMMENT "Generating API documentation with Doxygen"
-        VERBATIM)
-else (DOXYGEN_FOUND)
-  message("Doxygen need to be installed to generate the doxygen documentation")
-endif (DOXYGEN_FOUND)
+#     add_custom_target(doc_doxygen ALL
+#         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
+#         WORKING_DIRECTORY ../doc
+#         COMMENT "Generating API documentation with Doxygen"
+#         VERBATIM)
+# else (DOXYGEN_FOUND)
+#   message("Doxygen need to be installed to generate the doxygen documentation")
+# endif (DOXYGEN_FOUND)

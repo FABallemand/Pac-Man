@@ -1,7 +1,6 @@
 <map id="Object" name="Object">
-<area shape="rect" id="node1" title=" " alt="" coords="128,5,255,229"/>
-<area shape="rect" id="node2" href="$classGhost.html" title=" " alt="" coords="5,277,65,355"/>
-<area shape="rect" id="node3" href="$classPacGomme.html" title=" " alt="" coords="90,277,186,355"/>
-<area shape="rect" id="node4" href="$classPacMan.html" title=" " alt="" coords="210,277,282,355"/>
-<area shape="rect" id="node5" href="$classSuperPacGomme.html" title=" " alt="" coords="306,277,439,355"/>
+<area shape="rect" id="node1" title=" " alt="" coords="98,5,225,229"/>
+<area shape="rect" id="node2" href="$classPacGomme.html" title=" " alt="" coords="5,277,101,355"/>
+<area shape="rect" id="node3" href="$classPacMan.html" title=" " alt="" coords="125,277,197,355"/>
+<area shape="rect" id="node4" href="$classSuperPacGomme.html" title=" " alt="" coords="221,277,355,355"/>
 </map>

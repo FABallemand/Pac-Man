@@ -129,19 +129,6 @@ pacman/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/build
 .PHONY : pacman/fast
 
-#=============================================================================
-# Target rules for targets named doc_doxygen
-
-# Build rule for target.
-doc_doxygen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 doc_doxygen
-.PHONY : doc_doxygen
-
-# fast build rule for target.
-doc_doxygen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/doc_doxygen.dir/build.make CMakeFiles/doc_doxygen.dir/build
-.PHONY : doc_doxygen/fast
-
 src/SDL_utils/SDL_utils.o: src/SDL_utils/SDL_utils.cpp.o
 .PHONY : src/SDL_utils/SDL_utils.o
 
@@ -238,29 +225,125 @@ src/SDL_utils/window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.s
 .PHONY : src/SDL_utils/window.cpp.s
 
-src/game/ghost.o: src/game/ghost.cpp.o
-.PHONY : src/game/ghost.o
+src/game/ghosts/blinky.o: src/game/ghosts/blinky.cpp.o
+.PHONY : src/game/ghosts/blinky.o
 
 # target to build an object file
-src/game/ghost.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghost.cpp.o
-.PHONY : src/game/ghost.cpp.o
+src/game/ghosts/blinky.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o
+.PHONY : src/game/ghosts/blinky.cpp.o
 
-src/game/ghost.i: src/game/ghost.cpp.i
-.PHONY : src/game/ghost.i
+src/game/ghosts/blinky.i: src/game/ghosts/blinky.cpp.i
+.PHONY : src/game/ghosts/blinky.i
 
 # target to preprocess a source file
-src/game/ghost.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghost.cpp.i
-.PHONY : src/game/ghost.cpp.i
+src/game/ghosts/blinky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.i
+.PHONY : src/game/ghosts/blinky.cpp.i
 
-src/game/ghost.s: src/game/ghost.cpp.s
-.PHONY : src/game/ghost.s
+src/game/ghosts/blinky.s: src/game/ghosts/blinky.cpp.s
+.PHONY : src/game/ghosts/blinky.s
 
 # target to generate assembly for a file
-src/game/ghost.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghost.cpp.s
-.PHONY : src/game/ghost.cpp.s
+src/game/ghosts/blinky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.s
+.PHONY : src/game/ghosts/blinky.cpp.s
+
+src/game/ghosts/clyde.o: src/game/ghosts/clyde.cpp.o
+.PHONY : src/game/ghosts/clyde.o
+
+# target to build an object file
+src/game/ghosts/clyde.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o
+.PHONY : src/game/ghosts/clyde.cpp.o
+
+src/game/ghosts/clyde.i: src/game/ghosts/clyde.cpp.i
+.PHONY : src/game/ghosts/clyde.i
+
+# target to preprocess a source file
+src/game/ghosts/clyde.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.i
+.PHONY : src/game/ghosts/clyde.cpp.i
+
+src/game/ghosts/clyde.s: src/game/ghosts/clyde.cpp.s
+.PHONY : src/game/ghosts/clyde.s
+
+# target to generate assembly for a file
+src/game/ghosts/clyde.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.s
+.PHONY : src/game/ghosts/clyde.cpp.s
+
+src/game/ghosts/ghost.o: src/game/ghosts/ghost.cpp.o
+.PHONY : src/game/ghosts/ghost.o
+
+# target to build an object file
+src/game/ghosts/ghost.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o
+.PHONY : src/game/ghosts/ghost.cpp.o
+
+src/game/ghosts/ghost.i: src/game/ghosts/ghost.cpp.i
+.PHONY : src/game/ghosts/ghost.i
+
+# target to preprocess a source file
+src/game/ghosts/ghost.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.i
+.PHONY : src/game/ghosts/ghost.cpp.i
+
+src/game/ghosts/ghost.s: src/game/ghosts/ghost.cpp.s
+.PHONY : src/game/ghosts/ghost.s
+
+# target to generate assembly for a file
+src/game/ghosts/ghost.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.s
+.PHONY : src/game/ghosts/ghost.cpp.s
+
+src/game/ghosts/inky.o: src/game/ghosts/inky.cpp.o
+.PHONY : src/game/ghosts/inky.o
+
+# target to build an object file
+src/game/ghosts/inky.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o
+.PHONY : src/game/ghosts/inky.cpp.o
+
+src/game/ghosts/inky.i: src/game/ghosts/inky.cpp.i
+.PHONY : src/game/ghosts/inky.i
+
+# target to preprocess a source file
+src/game/ghosts/inky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.i
+.PHONY : src/game/ghosts/inky.cpp.i
+
+src/game/ghosts/inky.s: src/game/ghosts/inky.cpp.s
+.PHONY : src/game/ghosts/inky.s
+
+# target to generate assembly for a file
+src/game/ghosts/inky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.s
+.PHONY : src/game/ghosts/inky.cpp.s
+
+src/game/ghosts/pinky.o: src/game/ghosts/pinky.cpp.o
+.PHONY : src/game/ghosts/pinky.o
+
+# target to build an object file
+src/game/ghosts/pinky.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o
+.PHONY : src/game/ghosts/pinky.cpp.o
+
+src/game/ghosts/pinky.i: src/game/ghosts/pinky.cpp.i
+.PHONY : src/game/ghosts/pinky.i
+
+# target to preprocess a source file
+src/game/ghosts/pinky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.i
+.PHONY : src/game/ghosts/pinky.cpp.i
+
+src/game/ghosts/pinky.s: src/game/ghosts/pinky.cpp.s
+.PHONY : src/game/ghosts/pinky.s
+
+# target to generate assembly for a file
+src/game/ghosts/pinky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.s
+.PHONY : src/game/ghosts/pinky.cpp.s
 
 src/game/object.o: src/game/object.cpp.o
 .PHONY : src/game/object.o
@@ -414,7 +497,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... doc_doxygen"
 	@echo "... pacman"
 	@echo "... src/SDL_utils/SDL_utils.o"
 	@echo "... src/SDL_utils/SDL_utils.i"
@@ -428,9 +510,21 @@ help:
 	@echo "... src/SDL_utils/window.o"
 	@echo "... src/SDL_utils/window.i"
 	@echo "... src/SDL_utils/window.s"
-	@echo "... src/game/ghost.o"
-	@echo "... src/game/ghost.i"
-	@echo "... src/game/ghost.s"
+	@echo "... src/game/ghosts/blinky.o"
+	@echo "... src/game/ghosts/blinky.i"
+	@echo "... src/game/ghosts/blinky.s"
+	@echo "... src/game/ghosts/clyde.o"
+	@echo "... src/game/ghosts/clyde.i"
+	@echo "... src/game/ghosts/clyde.s"
+	@echo "... src/game/ghosts/ghost.o"
+	@echo "... src/game/ghosts/ghost.i"
+	@echo "... src/game/ghosts/ghost.s"
+	@echo "... src/game/ghosts/inky.o"
+	@echo "... src/game/ghosts/inky.i"
+	@echo "... src/game/ghosts/inky.s"
+	@echo "... src/game/ghosts/pinky.o"
+	@echo "... src/game/ghosts/pinky.i"
+	@echo "... src/game/ghosts/pinky.s"
 	@echo "... src/game/object.o"
 	@echo "... src/game/object.i"
 	@echo "... src/game/object.s"

@@ -1,7 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classObject.html" title=" " alt="" coords="5,81,69,108"/>
-<area shape="rect" id="node2" href="$classGhost.html" title=" " alt="" coords="154,5,214,32"/>
-<area shape="rect" id="node3" href="$classPacGomme.html" title=" " alt="" coords="136,56,232,83"/>
-<area shape="rect" id="node4" href="$classPacMan.html" title=" " alt="" coords="148,107,220,133"/>
-<area shape="rect" id="node5" href="$classSuperPacGomme.html" title=" " alt="" coords="117,157,251,184"/>
+<area shape="rect" id="node1" href="$classObject.html" title=" " alt="" coords="5,56,69,83"/>
+<area shape="rect" id="node2" href="$classPacGomme.html" title=" " alt="" coords="136,5,232,32"/>
+<area shape="rect" id="node3" href="$classPacMan.html" title=" " alt="" coords="148,56,220,83"/>
+<area shape="rect" id="node4" href="$classSuperPacGomme.html" title=" " alt="" coords="117,107,251,133"/>
 </map>

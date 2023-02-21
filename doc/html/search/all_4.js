@@ -12,8 +12,5 @@ var searchData=
   ['getwindow_28',['getWindow',['../classWindow.html#acf146679abf09abf89941b1882fc92dc',1,'Window']]],
   ['getx_29',['getX',['../classObject.html#a66bac5f818d4d7c05aa457e246e4ca7b',1,'Object']]],
   ['gety_30',['getY',['../classObject.html#a81accadc2226d0e6c41c09dccc7a5f5e',1,'Object']]],
-  ['ghost_31',['Ghost',['../classGhost.html',1,'']]],
-  ['ghost_2ecpp_32',['ghost.cpp',['../ghost_8cpp.html',1,'']]],
-  ['ghost_2eh_33',['ghost.h',['../ghost_8h.html',1,'']]],
-  ['green_34',['GREEN',['../display__utils_8h.html#acfbc006ea433ad708fdee3e82996e721',1,'display_utils.h']]]
+  ['green_31',['GREEN',['../display__utils_8h.html#acfbc006ea433ad708fdee3e82996e721',1,'display_utils.h']]]
 ];

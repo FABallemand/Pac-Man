@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['texture_117',['Texture',['../classTexture.html',1,'']]],
-  ['timer_118',['Timer',['../classTimer.html',1,'']]]
+  ['window_115',['Window',['../classWindow.html',1,'']]]
 ];

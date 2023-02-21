@@ -40,8 +40,9 @@ int main(int argc, char **argv)
         if (keys[SDL_SCANCODE_RIGHT])
             puts("RIGHT");
 
-        // Display
+        // Update game
 
+        // Display
 
         // Frame rate 60 FPS
         SDL_Delay(16); // use SDL_GetTicks64() => precision

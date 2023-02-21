@@ -1,12 +1,10 @@
 <map id="/home/fabien/TPS/2A/Programmation Avancée/Pac&#45;Man/include/game/object.h" name="/home/fabien/TPS/2A/Programmation Avancée/Pac&#45;Man/include/game/object.h">
-<area shape="rect" id="node1" title=" " alt="" coords="487,5,717,61"/>
-<area shape="rect" id="node2" href="$ghost_8h.html" title=" " alt="" coords="129,117,355,173"/>
-<area shape="rect" id="node4" href="$pac__gomme_8h.html" title=" " alt="" coords="378,109,578,180"/>
-<area shape="rect" id="node8" href="$pac__man_8h.html" title=" " alt="" coords="602,117,850,173"/>
-<area shape="rect" id="node10" href="$object_8cpp.html" title=" " alt="" coords="874,117,1090,173"/>
-<area shape="rect" id="node3" href="$ghost_8cpp.html" title=" " alt="" coords="5,235,217,291"/>
-<area shape="rect" id="node5" href="$super__pac__gomme_8h.html" title=" " alt="" coords="242,228,455,299"/>
-<area shape="rect" id="node7" href="$pac__gomme_8cpp.html" title=" " alt="" coords="479,235,735,291"/>
-<area shape="rect" id="node6" href="$super__pac__gomme_8cpp.html" title=" " alt="" coords="255,347,442,417"/>
-<area shape="rect" id="node9" href="$pac__man_8cpp.html" title=" " alt="" coords="759,235,994,291"/>
+<area shape="rect" id="node1" title=" " alt="" coords="515,5,744,61"/>
+<area shape="rect" id="node2" href="$pac__gomme_8h.html" title=" " alt="" coords="271,109,471,180"/>
+<area shape="rect" id="node6" href="$pac__man_8h.html" title=" " alt="" coords="505,117,753,173"/>
+<area shape="rect" id="node8" href="$object_8cpp.html" title=" " alt="" coords="777,117,993,173"/>
+<area shape="rect" id="node3" href="$super__pac__gomme_8h.html" title=" " alt="" coords="5,228,219,299"/>
+<area shape="rect" id="node5" href="$pac__gomme_8cpp.html" title=" " alt="" coords="243,235,499,291"/>
+<area shape="rect" id="node4" href="$super__pac__gomme_8cpp.html" title=" " alt="" coords="19,347,205,417"/>
+<area shape="rect" id="node7" href="$pac__man_8cpp.html" title=" " alt="" coords="523,235,757,291"/>
 </map>

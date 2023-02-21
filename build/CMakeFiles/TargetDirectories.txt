@@ -1,4 +1,3 @@
 /home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles/pacman.dir
-/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles/doc_doxygen.dir
 /home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles/edit_cache.dir
 /home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles/rebuild_cache.dir
