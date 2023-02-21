@@ -16,23 +16,24 @@ enum Direction
     DOWN,
     LEFT,
     RIGHT,
-    UNKNOWN
+    NONE
 };
 
 class Object
 {
+protected:
+    Object() : position_{0, 0, 0, 0}, direction_{NONE}, texture_{}
+    {
+    }
+
+    Object(int x, int y, Direction direction, std::string &texture_path, Window &window); // Not inline because load texture etc.
+
 public:
-    Object();
-
-    Object(int x, int y, int w, int h, Direction direction, std::string texture_path, Window &window);
-
-    Object(SDL_Rect &position, Direction direction, std::string texture_path, Window &window);
-
     // SDL_Rect &getPosition() const;
 
-    inline int getX() const
+    inline int getX() const // Définition dans la classe => fonction inline
     {
-        return position_.x;   
+        return position_.x;
     }
 
     inline int getY() const
@@ -62,7 +63,7 @@ public:
         direction_ = direction;
     }
 
-private:
+protected:
     SDL_Rect position_;   //!< World coordinates (x, y) and dimensions (w, h)
     Direction direction_; //!< Direction
     Texture texture_;     //!< Texture
