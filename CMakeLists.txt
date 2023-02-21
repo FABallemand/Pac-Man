@@ -26,7 +26,6 @@ target_sources(${PROJECT_NAME}
                src/SDL_utils/texture.cpp
                src/SDL_utils/timer.cpp
                # Utils
-               src/utils/display_utils.cpp
                # Game
                src/game/game.cpp
                src/game/object.cpp

@@ -489,30 +489,6 @@ src/pacman.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/pacman.cpp.s
 .PHONY : src/pacman.cpp.s
 
-src/utils/display_utils.o: src/utils/display_utils.cpp.o
-.PHONY : src/utils/display_utils.o
-
-# target to build an object file
-src/utils/display_utils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/utils/display_utils.cpp.o
-.PHONY : src/utils/display_utils.cpp.o
-
-src/utils/display_utils.i: src/utils/display_utils.cpp.i
-.PHONY : src/utils/display_utils.i
-
-# target to preprocess a source file
-src/utils/display_utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/utils/display_utils.cpp.i
-.PHONY : src/utils/display_utils.cpp.i
-
-src/utils/display_utils.s: src/utils/display_utils.cpp.s
-.PHONY : src/utils/display_utils.s
-
-# target to generate assembly for a file
-src/utils/display_utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/utils/display_utils.cpp.s
-.PHONY : src/utils/display_utils.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -567,9 +543,6 @@ help:
 	@echo "... src/pacman.o"
 	@echo "... src/pacman.i"
 	@echo "... src/pacman.s"
-	@echo "... src/utils/display_utils.o"
-	@echo "... src/utils/display_utils.i"
-	@echo "... src/utils/display_utils.s"
 .PHONY : help
 
 

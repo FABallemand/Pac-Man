@@ -9,7 +9,7 @@ Window window{};
 constexpr int screen_width = 700;
 constexpr int screen_height = 900;
 
-structlog LOGGER_CONFIG;
+LogConf LOGGER_CONFIG;
 
 int main(int argc, char **argv)
 {

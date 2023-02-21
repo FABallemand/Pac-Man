@@ -29,8 +29,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/pacman.dir/src/game/pac_man.cpp.o.d"
   "CMakeFiles/pacman.dir/src/pacman.cpp.o"
   "CMakeFiles/pacman.dir/src/pacman.cpp.o.d"
-  "CMakeFiles/pacman.dir/src/utils/display_utils.cpp.o"
-  "CMakeFiles/pacman.dir/src/utils/display_utils.cpp.o.d"
   "pacman"
   "pacman.pdb"
 )

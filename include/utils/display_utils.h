@@ -23,7 +23,11 @@
 #define WHITE "\033[0;37m"   // WHITE
 #define RESET "\e[0m"        // RESET
 
-enum typelog
+/**
+ * \brief Type of log message
+ *
+ */
+enum LogType
 {
     DEBUG,
     INFO,
@@ -31,22 +35,30 @@ enum typelog
     ERROR
 };
 
-struct structlog
+/**
+ * \brief Global configuration of the logger
+ *
+ */
+struct LogConf
 {
     bool headers = true;
-    typelog level = DEBUG;
+    LogType level = DEBUG;
 };
 
-extern structlog LOGGER_CONFIG;
+extern LogConf LOGGER_CONFIG;
 
+/**
+ * \brief Logger class
+ *
+ */
 class LOG
 {
 public:
     LOG() {}
 
-    LOG(typelog type)
+    LOG(LogType type)
     {
-        msglevel = type;
+        type_ = type;
         if (LOGGER_CONFIG.headers)
         {
             operator<<(getHeader(type));
@@ -55,50 +67,42 @@ public:
 
     ~LOG()
     {
-        if (opened)
+        if (open_)
         {
             std::cout << std::endl;
         }
-        opened = false;
+        open_ = false;
     }
 
+    /**
+     * \brief
+     *
+     * \tparam T
+     * \param msg
+     * \return LOG&
+     */
     template <class T>
     LOG &operator<<(const T &msg)
     {
-        if (msglevel >= LOGGER_CONFIG.level)
+        if (type_ >= LOGGER_CONFIG.level)
         {
             std::cout << msg;
-            opened = true;
+            open_ = true;
         }
         return *this;
     }
 
 private:
-    bool opened = false;
-    typelog msglevel = DEBUG;
+    bool open_ = false;    //!< State of the log
+    LogType type_ = DEBUG; //!< Type of the log
 
-    inline std::string getLabel(typelog type)
-    {
-        std::string label;
-        switch (type)
-        {
-        case DEBUG:
-            label = "DEBUG";
-            break;
-        case INFO:
-            label = "INFO";
-            break;
-        case WARNING:
-            label = "WARNING";
-            break;
-        case ERROR:
-            label = "ERROR";
-            break;
-        }
-        return label;
-    }
-
-    inline std::string getHeader(typelog type)
+    /**
+     * \brief Get the header to use for a log message
+     * 
+     * \param type Type of the log message
+     * \return std::string Header of the log message
+     */
+    inline std::string getHeader(LogType type)
     {
         std::string header;
         switch (type)
