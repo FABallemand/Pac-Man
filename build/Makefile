@@ -225,6 +225,78 @@ src/SDL_utils/window.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.s
 .PHONY : src/SDL_utils/window.cpp.s
 
+src/game/eatable/fruit.o: src/game/eatable/fruit.cpp.o
+.PHONY : src/game/eatable/fruit.o
+
+# target to build an object file
+src/game/eatable/fruit.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o
+.PHONY : src/game/eatable/fruit.cpp.o
+
+src/game/eatable/fruit.i: src/game/eatable/fruit.cpp.i
+.PHONY : src/game/eatable/fruit.i
+
+# target to preprocess a source file
+src/game/eatable/fruit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.i
+.PHONY : src/game/eatable/fruit.cpp.i
+
+src/game/eatable/fruit.s: src/game/eatable/fruit.cpp.s
+.PHONY : src/game/eatable/fruit.s
+
+# target to generate assembly for a file
+src/game/eatable/fruit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.s
+.PHONY : src/game/eatable/fruit.cpp.s
+
+src/game/eatable/gomme.o: src/game/eatable/gomme.cpp.o
+.PHONY : src/game/eatable/gomme.o
+
+# target to build an object file
+src/game/eatable/gomme.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o
+.PHONY : src/game/eatable/gomme.cpp.o
+
+src/game/eatable/gomme.i: src/game/eatable/gomme.cpp.i
+.PHONY : src/game/eatable/gomme.i
+
+# target to preprocess a source file
+src/game/eatable/gomme.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.i
+.PHONY : src/game/eatable/gomme.cpp.i
+
+src/game/eatable/gomme.s: src/game/eatable/gomme.cpp.s
+.PHONY : src/game/eatable/gomme.s
+
+# target to generate assembly for a file
+src/game/eatable/gomme.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.s
+.PHONY : src/game/eatable/gomme.cpp.s
+
+src/game/game.o: src/game/game.cpp.o
+.PHONY : src/game/game.o
+
+# target to build an object file
+src/game/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/game.cpp.o
+.PHONY : src/game/game.cpp.o
+
+src/game/game.i: src/game/game.cpp.i
+.PHONY : src/game/game.i
+
+# target to preprocess a source file
+src/game/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/game.cpp.i
+.PHONY : src/game/game.cpp.i
+
+src/game/game.s: src/game/game.cpp.s
+.PHONY : src/game/game.s
+
+# target to generate assembly for a file
+src/game/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/game.cpp.s
+.PHONY : src/game/game.cpp.s
+
 src/game/ghosts/blinky.o: src/game/ghosts/blinky.cpp.o
 .PHONY : src/game/ghosts/blinky.o
 
@@ -369,30 +441,6 @@ src/game/object.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/object.cpp.s
 .PHONY : src/game/object.cpp.s
 
-src/game/pac_gomme.o: src/game/pac_gomme.cpp.o
-.PHONY : src/game/pac_gomme.o
-
-# target to build an object file
-src/game/pac_gomme.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_gomme.cpp.o
-.PHONY : src/game/pac_gomme.cpp.o
-
-src/game/pac_gomme.i: src/game/pac_gomme.cpp.i
-.PHONY : src/game/pac_gomme.i
-
-# target to preprocess a source file
-src/game/pac_gomme.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_gomme.cpp.i
-.PHONY : src/game/pac_gomme.cpp.i
-
-src/game/pac_gomme.s: src/game/pac_gomme.cpp.s
-.PHONY : src/game/pac_gomme.s
-
-# target to generate assembly for a file
-src/game/pac_gomme.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_gomme.cpp.s
-.PHONY : src/game/pac_gomme.cpp.s
-
 src/game/pac_man.o: src/game/pac_man.cpp.o
 .PHONY : src/game/pac_man.o
 
@@ -416,30 +464,6 @@ src/game/pac_man.s: src/game/pac_man.cpp.s
 src/game/pac_man.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_man.cpp.s
 .PHONY : src/game/pac_man.cpp.s
-
-src/game/super_pac_gomme.o: src/game/super_pac_gomme.cpp.o
-.PHONY : src/game/super_pac_gomme.o
-
-# target to build an object file
-src/game/super_pac_gomme.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/super_pac_gomme.cpp.o
-.PHONY : src/game/super_pac_gomme.cpp.o
-
-src/game/super_pac_gomme.i: src/game/super_pac_gomme.cpp.i
-.PHONY : src/game/super_pac_gomme.i
-
-# target to preprocess a source file
-src/game/super_pac_gomme.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/super_pac_gomme.cpp.i
-.PHONY : src/game/super_pac_gomme.cpp.i
-
-src/game/super_pac_gomme.s: src/game/super_pac_gomme.cpp.s
-.PHONY : src/game/super_pac_gomme.s
-
-# target to generate assembly for a file
-src/game/super_pac_gomme.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/super_pac_gomme.cpp.s
-.PHONY : src/game/super_pac_gomme.cpp.s
 
 src/pacman.o: src/pacman.cpp.o
 .PHONY : src/pacman.o
@@ -510,6 +534,15 @@ help:
 	@echo "... src/SDL_utils/window.o"
 	@echo "... src/SDL_utils/window.i"
 	@echo "... src/SDL_utils/window.s"
+	@echo "... src/game/eatable/fruit.o"
+	@echo "... src/game/eatable/fruit.i"
+	@echo "... src/game/eatable/fruit.s"
+	@echo "... src/game/eatable/gomme.o"
+	@echo "... src/game/eatable/gomme.i"
+	@echo "... src/game/eatable/gomme.s"
+	@echo "... src/game/game.o"
+	@echo "... src/game/game.i"
+	@echo "... src/game/game.s"
 	@echo "... src/game/ghosts/blinky.o"
 	@echo "... src/game/ghosts/blinky.i"
 	@echo "... src/game/ghosts/blinky.s"
@@ -528,15 +561,9 @@ help:
 	@echo "... src/game/object.o"
 	@echo "... src/game/object.i"
 	@echo "... src/game/object.s"
-	@echo "... src/game/pac_gomme.o"
-	@echo "... src/game/pac_gomme.i"
-	@echo "... src/game/pac_gomme.s"
 	@echo "... src/game/pac_man.o"
 	@echo "... src/game/pac_man.i"
 	@echo "... src/game/pac_man.s"
-	@echo "... src/game/super_pac_gomme.o"
-	@echo "... src/game/super_pac_gomme.i"
-	@echo "... src/game/super_pac_gomme.s"
 	@echo "... src/pacman.o"
 	@echo "... src/pacman.i"
 	@echo "... src/pacman.s"

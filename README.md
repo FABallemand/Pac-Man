@@ -30,7 +30,8 @@ Simply launch the executable and enjoy!
 ## References
 
 - Lazy Foo' Productions: [SDL tutorials](https://lazyfoo.net/tutorials/SDL/index.php)  
-- https://pacman.fandom.com/wiki/Maze_Ghost_AI_Behaviors
+- Game Developper: [The Pac-Man Dossier](https://www.gamedeveloper.com/design/the-pac-man-dossier)  
+- Fandom: [Pac-Man Wiki](https://pacman.fandom.com/wiki/Maze_Ghost_AI_Behaviors)
 
 ## To do list
 

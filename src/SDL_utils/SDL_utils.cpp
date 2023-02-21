@@ -7,21 +7,21 @@ bool initSDL(Window &window, char *window_name, int screen_width, int screen_hei
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     // if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
     {
-        printError("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
+        // printError("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
         success = false;
     }
     else
     {
         if (!window.createWindow(window_name, screen_width, screen_height, resizable))
         {
-            printError("Window could not be created! SDL Error: %s\n", SDL_GetError());
+            // printError("Window could not be created! SDL Error: %s\n", SDL_GetError());
             success = false;
         }
         else
         {
             if (!window.createRenderer())
             {
-                printError("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+                // printError("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
                 success = false;
             }
             // else

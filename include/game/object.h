@@ -57,7 +57,7 @@ public:
 
     // Texture &getTexture() const;
 
-    inline void setDirection(Direction direction)
+    inline void setDirection(const Direction direction)
     {
         direction_ = direction;
     }

@@ -1,9 +1,11 @@
 #ifndef _DISPLAY_UTILS_H__
 #define _DISPLAY_UTILS_H__
 
+/**
+ * \remark Inspired by: https://stackoverflow.com/questions/5028302/small-logger-class
+ */
+
 #include <iostream>
-#include <string>
-#include <stdarg.h>
 
 #define BLACK "\033[0;30m"   // BLACK
 #define RED "\033[0;31m"     // RED
@@ -21,19 +23,101 @@
 #define WHITE "\033[0;37m"   // WHITE
 #define RESET "\e[0m"        // RESET
 
-/**
- * \brief Print error message in stderr
- */
-void printError(const char *fmt, ...);
+enum typelog
+{
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR
+};
 
-/**
- * \brief Print warning message in stderr
- */
-void printWarning(const char *fmt, ...);
+struct structlog
+{
+    bool headers = true;
+    typelog level = DEBUG;
+};
 
-/**
- * \brief Print information message in stdout
- */
-void printInfo(const char *fmt, ...);
+extern structlog LOGGER_CONFIG;
+
+class LOG
+{
+public:
+    LOG() {}
+
+    LOG(typelog type)
+    {
+        msglevel = type;
+        if (LOGGER_CONFIG.headers)
+        {
+            operator<<(getHeader(type));
+        }
+    }
+
+    ~LOG()
+    {
+        if (opened)
+        {
+            std::cout << std::endl;
+        }
+        opened = false;
+    }
+
+    template <class T>
+    LOG &operator<<(const T &msg)
+    {
+        if (msglevel >= LOGGER_CONFIG.level)
+        {
+            std::cout << msg;
+            opened = true;
+        }
+        return *this;
+    }
+
+private:
+    bool opened = false;
+    typelog msglevel = DEBUG;
+
+    inline std::string getLabel(typelog type)
+    {
+        std::string label;
+        switch (type)
+        {
+        case DEBUG:
+            label = "DEBUG";
+            break;
+        case INFO:
+            label = "INFO";
+            break;
+        case WARNING:
+            label = "WARNING";
+            break;
+        case ERROR:
+            label = "ERROR";
+            break;
+        }
+        return label;
+    }
+
+    inline std::string getHeader(typelog type)
+    {
+        std::string header;
+        switch (type)
+        {
+        case DEBUG:
+            header = BPURPLE + std::string{"[DEBUG] "} + RESET;
+            break;
+        case INFO:
+            header = BBLUE + std::string{"[INFO] "} + RESET;
+            break;
+        case WARNING:
+            header = BORANGE + std::string{"[WARNING] "} + RESET;
+            break;
+        case ERROR:
+            header = BRED + std::string{"[ERROR] "} + RESET;
+            break;
+        }
+        return header;
+    }
+};
 
 #endif
