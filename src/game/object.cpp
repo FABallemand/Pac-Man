@@ -29,38 +29,7 @@ Object::Object(SDL_Rect &position, Direction direction, std::string texture_path
 // {
 //     return position_;
 // }
-
-int Object::getX() const
-{
-    return position_.x;
-}
-
-int Object::getY() const
-{
-    return position_.y;
-}
-
-int Object::getW() const
-{
-    return position_.w;
-}
-
-int Object::getH() const
-{
-    return position_.h;
-}
-
-Direction Object::getDirection() const
-{
-    return direction_;
-}
-
 // Texture &Object::getTexture() const
 // {
 //     return texture_;
 // }
-
-void Object::setDirection(Direction direction)
-{
-    direction_ = direction;
-}

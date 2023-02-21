@@ -30,19 +30,37 @@ public:
 
     // SDL_Rect &getPosition() const;
 
-    int getX() const;
+    inline int getX() const
+    {
+        return position_.x;   
+    }
 
-    int getY() const;
+    inline int getY() const
+    {
+        return position_.y;
+    }
 
-    int getW() const;
+    inline int getW() const
+    {
+        return position_.w;
+    }
 
-    int getH() const;
+    inline int getH() const
+    {
+        return position_.h;
+    }
 
-    Direction getDirection() const;
+    inline Direction getDirection() const
+    {
+        return direction_;
+    }
 
     // Texture &getTexture() const;
 
-    void setDirection(Direction direction);
+    inline void setDirection(Direction direction)
+    {
+        direction_ = direction;
+    }
 
 private:
     SDL_Rect position_;   //!< World coordinates (x, y) and dimensions (w, h)

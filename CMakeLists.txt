@@ -36,8 +36,8 @@ target_sources(${PROJECT_NAME}
                src/game/ghosts/clyde.cpp
                src/game/ghosts/inky.cpp
                src/game/ghosts/pinky.cpp
-               src/game/pac_gommes/pac_gomme.cpp
-               src/game/pac_gommes/super_pac_gomme.cpp)
+               src/game/eatable/gomme.cpp
+               src/game/eatable/fruit.cpp)
 
 target_include_directories(${PROJECT_NAME}
                            PRIVATE
@@ -47,7 +47,7 @@ target_include_directories(${PROJECT_NAME}
                            include/utils
                            include/game
                            include/game/ghosts
-                           include/game/pac_gommes)
+                           include/game/eatable)
 
 target_compile_definitions(${PROJECT_NAME}
                            PRIVATE

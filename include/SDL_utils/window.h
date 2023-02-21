@@ -14,7 +14,19 @@
 class Window
 {
 public:
-    Window();
+    Window()
+    {
+        window = nullptr;
+        surface = nullptr;
+        renderer = nullptr;
+        title = nullptr;
+        width = 0;
+        height = 0;
+        mouse_focus = false;
+        keyboard_focus = false;
+        fullscreen = false;
+        minimized = false;
+    }
 
     /**
      * \brief Creates window
@@ -29,15 +41,30 @@ public:
      */
     bool createRenderer();
 
-    SDL_Window *getWindow() const;
+    inline SDL_Window *getWindow() const
+    {
+        return window;
+    }
 
-    SDL_Surface *getSurface() const;
+    inline SDL_Surface *getSurface() const
+    {
+        return surface;
+    }
 
-    SDL_Renderer *getRenderer();
+    inline SDL_Renderer *getRenderer()
+    {
+        return renderer;
+    }
 
-    int getWidth();
+    inline int getWidth()
+    {
+        return width;
+    }
 
-    int getHeight();
+    inline int getHeight()
+    {
+        return height;
+    }
 
     /**
      * \brief Handles window events
@@ -45,9 +72,18 @@ public:
     void handleEvent(SDL_Event &e, SDL_Renderer *&renderer);
 
     // Window focii
-    bool hasMouseFocus();
-    bool hasKeyboardFocus();
-    bool isMinimized();
+    inline bool hasMouseFocus()
+    {
+        return mouse_focus;
+    }
+    inline bool hasKeyboardFocus()
+    {
+        return keyboard_focus;
+    }
+    inline bool isMinimized()
+    {
+        return minimized;
+    }
 
     /**
      * \brief Deallocates

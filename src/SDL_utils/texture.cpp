@@ -2,42 +2,22 @@
 
 Texture::Texture()
 {
-    texture = NULL;
+    texture = nullptr;
     width = 0;
     height = 0;
 }
 
-Texture::~Texture()
-{
-    // Deallocate
-    free();
-}
-
-SDL_Texture *Texture::getTexture() const
-{
-    return texture;
-}
-
-int Texture::getWidth()
-{
-    return width;
-}
-
-int Texture::getHeight()
-{
-    return height;
-}
 
 bool Texture::loadFromFile(std::string path, Window window, int r, int g, int b)
 {
     // Get rid of preexisting texture
     free();
     // The final texture
-    SDL_Texture *new_texture = NULL;
+    SDL_Texture *new_texture = nullptr;
 
     // Load image at specified path
     SDL_Surface *loaded_surface = SDL_LoadBMP(path.c_str());
-    if (loaded_surface == NULL)
+    if (loaded_surface == nullptr)
     {
         printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), SDL_GetError());
     }
@@ -45,7 +25,7 @@ bool Texture::loadFromFile(std::string path, Window window, int r, int g, int b)
     {
         // Convert surface to display format
         SDL_Surface *formatted_surface = SDL_ConvertSurfaceFormat(loaded_surface, SDL_GetWindowPixelFormat(window.getWindow()), 0);
-        if (formatted_surface == NULL)
+        if (formatted_surface == nullptr)
         {
             printf("Unable to convert loaded surface to display format! SDL Error: %s\n", SDL_GetError());
         }
@@ -56,7 +36,7 @@ bool Texture::loadFromFile(std::string path, Window window, int r, int g, int b)
             SDL_SetColorKey(formatted_surface, SDL_TRUE, SDL_MapRGB(formatted_surface->format, r, g, b)); // Color keying (r,g,b)
         }
         new_texture = SDL_CreateTextureFromSurface(window.getRenderer(), formatted_surface);
-        if (new_texture == NULL)
+        if (new_texture == nullptr)
         {
             printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
         }
@@ -74,7 +54,7 @@ bool Texture::loadFromFile(std::string path, Window window, int r, int g, int b)
 
     // Return success
     texture = new_texture;
-    return texture != NULL;
+    return texture != nullptr;
 }
 
 #if defined(SDL_TTF_MAJOR_VERSION)
@@ -85,7 +65,7 @@ bool Texture::loadFromRenderedText(std::string texture_text, SDL_Color text_colo
 
     // Render text surface
     SDL_Surface *text_surface = TTF_RenderText_Solid(font, texture_text.c_str(), text_color);
-    if (text_surface == NULL)
+    if (text_surface == nullptr)
     {
         printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
     }
@@ -93,7 +73,7 @@ bool Texture::loadFromRenderedText(std::string texture_text, SDL_Color text_colo
     {
         // Create texture from surface pixels
         texture = SDL_CreateTextureFromSurface(renderer, text_surface);
-        if (texture == NULL)
+        if (texture == nullptr)
         {
             printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
         }
@@ -109,33 +89,15 @@ bool Texture::loadFromRenderedText(std::string texture_text, SDL_Color text_colo
     }
 
     // Return success
-    return texture != NULL;
+    return texture != nullptr;
 }
 #endif
-
-void Texture::setColor(Uint8 red, Uint8 green, Uint8 blue)
-{
-    // Modulate texture
-    SDL_SetTextureColorMod(texture, red, green, blue);
-}
-
-void Texture::setBlending(SDL_BlendMode blending)
-{
-    // Set blending function
-    SDL_SetTextureBlendMode(texture, blending);
-}
-
-void Texture::setAlpha(Uint8 alpha)
-{
-    // Modulate texture alpha
-    SDL_SetTextureAlphaMod(texture, alpha);
-}
 
 void Texture::render(int x, int y, SDL_Renderer *renderer, SDL_Rect *clip, double angle, SDL_Point *center, SDL_RendererFlip flip)
 {
     // Set clip rendering dimensions
     SDL_Rect render_quad = {x, y, width, height};
-    if (clip != NULL)
+    if (clip != nullptr)
     {
         render_quad.w = clip->w;
         render_quad.h = clip->h;
@@ -148,10 +110,10 @@ void Texture::render(int x, int y, SDL_Renderer *renderer, SDL_Rect *clip, doubl
 void Texture::free()
 {
     // Free texture if it exists
-    if (texture != NULL)
+    if (texture != nullptr)
     {
         SDL_DestroyTexture(texture);
-        texture = NULL;
+        texture = nullptr;
         width = 0;
         height = 0;
     }

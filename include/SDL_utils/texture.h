@@ -15,13 +15,25 @@ class Texture
 public:
     Texture();
 
-    ~Texture();
+    ~Texture()
+    {
+        free();
+    }
 
-    SDL_Texture *getTexture() const;
+    inline SDL_Texture *getTexture() const
+    {
+        return texture;
+    }
 
-    int getWidth();
+    inline int getWidth()
+    {
+        return width;
+    }
 
-    int getHeight();
+    inline int getHeight()
+    {
+        return height;
+    }
 
     /**
      * \brief Loads image at specified path
@@ -38,14 +50,26 @@ public:
     /**
      * \brief Sets color modulation
      */
-    void setColor(Uint8 red, Uint8 green, Uint8 blue);
+    inline void setColor(Uint8 red, Uint8 green, Uint8 blue)
+    {
+        // Modulate texture
+        SDL_SetTextureColorMod(texture, red, green, blue);
+    }
 
     /**
      * \brief Sets blending
      */
-    void setBlending(SDL_BlendMode blending);
+    inline void setBlending(SDL_BlendMode blending)
+    {
+        // Set blending function
+        SDL_SetTextureBlendMode(texture, blending);
+    }
 
-    void setAlpha(Uint8 alpha);
+    inline void setAlpha(Uint8 alpha)
+    {
+        // Modulate texture alpha
+        SDL_SetTextureAlphaMod(texture, alpha);
+    }
 
     /**
      *\brief Renders texture at given point

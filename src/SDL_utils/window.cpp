@@ -1,23 +1,9 @@
 #include "window.h"
 
-Window::Window()
-{
-    window = NULL;
-    surface = NULL;
-    renderer = NULL;
-    title = NULL;
-    width = 0;
-    height = 0;
-    mouse_focus = false;
-    keyboard_focus = false;
-    fullscreen = false;
-    minimized = false;
-}
-
 bool Window::createWindow(char *title, int w, int h, bool resizable)
 {
     window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, resizable ? SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE : SDL_WINDOW_SHOWN);
-    if (window != NULL)
+    if (window != nullptr)
     {
         width = w;
         height = h;
@@ -25,7 +11,7 @@ bool Window::createWindow(char *title, int w, int h, bool resizable)
         keyboard_focus = true;
     }
 
-    return window != NULL;
+    return window != nullptr;
 }
 
 bool Window::createSurface()
@@ -36,37 +22,12 @@ bool Window::createSurface()
 bool Window::createRenderer()
 {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    if (renderer == NULL)
+    if (renderer == nullptr)
     {
         fprintf(stderr, "Renderer could not be created! SDL Error: %s\n", SDL_GetError());
         return false;
     }
     return true;
-}
-
-SDL_Window *Window::getWindow() const
-{
-    return window;
-}
-
-SDL_Surface *Window::getSurface() const
-{
-    return surface;
-}
-
-SDL_Renderer *Window::getRenderer()
-{
-    return renderer;
-}
-
-int Window::getWidth()
-{
-    return width;
-}
-
-int Window::getHeight()
-{
-    return height;
 }
 
 void Window::handleEvent(SDL_Event &e, SDL_Renderer *&renderer)
@@ -154,36 +115,21 @@ void Window::handleEvent(SDL_Event &e, SDL_Renderer *&renderer)
     }
 }
 
-bool Window::hasMouseFocus()
-{
-    return mouse_focus;
-}
-
-bool Window::hasKeyboardFocus()
-{
-    return keyboard_focus;
-}
-
-bool Window::isMinimized()
-{
-    return minimized;
-}
-
 void Window::free()
 {
-    if (window != NULL)
+    if (window != nullptr)
     {
         SDL_DestroyWindow(window);
-        window = NULL;
+        window = nullptr;
     }
-    if (surface != NULL)
+    if (surface != nullptr)
     {
         SDL_FreeSurface(surface);
-        surface = NULL;
+        surface = nullptr;
     }
-    if (renderer != NULL)
+    if (renderer != nullptr)
     {
         SDL_DestroyRenderer(renderer);
-        renderer = NULL;
+        renderer = nullptr;
     }
 }
