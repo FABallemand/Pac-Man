@@ -1,6 +1,0 @@
-<map id="initSDL" name="initSDL">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,73,83"/>
-<area shape="rect" id="node2" href="$classWindow.html#a750dbfb438e7a3d494611427e520944b" title="Creates renderer." alt="" coords="121,5,303,32"/>
-<area shape="rect" id="node3" href="$classWindow.html#a4d13d477777da7e07057d0b320ae96a0" title="Creates window." alt="" coords="125,56,299,83"/>
-<area shape="rect" id="node4" href="$display__utils_8h.html#ac497e2eb789d342d518cbe19322f847c" title="Print error message in stderr." alt="" coords="171,107,253,133"/>
-</map>

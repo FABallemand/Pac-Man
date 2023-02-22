@@ -32,13 +32,12 @@ Simply launch the executable and enjoy!
 - Lazy Foo' Productions: [SDL tutorials](https://lazyfoo.net/tutorials/SDL/index.php)  
 - Game Developper: [The Pac-Man Dossier](https://www.gamedeveloper.com/design/the-pac-man-dossier)  
 - Fandom: [Pac-Man Wiki](https://pacman.fandom.com/wiki/Maze_Ghost_AI_Behaviors)  
-- Microsoft: [Fonctions inline (C++)](https://learn.microsoft.com/fr-fr/cpp/cpp/inline-functions-cpp?view=msvc-170)
+- Microsoft: [Fonctions inline (C++)](https://learn.microsoft.com/fr-fr/cpp/cpp/inline-functions-cpp?view=msvc-170)  
+- Microsoft: [constexpr (C++)](https://learn.microsoft.com/fr-fr/cpp/cpp/constexpr-cpp?view=msvc-170)
 
 ## To do list
 
 - CMake  
-- Logger  
-- Inline constructors and getters  
 
 ## Team
 - ALLEMAND Fabien

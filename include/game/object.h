@@ -3,35 +3,21 @@
 
 #include <SDL.h>
 
-#include "texture.h"
 #include "display_utils.h"
-
-/**
- * \enum Direction
- * \brief Orientation of the object relatively to the screen
- */
-enum Direction
-{
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    NONE
-};
 
 class Object
 {
 protected:
-    Object() : position_{0, 0, 0, 0}, direction_{NONE}, texture_{}
+    Object() : position_{0, 0, 0, 0}
     {
     }
 
-    Object(int x, int y, Direction direction, std::string &texture_path, Window &window); // Not inline because load texture etc.
+    Object(int x, int y) : position_{x, y, 0, 0}
+    {
+    }
 
 public:
-    // SDL_Rect &getPosition() const;
-
-    inline int getX() const // Définition dans la classe => fonction inline
+    inline int getX() const
     {
         return position_.x;
     }
@@ -51,22 +37,10 @@ public:
         return position_.h;
     }
 
-    inline Direction getDirection() const
-    {
-        return direction_;
-    }
-
-    // Texture &getTexture() const;
-
-    inline void setDirection(const Direction direction)
-    {
-        direction_ = direction;
-    }
+    virtual void display() const = 0;
 
 protected:
-    SDL_Rect position_;   //!< World coordinates (x, y) and dimensions (w, h)
-    Direction direction_; //!< Direction
-    Texture texture_;     //!< Texture
+    SDL_Rect position_; //!< Board coordinates (x, y) and dimensions (w, h) SDL_Point ???
 };
 
 #endif

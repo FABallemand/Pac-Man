@@ -865,13 +865,19 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = ../include \
-                         ../include/game \
                          ../include/SDL_utils \
                          ../include/utils \
+                         ../include/game \
+                         ../include/game/moveable \
+                         ../include/game/moveable/ghosts \
+                         ../include/game/eatable \
                          ../src \
-                         ../src/game \
                          ../src/SDL_utils \
                          ../src/utils \
+                         ../src/game \
+                         ../src/game/moveable \
+                         ../src/game/moveable/ghosts \
+                         ../src/game/eatable \
                          ../README.md
 
 # This tag can be used to specify the character encoding of the source files

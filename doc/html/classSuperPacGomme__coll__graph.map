@@ -1,5 +1,0 @@
-<map id="SuperPacGomme" name="SuperPacGomme">
-<area shape="rect" id="node1" title=" " alt="" coords="5,580,139,657"/>
-<area shape="rect" id="node2" href="$classObject.html" title=" " alt="" coords="9,321,135,531"/>
-<area shape="rect" id="node3" href="$classTexture.html" title="Class representing a texture Contains usefull methods to simplify use of SDL_Texture." alt="" coords="7,5,137,259"/>
-</map>

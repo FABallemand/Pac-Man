@@ -1,4 +1,0 @@
-<map id="quitSDL" name="quitSDL">
-<area shape="rect" id="node1" title="Free window and quit SDL (and SDL subsystems)" alt="" coords="5,5,77,32"/>
-<area shape="rect" id="node2" href="$classWindow.html#afa44e46e782872aeec65950f0a7ae6ae" title="Deallocates." alt="" coords="125,5,232,32"/>
-</map>

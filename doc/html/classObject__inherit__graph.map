@@ -1,6 +1,0 @@
-<map id="Object" name="Object">
-<area shape="rect" id="node1" title=" " alt="" coords="98,5,225,229"/>
-<area shape="rect" id="node2" href="$classPacGomme.html" title=" " alt="" coords="5,277,101,355"/>
-<area shape="rect" id="node3" href="$classPacMan.html" title=" " alt="" coords="125,277,197,355"/>
-<area shape="rect" id="node4" href="$classSuperPacGomme.html" title=" " alt="" coords="221,277,355,355"/>
-</map>

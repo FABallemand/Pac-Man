@@ -1,8 +1,0 @@
-<map id="Object::Object" name="Object::Object">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,120,108"/>
-<area shape="rect" id="node2" href="$classTexture.html#a1781a183f67fc77aab9bf9c73c18039f" title="Loads image at specified path." alt="" coords="168,56,331,83"/>
-<area shape="rect" id="node6" href="$display__utils_8h.html#ac497e2eb789d342d518cbe19322f847c" title="Print error message in stderr." alt="" coords="208,107,291,133"/>
-<area shape="rect" id="node3" href="$classTexture.html#a46d06aec832e5a954f1c8ca957c2c6e5" title="Deallocates texture." alt="" coords="407,5,511,32"/>
-<area shape="rect" id="node4" href="$classWindow.html#ae2418ad8ae2af2f4c5badd9cbb8656c1" title=" " alt="" coords="379,56,540,83"/>
-<area shape="rect" id="node5" href="$classWindow.html#acf146679abf09abf89941b1882fc92dc" title=" " alt="" coords="382,107,537,133"/>
-</map>

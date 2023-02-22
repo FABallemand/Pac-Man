@@ -153,8 +153,7 @@ CMakeFiles/pacman.dir/src/game/game.cpp.o: \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/array \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/pac_man.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/cell.h \
  /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -291,17 +290,18 @@ CMakeFiles/pacman.dir/src/game/game.cpp.o: \
  /usr/include/SDL2/SDL_shape.h /usr/include/SDL2/SDL_system.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/SDL_utils/texture.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/SDL_utils/window.h \
- /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/ghosts/ghost.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/ghosts/blinky.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/ghosts/ghost.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/ghosts/clyde.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/ghosts/inky.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/ghosts/pinky.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/pac_man.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/blinky.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/clyde.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/inky.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/pinky.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/fruit.h

@@ -5,7 +5,10 @@
 #include "SDL_utils.h"
 #include "display_utils.h"
 
-Window window{};
+SDL_Window *window = nullptr;
+SDL_Surface *window_surface = nullptr;
+SDL_Surface *sprite = nullptr;
+
 constexpr int screen_width = 700;
 constexpr int screen_height = 900;
 
@@ -15,7 +18,7 @@ int main(int argc, char **argv)
 {
     LOG(INFO) << "PACMAN" << screen_width << "x" << screen_height;
     // Init SDL
-    initSDL(window, "Pac-Man", screen_width, screen_height, false);
+    initSDL(window, window_surface, "Pac-Man", screen_width, screen_height, false);
 
     // Main loop
     bool quit = false;
@@ -53,7 +56,7 @@ int main(int argc, char **argv)
     }
 
     // Quit SDL
-    quitSDL(window);
+    quitSDL(window, window_surface);
 
     return 0;
 }

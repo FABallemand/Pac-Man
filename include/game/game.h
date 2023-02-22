@@ -5,6 +5,9 @@
 #include <vector>
 #include <array>
 
+// Cell
+#include "cell.h"
+
 // Pac-Man
 #include "pac_man.h"
 
@@ -26,12 +29,14 @@ public:
 
 private:
     static const int rows_ = 36;
-    static const int columns_ = 28;                       // Playable ?? Total!!
-    // PacMan pacman_;                                       //!< Pac-Man!!
-    // std::vector<Ghost> ghosts_;                           //!< Ghosts
-    // std::vector<Gomme> gommes_;                           //!< Gommes
-    // std::array<std::array<Gomme, columns_>, rows_> dots_; //!< Gommes (29x26)
-    // std::vector<Fruit> fruits_;                           //!< Fruits
+    static const int columns_ = 28;
+    int life_remaining_;                                    //!< Life remaining
+    int game_score_;                                        //!< Score
+    PacMan pacman_;                                         //!< Pac-Man!!
+    std::vector<Ghost> ghosts_;                             //!< Ghosts
+    std::vector<Gomme> gommes_;                             //!< Gommes
+    std::vector<Fruit> fruits_;                             //!< Fruits
+    std::array<std::array<Cell *, columns_>, rows_> board_; //!< Board of cells
 };
 
 #endif

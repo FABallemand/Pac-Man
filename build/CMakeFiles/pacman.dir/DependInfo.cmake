@@ -9,19 +9,19 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/SDL_utils.cpp" "CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/texture.cpp" "CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/timer.cpp" "CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/window.cpp" "CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/eatable.cpp" "CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/fruit.cpp" "CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/gomme.cpp" "CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/super_gomme.cpp" "CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/game.cpp" "CMakeFiles/pacman.dir/src/game/game.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/game.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/blinky.cpp" "CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/clyde.cpp" "CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/ghost.cpp" "CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/inky.cpp" "CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/pinky.cpp" "CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/blinky.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/clyde.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/ghost.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/inky.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/pinky.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/moveable.cpp" "CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/pac_man.cpp" "CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/object.cpp" "CMakeFiles/pacman.dir/src/game/object.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/object.cpp.o.d"
-  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/pac_man.cpp" "CMakeFiles/pacman.dir/src/game/pac_man.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/pac_man.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/pacman.cpp" "CMakeFiles/pacman.dir/src/pacman.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/pacman.cpp.o.d"
   )
 

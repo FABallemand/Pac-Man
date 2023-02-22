@@ -3,8 +3,25 @@
 
 #include "eatable.h"
 
+enum FruitType
+{
+    CHERRY,
+    STRAWBERRY,
+    ORANGE,
+    APPLE,
+    MELON,
+    STICK_OF_FIRE,
+    KEY,
+    BELL
+};
+
 class Fruit : public Eatable
 {
+public:
+    void effect(Game &game);
+
+private:
+    FruitType type_; //!< Fruit type
 };
 
 #endif

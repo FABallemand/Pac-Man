@@ -284,6 +284,4 @@ CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o: \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/SDL_utils/window.h \
- /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h

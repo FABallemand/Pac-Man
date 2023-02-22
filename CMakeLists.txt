@@ -22,20 +22,20 @@ target_sources(${PROJECT_NAME}
                src/${PROJECT_NAME}.cpp
                # SDL
                src/SDL_utils/SDL_utils.cpp
-               src/SDL_utils/window.cpp
-               src/SDL_utils/texture.cpp
-               src/SDL_utils/timer.cpp
                # Utils
                # Game
                src/game/game.cpp
                src/game/object.cpp
-               src/game/pac_man.cpp
-               src/game/ghosts/ghost.cpp
-               src/game/ghosts/blinky.cpp
-               src/game/ghosts/clyde.cpp
-               src/game/ghosts/inky.cpp
-               src/game/ghosts/pinky.cpp
+               src/game/moveable/moveable.cpp
+               src/game/moveable/pac_man.cpp
+               src/game/moveable/ghosts/ghost.cpp
+               src/game/moveable/ghosts/blinky.cpp
+               src/game/moveable/ghosts/clyde.cpp
+               src/game/moveable/ghosts/inky.cpp
+               src/game/moveable/ghosts/pinky.cpp
+               src/game/eatable/eatable.cpp
                src/game/eatable/gomme.cpp
+               src/game/eatable/super_gomme.cpp
                src/game/eatable/fruit.cpp)
 
 target_include_directories(${PROJECT_NAME}
@@ -45,7 +45,8 @@ target_include_directories(${PROJECT_NAME}
                            include/SDL_utils
                            include/utils
                            include/game
-                           include/game/ghosts
+                           include/game/moveable
+                           include/game/moveable/ghosts
                            include/game/eatable)
 
 target_compile_definitions(${PROJECT_NAME}
@@ -58,19 +59,19 @@ target_link_libraries(${PROJECT_NAME}
 
 ## DOCUMENTATION ##
 
-# option(BUILD_DOC "Build documentation" ON)
+option(BUILD_DOC "Build documentation" ON)
 
-# find_package(Doxygen)
-# if (DOXYGEN_FOUND)
-#     set(DOXYGEN_IN ../Doxyfile)
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+    set(DOXYGEN_IN ../Doxyfile)
 
-#     message("Doxygen build started")
+    message("Doxygen build started")
 
-#     add_custom_target(doc_doxygen ALL
-#         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
-#         WORKING_DIRECTORY ../doc
-#         COMMENT "Generating API documentation with Doxygen"
-#         VERBATIM)
-# else (DOXYGEN_FOUND)
-#   message("Doxygen need to be installed to generate the doxygen documentation")
-# endif (DOXYGEN_FOUND)
+    add_custom_target(doc_doxygen ALL
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
+        WORKING_DIRECTORY ../doc
+        COMMENT "Generating API documentation with Doxygen"
+        VERBATIM)
+else (DOXYGEN_FOUND)
+  message("Doxygen need to be installed to generate the doxygen documentation")
+endif (DOXYGEN_FOUND)

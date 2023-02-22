@@ -97,52 +97,10 @@ CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/SDL_utils.cpp" -o CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.s
 
-CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o: ../src/SDL_utils/window.cpp
-CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o -MF CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o.d -o CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/window.cpp"
-
-CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/window.cpp" > CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.i
-
-CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/window.cpp" -o CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.s
-
-CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o: ../src/SDL_utils/texture.cpp
-CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o -MF CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o.d -o CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/texture.cpp"
-
-CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/texture.cpp" > CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.i
-
-CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/texture.cpp" -o CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.s
-
-CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o: ../src/SDL_utils/timer.cpp
-CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o -MF CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o.d -o CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/timer.cpp"
-
-CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/timer.cpp" > CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.i
-
-CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/timer.cpp" -o CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.s
-
 CMakeFiles/pacman.dir/src/game/game.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/src/game/game.cpp.o: ../src/game/game.cpp
 CMakeFiles/pacman.dir/src/game/game.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pacman.dir/src/game/game.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pacman.dir/src/game/game.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/game.cpp.o -MF CMakeFiles/pacman.dir/src/game/game.cpp.o.d -o CMakeFiles/pacman.dir/src/game/game.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/game.cpp"
 
 CMakeFiles/pacman.dir/src/game/game.cpp.i: cmake_force
@@ -156,7 +114,7 @@ CMakeFiles/pacman.dir/src/game/game.cpp.s: cmake_force
 CMakeFiles/pacman.dir/src/game/object.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/src/game/object.cpp.o: ../src/game/object.cpp
 CMakeFiles/pacman.dir/src/game/object.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/pacman.dir/src/game/object.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pacman.dir/src/game/object.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/object.cpp.o -MF CMakeFiles/pacman.dir/src/game/object.cpp.o.d -o CMakeFiles/pacman.dir/src/game/object.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/object.cpp"
 
 CMakeFiles/pacman.dir/src/game/object.cpp.i: cmake_force
@@ -167,94 +125,122 @@ CMakeFiles/pacman.dir/src/game/object.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/object.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/object.cpp" -o CMakeFiles/pacman.dir/src/game/object.cpp.s
 
-CMakeFiles/pacman.dir/src/game/pac_man.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/game/pac_man.cpp.o: ../src/game/pac_man.cpp
-CMakeFiles/pacman.dir/src/game/pac_man.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/pacman.dir/src/game/pac_man.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/pac_man.cpp.o -MF CMakeFiles/pacman.dir/src/game/pac_man.cpp.o.d -o CMakeFiles/pacman.dir/src/game/pac_man.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/pac_man.cpp"
+CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o: ../src/game/moveable/moveable.cpp
+CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/moveable.cpp"
 
-CMakeFiles/pacman.dir/src/game/pac_man.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/pac_man.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/pac_man.cpp" > CMakeFiles/pacman.dir/src/game/pac_man.cpp.i
+CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/moveable.cpp" > CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.i
 
-CMakeFiles/pacman.dir/src/game/pac_man.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/pac_man.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/pac_man.cpp" -o CMakeFiles/pacman.dir/src/game/pac_man.cpp.s
+CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/moveable.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.s
 
-CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o: ../src/game/ghosts/ghost.cpp
-CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o -MF CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o.d -o CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/ghost.cpp"
+CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o: ../src/game/moveable/pac_man.cpp
+CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/pac_man.cpp"
 
-CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/ghost.cpp" > CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.i
+CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/pac_man.cpp" > CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.i
 
-CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/ghost.cpp" -o CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.s
+CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/pac_man.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.s
 
-CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o: ../src/game/ghosts/blinky.cpp
-CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o -MF CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o.d -o CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/blinky.cpp"
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o: ../src/game/moveable/ghosts/ghost.cpp
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/ghost.cpp"
 
-CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/blinky.cpp" > CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.i
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/ghost.cpp" > CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.i
 
-CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/blinky.cpp" -o CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.s
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/ghost.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.s
 
-CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o: ../src/game/ghosts/clyde.cpp
-CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o -MF CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o.d -o CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/clyde.cpp"
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o: ../src/game/moveable/ghosts/blinky.cpp
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/blinky.cpp"
 
-CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/clyde.cpp" > CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.i
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/blinky.cpp" > CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.i
 
-CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/clyde.cpp" -o CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.s
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/blinky.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.s
 
-CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o: ../src/game/ghosts/inky.cpp
-CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o -MF CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o.d -o CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/inky.cpp"
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o: ../src/game/moveable/ghosts/clyde.cpp
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/clyde.cpp"
 
-CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/inky.cpp" > CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.i
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/clyde.cpp" > CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.i
 
-CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/inky.cpp" -o CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.s
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/clyde.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.s
 
-CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o: CMakeFiles/pacman.dir/flags.make
-CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o: ../src/game/ghosts/pinky.cpp
-CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o -MF CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o.d -o CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/pinky.cpp"
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o: ../src/game/moveable/ghosts/inky.cpp
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/inky.cpp"
 
-CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/pinky.cpp" > CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.i
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/inky.cpp" > CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.i
 
-CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/ghosts/pinky.cpp" -o CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.s
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/inky.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.s
+
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o: ../src/game/moveable/ghosts/pinky.cpp
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o -MF CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o.d -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/pinky.cpp"
+
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/pinky.cpp" > CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.i
+
+CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/pinky.cpp" -o CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.s
+
+CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o: ../src/game/eatable/eatable.cpp
+CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o -MF CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o.d -o CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/eatable.cpp"
+
+CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/eatable.cpp" > CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.i
+
+CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/eatable.cpp" -o CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.s
 
 CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o: ../src/game/eatable/gomme.cpp
 CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o -MF CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o.d -o CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/gomme.cpp"
 
 CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.i: cmake_force
@@ -264,6 +250,20 @@ CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.i: cmake_force
 CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/gomme.cpp" -o CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.s
+
+CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o: CMakeFiles/pacman.dir/flags.make
+CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o: ../src/game/eatable/super_gomme.cpp
+CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o: CMakeFiles/pacman.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o -MF CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o.d -o CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o -c "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/super_gomme.cpp"
+
+CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/super_gomme.cpp" > CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.i
+
+CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/super_gomme.cpp" -o CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.s
 
 CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o: CMakeFiles/pacman.dir/flags.make
 CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o: ../src/game/eatable/fruit.cpp
@@ -283,18 +283,18 @@ CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.s: cmake_force
 pacman_OBJECTS = \
 "CMakeFiles/pacman.dir/src/pacman.cpp.o" \
 "CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o" \
-"CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o" \
-"CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o" \
-"CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o" \
 "CMakeFiles/pacman.dir/src/game/game.cpp.o" \
 "CMakeFiles/pacman.dir/src/game/object.cpp.o" \
-"CMakeFiles/pacman.dir/src/game/pac_man.cpp.o" \
-"CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o" \
-"CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o" \
-"CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o" \
-"CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o" \
-"CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o" \
 "CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o" \
+"CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o" \
 "CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o"
 
 # External object files for target pacman
@@ -302,18 +302,18 @@ pacman_EXTERNAL_OBJECTS =
 
 pacman: CMakeFiles/pacman.dir/src/pacman.cpp.o
 pacman: CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o
-pacman: CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o
-pacman: CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o
-pacman: CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o
 pacman: CMakeFiles/pacman.dir/src/game/game.cpp.o
 pacman: CMakeFiles/pacman.dir/src/game/object.cpp.o
-pacman: CMakeFiles/pacman.dir/src/game/pac_man.cpp.o
-pacman: CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o
-pacman: CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o
-pacman: CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o
-pacman: CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o
-pacman: CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o
 pacman: CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o
+pacman: CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o
 pacman: CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o
 pacman: CMakeFiles/pacman.dir/build.make
 pacman: CMakeFiles/pacman.dir/link.txt
