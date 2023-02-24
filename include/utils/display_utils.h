@@ -9,7 +9,7 @@
 
 #define BLACK "\033[0;30m"   // BLACK
 #define RED "\033[0;31m"     // RED
-#define ORANGE "\033[0;33m"  // ORANGE
+// #define ORANGE "\033[0;33m"  // ORANGE (conflict with fruit.h)
 #define BORANGE "\033[1;33m" // ORANGE BOLD
 #define BRED "\033[1;31m"    // RED BOLD
 #define GREEN "\033[0;32m"   // GREEN

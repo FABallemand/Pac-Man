@@ -284,4 +284,22 @@ CMakeFiles/pacman.dir/src/pacman.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/SDL_utils/SDL_utils.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/game.h \
+ /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/array \
+ /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/cell.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/pac_man.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/blinky.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/clyde.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/inky.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/pinky.h

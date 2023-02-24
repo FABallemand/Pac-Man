@@ -25,6 +25,7 @@ target_sources(${PROJECT_NAME}
                # Utils
                # Game
                src/game/game.cpp
+               src/game/cell.cpp
                src/game/object.cpp
                src/game/moveable/moveable.cpp
                src/game/moveable/pac_man.cpp
@@ -33,10 +34,11 @@ target_sources(${PROJECT_NAME}
                src/game/moveable/ghosts/clyde.cpp
                src/game/moveable/ghosts/inky.cpp
                src/game/moveable/ghosts/pinky.cpp
-               src/game/eatable/eatable.cpp
-               src/game/eatable/gomme.cpp
-               src/game/eatable/super_gomme.cpp
-               src/game/eatable/fruit.cpp)
+        #        src/game/eatable/eatable.cpp
+        #        src/game/eatable/gomme.cpp
+        #        src/game/eatable/super_gomme.cpp
+        #        src/game/eatable/fruit.cpp
+               )
 
 target_include_directories(${PROJECT_NAME}
                            PRIVATE
@@ -47,7 +49,8 @@ target_include_directories(${PROJECT_NAME}
                            include/game
                            include/game/moveable
                            include/game/moveable/ghosts
-                           include/game/eatable)
+                        #    include/game/eatable
+                           )
 
 target_compile_definitions(${PROJECT_NAME}
                            PRIVATE

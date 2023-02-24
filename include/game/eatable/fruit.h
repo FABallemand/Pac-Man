@@ -18,7 +18,7 @@ enum FruitType
 class Fruit : public Eatable
 {
 public:
-    void effect(Game &game);
+    // void effect(Game &game);
 
 private:
     FruitType type_; //!< Fruit type

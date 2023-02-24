@@ -22,7 +22,7 @@ public:
      *
      * \param game The game
      */
-    virtual void effect(Game &game) = 0;
+    // virtual void effect(Game &game) = 0;
 
     void display() const;
 };

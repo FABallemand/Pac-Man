@@ -6,6 +6,8 @@
 class PacMan : public Moveable
 {
 public:
+    PacMan() {}
+
 private:
     std::array<SDL_Rect, 10> dying_sprites_; //!< Sprites location
 };
