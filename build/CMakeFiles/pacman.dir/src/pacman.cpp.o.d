@@ -293,9 +293,11 @@ CMakeFiles/pacman.dir/src/pacman.cpp.o: \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/cell.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/pac_man.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/blinky.h \

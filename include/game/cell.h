@@ -3,8 +3,10 @@
 
 #include <SDL.h>
 #include <vector>
+#include <typeinfo> // Maybe useless
 
 #include "object.h"
+#include "gomme.h"
 
 /**
  * \brief Type of cell
@@ -32,19 +34,64 @@ public:
     {
     }
 
-    // GETTER
+    CellType getCelltype() const
+    {
+        return type_;
+    }
 
-    // SETTER moveables and fruits
+    std::vector<Object *> &getObjects()
+    {
+        return objects_;
+    }
 
-    // CHECKER
+    /**
+     * \brief Add a new object in the cell
+     *
+     * \param object Pointer to the object entering th cell
+     */
+    void addObject(Object *object);
 
-    // DESTROYER eatable and ghosts
+    // TO BE TESTED...
+    template <typename T>
+    bool containObject()
+    {
+        for (Object *object : objects_)
+        {
+            if (typeid(object) == typeid(T))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool containGomme();
+
+    bool containSuperGomme();
+
+    bool containFruit();
+
+    bool containGhost();
+
+    bool containPacMan();
+
+    /**
+     * \brief
+     *
+     */
+    void deleteEatable();
+
+    /**
+     * \brief
+     *
+     */
+    void deleteGhost();
 
     /**
      * \brief Display each object in the cell
      *
      */
-    inline void display() const;
+    void display() const;
 
 private:
     CellType type_;                 //!< Type of the cell

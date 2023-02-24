@@ -22,6 +22,17 @@
 // #include "gomme.h"
 // #include "fruit.h"
 
+#define ROWS 36
+#define COLUMNS 28
+
+class Cell; // Forward declaration
+
+typedef std::array<std::array<Cell *, COLUMNS>, ROWS> Board; // Cell * ???
+
+/**
+ * \brief
+ *
+ */
 enum GameState
 {
     NORMAL,
@@ -39,16 +50,16 @@ public:
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
 private:
-    static const int rows_ = 36;
-    static const int columns_ = 28;
+    static const int rows_ = ROWS;
+    static const int columns_ = COLUMNS;
     int life_remaining_ = 3; //!< Life remaining
     int game_score_ = 0;     //!< Score
     // PacMan pacman_;                                         //!< Pac-Man!!
     std::vector<Ghost> ghosts_; //!< Ghosts
     // std::vector<Gomme> gommes_;                             //!< Gommes
     // std::vector<Fruit> fruits_;                             //!< Fruits
-    std::array<std::array<Cell *, columns_>, rows_> board_;                                 //!< Board of cells
-    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{200, 3, 168, 216}, SDL_Rect{200, 3, 168, 216}}; //!< Background
+    Board board_;                                                                           //!< Board of cells
+    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{368, 3, 168, 216}, SDL_Rect{536, 3, 168, 216}}; //!< Background
 };
 
 #endif

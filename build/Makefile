@@ -190,6 +190,102 @@ src/game/cell.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/cell.cpp.s
 .PHONY : src/game/cell.cpp.s
 
+src/game/eatable/eatable.o: src/game/eatable/eatable.cpp.o
+.PHONY : src/game/eatable/eatable.o
+
+# target to build an object file
+src/game/eatable/eatable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o
+.PHONY : src/game/eatable/eatable.cpp.o
+
+src/game/eatable/eatable.i: src/game/eatable/eatable.cpp.i
+.PHONY : src/game/eatable/eatable.i
+
+# target to preprocess a source file
+src/game/eatable/eatable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.i
+.PHONY : src/game/eatable/eatable.cpp.i
+
+src/game/eatable/eatable.s: src/game/eatable/eatable.cpp.s
+.PHONY : src/game/eatable/eatable.s
+
+# target to generate assembly for a file
+src/game/eatable/eatable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.s
+.PHONY : src/game/eatable/eatable.cpp.s
+
+src/game/eatable/fruit.o: src/game/eatable/fruit.cpp.o
+.PHONY : src/game/eatable/fruit.o
+
+# target to build an object file
+src/game/eatable/fruit.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o
+.PHONY : src/game/eatable/fruit.cpp.o
+
+src/game/eatable/fruit.i: src/game/eatable/fruit.cpp.i
+.PHONY : src/game/eatable/fruit.i
+
+# target to preprocess a source file
+src/game/eatable/fruit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.i
+.PHONY : src/game/eatable/fruit.cpp.i
+
+src/game/eatable/fruit.s: src/game/eatable/fruit.cpp.s
+.PHONY : src/game/eatable/fruit.s
+
+# target to generate assembly for a file
+src/game/eatable/fruit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.s
+.PHONY : src/game/eatable/fruit.cpp.s
+
+src/game/eatable/gomme.o: src/game/eatable/gomme.cpp.o
+.PHONY : src/game/eatable/gomme.o
+
+# target to build an object file
+src/game/eatable/gomme.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o
+.PHONY : src/game/eatable/gomme.cpp.o
+
+src/game/eatable/gomme.i: src/game/eatable/gomme.cpp.i
+.PHONY : src/game/eatable/gomme.i
+
+# target to preprocess a source file
+src/game/eatable/gomme.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.i
+.PHONY : src/game/eatable/gomme.cpp.i
+
+src/game/eatable/gomme.s: src/game/eatable/gomme.cpp.s
+.PHONY : src/game/eatable/gomme.s
+
+# target to generate assembly for a file
+src/game/eatable/gomme.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.s
+.PHONY : src/game/eatable/gomme.cpp.s
+
+src/game/eatable/super_gomme.o: src/game/eatable/super_gomme.cpp.o
+.PHONY : src/game/eatable/super_gomme.o
+
+# target to build an object file
+src/game/eatable/super_gomme.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o
+.PHONY : src/game/eatable/super_gomme.cpp.o
+
+src/game/eatable/super_gomme.i: src/game/eatable/super_gomme.cpp.i
+.PHONY : src/game/eatable/super_gomme.i
+
+# target to preprocess a source file
+src/game/eatable/super_gomme.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.i
+.PHONY : src/game/eatable/super_gomme.cpp.i
+
+src/game/eatable/super_gomme.s: src/game/eatable/super_gomme.cpp.s
+.PHONY : src/game/eatable/super_gomme.s
+
+# target to generate assembly for a file
+src/game/eatable/super_gomme.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.s
+.PHONY : src/game/eatable/super_gomme.cpp.s
+
 src/game/game.o: src/game/game.cpp.o
 .PHONY : src/game/game.o
 
@@ -446,6 +542,18 @@ help:
 	@echo "... src/game/cell.o"
 	@echo "... src/game/cell.i"
 	@echo "... src/game/cell.s"
+	@echo "... src/game/eatable/eatable.o"
+	@echo "... src/game/eatable/eatable.i"
+	@echo "... src/game/eatable/eatable.s"
+	@echo "... src/game/eatable/fruit.o"
+	@echo "... src/game/eatable/fruit.i"
+	@echo "... src/game/eatable/fruit.s"
+	@echo "... src/game/eatable/gomme.o"
+	@echo "... src/game/eatable/gomme.i"
+	@echo "... src/game/eatable/gomme.s"
+	@echo "... src/game/eatable/super_gomme.o"
+	@echo "... src/game/eatable/super_gomme.i"
+	@echo "... src/game/eatable/super_gomme.s"
 	@echo "... src/game/game.o"
 	@echo "... src/game/game.i"
 	@echo "... src/game/game.s"

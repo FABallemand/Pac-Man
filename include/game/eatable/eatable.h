@@ -6,6 +6,8 @@
 #include "game.h"
 #include "object.h"
 
+class Game; // Forward declaration
+
 class Eatable : public Object
 {
 protected:
@@ -22,7 +24,7 @@ public:
      *
      * \param game The game
      */
-    // virtual void effect(Game &game) = 0;
+    virtual void effect(Game &game) = 0;
 
     void display() const;
 };

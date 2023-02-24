@@ -292,9 +292,11 @@ CMakeFiles/pacman.dir/src/game/game.cpp.o: \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/pac_man.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/blinky.h \

@@ -10,6 +10,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/SDL_utils/SDL_utils.cpp" "CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/cell.cpp" "CMakeFiles/pacman.dir/src/game/cell.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/cell.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/eatable.cpp" "CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/fruit.cpp" "CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/fruit.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/gomme.cpp" "CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o.d"
+  "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/eatable/super_gomme.cpp" "CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/game.cpp" "CMakeFiles/pacman.dir/src/game/game.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/game.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/blinky.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o.d"
   "/home/fabien/TPS/2A/Programmation Avancée/Pac-Man/src/game/moveable/ghosts/clyde.cpp" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o" "gcc" "CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o.d"

@@ -11,7 +11,7 @@ public:
     }
 
 private:
-    // void effect(Game &game);
+    void effect(Game &game);
 };
 
 #endif

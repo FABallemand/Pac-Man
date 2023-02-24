@@ -293,6 +293,8 @@ CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o: \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/cell.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/pac_man.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
@@ -302,7 +304,4 @@ CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o: \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/clyde.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/inky.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/pinky.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/fruit.h
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/pinky.h
