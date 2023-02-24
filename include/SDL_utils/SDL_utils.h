@@ -16,14 +16,14 @@
  * \param window_height Height of the window
  * \param resizable
  */
-void initSDL(SDL_Window *window, SDL_Surface *window_surface, char *window_name, int window_width, int window_height, bool resizable);
+void initSDL(SDL_Window *&window, SDL_Surface *&window_surface, char *window_name, int window_width, int window_height, bool resizable);
 
 /**
  * \brief Load required game assets
  *
  * \param sprite General sprite containing all required sprites
  */
-void loadAssets(SDL_Surface *sprite);
+void loadAssets(SDL_Surface *&sprite);
 
 /**
  * \brief Quit SDL
@@ -31,6 +31,6 @@ void loadAssets(SDL_Surface *sprite);
  * \param window SDL window to quit
  * \param window_surface Surface of the SDL window
  */
-void quitSDL(SDL_Window *window, SDL_Surface *window_surface);
+void quitSDL(SDL_Window *&window, SDL_Surface *&window_surface);
 
 #endif

@@ -1,7 +1,9 @@
 #include "SDL_utils.h"
 
-void initSDL(SDL_Window *window, SDL_Surface *window_surface, char *window_name, int window_width, int window_height, bool resizable)
+void initSDL(SDL_Window *&window, SDL_Surface *&window_surface, char *window_name, int window_width, int window_height, bool resizable)
 {
+    LOG(DEBUG) << "initSDL";
+
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         LOG(ERROR) << "SDL could not initialize! SDL Error: " << SDL_GetError();
@@ -15,18 +17,22 @@ void initSDL(SDL_Window *window, SDL_Surface *window_surface, char *window_name,
             LOG(ERROR) << "Window could not be created! SDL Error: " << SDL_GetError();
             exit(1);
         }
-
-        window_surface = SDL_GetWindowSurface(window);
-        if (window_surface == nullptr)
+        else
         {
-            LOG(ERROR) << "Window surface could not be retreived! SDL Error: " << SDL_GetError();
-            exit(1);
+            window_surface = SDL_GetWindowSurface(window);
+            if (window_surface == nullptr)
+            {
+                LOG(ERROR) << "Window surface could not be retreived! SDL Error: " << SDL_GetError();
+                exit(1);
+            }
         }
     }
 }
 
-void loadAssets(SDL_Surface *sprite)
+void loadAssets(SDL_Surface *&sprite)
 {
+    LOG(DEBUG) << "loadAssets";
+
     if ((sprite = SDL_LoadBMP("../assets/img/pacman_sprites.bmp")) == nullptr)
     {
         LOG(ERROR) << "Failed to load assets";
@@ -34,8 +40,10 @@ void loadAssets(SDL_Surface *sprite)
     }
 }
 
-void quitSDL(SDL_Window *window, SDL_Surface *window_surface)
+void quitSDL(SDL_Window *&window, SDL_Surface *&window_surface)
 {
+    LOG(DEBUG) << "quitSDL";
+
     if (window != nullptr)
     {
         SDL_DestroyWindow(window);

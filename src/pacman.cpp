@@ -17,6 +17,8 @@ SDL_Rect full_screen{0, 0, screen_width, screen_height};
 // Assets
 SDL_Surface *sprite = nullptr;
 
+SDL_Rect test = {200, 3, 168, 216};
+
 // Logger
 LogConf LOGGER_CONFIG;
 
@@ -26,16 +28,7 @@ int main(int argc, char **argv)
     initSDL(window, window_surface, "Pac-Man", screen_width, screen_height, false);
 
     // Load assets
-    // loadAssets(sprite);
-    if ((sprite = SDL_LoadBMP("../assets/img/pacman_sprites.bmp")) == nullptr)
-    {
-        LOG(ERROR) << "Failed to load assets";
-        exit(1);
-    }
-    if (sprite == nullptr)
-    {
-        LOG(ERROR) << "WTF 1";
-    }
+    loadAssets(sprite);
 
     // New game
     Game game{};
@@ -70,11 +63,14 @@ int main(int argc, char **argv)
         // Update game
 
         // Display
-        if (sprite == nullptr)
-        {
-            LOG(ERROR) << "WTF 2";
-        }
         game.display(sprite, window_surface);
+
+        // Update window
+        if (SDL_UpdateWindowSurface(window) != 0)
+        {
+            LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
+            exit(1);
+        }
 
         // Frame rate 60 FPS
         SDL_Delay(16); // use SDL_GetTicks64() => precision

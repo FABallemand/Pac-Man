@@ -28,8 +28,6 @@ enum GameState
     BLINK
 };
 
-extern SDL_Rect full_screen;
-
 // SDL_Rect normal_ = {200, 3, 168, 216};
 // SDL_Rect blink_ = {200, 3, 168, 216};
 

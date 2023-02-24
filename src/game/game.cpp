@@ -9,5 +9,5 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
         LOG(ERROR) << "Color key could not be set! SDL Error: " << SDL_GetError();
     }
-    SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, &full_screen);
+    SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
 }
