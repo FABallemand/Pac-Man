@@ -15,8 +15,9 @@ protected:
     {
     }
 
-    int score_;       //!< Reward score when eaten
-    SDL_Rect sprite_; //!< Sprite location
+    virtual ~Eatable()
+    {
+    }
 
 public:
     /**
@@ -27,6 +28,10 @@ public:
     virtual void effect(Game &game) = 0;
 
     void display() const;
+
+protected:
+    int score_;       //!< Reward score when eaten
+    SDL_Rect sprite_; //!< Sprite location
 };
 
 #endif

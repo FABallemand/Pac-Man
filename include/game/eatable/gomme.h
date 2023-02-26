@@ -10,9 +10,19 @@ class Gomme : public Eatable
 public:
     Gomme(int x, int y, int score) : Eatable(x, y, score)
     {
+        LOG(DEBUG) << "Gomme:Gomme";
     }
 
-private:
+    // Gomme(int x, int y, int score)
+    // {
+    //     position_{x, y, 0, 0};
+    //     score_{score};
+    // }
+
+    ~Gomme()
+    {
+    }
+
     void effect(Game &game);
 };
 

@@ -2,4 +2,5 @@
 
 void SuperGomme::effect(Game &game)
 {
+    LOG(DEBUG) << "SuperGomme::effect";
 }

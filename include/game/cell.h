@@ -6,7 +6,11 @@
 #include <typeinfo> // Maybe useless
 
 #include "object.h"
+
+// Eatable
 #include "gomme.h"
+#include "super_gomme.h"
+#include "fruit.h"
 
 /**
  * \brief Type of cell

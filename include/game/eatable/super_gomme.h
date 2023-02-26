@@ -10,7 +10,6 @@ public:
     {
     }
 
-private:
     void effect(Game &game);
 };
 

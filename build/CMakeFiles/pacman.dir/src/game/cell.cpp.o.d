@@ -305,4 +305,7 @@ CMakeFiles/pacman.dir/src/game/cell.cpp.o: \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/clyde.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/inky.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/pinky.h
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/pinky.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/super_gomme.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/fruit.h

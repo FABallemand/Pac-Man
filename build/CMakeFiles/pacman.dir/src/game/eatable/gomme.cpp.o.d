@@ -1,8 +1,10 @@
-CMakeFiles/pacman.dir/src/pacman.cpp.o: \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/src/pacman.cpp \
- /usr/include/stdc-predef.h /usr/include/SDL2/SDL.h \
- /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_stdinc.h \
- /usr/include/SDL2/SDL_config.h \
+CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.o: \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/src/game/eatable/gomme.cpp \
+ /usr/include/stdc-predef.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
+ /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
+ /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
  /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
  /usr/include/SDL2/close_code.h /usr/include/x86_64-linux-gnu/sys/types.h \
@@ -213,6 +215,7 @@ CMakeFiles/pacman.dir/src/pacman.cpp.o: \
  /usr/include/SDL2/SDL_shape.h /usr/include/SDL2/SDL_system.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/game.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/iosfwd \
  /usr/include/c++/11/bits/stringfwd.h \
@@ -282,25 +285,21 @@ CMakeFiles/pacman.dir/src/pacman.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/SDL_utils/SDL_utils.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/game.h \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/array \
  /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/cell.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/eatable.h \
- /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/utils/display_utils.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/super_gomme.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/gomme.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/eatable/fruit.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/pac_man.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
+ /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/object.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/ghost.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/moveable.h \
  /home/fabien/TPS/2A/Programmation\ Avancée/Pac-Man/include/game/moveable/ghosts/blinky.h \

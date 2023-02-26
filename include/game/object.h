@@ -16,6 +16,10 @@ protected:
     {
     }
 
+    virtual ~Object()
+    {
+    }
+
 public:
     inline int getX() const
     {
