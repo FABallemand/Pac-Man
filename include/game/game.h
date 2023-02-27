@@ -19,14 +19,13 @@
 #include "pinky.h"
 
 // Eatable
-// #include "gomme.h"
-// #include "fruit.h"
+#include "gomme.h"
+#include "fruit.h"
 
 #define ROWS 36
 #define COLUMNS 28
 
-class Cell; // Forward declaration
-
+class Cell; // Forward declaration (why??)
 typedef std::array<std::array<Cell *, COLUMNS>, ROWS> Board; // Cell * ???
 
 /**

@@ -8,16 +8,10 @@ class Game; // Forward declaration
 class Gomme : public Eatable
 {
 public:
-    Gomme(int x, int y, int score) : Eatable(x, y, score)
+    Gomme(int x, int y, int score) : Eatable{x, y, score}
     {
         LOG(DEBUG) << "Gomme:Gomme";
     }
-
-    // Gomme(int x, int y, int score)
-    // {
-    //     position_{x, y, 0, 0};
-    //     score_{score};
-    // }
 
     ~Gomme()
     {

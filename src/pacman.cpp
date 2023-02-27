@@ -37,6 +37,8 @@ int main(int argc, char **argv)
     bool quit = false;
     while (!quit)
     {
+        LOG(INFO) << "NEW FRAME";
+
         SDL_Event event;
         while (!quit && SDL_PollEvent(&event))
         {

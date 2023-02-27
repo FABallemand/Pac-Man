@@ -1,9 +1,6 @@
 #ifndef __EATABLE_H__
 #define __EATABLE_H__
 
-#include <SDL.h>
-
-#include "game.h"
 #include "object.h"
 
 class Game; // Forward declaration

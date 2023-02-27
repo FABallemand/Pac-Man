@@ -12,13 +12,13 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
 
     // Eatable
-    for (auto row : board_)
-    {
-        for (Cell *cell : row)
-        {
-            cell->display();
-        }
-    }
+    // for (auto row : board_)
+    // {
+    //     for (Cell *cell : row)
+    //     {
+    //         cell->display();
+    //     }
+    // }
 
     // Ghosts
 
