@@ -40,6 +40,17 @@ void loadAssets(SDL_Surface *&sprite)
     }
 }
 
+void unloadAssets(SDL_Surface *&sprite)
+{
+    LOG(DEBUG) << "unloadAssets";
+
+    if (sprite != nullptr)
+    {
+        SDL_FreeSurface(sprite);
+        sprite = nullptr;
+    }
+}
+
 void quitSDL(SDL_Window *&window, SDL_Surface *&window_surface)
 {
     LOG(DEBUG) << "quitSDL";

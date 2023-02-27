@@ -26,6 +26,13 @@ void initSDL(SDL_Window *&window, SDL_Surface *&window_surface, char *window_nam
 void loadAssets(SDL_Surface *&sprite);
 
 /**
+ * \brief Unload required game assets
+ * 
+ * \param sprite General sprite containing all required sprites
+ */
+void unloadAssets(SDL_Surface *&sprite);
+
+/**
  * \brief Quit SDL
  *
  * \param window SDL window to quit

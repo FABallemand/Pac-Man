@@ -78,6 +78,9 @@ int main(int argc, char **argv)
         SDL_Delay(16); // use SDL_GetTicks64() => precision
     }
 
+    // Unload assets
+    unloadAssets(sprite);
+
     // Quit SDL
     quitSDL(window, window_surface);
 
