@@ -153,77 +153,53 @@ src/SDL_utils/SDL_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/SDL_utils.cpp.s
 .PHONY : src/SDL_utils/SDL_utils.cpp.s
 
-src/SDL_utils/texture.o: src/SDL_utils/texture.cpp.o
-.PHONY : src/SDL_utils/texture.o
+src/game/cell.o: src/game/cell.cpp.o
+.PHONY : src/game/cell.o
 
 # target to build an object file
-src/SDL_utils/texture.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.o
-.PHONY : src/SDL_utils/texture.cpp.o
+src/game/cell.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/cell.cpp.o
+.PHONY : src/game/cell.cpp.o
 
-src/SDL_utils/texture.i: src/SDL_utils/texture.cpp.i
-.PHONY : src/SDL_utils/texture.i
+src/game/cell.i: src/game/cell.cpp.i
+.PHONY : src/game/cell.i
 
 # target to preprocess a source file
-src/SDL_utils/texture.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.i
-.PHONY : src/SDL_utils/texture.cpp.i
+src/game/cell.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/cell.cpp.i
+.PHONY : src/game/cell.cpp.i
 
-src/SDL_utils/texture.s: src/SDL_utils/texture.cpp.s
-.PHONY : src/SDL_utils/texture.s
+src/game/cell.s: src/game/cell.cpp.s
+.PHONY : src/game/cell.s
 
 # target to generate assembly for a file
-src/SDL_utils/texture.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/texture.cpp.s
-.PHONY : src/SDL_utils/texture.cpp.s
+src/game/cell.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/cell.cpp.s
+.PHONY : src/game/cell.cpp.s
 
-src/SDL_utils/timer.o: src/SDL_utils/timer.cpp.o
-.PHONY : src/SDL_utils/timer.o
+src/game/eatable/eatable.o: src/game/eatable/eatable.cpp.o
+.PHONY : src/game/eatable/eatable.o
 
 # target to build an object file
-src/SDL_utils/timer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.o
-.PHONY : src/SDL_utils/timer.cpp.o
+src/game/eatable/eatable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.o
+.PHONY : src/game/eatable/eatable.cpp.o
 
-src/SDL_utils/timer.i: src/SDL_utils/timer.cpp.i
-.PHONY : src/SDL_utils/timer.i
-
-# target to preprocess a source file
-src/SDL_utils/timer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.i
-.PHONY : src/SDL_utils/timer.cpp.i
-
-src/SDL_utils/timer.s: src/SDL_utils/timer.cpp.s
-.PHONY : src/SDL_utils/timer.s
-
-# target to generate assembly for a file
-src/SDL_utils/timer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/timer.cpp.s
-.PHONY : src/SDL_utils/timer.cpp.s
-
-src/SDL_utils/window.o: src/SDL_utils/window.cpp.o
-.PHONY : src/SDL_utils/window.o
-
-# target to build an object file
-src/SDL_utils/window.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.o
-.PHONY : src/SDL_utils/window.cpp.o
-
-src/SDL_utils/window.i: src/SDL_utils/window.cpp.i
-.PHONY : src/SDL_utils/window.i
+src/game/eatable/eatable.i: src/game/eatable/eatable.cpp.i
+.PHONY : src/game/eatable/eatable.i
 
 # target to preprocess a source file
-src/SDL_utils/window.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.i
-.PHONY : src/SDL_utils/window.cpp.i
+src/game/eatable/eatable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.i
+.PHONY : src/game/eatable/eatable.cpp.i
 
-src/SDL_utils/window.s: src/SDL_utils/window.cpp.s
-.PHONY : src/SDL_utils/window.s
+src/game/eatable/eatable.s: src/game/eatable/eatable.cpp.s
+.PHONY : src/game/eatable/eatable.s
 
 # target to generate assembly for a file
-src/SDL_utils/window.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/SDL_utils/window.cpp.s
-.PHONY : src/SDL_utils/window.cpp.s
+src/game/eatable/eatable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/eatable.cpp.s
+.PHONY : src/game/eatable/eatable.cpp.s
 
 src/game/eatable/fruit.o: src/game/eatable/fruit.cpp.o
 .PHONY : src/game/eatable/fruit.o
@@ -273,6 +249,30 @@ src/game/eatable/gomme.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/gomme.cpp.s
 .PHONY : src/game/eatable/gomme.cpp.s
 
+src/game/eatable/super_gomme.o: src/game/eatable/super_gomme.cpp.o
+.PHONY : src/game/eatable/super_gomme.o
+
+# target to build an object file
+src/game/eatable/super_gomme.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.o
+.PHONY : src/game/eatable/super_gomme.cpp.o
+
+src/game/eatable/super_gomme.i: src/game/eatable/super_gomme.cpp.i
+.PHONY : src/game/eatable/super_gomme.i
+
+# target to preprocess a source file
+src/game/eatable/super_gomme.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.i
+.PHONY : src/game/eatable/super_gomme.cpp.i
+
+src/game/eatable/super_gomme.s: src/game/eatable/super_gomme.cpp.s
+.PHONY : src/game/eatable/super_gomme.s
+
+# target to generate assembly for a file
+src/game/eatable/super_gomme.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/eatable/super_gomme.cpp.s
+.PHONY : src/game/eatable/super_gomme.cpp.s
+
 src/game/game.o: src/game/game.cpp.o
 .PHONY : src/game/game.o
 
@@ -297,125 +297,173 @@ src/game/game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/game.cpp.s
 .PHONY : src/game/game.cpp.s
 
-src/game/ghosts/blinky.o: src/game/ghosts/blinky.cpp.o
-.PHONY : src/game/ghosts/blinky.o
+src/game/moveable/ghosts/blinky.o: src/game/moveable/ghosts/blinky.cpp.o
+.PHONY : src/game/moveable/ghosts/blinky.o
 
 # target to build an object file
-src/game/ghosts/blinky.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.o
-.PHONY : src/game/ghosts/blinky.cpp.o
+src/game/moveable/ghosts/blinky.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.o
+.PHONY : src/game/moveable/ghosts/blinky.cpp.o
 
-src/game/ghosts/blinky.i: src/game/ghosts/blinky.cpp.i
-.PHONY : src/game/ghosts/blinky.i
+src/game/moveable/ghosts/blinky.i: src/game/moveable/ghosts/blinky.cpp.i
+.PHONY : src/game/moveable/ghosts/blinky.i
 
 # target to preprocess a source file
-src/game/ghosts/blinky.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.i
-.PHONY : src/game/ghosts/blinky.cpp.i
+src/game/moveable/ghosts/blinky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.i
+.PHONY : src/game/moveable/ghosts/blinky.cpp.i
 
-src/game/ghosts/blinky.s: src/game/ghosts/blinky.cpp.s
-.PHONY : src/game/ghosts/blinky.s
+src/game/moveable/ghosts/blinky.s: src/game/moveable/ghosts/blinky.cpp.s
+.PHONY : src/game/moveable/ghosts/blinky.s
 
 # target to generate assembly for a file
-src/game/ghosts/blinky.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/blinky.cpp.s
-.PHONY : src/game/ghosts/blinky.cpp.s
+src/game/moveable/ghosts/blinky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/blinky.cpp.s
+.PHONY : src/game/moveable/ghosts/blinky.cpp.s
 
-src/game/ghosts/clyde.o: src/game/ghosts/clyde.cpp.o
-.PHONY : src/game/ghosts/clyde.o
+src/game/moveable/ghosts/clyde.o: src/game/moveable/ghosts/clyde.cpp.o
+.PHONY : src/game/moveable/ghosts/clyde.o
 
 # target to build an object file
-src/game/ghosts/clyde.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.o
-.PHONY : src/game/ghosts/clyde.cpp.o
+src/game/moveable/ghosts/clyde.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.o
+.PHONY : src/game/moveable/ghosts/clyde.cpp.o
 
-src/game/ghosts/clyde.i: src/game/ghosts/clyde.cpp.i
-.PHONY : src/game/ghosts/clyde.i
+src/game/moveable/ghosts/clyde.i: src/game/moveable/ghosts/clyde.cpp.i
+.PHONY : src/game/moveable/ghosts/clyde.i
 
 # target to preprocess a source file
-src/game/ghosts/clyde.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.i
-.PHONY : src/game/ghosts/clyde.cpp.i
+src/game/moveable/ghosts/clyde.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.i
+.PHONY : src/game/moveable/ghosts/clyde.cpp.i
 
-src/game/ghosts/clyde.s: src/game/ghosts/clyde.cpp.s
-.PHONY : src/game/ghosts/clyde.s
+src/game/moveable/ghosts/clyde.s: src/game/moveable/ghosts/clyde.cpp.s
+.PHONY : src/game/moveable/ghosts/clyde.s
 
 # target to generate assembly for a file
-src/game/ghosts/clyde.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/clyde.cpp.s
-.PHONY : src/game/ghosts/clyde.cpp.s
+src/game/moveable/ghosts/clyde.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/clyde.cpp.s
+.PHONY : src/game/moveable/ghosts/clyde.cpp.s
 
-src/game/ghosts/ghost.o: src/game/ghosts/ghost.cpp.o
-.PHONY : src/game/ghosts/ghost.o
+src/game/moveable/ghosts/ghost.o: src/game/moveable/ghosts/ghost.cpp.o
+.PHONY : src/game/moveable/ghosts/ghost.o
 
 # target to build an object file
-src/game/ghosts/ghost.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.o
-.PHONY : src/game/ghosts/ghost.cpp.o
+src/game/moveable/ghosts/ghost.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.o
+.PHONY : src/game/moveable/ghosts/ghost.cpp.o
 
-src/game/ghosts/ghost.i: src/game/ghosts/ghost.cpp.i
-.PHONY : src/game/ghosts/ghost.i
+src/game/moveable/ghosts/ghost.i: src/game/moveable/ghosts/ghost.cpp.i
+.PHONY : src/game/moveable/ghosts/ghost.i
 
 # target to preprocess a source file
-src/game/ghosts/ghost.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.i
-.PHONY : src/game/ghosts/ghost.cpp.i
+src/game/moveable/ghosts/ghost.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.i
+.PHONY : src/game/moveable/ghosts/ghost.cpp.i
 
-src/game/ghosts/ghost.s: src/game/ghosts/ghost.cpp.s
-.PHONY : src/game/ghosts/ghost.s
+src/game/moveable/ghosts/ghost.s: src/game/moveable/ghosts/ghost.cpp.s
+.PHONY : src/game/moveable/ghosts/ghost.s
 
 # target to generate assembly for a file
-src/game/ghosts/ghost.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/ghost.cpp.s
-.PHONY : src/game/ghosts/ghost.cpp.s
+src/game/moveable/ghosts/ghost.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/ghost.cpp.s
+.PHONY : src/game/moveable/ghosts/ghost.cpp.s
 
-src/game/ghosts/inky.o: src/game/ghosts/inky.cpp.o
-.PHONY : src/game/ghosts/inky.o
+src/game/moveable/ghosts/inky.o: src/game/moveable/ghosts/inky.cpp.o
+.PHONY : src/game/moveable/ghosts/inky.o
 
 # target to build an object file
-src/game/ghosts/inky.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.o
-.PHONY : src/game/ghosts/inky.cpp.o
+src/game/moveable/ghosts/inky.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.o
+.PHONY : src/game/moveable/ghosts/inky.cpp.o
 
-src/game/ghosts/inky.i: src/game/ghosts/inky.cpp.i
-.PHONY : src/game/ghosts/inky.i
+src/game/moveable/ghosts/inky.i: src/game/moveable/ghosts/inky.cpp.i
+.PHONY : src/game/moveable/ghosts/inky.i
 
 # target to preprocess a source file
-src/game/ghosts/inky.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.i
-.PHONY : src/game/ghosts/inky.cpp.i
+src/game/moveable/ghosts/inky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.i
+.PHONY : src/game/moveable/ghosts/inky.cpp.i
 
-src/game/ghosts/inky.s: src/game/ghosts/inky.cpp.s
-.PHONY : src/game/ghosts/inky.s
+src/game/moveable/ghosts/inky.s: src/game/moveable/ghosts/inky.cpp.s
+.PHONY : src/game/moveable/ghosts/inky.s
 
 # target to generate assembly for a file
-src/game/ghosts/inky.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/inky.cpp.s
-.PHONY : src/game/ghosts/inky.cpp.s
+src/game/moveable/ghosts/inky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/inky.cpp.s
+.PHONY : src/game/moveable/ghosts/inky.cpp.s
 
-src/game/ghosts/pinky.o: src/game/ghosts/pinky.cpp.o
-.PHONY : src/game/ghosts/pinky.o
+src/game/moveable/ghosts/pinky.o: src/game/moveable/ghosts/pinky.cpp.o
+.PHONY : src/game/moveable/ghosts/pinky.o
 
 # target to build an object file
-src/game/ghosts/pinky.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.o
-.PHONY : src/game/ghosts/pinky.cpp.o
+src/game/moveable/ghosts/pinky.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.o
+.PHONY : src/game/moveable/ghosts/pinky.cpp.o
 
-src/game/ghosts/pinky.i: src/game/ghosts/pinky.cpp.i
-.PHONY : src/game/ghosts/pinky.i
+src/game/moveable/ghosts/pinky.i: src/game/moveable/ghosts/pinky.cpp.i
+.PHONY : src/game/moveable/ghosts/pinky.i
 
 # target to preprocess a source file
-src/game/ghosts/pinky.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.i
-.PHONY : src/game/ghosts/pinky.cpp.i
+src/game/moveable/ghosts/pinky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.i
+.PHONY : src/game/moveable/ghosts/pinky.cpp.i
 
-src/game/ghosts/pinky.s: src/game/ghosts/pinky.cpp.s
-.PHONY : src/game/ghosts/pinky.s
+src/game/moveable/ghosts/pinky.s: src/game/moveable/ghosts/pinky.cpp.s
+.PHONY : src/game/moveable/ghosts/pinky.s
 
 # target to generate assembly for a file
-src/game/ghosts/pinky.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/ghosts/pinky.cpp.s
-.PHONY : src/game/ghosts/pinky.cpp.s
+src/game/moveable/ghosts/pinky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/ghosts/pinky.cpp.s
+.PHONY : src/game/moveable/ghosts/pinky.cpp.s
+
+src/game/moveable/moveable.o: src/game/moveable/moveable.cpp.o
+.PHONY : src/game/moveable/moveable.o
+
+# target to build an object file
+src/game/moveable/moveable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.o
+.PHONY : src/game/moveable/moveable.cpp.o
+
+src/game/moveable/moveable.i: src/game/moveable/moveable.cpp.i
+.PHONY : src/game/moveable/moveable.i
+
+# target to preprocess a source file
+src/game/moveable/moveable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.i
+.PHONY : src/game/moveable/moveable.cpp.i
+
+src/game/moveable/moveable.s: src/game/moveable/moveable.cpp.s
+.PHONY : src/game/moveable/moveable.s
+
+# target to generate assembly for a file
+src/game/moveable/moveable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/moveable.cpp.s
+.PHONY : src/game/moveable/moveable.cpp.s
+
+src/game/moveable/pac_man.o: src/game/moveable/pac_man.cpp.o
+.PHONY : src/game/moveable/pac_man.o
+
+# target to build an object file
+src/game/moveable/pac_man.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.o
+.PHONY : src/game/moveable/pac_man.cpp.o
+
+src/game/moveable/pac_man.i: src/game/moveable/pac_man.cpp.i
+.PHONY : src/game/moveable/pac_man.i
+
+# target to preprocess a source file
+src/game/moveable/pac_man.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.i
+.PHONY : src/game/moveable/pac_man.cpp.i
+
+src/game/moveable/pac_man.s: src/game/moveable/pac_man.cpp.s
+.PHONY : src/game/moveable/pac_man.s
+
+# target to generate assembly for a file
+src/game/moveable/pac_man.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/moveable/pac_man.cpp.s
+.PHONY : src/game/moveable/pac_man.cpp.s
 
 src/game/object.o: src/game/object.cpp.o
 .PHONY : src/game/object.o
@@ -441,30 +489,6 @@ src/game/object.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/object.cpp.s
 .PHONY : src/game/object.cpp.s
 
-src/game/pac_man.o: src/game/pac_man.cpp.o
-.PHONY : src/game/pac_man.o
-
-# target to build an object file
-src/game/pac_man.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_man.cpp.o
-.PHONY : src/game/pac_man.cpp.o
-
-src/game/pac_man.i: src/game/pac_man.cpp.i
-.PHONY : src/game/pac_man.i
-
-# target to preprocess a source file
-src/game/pac_man.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_man.cpp.i
-.PHONY : src/game/pac_man.cpp.i
-
-src/game/pac_man.s: src/game/pac_man.cpp.s
-.PHONY : src/game/pac_man.s
-
-# target to generate assembly for a file
-src/game/pac_man.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/game/pac_man.cpp.s
-.PHONY : src/game/pac_man.cpp.s
-
 src/pacman.o: src/pacman.cpp.o
 .PHONY : src/pacman.o
 
@@ -489,30 +513,6 @@ src/pacman.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/pacman.cpp.s
 .PHONY : src/pacman.cpp.s
 
-src/utils/display_utils.o: src/utils/display_utils.cpp.o
-.PHONY : src/utils/display_utils.o
-
-# target to build an object file
-src/utils/display_utils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/utils/display_utils.cpp.o
-.PHONY : src/utils/display_utils.cpp.o
-
-src/utils/display_utils.i: src/utils/display_utils.cpp.i
-.PHONY : src/utils/display_utils.i
-
-# target to preprocess a source file
-src/utils/display_utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/utils/display_utils.cpp.i
-.PHONY : src/utils/display_utils.cpp.i
-
-src/utils/display_utils.s: src/utils/display_utils.cpp.s
-.PHONY : src/utils/display_utils.s
-
-# target to generate assembly for a file
-src/utils/display_utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pacman.dir/build.make CMakeFiles/pacman.dir/src/utils/display_utils.cpp.s
-.PHONY : src/utils/display_utils.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -525,51 +525,51 @@ help:
 	@echo "... src/SDL_utils/SDL_utils.o"
 	@echo "... src/SDL_utils/SDL_utils.i"
 	@echo "... src/SDL_utils/SDL_utils.s"
-	@echo "... src/SDL_utils/texture.o"
-	@echo "... src/SDL_utils/texture.i"
-	@echo "... src/SDL_utils/texture.s"
-	@echo "... src/SDL_utils/timer.o"
-	@echo "... src/SDL_utils/timer.i"
-	@echo "... src/SDL_utils/timer.s"
-	@echo "... src/SDL_utils/window.o"
-	@echo "... src/SDL_utils/window.i"
-	@echo "... src/SDL_utils/window.s"
+	@echo "... src/game/cell.o"
+	@echo "... src/game/cell.i"
+	@echo "... src/game/cell.s"
+	@echo "... src/game/eatable/eatable.o"
+	@echo "... src/game/eatable/eatable.i"
+	@echo "... src/game/eatable/eatable.s"
 	@echo "... src/game/eatable/fruit.o"
 	@echo "... src/game/eatable/fruit.i"
 	@echo "... src/game/eatable/fruit.s"
 	@echo "... src/game/eatable/gomme.o"
 	@echo "... src/game/eatable/gomme.i"
 	@echo "... src/game/eatable/gomme.s"
+	@echo "... src/game/eatable/super_gomme.o"
+	@echo "... src/game/eatable/super_gomme.i"
+	@echo "... src/game/eatable/super_gomme.s"
 	@echo "... src/game/game.o"
 	@echo "... src/game/game.i"
 	@echo "... src/game/game.s"
-	@echo "... src/game/ghosts/blinky.o"
-	@echo "... src/game/ghosts/blinky.i"
-	@echo "... src/game/ghosts/blinky.s"
-	@echo "... src/game/ghosts/clyde.o"
-	@echo "... src/game/ghosts/clyde.i"
-	@echo "... src/game/ghosts/clyde.s"
-	@echo "... src/game/ghosts/ghost.o"
-	@echo "... src/game/ghosts/ghost.i"
-	@echo "... src/game/ghosts/ghost.s"
-	@echo "... src/game/ghosts/inky.o"
-	@echo "... src/game/ghosts/inky.i"
-	@echo "... src/game/ghosts/inky.s"
-	@echo "... src/game/ghosts/pinky.o"
-	@echo "... src/game/ghosts/pinky.i"
-	@echo "... src/game/ghosts/pinky.s"
+	@echo "... src/game/moveable/ghosts/blinky.o"
+	@echo "... src/game/moveable/ghosts/blinky.i"
+	@echo "... src/game/moveable/ghosts/blinky.s"
+	@echo "... src/game/moveable/ghosts/clyde.o"
+	@echo "... src/game/moveable/ghosts/clyde.i"
+	@echo "... src/game/moveable/ghosts/clyde.s"
+	@echo "... src/game/moveable/ghosts/ghost.o"
+	@echo "... src/game/moveable/ghosts/ghost.i"
+	@echo "... src/game/moveable/ghosts/ghost.s"
+	@echo "... src/game/moveable/ghosts/inky.o"
+	@echo "... src/game/moveable/ghosts/inky.i"
+	@echo "... src/game/moveable/ghosts/inky.s"
+	@echo "... src/game/moveable/ghosts/pinky.o"
+	@echo "... src/game/moveable/ghosts/pinky.i"
+	@echo "... src/game/moveable/ghosts/pinky.s"
+	@echo "... src/game/moveable/moveable.o"
+	@echo "... src/game/moveable/moveable.i"
+	@echo "... src/game/moveable/moveable.s"
+	@echo "... src/game/moveable/pac_man.o"
+	@echo "... src/game/moveable/pac_man.i"
+	@echo "... src/game/moveable/pac_man.s"
 	@echo "... src/game/object.o"
 	@echo "... src/game/object.i"
 	@echo "... src/game/object.s"
-	@echo "... src/game/pac_man.o"
-	@echo "... src/game/pac_man.i"
-	@echo "... src/game/pac_man.s"
 	@echo "... src/pacman.o"
 	@echo "... src/pacman.i"
 	@echo "... src/pacman.s"
-	@echo "... src/utils/display_utils.o"
-	@echo "... src/utils/display_utils.i"
-	@echo "... src/utils/display_utils.s"
 .PHONY : help
 
 

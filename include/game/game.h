@@ -24,6 +24,7 @@
 
 #define ROWS 36
 #define COLUMNS 28
+#define CELL_SIZE 25
 
 class Cell; // Forward declaration (why??)
 typedef std::array<std::array<Cell *, COLUMNS>, ROWS> Board; // Cell * ???
@@ -58,7 +59,7 @@ private:
     // std::vector<Gomme> gommes_;                             //!< Gommes
     // std::vector<Fruit> fruits_;                             //!< Fruits
     Board board_;                                                                           //!< Board of cells
-    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{368, 3, 168, 216}, SDL_Rect{536, 3, 168, 216}}; //!< Background
+    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, 166, 216}, SDL_Rect{538, 3, 166, 216}}; //!< Background
 };
 
 #endif

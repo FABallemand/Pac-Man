@@ -95,7 +95,7 @@ public:
      * \brief Display each object in the cell
      *
      */
-    void display() const;
+    void display(SDL_Surface *sprite, SDL_Surface *window_surface) const;
 
 private:
     CellType type_;                 //!< Type of the cell

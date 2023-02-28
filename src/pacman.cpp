@@ -17,8 +17,6 @@ SDL_Rect full_screen{0, 0, screen_width, screen_height};
 // Assets
 SDL_Surface *sprite = nullptr;
 
-SDL_Rect test = {200, 3, 168, 216};
-
 // Logger
 LogConf LOGGER_CONFIG;
 
@@ -32,6 +30,7 @@ int main(int argc, char **argv)
 
     // New game
     Game game{};
+    PacMan pac{};
 
     // Main loop
     bool quit = false;
@@ -66,7 +65,7 @@ int main(int argc, char **argv)
 
         // Display
         game.display(sprite, window_surface);
-
+        pac.display(sprite, window_surface);
         // Update window
         if (SDL_UpdateWindowSurface(window) != 0)
         {

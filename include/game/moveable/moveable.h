@@ -14,10 +14,10 @@
  */
 enum Direction
 {
-    UP,
-    DOWN,
+    RIGHT,
     LEFT,
-    RIGHT
+    UP,
+    DOWN
 };
 
 class Moveable : public Object
@@ -32,8 +32,6 @@ public:
     {
         direction_ = direction;
     }
-
-    void display();
 
 protected:
     Direction direction_;                                                        //!< Direction of the object
