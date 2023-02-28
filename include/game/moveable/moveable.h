@@ -1,15 +1,17 @@
 #ifndef __MOVEABLE_H__
 #define __MOVEABLE_H__
 
-#define NUM_DIRECTION 4
-#define NUM_SPRITE 2
+#define NB_DIRECTION 4
+#define NB_SPRITE 2
 
 #include <array>
 
 #include "object.h"
 
+typedef std::array<std::array<SDL_Rect, NB_SPRITE>, NB_DIRECTION> MovingSprites;
+
 /**
- * \enum Direction
+ * \eNB Direction
  * \brief Orientation of Pac-Man relatively to the screen
  */
 enum Direction
@@ -17,12 +19,17 @@ enum Direction
     RIGHT,
     LEFT,
     UP,
-    DOWN
+    DOWN,
+    NONE // Only for initial position
 };
 
 class Moveable : public Object
 {
 public:
+    Moveable(int x, int y, SDL_Rect *current_sprite, Direction direction = NONE) : Object{x, y}, current_sprite_{current_sprite}, direction_{direction}
+    {
+    }
+
     inline Direction getDirection() const
     {
         return direction_;
@@ -34,8 +41,9 @@ public:
     }
 
 protected:
-    Direction direction_;                                                        //!< Direction of the object
-    std::array<std::array<SDL_Rect, NUM_SPRITE>, NUM_DIRECTION> moving_sprites_; //!< Sprites location
+    SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
+    Direction direction_ = NONE;         //!< Direction of the object
+    MovingSprites moving_sprites_;       //!< Sprites location
 };
 
 #endif

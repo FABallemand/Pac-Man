@@ -3,10 +3,12 @@
 
 #include "ghost.h"
 
-class Pinky : public Ghost {
-
-    public:
+class Pinky : public Ghost
+{
+public:
     Pinky();
+
+    void strategy();
 };
 
 #endif

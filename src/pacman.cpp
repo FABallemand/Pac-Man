@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 
     // New game
     Game game{};
-    PacMan pac{};
+    PacMan pac{25, 25};
 
     // Main loop
     bool quit = false;
