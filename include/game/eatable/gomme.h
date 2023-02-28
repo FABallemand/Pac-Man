@@ -18,6 +18,8 @@ public:
     }
 
     void effect(Game &game);
+protected:
+    SDL_Rect sprite = SDL_Rect{3,80,4,4};
 };
 
 #endif
