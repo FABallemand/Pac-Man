@@ -5,6 +5,8 @@
 
 class Pinky : public Ghost {
 
+    public:
+    Pinky();
 };
 
 #endif

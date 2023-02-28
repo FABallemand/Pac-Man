@@ -5,6 +5,9 @@
 
 class Inky : public Ghost {
 
+    public:
+    Inky();
+
 };
 
 #endif

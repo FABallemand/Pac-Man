@@ -5,6 +5,9 @@
 
 class Clyde : public Ghost {
 
+    public:
+    Clyde();
+
 };
 
 #endif

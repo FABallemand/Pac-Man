@@ -5,6 +5,9 @@
 
 class Blinky : public Ghost {
 
+    public:
+    Blinky();
+
 };
 
 #endif

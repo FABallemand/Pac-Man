@@ -2,7 +2,7 @@
 
 PacMan::PacMan()
 {
-    moving_sprites_ = {{{SDL_Rect{20 ,89 ,16 ,16 }, SDL_Rect{35 ,89 ,11 ,16}}, {SDL_Rect{47,89,15,16}, SDL_Rect{63,89,11,16}},
+    moving_sprites_ = {{{SDL_Rect{20 ,89 ,15 ,16 }, SDL_Rect{35 ,89 ,11 ,16}}, {SDL_Rect{47,89,15,16}, SDL_Rect{63,89,11,16}},
                         {SDL_Rect{75,89,16,16}, SDL_Rect{92,89,16,16}},{SDL_Rect{109,89,16,16}, SDL_Rect{126,89,16,16}}}};
 }
 
