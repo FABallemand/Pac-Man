@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 
+#include "const.h"
 #include "display_utils.h"
 
 class Object

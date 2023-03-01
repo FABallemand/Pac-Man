@@ -5,6 +5,8 @@
 #include <vector>
 #include <typeinfo> // Maybe useless
 
+#include "const.h"
+#include "display_utils.h"
 #include "object.h"
 
 // Eatable
@@ -23,11 +25,13 @@ enum CellType
     GHOST_WALL
 };
 
-class Cell
+class Cell : public Object
 {
 public:
     Cell() : type_{CLEAR}, objects_{}
     {
+        position_.w = CELL_SIZE;
+        position_.h = CELL_SIZE;
     }
 
     Cell(std::vector<Object *> objects) : type_{CLEAR}, objects_{objects}

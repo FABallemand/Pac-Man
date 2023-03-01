@@ -1,12 +1,11 @@
 #ifndef __MOVEABLE_H__
 #define __MOVEABLE_H__
 
-#define NB_DIRECTION 4
-#define NB_SPRITE 2
-
 #include <array>
 
 #include "object.h"
+
+class Cell; // Forward declaration
 
 typedef std::array<std::array<SDL_Rect, NB_SPRITE>, NB_DIRECTION> MovingSprites;
 
@@ -16,8 +15,8 @@ typedef std::array<std::array<SDL_Rect, NB_SPRITE>, NB_DIRECTION> MovingSprites;
  */
 enum Direction
 {
-    RIGHT,
     LEFT,
+    RIGHT,
     UP,
     DOWN,
     NONE // Only for initial position
@@ -43,7 +42,18 @@ public:
 protected:
     SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
     Direction direction_ = NONE;         //!< Direction of the object
+    int frame_count_ = 0;                //!< Frame count
     MovingSprites moving_sprites_;       //!< Sprites location
+    Cell *current_cell_;                 //!< Current cell
+
+    /**
+     * \brief Indicate whether a movement is legal or not
+     *
+     * \param direction Direction in which to move
+     * \return true If Object is allowed to move in this direction
+     * \return false If Object is not allowed to move in this direction
+     */
+    virtual bool allowedToMove(Direction direction) = 0;
 };
 
 #endif

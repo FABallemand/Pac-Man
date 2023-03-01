@@ -864,40 +864,44 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = src/pacman.cpp \
-                        src/SDL_utils/SDL_utils.cpp \
-                        src/game/game.cpp \
-                        src/game/cell.cpp \
-                        src/game/object.cpp \
-                        src/game/moveable/moveable.cpp \
-                        src/game/moveable/pac_man.cpp \
-                        src/game/moveable/ghosts/ghost.cpp \
-                        src/game/moveable/ghosts/blinky.cpp \
-                        src/game/moveable/ghosts/clyde.cpp \
-                        src/game/moveable/ghosts/inky.cpp \
-                        src/game/moveable/ghosts/pinky.cpp \
-                        src/game/eatable/eatable.cpp \
-                        src/game/eatable/gomme.cpp \
-                        src/game/eatable/super_gomme.cpp \
-                        src/game/eatable/fruit.cpp \
-                        include/SDL_utils/SDL_utils.h \
-                        include/SDL_utils/timer.h \
-                        include/utils/display_utils.h \
-                        include/game/game.h \
-                        include/game/cell.h \
-                        include/game/object.h \
-                        include/game/moveable/moveable.h \
-                        include/game/moveable/pac_man.h \
-                        include/game/moveable/ghosts/ghost.h \
-                        include/game/moveable/ghosts/blinky.h \
-                        include/game/moveable/ghosts/clyde.h \
-                        include/game/moveable/ghosts/inky.h \
-                        include/game/moveable/ghosts/pinky.h \
-                        include/game/eatable/eatable.h \
-                        include/game/eatable/gomme.h \
-                        include/game/eatable/super_gomme.h \
-                        include/game/eatable/fruit.h \
+INPUT                  = ../src/ \
+                         ../include/ \
                          ../README.md
+
+# INPUT                  = src/pacman.cpp \
+#                         src/SDL_utils/SDL_utils.cpp \
+#                         src/game/game.cpp \
+#                         src/game/cell.cpp \
+#                         src/game/object.cpp \
+#                         src/game/moveable/moveable.cpp \
+#                         src/game/moveable/pac_man.cpp \
+#                         src/game/moveable/ghosts/ghost.cpp \
+#                         src/game/moveable/ghosts/blinky.cpp \
+#                         src/game/moveable/ghosts/clyde.cpp \
+#                         src/game/moveable/ghosts/inky.cpp \
+#                         src/game/moveable/ghosts/pinky.cpp \
+#                         src/game/eatable/eatable.cpp \
+#                         src/game/eatable/gomme.cpp \
+#                         src/game/eatable/super_gomme.cpp \
+#                         src/game/eatable/fruit.cpp \
+#                         include/SDL_utils/SDL_utils.h \
+#                         include/SDL_utils/timer.h \
+#                         include/utils/display_utils.h \
+#                         include/game/game.h \
+#                         include/game/cell.h \
+#                         include/game/object.h \
+#                         include/game/moveable/moveable.h \
+#                         include/game/moveable/pac_man.h \
+#                         include/game/moveable/ghosts/ghost.h \
+#                         include/game/moveable/ghosts/blinky.h \
+#                         include/game/moveable/ghosts/clyde.h \
+#                         include/game/moveable/ghosts/inky.h \
+#                         include/game/moveable/ghosts/pinky.h \
+#                         include/game/eatable/eatable.h \
+#                         include/game/eatable/gomme.h \
+#                         include/game/eatable/super_gomme.h \
+#                         include/game/eatable/fruit.h \
+#                          ../README.md
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -978,7 +982,7 @@ FILE_PATTERNS          = *.c \
 # be searched for input files as well.
 # The default value is: NO.
 
-RECURSIVE              = NO
+RECURSIVE              = YES
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a

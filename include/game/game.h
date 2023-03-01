@@ -5,6 +5,9 @@
 #include <vector>
 #include <array>
 
+#include "const.h"
+#include "display_utils.h"
+
 // Cell
 #include "cell.h"
 
@@ -22,12 +25,8 @@
 #include "gomme.h"
 #include "fruit.h"
 
-#define NB_ROWS 36   //!< Number of rows
-#define NB_CLUMNS 28 //!< Number of columns
-#define CELL_SIZE 25
-
 class Cell; // Forward declaration (why??)
-typedef std::array<std::array<Cell *, NB_CLUMNS>, NB_ROWS> Board;
+typedef std::array<std::array<Cell *, NB_COLUMNS>, NB_ROWS> Board;
 
 /**
  * \brief
@@ -39,9 +38,6 @@ enum GameState
     BLINK
 };
 
-// SDL_Rect normal_ = {200, 3, 168, 216};
-// SDL_Rect blink_ = {200, 3, 168, 216};
-
 class Game
 {
 public:
@@ -49,17 +45,20 @@ public:
 
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
+    void handleUserInputs(const Uint8 *key_state);
+
 private:
-    static const int rows_ = NB_ROWS;
-    static const int columns_ = NB_CLUMNS;
-    int life_remaining_ = 3; //!< Life remaining
-    int game_score_ = 0;     //!< Score
-    // PacMan pacman_;                                         //!< Pac-Man!!
+    int life_remaining_ = 3;    //!< Life remaining
+    int game_score_ = 0;        //!< Score
+    GameState state_ = NORMAL;  //!< Game state
+    PacMan pacman_{25, 25};     //!< Pac-Man!!
     std::vector<Ghost> ghosts_; //!< Ghosts
     // std::vector<Gomme> gommes_;                             //!< Gommes
     // std::vector<Fruit> fruits_;                             //!< Fruits
-    Board board_;                                                                           //!< Board of cells
-    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, 166, 216}, SDL_Rect{538, 3, 166, 216}}; //!< Background (add #define for width and heigth)
+    Board board_;                                                                                       //!< Board of cells
+    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background (add #define for width and heigth)
+
+    SDL_Rect maze_position_{0, 3 * CELL_SIZE, WINDOW_W, (WINDOW_W * MAZE_H) / MAZE_W};
 };
 
 #endif

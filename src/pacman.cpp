@@ -1,7 +1,7 @@
 #include <SDL.h>
-
 #include <iostream>
 
+#include "const.h"
 #include "SDL_utils.h"
 #include "display_utils.h"
 #include "game.h"
@@ -9,10 +9,6 @@
 // Window
 SDL_Window *window = nullptr;
 SDL_Surface *window_surface = nullptr;
-constexpr int screen_width = 700;
-constexpr int screen_height = 900;
-
-SDL_Rect full_screen{0, 0, screen_width, screen_height};
 
 // Assets
 SDL_Surface *sprite = nullptr;
@@ -23,7 +19,7 @@ LogConf LOGGER_CONFIG;
 int main(int argc, char **argv)
 {
     // Init SDL
-    initSDL(window, window_surface, "Pac-Man", screen_width, screen_height, false);
+    initSDL(window, window_surface, "Pac-Man", WINDOW_W, WINDOW_H, false);
 
     // Load assets
     loadAssets(sprite);
@@ -31,7 +27,6 @@ int main(int argc, char **argv)
     // New game
     LOG(GAME) << "Entering the game";
     Game game{};
-    PacMan pac{25, 25};
 
     // Main loop
     bool quit = false;
@@ -59,13 +54,13 @@ int main(int argc, char **argv)
         {
             quit = true;
         }
-        pac.handleUserInputs(key_state);
+        game.handleUserInputs(key_state);
 
         // Update game
 
         // Display
         game.display(sprite, window_surface);
-        pac.display(sprite, window_surface);
+
         // Update window
         if (SDL_UpdateWindowSurface(window) != 0)
         {
