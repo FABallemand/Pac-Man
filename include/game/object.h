@@ -44,12 +44,7 @@ public:
     virtual void display(SDL_Surface *sprite, SDL_Surface *window_surface) = 0; // No const due to SDL (position_)
 
 protected:
-    SDL_Rect position_; //!< Board coordinates (x, y) and dimensions (w, h) SDL_Point ???
-
-    SDL_Rect *getPostionPtr()
-    {
-        return &position_;
-    }
+    SDL_Rect position_; //!< Board coordinates (x, y) and dimensions (w, h)
 };
 
 #endif

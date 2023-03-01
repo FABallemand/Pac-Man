@@ -29,6 +29,7 @@ int main(int argc, char **argv)
     loadAssets(sprite);
 
     // New game
+    LOG(GAME) << "Entering the game";
     Game game{};
     PacMan pac{25, 25};
 
@@ -53,13 +54,12 @@ int main(int argc, char **argv)
 
         // Keyboard
         int nbk;
-        const Uint8 *keys = SDL_GetKeyboardState(&nbk);
-        if (keys[SDL_SCANCODE_ESCAPE])
+        const Uint8 *key_state = SDL_GetKeyboardState(&nbk);
+        if (key_state[SDL_SCANCODE_ESCAPE])
+        {
             quit = true;
-        if (keys[SDL_SCANCODE_LEFT])
-            puts("LEFT");
-        if (keys[SDL_SCANCODE_RIGHT])
-            puts("RIGHT");
+        }
+        pac.handleUserInputs(key_state);
 
         // Update game
 
@@ -76,6 +76,8 @@ int main(int argc, char **argv)
         // Frame rate 60 FPS
         SDL_Delay(16); // use SDL_GetTicks64() => precision
     }
+
+    LOG(GAME) << "Quitting the game";
 
     // Unload assets
     unloadAssets(sprite);

@@ -13,6 +13,13 @@ class PacMan : public Moveable
 public:
     PacMan(int x, int y);
 
+    /**
+     * \brief Handle user inputs to control PacMan
+     *
+     * \param key_state States of the keys
+     */
+    void handleUserInputs(const Uint8 *key_state);
+
     void display(SDL_Surface *sprite, SDL_Surface *window_surface);
 
 private:
