@@ -9,7 +9,7 @@
 class Ghost : public Moveable
 {
 public:
-    Ghost(int x, int y) : Moveable{x, y, &(moving_sprites_[0][0]), NONE}
+    Ghost(int x, int y) : Moveable{x, y, GHOST_W, GHOST_H, &(moving_sprites_[0][0]), NONE}
     {
     }
 

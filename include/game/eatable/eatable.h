@@ -8,7 +8,7 @@ class Game; // Forward declaration
 class Eatable : public Object
 {
 protected:
-    Eatable(int x, int y, int score) : Object{x, y}, score_{score}
+    Eatable(int x, int y, int w, int h, int score) : Object{x, y, w, h}, score_{score}
     {
     }
 

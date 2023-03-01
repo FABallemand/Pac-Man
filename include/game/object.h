@@ -12,7 +12,7 @@ protected:
     {
     }
 
-    Object(int x, int y) : position_{x, y, 0, 0}
+    Object(int x, int y, int w, int h) : position_{x, y, w, h}
     {
     }
 

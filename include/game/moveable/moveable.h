@@ -26,7 +26,7 @@ enum Direction
 class Moveable : public Object
 {
 public:
-    Moveable(int x, int y, SDL_Rect *current_sprite, Direction direction = NONE) : Object{x, y}, current_sprite_{current_sprite}, direction_{direction}
+    Moveable(int x, int y, int w, int h, SDL_Rect *current_sprite, Direction direction = NONE) : Object{x, y, w, h}, current_sprite_{current_sprite}, direction_{direction}
     {
     }
 
