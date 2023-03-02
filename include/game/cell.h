@@ -30,8 +30,8 @@ class Cell : public Object
 public:
     Cell() : type_{CLEAR}, objects_{}
     {
-        position_.w = CELL_SIZE;
-        position_.h = CELL_SIZE;
+        position_.w = cellsize;
+        position_.h = cellsize;
     }
 
     Cell(std::vector<Object *> objects) : type_{CLEAR}, objects_{objects}

@@ -41,7 +41,9 @@ enum GameState
 class Game
 {
 public:
-    Game() {}
+    Game()
+    {
+    }
 
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
@@ -51,14 +53,14 @@ private:
     int life_remaining_ = 3;    //!< Life remaining
     int game_score_ = 0;        //!< Score
     GameState state_ = NORMAL;  //!< Game state
-    PacMan pacman_{25, 25};     //!< Pac-Man!!
+    PacMan pacman_{cellsize, cellsize};     //!< Pac-Man!!
     std::vector<Ghost> ghosts_; //!< Ghosts
     // std::vector<Gomme> gommes_;                             //!< Gommes
     // std::vector<Fruit> fruits_;                             //!< Fruits
     Board board_;                                                                                       //!< Board of cells
     std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background (add #define for width and heigth)
 
-    SDL_Rect maze_position_{0, 3 * CELL_SIZE, WINDOW_W, (WINDOW_W * MAZE_H) / MAZE_W};
+    SDL_Rect maze_position_{0,0, 0, 0};
 };
 
 #endif
