@@ -14,17 +14,21 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
     {
         direction_ = RIGHT;
     }
-    if (key_state[SDL_SCANCODE_LEFT] && allowedToMove(LEFT))
+    else if (key_state[SDL_SCANCODE_LEFT] && allowedToMove(LEFT))
     {
         direction_ = LEFT;
     }
-    if (key_state[SDL_SCANCODE_UP] && allowedToMove(UP))
+    else if (key_state[SDL_SCANCODE_UP] && allowedToMove(UP))
     {
         direction_ = UP;
     }
-    if (key_state[SDL_SCANCODE_DOWN] && allowedToMove(DOWN))
+    else if (key_state[SDL_SCANCODE_DOWN] && allowedToMove(DOWN))
     {
         direction_ = DOWN;
+    }
+    else
+    {
+        return;
     }
     current_sprite_ = &(moving_sprites_[direction_][frame_count_]);
 }
@@ -37,7 +41,6 @@ void PacMan::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
         LOG(ERROR) << "Color key could not be set! SDL Error: " << SDL_GetError();
     }
-
     SDL_BlitScaled(sprite, current_sprite_, window_surface, &position_);
 }
 
