@@ -14,11 +14,13 @@
 #define CELLSIZE 32
 // Moveable ===============================================
 #define NB_DIRECTION 4
-#define NB_SPRITE 2
+#define NB_MOVING_SPRITE 3
+#define NB_SPRITE_FRAME 2 //!< Number of frame each sprite is displayed before going to the next sprite in the animation
 
 // PacMan
 #define PACMAN_W 18         //!< PacMan width
 #define PACMAN_H 16         //!< PacMan height
+#define PACMAN_SPEED 2      //!< PacMan speed
 #define NB_DYING_SPRITES 10 //!< Number of sprites in the dying animation
 
 // Ghost

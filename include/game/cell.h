@@ -9,6 +9,10 @@
 #include "display_utils.h"
 #include "object.h"
 
+// Moveable
+#include "pac_man.h"
+#include "ghost.h"
+
 // Eatable
 #include "gomme.h"
 #include "super_gomme.h"

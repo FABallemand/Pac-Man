@@ -7,7 +7,7 @@
 
 class Cell; // Forward declaration
 
-typedef std::array<std::array<SDL_Rect, NB_SPRITE>, NB_DIRECTION> MovingSprites;
+using MovingSprites = std::array<std::array<SDL_Rect, NB_MOVING_SPRITE>, NB_DIRECTION>;
 
 /**
  * \eNB Direction
@@ -43,6 +43,7 @@ protected:
     SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
     Direction direction_ = NONE;         //!< Direction of the object
     int frame_count_ = 0;                //!< Frame count
+    int sprite_count_ = 0;               //!< Sprite count (for animation)
     MovingSprites moving_sprites_;       //!< Sprites location
     Cell *current_cell_;                 //!< Current cell
 

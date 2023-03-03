@@ -13,6 +13,8 @@ public:
     {
     }
 
+    void display(SDL_Surface *sprite, SDL_Surface *window_surface);
+
     virtual void strategy() = 0;
 
 protected:

@@ -2,10 +2,10 @@
 
 PacMan::PacMan(int x, int y) : Moveable{x, y, CELLSIZE, CELLSIZE, &initial_sprite_, NONE}
 {
-    moving_sprites_ = {{{SDL_Rect{47, 89, 15, PACMAN_H}, SDL_Rect{63, 89, 11, PACMAN_H}},     // Left
-                        {SDL_Rect{20, 89, 15, PACMAN_H}, SDL_Rect{35, 89, 11, PACMAN_H}},     // Right
-                        {SDL_Rect{75, 89, 16, PACMAN_H}, SDL_Rect{92, 89, 16, PACMAN_H}},     // Up
-                        {SDL_Rect{109, 89, 16, PACMAN_H}, SDL_Rect{126, 89, 16, PACMAN_H}}}}; // Down
+    moving_sprites_ = {{{SDL_Rect{47, 89, PACMAN_W, PACMAN_H}, SDL_Rect{63, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Left
+                        {SDL_Rect{20, 89, PACMAN_W, PACMAN_H}, SDL_Rect{35, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Right
+                        {SDL_Rect{75, 89, PACMAN_W, PACMAN_H}, SDL_Rect{92, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Up
+                        {SDL_Rect{109, 89, PACMAN_W, PACMAN_H}, SDL_Rect{126, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}}}}; // Down
 }
 
 void PacMan::handleUserInputs(const Uint8 *key_state)
@@ -13,24 +13,34 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
     if (key_state[SDL_SCANCODE_RIGHT] && allowedToMove(RIGHT))
     {
         direction_ = RIGHT;
+        position_.x += PACMAN_SPEED;
     }
     else if (key_state[SDL_SCANCODE_LEFT] && allowedToMove(LEFT))
     {
         direction_ = LEFT;
+        position_.x -= PACMAN_SPEED;
     }
     else if (key_state[SDL_SCANCODE_UP] && allowedToMove(UP))
     {
         direction_ = UP;
+        position_.y -= PACMAN_SPEED;
     }
     else if (key_state[SDL_SCANCODE_DOWN] && allowedToMove(DOWN))
     {
         direction_ = DOWN;
+        position_.y += PACMAN_SPEED;
     }
     else
     {
         return;
     }
-    current_sprite_ = &(moving_sprites_[direction_][frame_count_]);
+
+    if (++frame_count_ == NB_SPRITE_FRAME)
+    {
+        frame_count_ = 0;
+        sprite_count_ = (++sprite_count_) % NB_MOVING_SPRITE;
+    }
+    current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
 }
 
 void PacMan::display(SDL_Surface *sprite, SDL_Surface *window_surface)

@@ -3,7 +3,7 @@
 
 #include "moveable.h"
 
-typedef std::array<SDL_Rect, NB_DYING_SPRITES> DyingSprites;
+using DyingSprites = std::array<SDL_Rect, NB_DYING_SPRITES>;
 
 class PacMan : public Moveable
 {
