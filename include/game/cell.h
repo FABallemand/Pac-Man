@@ -24,7 +24,9 @@
  */
 enum CellType
 {
-    CLEAR,
+    EMPTY,
+    GOMME,
+    SUPER_GOMME,
     WALL,
     GHOST_WALL
 };
@@ -32,17 +34,17 @@ enum CellType
 class Cell : public Object
 {
 public:
-    Cell() : type_{CLEAR}, objects_{}
-    {
-        position_.w = CELLSIZE;
-        position_.h = CELLSIZE;
-    }
+    Cell(){};
 
-    Cell(std::vector<Object *> objects) : type_{CLEAR}, objects_{objects}
+    Cell(int i, int j) : Object{i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{EMPTY}, objects_{}
     {
     }
 
-    Cell(CellType type) : type_{type}, objects_{}
+    Cell(int i, int j, std::vector<Object *> objects) : Object{i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{EMPTY}, objects_{objects}
+    {
+    }
+
+    Cell(int i, int j, CellType type) : Object{i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{type}, objects_{}
     {
     }
 
@@ -103,7 +105,7 @@ public:
      * \brief Display each object in the cell
      *
      */
-    void display(SDL_Surface *sprite, SDL_Surface *window_surface) const;
+    void display(SDL_Surface *sprite, SDL_Surface *window_surface);
 
 private:
     CellType type_;                 //!< Type of the cell

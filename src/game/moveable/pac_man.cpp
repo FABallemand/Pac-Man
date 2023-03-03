@@ -1,6 +1,6 @@
 #include "pac_man.h"
 
-PacMan::PacMan(int x, int y) : Moveable{x, y, CELLSIZE, CELLSIZE, &initial_sprite_, NONE}
+PacMan::PacMan(int x, int y) : Moveable{x, y, CELL_SIZE, CELL_SIZE, &initial_sprite_, NONE}
 {
     moving_sprites_ = {{{SDL_Rect{47, 89, PACMAN_W, PACMAN_H}, SDL_Rect{63, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Left
                         {SDL_Rect{20, 89, PACMAN_W, PACMAN_H}, SDL_Rect{35, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Right

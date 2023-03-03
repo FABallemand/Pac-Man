@@ -2,55 +2,56 @@
 
 Game::Game()
 {
-    int maze_walls[NB_ROWS][NB_COLUMNS] = {
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-        {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-        {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1},
-        {1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1},
-        {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1, 0, 1, 1, 1, 2, 1, 2, 1, 1, 1, 0, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 3, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 2, 1, 0, 0, 0, 1, 2, 1, 0, 1, 1, 1, 1, 1},
-        {2, 2, 2, 2, 2, 0, 2, 2, 1, 0, 0, 0, 1, 2, 2, 0, 2, 2, 2, 2, 2},
-        {1, 1, 1, 1, 1, 0, 1, 2, 1, 0, 0, 0, 1, 2, 1, 0, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 1, 1, 1, 1, 1},
-        {1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1},
-        {1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-        {1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1},
-        {1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1},
-        {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
-        {1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1},
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+    CellType maze_walls[NB_ROWS][NB_COLUMNS] = {
+        {WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL},
+        {WALL, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, GOMME, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, GOMME, GOMME, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, EMPTY, WALL, EMPTY, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, GHOST_WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, GOMME, GOMME, GOMME, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, WALL, GOMME, GOMME, GOMME, WALL, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, GOMME, GOMME, GOMME, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, GOMME, GOMME, EMPTY, GOMME, GOMME, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, WALL},
+        {WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL},
+        {WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL},
+        {WALL, GOMME, GOMME, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, WALL, GOMME, GOMME, GOMME, GOMME, GOMME, WALL},
+        {WALL, GOMME, WALL, WALL, WALL, WALL, WALL, WALL, WALL, GOMME, WALL, GOMME, WALL, WALL, WALL, WALL, WALL, WALL, WALL, GOMME, WALL},
+        {WALL, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, GOMME, WALL},
+        {WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL, WALL}};
 
-    for (int i = 0; i < NB_ROWS; i++)
+    for (int i = 0; i < NB_ROWS; ++i)
     {
-        for (int j = 0; j < NB_COLUMNS; j++)
+        for (int j = 0; j < NB_COLUMNS; ++j)
         {
             switch (maze_walls[i][j])
             {
-            case 0:
-                /* Create empty cell and add pac-gomme */
+            case EMPTY:
+                /* Create empty cell */
+                board_[i][j] = Cell{i, j};
                 break;
-            case 1:
-                /* Create Wall */
+            case GOMME:
+                /* Create empty cell with gomme */
                 break;
-            case 2:
-                /* Create empty cell without gomme*/
+            case SUPER_GOMME:
+                /* Create empty cell with super-gomme */
                 break;
-            case 3:
-                /* code fantome Wall*/
+            case WALL:
+                /* Create wall cell */
                 break;
-            case 4:
-                /* code empty cell and add super-pac-gomme*/
+            case GHOST_WALL:
+                /* Create special wall cell */
                 break;
             default:
                 break;

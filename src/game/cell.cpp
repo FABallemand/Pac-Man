@@ -73,7 +73,7 @@ void Cell::deleteGhost()
 {
 }
 
-void Cell::display(SDL_Surface *sprite, SDL_Surface *window_surface) const
+void Cell::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 {
     for (Object *object : objects_)
     {

@@ -11,7 +11,7 @@
 // Objects ====================================================================
 
 // Cell
-#define CELLSIZE 32
+#define CELL_SIZE 32
 // Moveable ===============================================
 #define NB_DIRECTION 4
 #define NB_MOVING_SPRITE 3
