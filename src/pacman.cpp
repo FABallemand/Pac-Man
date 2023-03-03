@@ -54,9 +54,9 @@ int main(int argc, char **argv)
         {
             quit = true;
         }
-        game.handleUserInputs(key_state);
 
         // Update game
+        game.update(key_state);
 
         // Display
         game.display(sprite, window_surface);

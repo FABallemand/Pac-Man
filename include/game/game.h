@@ -43,10 +43,10 @@ class Game
 public:
     Game();
 
+    void update(const Uint8 *key_state);
+
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
-
-    void handleUserInputs(const Uint8 *key_state);
-
+    
 private:
     int life_remaining_ = 3;            //!< Life remaining
     int game_score_ = 0;                //!< Score

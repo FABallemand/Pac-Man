@@ -55,6 +55,12 @@ protected:
      * \return false If Object is not allowed to move in this direction
      */
     virtual bool allowedToMove(Direction direction) = 0;
+
+    /**
+     * \brief Handle movement of the moveable object
+     *
+     */
+    virtual void move() = 0;
 };
 
 #endif

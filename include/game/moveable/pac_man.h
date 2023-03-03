@@ -10,12 +10,7 @@ class PacMan : public Moveable
 public:
     PacMan(int x, int y);
 
-    /**
-     * \brief Handle user inputs to control PacMan
-     *
-     * \param key_state States of the keys
-     */
-    void handleUserInputs(const Uint8 *key_state);
+    void update(const Uint8 *key_state);
 
     void display(SDL_Surface *sprite, SDL_Surface *window_surface);
 
@@ -27,7 +22,16 @@ private:
                                    SDL_Rect{115, 106, 12, PACMAN_H}, SDL_Rect{128, 106, 8, PACMAN_H},
                                    SDL_Rect{137, 106, 4, PACMAN_H}, SDL_Rect{142, 106, 13, PACMAN_H}}; //!< Sprites location
 
+    /**
+     * \brief Handle user inputs to control PacMan
+     *
+     * \param key_state States of the keys
+     */
+    void handleUserInputs(const Uint8 *key_state);
+
     bool allowedToMove(Direction direction);
+
+    void move();
 };
 
 #endif

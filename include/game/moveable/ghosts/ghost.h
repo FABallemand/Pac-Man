@@ -22,6 +22,8 @@ protected:
     std::array<SDL_Rect, 4> eaten_sprites_ = {SDL_Rect{71, 195, GHOST_W, GHOST_H}, SDL_Rect{89, 195, GHOST_W, GHOST_H}, SDL_Rect{105, 195, GHOST_W, GHOST_H}, SDL_Rect{122, 195, GHOST_W, GHOST_H}}; //!< Sprites location
 
     bool allowedToMove(Direction direction);
+
+    void move();
 };
 
 #endif

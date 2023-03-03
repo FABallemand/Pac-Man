@@ -59,6 +59,13 @@ Game::Game()
     }
 }
 
+void Game::update(const Uint8 *key_state)
+{
+    LOG(DEBUG) << "Game::update";
+
+    pacman_.update(key_state);
+}
+
 void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 {
     LOG(DEBUG) << "Game::display";
@@ -87,9 +94,4 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 
     // Pac-Man
     pacman_.display(sprite, window_surface);
-}
-
-void Game::handleUserInputs(const Uint8 *key_state)
-{
-    pacman_.handleUserInputs(key_state);
 }
