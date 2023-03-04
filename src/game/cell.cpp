@@ -1,10 +1,5 @@
 #include "cell.h"
 
-void Cell::addObject(Object *object)
-{
-    objects_.push_back(object);
-}
-
 bool Cell::containGomme()
 {
     for (Object *object : objects_)
@@ -71,12 +66,4 @@ void Cell::deleteEatable()
 
 void Cell::deleteGhost()
 {
-}
-
-void Cell::display(SDL_Surface *sprite, SDL_Surface *window_surface)
-{
-    for (Object *object : objects_)
-    {
-        object->display(sprite,window_surface);
-    }
 }

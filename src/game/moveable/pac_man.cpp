@@ -1,6 +1,6 @@
 #include "pac_man.h"
 
-PacMan::PacMan(int x, int y) : Moveable{x, y, CELL_SIZE, CELL_SIZE, &initial_sprite_, NONE}
+PacMan::PacMan(int x, int y) : Moveable{x, y, CELL_SIZE, CELL_SIZE, &initial_sprite_}
 {
     moving_sprites_ = {{{SDL_Rect{47, 89, PACMAN_W, PACMAN_H}, SDL_Rect{63, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Left
                         {SDL_Rect{20, 89, PACMAN_W, PACMAN_H}, SDL_Rect{35, 89, PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Right
@@ -28,17 +28,6 @@ void PacMan::update(const Uint8 *key_state)
         }
         current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
     }
-}
-
-void PacMan::display(SDL_Surface *sprite, SDL_Surface *window_surface)
-{
-    LOG(DEBUG) << "PacMan::display";
-
-    if (SDL_SetColorKey(sprite, SDL_TRUE, 0) != 0)
-    {
-        LOG(ERROR) << "Color key could not be set! SDL Error: " << SDL_GetError();
-    }
-    SDL_BlitScaled(sprite, current_sprite_, window_surface, &position_);
 }
 
 void PacMan::handleUserInputs(const Uint8 *key_state)

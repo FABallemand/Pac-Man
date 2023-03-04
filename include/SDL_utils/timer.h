@@ -38,7 +38,7 @@ public:
         else
         {
             // Return the current time minus the start time
-            time = SDL_GetTicks() - start_ticks;
+            time = SDL_GetTicks64() - start_ticks;
         }
     }
 
@@ -69,7 +69,7 @@ public:
         paused = false;
 
         // Get the current clock time
-        start_ticks = SDL_GetTicks();
+        start_ticks = SDL_GetTicks64();
         pause_ticks = 0;
     }
     /**
@@ -100,7 +100,7 @@ public:
             paused = true;
 
             // Calculate the paused ticks
-            pause_ticks = SDL_GetTicks() - start_ticks;
+            pause_ticks = SDL_GetTicks64() - start_ticks;
             start_ticks = 0;
         }
     }
@@ -118,7 +118,7 @@ public:
             paused = false;
 
             // Reset the starting ticks
-            start_ticks = SDL_GetTicks() - pause_ticks;
+            start_ticks = SDL_GetTicks64() - pause_ticks;
 
             // Reset the paused ticks
             pause_ticks = 0;

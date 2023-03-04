@@ -4,6 +4,7 @@
 #include "const.h"
 #include "SDL_utils.h"
 #include "display_utils.h"
+#include "timer.h"
 #include "game.h"
 
 // Window
@@ -28,11 +29,21 @@ int main(int argc, char **argv)
     LOG(GAME) << "Entering the game";
     Game game{};
 
+    // Timer
+    Timer Timer;
+    Timer.start();
+
+    // FPS
+    Uint64 frame_start_time, frame_end_time;
+    int counted_frames = 0;
+
     // Main loop
     bool quit = false;
     while (!quit)
     {
         LOG(INFO) << "NEW FRAME";
+        frame_start_time = SDL_GetTicks64();
+        frame_end_time = frame_start_time + FRAME_DELAY;
 
         SDL_Event event;
         while (!quit && SDL_PollEvent(&event))
@@ -48,12 +59,19 @@ int main(int argc, char **argv)
         }
 
         // Keyboard
-        int nbk;
-        const Uint8 *key_state = SDL_GetKeyboardState(&nbk);
+        const Uint8 *key_state = SDL_GetKeyboardState(nullptr);
         if (key_state[SDL_SCANCODE_ESCAPE])
         {
             quit = true;
         }
+
+        // Calculate and correct fps
+        float avgFPS = counted_frames / (Timer.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
+        if (avgFPS > 2000000)
+        {
+            avgFPS = 0;
+        }
+        LOG(INFO) << "FPS: " << avgFPS;
 
         // Update game
         game.update(key_state);
@@ -68,8 +86,8 @@ int main(int argc, char **argv)
             exit(1);
         }
 
-        // Frame rate 60 FPS
-        SDL_Delay(16); // use SDL_GetTicks64() => precision
+        counted_frames++;
+        while (SDL_GetTicks64() < frame_end_time);
     }
 
     LOG(GAME) << "Quitting the game";

@@ -9,11 +9,11 @@
 class Object
 {
 protected:
-    Object() : position_{0, 0, 0, 0}
+    Object() : position_{0, 0, 0, 0}, current_sprite_{nullptr}
     {
     }
 
-    Object(int x, int y, int w, int h) : position_{x, y, w, h}
+    Object(int x, int y, int w, int h, SDL_Rect *current_sprite = nullptr) : position_{x, y, w, h}, current_sprite_{current_sprite}
     {
     }
 
@@ -42,10 +42,11 @@ public:
         return position_.h;
     }
 
-    virtual void display(SDL_Surface *sprite, SDL_Surface *window_surface) = 0; // No const due to SDL (position_)
+    void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL (position_)
 
 protected:
-    SDL_Rect position_; //!< Board coordinates (x, y) and dimensions (w, h)
+    SDL_Rect position_;                  //!< Board coordinates (x, y) and dimensions (w, h)
+    SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
 };
 
 #endif

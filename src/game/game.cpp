@@ -15,9 +15,9 @@ Game::Game()
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, EMPTY, WALL, EMPTY, WALL, WALL, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, GHOST_WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
-        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, GOMME, GOMME, GOMME, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
-        {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, WALL, GOMME, GOMME, GOMME, WALL, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
-        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, GOMME, GOMME, GOMME, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
+        {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
+        {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
@@ -38,20 +38,25 @@ Game::Game()
             switch (maze_walls[i][j])
             {
             case EMPTY:
-                /* Create empty cell */
-                board_[i][j] = Cell{i, j};
+                board_[i][j] = Cell{i, j}; // Create empty cell
                 break;
             case GOMME:
-                /* Create empty cell with gomme */
+                board_[i][j] = Cell{i, j};                                                        // Create empty cell
+                gommes_.emplace_back(j * CELL_SIZE + GOMME_OFFSET, i * CELL_SIZE + GOMME_OFFSET); // Create gomme
+                board_[i][j].addObject(&gommes_.back());                                          // Add gomme in the cell
                 break;
             case SUPER_GOMME:
-                /* Create empty cell with super-gomme */
+                board_[i][j] = Cell{i, j};                                                                          // Create empty cell
+                gommes_.emplace_back(j * CELL_SIZE + SUPER_GOMME_OFFSET, i * CELL_SIZE + SUPER_GOMME_OFFSET, true); // Create gomme
+                board_[i][j].addObject(&gommes_.back());                                                            // Add gomme in the cell
                 break;
             case WALL:
                 /* Create wall cell */
+                board_[i][j] = Cell{i, j, WALL};
                 break;
             case GHOST_WALL:
                 /* Create special wall cell */
+                board_[i][j] = Cell{i, j, GHOST_WALL};
                 break;
             default:
                 break;
@@ -75,20 +80,16 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     SDL_FillRect(window_surface, nullptr, 0);
 
     // Background/Maze
-    if (SDL_SetColorKey(sprite, SDL_FALSE, 0) != 0)
-    {
-        LOG(ERROR) << "Color key could not be set! SDL Error: " << SDL_GetError();
-    }
-    // SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
-    SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
+    SDL_BlitScaled(sprite, &(bg_[state_]), window_surface, nullptr);
 
     // Eatable
-    // for (auto row : board_)
+    for (auto g : gommes_) // Gommes
+    {
+        g.display(sprite, window_surface);
+    }
+    // for (auto f : fruits_) // Fruits
     // {
-    //     for (Cell *cell : row)
-    //     {
-    //         cell->display();
-    //     }
+    //     f.display();
     // }
 
     // Ghosts

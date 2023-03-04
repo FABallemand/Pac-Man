@@ -12,8 +12,6 @@ public:
 
     void update(const Uint8 *key_state);
 
-    void display(SDL_Surface *sprite, SDL_Surface *window_surface);
-
 private:
     SDL_Rect initial_sprite_{3, 89, PACMAN_W, PACMAN_H}; //!< Initial sprite
     DyingSprites dying_sprites_ = {SDL_Rect{3, 106, PACMAN_W, PACMAN_H}, SDL_Rect{22, 106, PACMAN_W, PACMAN_H},

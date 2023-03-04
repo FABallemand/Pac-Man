@@ -47,6 +47,36 @@ public:
 
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
+    int getLifeRemaining() const
+    {
+        return life_remaining_;
+    }
+
+    int getGameScore() const
+    {
+        return game_score_;
+    }
+
+    GameState getGameState() const
+    {
+        return state_;
+    }
+
+    void setGameScore(int new_game_score)
+    {
+        game_score_ = new_game_score;
+    }
+
+    void incGameScore()
+    {
+        ++game_score_;
+    }
+
+    void changeGameState()
+    {
+        state_ = state_ == NORMAL ? BLINK : NORMAL;
+    }
+
 private:
     int life_remaining_ = 3;              //!< Life remaining
     int game_score_ = 0;                  //!< Score
@@ -58,8 +88,7 @@ private:
     std::vector<Fruit> fruits_;                                                                         //!< Fruits
     Board board_;                                                                                       //!< Board of cells
     std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background (add #define for width and heigth)
-
-    SDL_Rect maze_position_{0, 0, 0, 0}; //!< Maze position on the window
+    SDL_Rect maze_position_{0, 0, 0, 0};                                                                //!< Maze position on the window
 };
 
 #endif

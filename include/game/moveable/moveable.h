@@ -25,7 +25,7 @@ enum Direction
 class Moveable : public Object
 {
 public:
-    Moveable(int x, int y, int w, int h, SDL_Rect *current_sprite, Direction direction = NONE) : Object{x, y, w, h}, current_sprite_{current_sprite}, direction_{direction}
+    Moveable(int x, int y, int w, int h, SDL_Rect *current_sprite, Direction direction = NONE) : Object{x, y, w, h, current_sprite}, direction_{direction}
     {
     }
 
@@ -34,18 +34,22 @@ public:
         return direction_;
     }
 
+    inline Cell *getCurrentCell() const
+    {
+        return current_cell_;
+    }
+
     inline void setDirection(const Direction direction)
     {
         direction_ = direction;
     }
 
 protected:
-    SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
-    Direction direction_ = NONE;         //!< Direction of the object
-    int frame_count_ = 0;                //!< Frame count
-    int sprite_count_ = 0;               //!< Sprite count (for animation)
-    MovingSprites moving_sprites_;       //!< Sprites location
-    Cell *current_cell_;                 //!< Current cell
+    Direction direction_ = NONE;   //!< Direction of the object
+    int frame_count_ = 0;          //!< Frame count
+    int sprite_count_ = 0;         //!< Sprite count (for animation)
+    MovingSprites moving_sprites_; //!< Sprites location
+    Cell *current_cell_ = nullptr; //!< Current cell
 
     /**
      * \brief Indicate whether a movement is legal or not

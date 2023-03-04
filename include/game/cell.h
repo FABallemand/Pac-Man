@@ -63,7 +63,10 @@ public:
      *
      * \param object Pointer to the object entering th cell
      */
-    void addObject(Object *object);
+    void addObject(Object *object)
+    {
+        objects_.push_back(object);
+    }
 
     // TO BE TESTED...
     template <typename T>
@@ -100,12 +103,6 @@ public:
      *
      */
     void deleteGhost();
-
-    /**
-     * \brief Display each object in the cell
-     *
-     */
-    void display(SDL_Surface *sprite, SDL_Surface *window_surface);
 
 private:
     CellType type_;                 //!< Type of the cell
