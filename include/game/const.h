@@ -20,8 +20,10 @@
 #define NB_SPRITE_FRAME 3 //!< Number of frame each sprite is displayed before going to the next sprite in the animation
 
 // PacMan
-#define PACMAN_W 18         //!< PacMan width
+#define PACMAN_W 16         //!< PacMan width
 #define PACMAN_H 16         //!< PacMan height
+#define SECONDARY_PACMAN_W  11 //!< PacMan width secondary sprite
+#define SECONDARY_PACMAN_H  11//!< PacMan height secondary sprite
 #define PACMAN_SPEED 1      //!< PacMan speed
 #define NB_DYING_SPRITES 10 //!< Number of sprites in the dying animation
 
