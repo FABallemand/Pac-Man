@@ -51,14 +51,13 @@ Game::Game()
                 board_[i][j].addObject(&gommes_.back());                                                            // Add gomme in the cell
                 break;
             case WALL:
-                /* Create wall cell */
-                board_[i][j] = Cell{i, j, WALL};
+                board_[i][j] = Cell{i, j, WALL}; // Create wall
                 break;
             case GHOST_WALL:
-                /* Create special wall cell */
-                board_[i][j] = Cell{i, j, GHOST_WALL};
+                board_[i][j] = Cell{i, j, GHOST_WALL}; // Create special wall
                 break;
             default:
+                LOG(ERROR) << "Incorrect maze";
                 break;
             }
         }
@@ -83,7 +82,7 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     SDL_BlitScaled(sprite, &(bg_[state_]), window_surface, nullptr);
 
     // Eatable
-    for (auto g : gommes_) // Gommes
+    for (Gomme g : gommes_) // Gommes
     {
         g.display(sprite, window_surface);
     }

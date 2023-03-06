@@ -1,11 +1,11 @@
 #include "pac_man.h"
 
-PacMan::PacMan(int x, int y) : Moveable{x, y, CELL_SIZE, CELL_SIZE, &initial_sprite_}
+PacMan::PacMan(int x, int y) : Moveable{x, y, PACMAN_W, PACMAN_H, &initial_sprite_}
 {
-    moving_sprites_ = {{{SDL_Rect{47, 89, PACMAN_W, PACMAN_H}, SDL_Rect{63, 89, SECONDARY_PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Left
-                        {SDL_Rect{20, 89, PACMAN_W, PACMAN_H}, SDL_Rect{35, 89, SECONDARY_PACMAN_W, PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Right
-                        {SDL_Rect{75, 89, PACMAN_W, PACMAN_H}, SDL_Rect{92, 94, PACMAN_W, SECONDARY_PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}},     // Up
-                        {SDL_Rect{109, 89, PACMAN_W, PACMAN_H}, SDL_Rect{126, 94, PACMAN_W, SECONDARY_PACMAN_H}, SDL_Rect{3, 89, PACMAN_W, PACMAN_H}}}}; // Down
+    moving_sprites_ = {{{SDL_Rect{47, 89, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{63, 89, S2_PACMAN_W, S1_PACMAN_H}, SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Left
+                        {SDL_Rect{20, 89, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{35, 89, S2_PACMAN_W, S1_PACMAN_H}, SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Right
+                        {SDL_Rect{75, 89, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{92, 94, S1_PACMAN_W, S2_PACMAN_H}, SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Up
+                        {SDL_Rect{109, 89, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{126, 94, S1_PACMAN_W, S2_PACMAN_H}, SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}}}}; // Down
 }
 
 void PacMan::update(const Uint8 *key_state)

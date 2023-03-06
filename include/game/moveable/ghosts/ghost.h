@@ -15,14 +15,14 @@ public:
     virtual void strategy() = 0;
 
 protected:
-    GhostSpecialSprites eatable_sprites_ = {SDL_Rect{3, 195, SPRITE_GHOST_W, SPRITE_GHOST_H},
-                                            SDL_Rect{20, 195, SPRITE_GHOST_W, SPRITE_GHOST_H},
-                                            SDL_Rect{37, 195, SPRITE_GHOST_W, SPRITE_GHOST_H},
-                                            SDL_Rect{54, 195, SPRITE_GHOST_W, SPRITE_GHOST_H}}; //!< Sprites location
-    GhostSpecialSprites eaten_sprites_ = {SDL_Rect{71, 195, SPRITE_GHOST_W, SPRITE_GHOST_H},
-                                          SDL_Rect{89, 195, SPRITE_GHOST_W, SPRITE_GHOST_H},
-                                          SDL_Rect{105, 195, SPRITE_GHOST_W, SPRITE_GHOST_H},
-                                          SDL_Rect{122, 195, SPRITE_GHOST_W, SPRITE_GHOST_H}}; //!< Sprites location
+    GhostSpecialSprites eatable_sprites_ = {SDL_Rect{3, 195, S_GHOST_W, S_GHOST_H},
+                                            SDL_Rect{20, 195, S_GHOST_W, S_GHOST_H},
+                                            SDL_Rect{37, 195, S_GHOST_W, S_GHOST_H},
+                                            SDL_Rect{54, 195, S_GHOST_W, S_GHOST_H}}; //!< Sprites location
+    GhostSpecialSprites eaten_sprites_ = {SDL_Rect{71, 195, S_GHOST_W, S_GHOST_H},
+                                          SDL_Rect{89, 195, S_GHOST_W, S_GHOST_H},
+                                          SDL_Rect{105, 195, S_GHOST_W, S_GHOST_H},
+                                          SDL_Rect{122, 195, S_GHOST_W, S_GHOST_H}}; //!< Sprites location
 
     bool allowedToMove(Direction direction);
 
