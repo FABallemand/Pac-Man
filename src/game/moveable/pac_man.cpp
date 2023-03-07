@@ -46,6 +46,7 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
     else if (key_state[SDL_SCANCODE_K]) // for testing purpose only !!!
     {
         state_ = DYING;
+        sprite_count_ = 0;
     }
 }
 
@@ -91,16 +92,10 @@ void PacMan::updateSprite()
         // Dead
         else if (state_ == DYING)
         {
-            // Change sprite
-            if (++frame_count_ == NB_SPRITE_FRAME)
-            {
-                frame_count_ = 0;
-                ++sprite_count_;
-            }
             // current_sprite_ = sprite_count_ < NB_DYING_SPRITES ? &(dying_sprites_[sprite_count_]) : nullptr;
             if (sprite_count_ < NB_DYING_SPRITES)
             {
-                current_sprite_ = &(dying_sprites_[sprite_count_]);
+                current_sprite_ = &(dying_sprites_[sprite_count_++]);
             }
             else
             {

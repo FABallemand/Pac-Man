@@ -46,7 +46,7 @@ public:
 protected:
     SDL_Rect position_;                           //!< Board coordinates (x, y) and dimensions (w, h)
     SDL_Rect *current_sprite_ = nullptr;          //!< Current sprite
-    SDL_Rect dead_sprite_ = SDL_Rect{0, 0, 0, 0}; //!< Dead sprite
+    SDL_Rect dead_sprite_ = SDL_Rect{0, 0, 1, 1}; //!< Dead sprite
 };
 
 #endif
