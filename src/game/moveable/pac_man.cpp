@@ -32,19 +32,19 @@ void PacMan::update(const Uint8 *key_state)
 
 void PacMan::handleUserInputs(const Uint8 *key_state)
 {
-    if (key_state[SDL_SCANCODE_RIGHT] && allowedToMove(RIGHT))
+    if (key_state[SDL_SCANCODE_RIGHT])
     {
         direction_ = RIGHT;
     }
-    else if (key_state[SDL_SCANCODE_LEFT] && allowedToMove(LEFT))
+    else if (key_state[SDL_SCANCODE_LEFT])
     {
         direction_ = LEFT;
     }
-    else if (key_state[SDL_SCANCODE_UP] && allowedToMove(UP))
+    else if (key_state[SDL_SCANCODE_UP])
     {
         direction_ = UP;
     }
-    else if (key_state[SDL_SCANCODE_DOWN] && allowedToMove(DOWN))
+    else if (key_state[SDL_SCANCODE_DOWN])
     {
         direction_ = DOWN;
     }
