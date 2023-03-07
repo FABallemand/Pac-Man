@@ -16,7 +16,7 @@ Game::Game()
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, GHOST_WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
-        {EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
+        {EMPTY, PAC_MAN, EMPTY, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, EMPTY, GOMME, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, EMPTY, EMPTY, EMPTY, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, WALL, WALL, WALL, WALL, WALL, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
         {WALL, WALL, WALL, WALL, WALL, GOMME, WALL, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, WALL, GOMME, WALL, WALL, WALL, WALL, WALL},
@@ -56,6 +56,11 @@ Game::Game()
             case GHOST_WALL:
                 board_[i][j] = Cell{i, j, GHOST_WALL}; // Create special wall
                 break;
+            case PAC_MAN:
+                board_[i][j] = Cell{i, j}; // Create empty cell
+                board_[i][j].addObject(&pacman_); // Add pacman in the cell
+                pacman_.setCurrentCell(&board_[i][j]); // Tell pacman where he is
+                break;
             default:
                 LOG(ERROR) << "Incorrect maze";
                 break;
@@ -69,6 +74,12 @@ bool Game::update(const Uint8 *key_state)
     LOG(DEBUG) << "Game::update";
 
     pacman_.update(key_state);
+    if(pacman_.getCurrentCell() != &board_[pacman_.getY()/32][pacman_.getX()/32])
+    {
+        pacman_.getCurrentCell()->deletePacMan(&pacman_);
+        board_[pacman_.getY()/32][pacman_.getX()/32].addObject(&pacman_);
+        pacman_.setCurrentCell(&board_[pacman_.getY()/32][pacman_.getX()/32]);
+    }
 
     if (pacman_.getState() == DEAD)
     {

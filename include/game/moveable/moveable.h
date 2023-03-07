@@ -52,6 +52,11 @@ public:
         return current_cell_;
     }
 
+    void setCurrentCell(Cell * c)
+    {
+        current_cell_ = c;
+    }
+
     MoveableState getState() const
     {
         return state_;

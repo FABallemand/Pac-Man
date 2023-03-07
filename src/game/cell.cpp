@@ -67,3 +67,15 @@ void Cell::deleteEatable()
 void Cell::deleteGhost()
 {
 }
+
+void Cell::deletePacMan(PacMan * toDelete)
+{
+    auto f = std::find(objects_.begin(),objects_.end(),toDelete);
+    if(f == objects_.end()){
+        LOG(ERROR) << "PACMAN NOT FOUND";
+    }
+    else
+    {
+        objects_.erase(f);
+    }
+}

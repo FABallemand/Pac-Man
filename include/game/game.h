@@ -83,7 +83,7 @@ private:
     int life_remaining_ = 3;              //!< Life remaining
     int game_score_ = 0;                  //!< Score
     GameState state_ = NORMAL;            //!< Game state
-    PacMan pacman_{CELL_SIZE, CELL_SIZE}; //!< Pac-Man!!
+    PacMan pacman_{CELL_SIZE, CELL_SIZE*13}; //!< Pac-Man!!
     // std::vector<Ghost> ghosts_ = std::vector<Ghost>{Blinky{}, Clyde{}, Inky{}, Pinky{}};                //!< Ghosts
     std::vector<Ghost> ghosts_;                                                                         //!< Ghosts
     std::vector<Gomme> gommes_;                                                                         //!< Gommes

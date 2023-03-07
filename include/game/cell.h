@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <vector>
 #include <typeinfo> // Maybe useless
+#include <algorithm>
 
 #include "const.h"
 #include "display_utils.h"
@@ -28,7 +29,8 @@ enum CellType
     GOMME,
     SUPER_GOMME,
     WALL,
-    GHOST_WALL
+    GHOST_WALL,
+    PAC_MAN
 };
 
 class Cell : public Object
@@ -103,6 +105,13 @@ public:
      *
      */
     void deleteGhost();
+
+    /**
+     * \brief
+     *
+     */
+    void deletePacMan(PacMan * toDelete);
+
 
 private:
     CellType type_;                 //!< Type of the cell
