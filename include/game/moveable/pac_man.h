@@ -5,6 +5,11 @@
 
 using DyingSprites = std::array<SDL_Rect, NB_DYING_SPRITES>;
 
+/**
+ * \class PacMan
+ * \brief Everything's in the name :)
+ *
+ */
 class PacMan : public Moveable
 {
 public:
@@ -18,7 +23,7 @@ private:
                                    SDL_Rect{41, 106, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{60, 106, S1_PACMAN_W, S1_PACMAN_H},
                                    SDL_Rect{79, 106, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{98, 106, 16, S1_PACMAN_H},
                                    SDL_Rect{115, 106, 12, S1_PACMAN_H}, SDL_Rect{128, 106, 8, S1_PACMAN_H},
-                                   SDL_Rect{137, 106, 4, S1_PACMAN_H}, SDL_Rect{142, 106, 13, S1_PACMAN_H}}; //!< Sprites location
+                                   SDL_Rect{137, 106, 4, S1_PACMAN_H}, SDL_Rect{142, 106, 13, S1_PACMAN_H}}; //!< Dying sprites
 
     /**
      * \brief Handle user inputs to control PacMan
@@ -30,6 +35,8 @@ private:
     bool allowedToMove(Direction direction);
 
     void move();
+
+    void updateSprite();
 };
 
 #endif

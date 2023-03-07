@@ -20,7 +20,7 @@ LogConf LOGGER_CONFIG;
 int main(int argc, char **argv)
 {
     // Init SDL
-    initSDL(window, window_surface, "Pac-Man", CELL_SIZE*NB_COLUMNS, CELL_SIZE*NB_ROWS, false);
+    initSDL(window, window_surface, "Pac-Man", CELL_SIZE * NB_COLUMNS, CELL_SIZE * NB_ROWS, false);
 
     // Load assets
     loadAssets(sprite);
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
         LOG(INFO) << "FPS: " << avgFPS;
 
         // Update game
-        game.update(key_state);
+        quit = quit ? quit : game.update(key_state);
 
         // Display
         game.display(sprite, window_surface);
@@ -87,10 +87,13 @@ int main(int argc, char **argv)
         }
 
         counted_frames++;
-        while (SDL_GetTicks64() < frame_end_time);
+        while (SDL_GetTicks64() < frame_end_time)
+            ;
     }
 
     LOG(GAME) << "Quitting the game";
+
+    SDL_Delay(3000); // Delay
 
     // Unload assets
     unloadAssets(sprite);

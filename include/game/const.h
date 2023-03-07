@@ -6,7 +6,7 @@
 // Game =======================================================================
 #define NB_ROWS 27    //!< Number of rows
 #define NB_COLUMNS 21 //!< Number of columns
-#define MAZE_W 166    //< Maze width
+#define MAZE_W 166    //!< Maze width
 #define MAZE_H 216    //!< Maze height
 
 // Objects ====================================================================
@@ -15,8 +15,7 @@
 #define CELL_SIZE 32 //!< Cell size
 
 // Moveable ===============================================
-#define NB_DIRECTION 4
-#define NB_MOVING_SPRITE 3
+#define NB_DIRECTION 4    //!< Number of possible directions (except NONE)
 #define NB_SPRITE_FRAME 3 //!< Number of frame each sprite is displayed before going to the next sprite in the animation
 
 // PacMan
@@ -27,6 +26,7 @@
 #define PACMAN_W 32         //!< PacMan width
 #define PACMAN_H 32         //!< PacMan height
 #define PACMAN_SPEED 1      //!< PacMan speed
+#define NB_MOVING_SPRITES 3 //!< Number of sprites in the moving animation
 #define NB_DYING_SPRITES 10 //!< Number of sprites in the dying animation
 
 // Ghost
@@ -38,13 +38,13 @@
 // Eateable ===============================================
 
 // Gomme
-#define S_GOMME_SIZE 4     //!< Gomme heigth (on sprite)
-#define GOMME_SIZE 16      //!< Gomme heigth
-#define GOMME_SCORE 1      //!< Gomme score
+#define S_GOMME_SIZE 4 //!< Gomme size (on sprite)
+#define GOMME_SIZE 16  //!< Gomme size
+#define GOMME_SCORE 1  //!< Gomme score
 
 // Super-Gomme
-#define S_SUPER_GOMME_SIZE 9   //!< Gomme heigth (on sprite)
-#define SUPER_GOMME_SIZE 24    //!< Gomme width
+#define S_SUPER_GOMME_SIZE 9 //!< Gomme size (on sprite)
+#define SUPER_GOMME_SIZE 24  //!< Gomme size
 #define SUPER_GOMME_SCORE 2  //!< Super-Gomme score
 
 // Fruit

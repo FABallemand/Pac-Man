@@ -12,11 +12,6 @@ public:
     {
     }
 
-    // Gomme(int x, int y, bool super_gomme = false) : super_gomme ? Eatable{x, y, super_gomme ? SUPER_GOMME_W : GOMME_W, super_gomme ? SUPER_GOMME_H : GOMME_H, super_gomme ? SUPER_GOMME_SCORE : GOMME_SCORE, super_gomme ? SDL_Rect{8, 78, 9, 9} : SDL_Rect{3, 80, 3, 3}}
-    //                                                             : Eatable{x, y, super_gomme ? SUPER_GOMME_W : GOMME_W, super_gomme ? SUPER_GOMME_H : GOMME_H, super_gomme ? SUPER_GOMME_SCORE : GOMME_SCORE, super_gomme ? SDL_Rect{8, 78, 9, 9} : SDL_Rect{3, 80, 3, 3}}
-    // {
-    // }
-
     ~Gomme()
     {
     }
@@ -25,7 +20,7 @@ public:
 
 private:
     static SDL_Rect sprite_gomme_;
-    static SDL_Rect sprite_super_gomme_;
+    static SDL_Rect sprite_super_gomme_; // Why here ?
 };
 
 #endif

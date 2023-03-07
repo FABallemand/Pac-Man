@@ -12,22 +12,17 @@ void PacMan::update(const Uint8 *key_state)
 {
     LOG(DEBUG) << "PacMan::update";
 
-    // Handle user input
-    handleUserInputs(key_state);
+    if (state_ == ALIVE)
+    {
+        // Handle user input
+        handleUserInputs(key_state);
 
-    // Game movement
-    move();
+        // Game movement
+        move();
+    }
 
     // Update sprite
-    if (direction_ != NONE)
-    {
-        if (++frame_count_ == NB_SPRITE_FRAME)
-        {
-            frame_count_ = 0;
-            sprite_count_ = (++sprite_count_) % NB_MOVING_SPRITE;
-        }
-        current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
-    }
+    updateSprite();
 }
 
 void PacMan::handleUserInputs(const Uint8 *key_state)
@@ -47,6 +42,10 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
     else if (key_state[SDL_SCANCODE_DOWN])
     {
         direction_ = DOWN;
+    }
+    else if (key_state[SDL_SCANCODE_K]) // for testing purpose only !!!
+    {
+        state_ = DYING;
     }
 }
 
@@ -72,5 +71,47 @@ void PacMan::move()
     else if (direction_ == DOWN && allowedToMove(DOWN))
     {
         position_.y += PACMAN_SPEED;
+    }
+}
+
+void PacMan::updateSprite()
+{
+    if (direction_ != NONE)
+    {
+        // Alive
+        if (state_ == ALIVE)
+        {
+            if (++frame_count_ == NB_SPRITE_FRAME)
+            {
+                frame_count_ = 0;
+                sprite_count_ = (++sprite_count_) % NB_MOVING_SPRITES;
+            }
+            current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
+        }
+        // Dead
+        else if (state_ == DYING)
+        {
+            // Change sprite
+            if (++frame_count_ == NB_SPRITE_FRAME)
+            {
+                frame_count_ = 0;
+                ++sprite_count_;
+            }
+            // current_sprite_ = sprite_count_ < NB_DYING_SPRITES ? &(dying_sprites_[sprite_count_]) : nullptr;
+            if (sprite_count_ < NB_DYING_SPRITES)
+            {
+                current_sprite_ = &(dying_sprites_[sprite_count_]);
+            }
+            else
+            {
+                current_sprite_ = &dead_sprite_;
+                state_ = DEAD;
+            }
+        }
+        // Error
+        else
+        {
+            LOG(ERROR) << "Invalid state for PacMan object";
+        }
     }
 }

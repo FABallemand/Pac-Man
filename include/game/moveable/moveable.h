@@ -7,10 +7,23 @@
 
 class Cell; // Forward declaration
 
-using MovingSprites = std::array<std::array<SDL_Rect, NB_MOVING_SPRITE>, NB_DIRECTION>;
+/**
+ * \enum MoveableState
+ * \brief Describe the state of a Moveable object
+ *
+ */
+enum MoveableState
+{
+    ALIVE,
+    DYING,
+    DEAD,
+    VULNERABLE
+};
+
+using MovingSprites = std::array<std::array<SDL_Rect, NB_MOVING_SPRITES>, NB_DIRECTION>;
 
 /**
- * \eNB Direction
+ * \enum Direction
  * \brief Orientation of Pac-Man relatively to the screen
  */
 enum Direction
@@ -29,22 +42,28 @@ public:
     {
     }
 
-    inline Direction getDirection() const
+    Direction getDirection() const
     {
         return direction_;
     }
 
-    inline Cell *getCurrentCell() const
+    Cell *getCurrentCell() const
     {
         return current_cell_;
     }
 
-    inline void setDirection(const Direction direction)
+    MoveableState getState() const
+    {
+        return state_;
+    }
+
+    void setDirection(const Direction direction)
     {
         direction_ = direction;
     }
 
 protected:
+    MoveableState state_ = ALIVE;  //!< State of the object
     Direction direction_ = NONE;   //!< Direction of the object
     int frame_count_ = 0;          //!< Frame count
     int sprite_count_ = 0;         //!< Sprite count (for animation)

@@ -41,14 +41,14 @@ Game::Game()
                 board_[i][j] = Cell{i, j}; // Create empty cell
                 break;
             case GOMME:
-                board_[i][j] = Cell{i, j};                                                        // Create empty cell
+                board_[i][j] = Cell{i, j};                                                          // Create empty cell
                 gommes_.emplace_back(j * CELL_SIZE + offset_gomme_, i * CELL_SIZE + offset_gomme_); // Create gomme
-                board_[i][j].addObject(&gommes_.back());                                          // Add gomme in the cell
+                board_[i][j].addObject(&gommes_.back());                                            // Add gomme in the cell
                 break;
             case SUPER_GOMME:
-                board_[i][j] = Cell{i, j};                                                                          // Create empty cell
+                board_[i][j] = Cell{i, j};                                                                            // Create empty cell
                 gommes_.emplace_back(j * CELL_SIZE + offset_super_gomme_, i * CELL_SIZE + offset_super_gomme_, true); // Create gomme
-                board_[i][j].addObject(&gommes_.back());                                                            // Add gomme in the cell
+                board_[i][j].addObject(&gommes_.back());                                                              // Add gomme in the cell
                 break;
             case WALL:
                 board_[i][j] = Cell{i, j, WALL}; // Create wall
@@ -64,11 +64,19 @@ Game::Game()
     }
 }
 
-void Game::update(const Uint8 *key_state)
+bool Game::update(const Uint8 *key_state)
 {
     LOG(DEBUG) << "Game::update";
 
     pacman_.update(key_state);
+
+    if (pacman_.getState() == DEAD)
+    {
+        state_ = END;
+        SDL_Delay(3000);
+        return true;
+    }
+    return false;
 }
 
 void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
