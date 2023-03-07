@@ -8,7 +8,7 @@ class Game; // Forward declaration
 class Gomme : public Eatable
 {
 public:
-    Gomme(int x, int y, bool super_gomme = false) : Eatable{x, y, super_gomme ? SUPER_GOMME_SIZE : GOMME_SIZE, super_gomme ? SUPER_GOMME_SIZE : GOMME_SIZE, super_gomme ? SUPER_GOMME_SCORE : GOMME_SCORE, super_gomme ? SDL_Rect{8, 78, S_SUPER_GOMME_SIZE, S_SUPER_GOMME_SIZE} : SDL_Rect{3, 80, S_GOMME_SIZE, S_GOMME_SIZE}} // Use const
+    Gomme(int x, int y, bool super_gomme = false) : Eatable{x, y, super_gomme ? SUPER_GOMME_SIZE : GOMME_SIZE, super_gomme ? SUPER_GOMME_SIZE : GOMME_SIZE, super_gomme ? SUPER_GOMME_SCORE : GOMME_SCORE, super_gomme ? &sprite_super_gomme_ : &sprite_gomme_} // Use const
     {
     }
 
@@ -23,7 +23,9 @@ public:
 
     void effect(Game &game);
 
-protected:
+private:
+    static SDL_Rect sprite_gomme_;
+    static SDL_Rect sprite_super_gomme_;
 };
 
 #endif

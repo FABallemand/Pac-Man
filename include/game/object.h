@@ -43,10 +43,10 @@ public:
     }
 
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL (position_)
-
 protected:
     SDL_Rect position_;                  //!< Board coordinates (x, y) and dimensions (w, h)
     SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
+
 };
 
 #endif
