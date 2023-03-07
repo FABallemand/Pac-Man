@@ -20,7 +20,7 @@ LogConf LOGGER_CONFIG;
 int main(int argc, char **argv)
 {
     // Init SDL
-    initSDL(window, window_surface, "Pac-Man", WINDOW_W, WINDOW_H, false);
+    initSDL(window, window_surface, "Pac-Man", CELL_SIZE*NB_COLUMNS, CELL_SIZE*NB_ROWS, false);
 
     // Load assets
     loadAssets(sprite);

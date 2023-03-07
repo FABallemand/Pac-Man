@@ -38,19 +38,13 @@
 // Eateable ===============================================
 
 // Gomme
-#define S_GOMME_W 10    //!< Gomme width (on sprite)
-#define S_GOMME_H 10    //!< Gomme heigth (on sprite)
-#define GOMME_W 10      //!< Gomme width
-#define GOMME_H 10      //!< Gomme heigth
-#define GOMME_OFFSET 10 //!< Gomme offset (position offset relative to the position of the cell)
-#define GOMME_SCORE 1   //!< Gomme score
+#define S_GOMME_SIZE 4     //!< Gomme heigth (on sprite)
+#define GOMME_SIZE 16      //!< Gomme heigth
+#define GOMME_SCORE 1      //!< Gomme score
 
 // Super-Gomme
-#define S_SUPER_GOMME_W 10   //!< Gomme width (on sprite)
-#define S_SUPER_GOMME_H 10   //!< Gomme heigth (on sprite)
-#define SUPER_GOMME_W 10     //!< Gomme width
-#define SUPER_GOMME_H 10     //!< Gomme heigth
-#define SUPER_GOMME_OFFSET 2 //!< Gomme offset (position offset relative to the position of the cell)
+#define S_SUPER_GOMME_SIZE 9   //!< Gomme heigth (on sprite)
+#define SUPER_GOMME_SIZE 24    //!< Gomme width
 #define SUPER_GOMME_SCORE 2  //!< Super-Gomme score
 
 // Fruit

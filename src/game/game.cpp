@@ -42,12 +42,12 @@ Game::Game()
                 break;
             case GOMME:
                 board_[i][j] = Cell{i, j};                                                        // Create empty cell
-                gommes_.emplace_back(j * CELL_SIZE + GOMME_OFFSET, i * CELL_SIZE + GOMME_OFFSET); // Create gomme
+                gommes_.emplace_back(j * CELL_SIZE + offset_gomme_, i * CELL_SIZE + offset_gomme_); // Create gomme
                 board_[i][j].addObject(&gommes_.back());                                          // Add gomme in the cell
                 break;
             case SUPER_GOMME:
                 board_[i][j] = Cell{i, j};                                                                          // Create empty cell
-                gommes_.emplace_back(j * CELL_SIZE + SUPER_GOMME_OFFSET, i * CELL_SIZE + SUPER_GOMME_OFFSET, true); // Create gomme
+                gommes_.emplace_back(j * CELL_SIZE + offset_super_gomme_, i * CELL_SIZE + offset_super_gomme_, true); // Create gomme
                 board_[i][j].addObject(&gommes_.back());                                                            // Add gomme in the cell
                 break;
             case WALL:
