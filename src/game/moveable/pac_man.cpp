@@ -77,10 +77,24 @@ void PacMan::move()
 
 void PacMan::updateSprite()
 {
-    if (direction_ != NONE)
+    // Dead
+    if (state_ == DYING)
+    {
+        // current_sprite_ = sprite_count_ < NB_DYING_SPRITES ? &(dying_sprites_[sprite_count_]) : nullptr;
+        if (sprite_count_ < NB_DYING_SPRITES)
+        {
+            current_sprite_ = &(dying_sprites_[sprite_count_++]);
+        }
+        else
+        {
+            current_sprite_ = &dead_sprite_;
+            state_ = DEAD;
+        }
+    }
+    else if (state_ == ALIVE)
     {
         // Alive
-        if (state_ == ALIVE)
+        if (direction_ != NONE)
         {
             if (++frame_count_ == NB_SPRITE_FRAME)
             {
@@ -88,25 +102,10 @@ void PacMan::updateSprite()
                 sprite_count_ = (++sprite_count_) % NB_MOVING_SPRITES;
             }
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
-        }
-        // Dead
-        else if (state_ == DYING)
-        {
-            // current_sprite_ = sprite_count_ < NB_DYING_SPRITES ? &(dying_sprites_[sprite_count_]) : nullptr;
-            if (sprite_count_ < NB_DYING_SPRITES)
-            {
-                current_sprite_ = &(dying_sprites_[sprite_count_++]);
-            }
-            else
-            {
-                current_sprite_ = &dead_sprite_;
-                state_ = DEAD;
-            }
-        }
-        // Error
-        else
-        {
-            LOG(ERROR) << "Invalid state for PacMan object";
-        }
+        }        
+    }
+    else
+    {
+        LOG(ERROR) << "Invalid state for PacMan object";
     }
 }
