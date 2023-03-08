@@ -5,7 +5,11 @@
 
 #include "object.h"
 
+
 class Cell; // Forward declaration
+
+using CellNeighborhood = std::array<std::array<Cell*, 3>, 3>;
+
 
 /**
  * \enum MoveableState
@@ -47,14 +51,14 @@ public:
         return direction_;
     }
 
-    Cell *getCurrentCell() const
+    CellNeighborhood& getNeighborhood()
     {
-        return current_cell_;
+        return neighborhood_;
     }
 
-    void setCurrentCell(Cell * c)
+    void setNeighborhood(CellNeighborhood neighborhood)
     {
-        current_cell_ = c;
+        neighborhood_ = neighborhood;
     }
 
     MoveableState getState() const
@@ -73,7 +77,7 @@ protected:
     int frame_count_ = 0;          //!< Frame count
     int sprite_count_ = 0;         //!< Sprite count (for animation)
     MovingSprites moving_sprites_; //!< Sprites location
-    Cell *current_cell_ = nullptr; //!< Current cell
+    CellNeighborhood neighborhood_; //!< Current cell
 
     /**
      * \brief Indicate whether a movement is legal or not

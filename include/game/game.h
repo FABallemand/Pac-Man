@@ -95,6 +95,7 @@ private:
     static constexpr int offset_super_gomme_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
 
     void endOfGame();
+    CellNeighborhood createNeighborhood(int i,int j);
 };
 
 #endif

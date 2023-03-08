@@ -1,4 +1,5 @@
 #include "pac_man.h"
+#include "cell.h"
 
 PacMan::PacMan(int x, int y) : Moveable{x, y, PACMAN_W, PACMAN_H, &initial_sprite_}
 {
@@ -27,6 +28,7 @@ void PacMan::update(const Uint8 *key_state)
 
 void PacMan::handleUserInputs(const Uint8 *key_state)
 {
+    LOG(DEBUG) << "PacMan::handleUserInputs";
     if (key_state[SDL_SCANCODE_RIGHT])
     {
         direction_ = RIGHT;
@@ -52,11 +54,32 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
 
 bool PacMan::allowedToMove(Direction direction)
 {
-    return true;
+    if (direction == RIGHT && !neighborhood_[1][2]->isWalled())
+    {
+        std::cout << "it's okay R" << std::endl;
+        return true;
+    }
+    else if (direction == LEFT && !neighborhood_[1][0]->isWalled())
+    {
+        std::cout << "it's okay L" << std::endl;
+        return true;
+    }
+    else if (direction == UP && !neighborhood_[0][1]->isWalled())
+    {
+        std::cout << "it's okay U" << std::endl;
+        return true;
+    }
+    else if (direction == DOWN && !(neighborhood_[2][1]->isWalled()))
+    {
+        std::cout << "it's okay D" << std::endl;
+        return true;
+    }
+    return false;
 }
 
 void PacMan::move()
 {
+    LOG(DEBUG) << "PacMan::move";
     if (direction_ == RIGHT && allowedToMove(RIGHT))
     {
         position_.x += PACMAN_SPEED;
@@ -78,6 +101,7 @@ void PacMan::move()
 void PacMan::updateSprite()
 {
     // Dead
+    LOG(DEBUG) << "PacMan::updateSprite";
     if (state_ == DYING)
     {
         // current_sprite_ = sprite_count_ < NB_DYING_SPRITES ? &(dying_sprites_[sprite_count_]) : nullptr;

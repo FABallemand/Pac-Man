@@ -59,7 +59,7 @@ Game::Game()
             case PAC_MAN:
                 board_[i][j] = Cell{i, j}; // Create empty cell
                 board_[i][j].addObject(&pacman_); // Add pacman in the cell
-                pacman_.setCurrentCell(&board_[i][j]); // Tell pacman where he is
+                pacman_.setNeighborhood(createNeighborhood(i,j)); // Tell pacman where he is
                 break;
             default:
                 LOG(ERROR) << "Incorrect maze";
@@ -74,12 +74,14 @@ bool Game::update(const Uint8 *key_state)
     LOG(DEBUG) << "Game::update";
 
     pacman_.update(key_state);
-    if(pacman_.getCurrentCell() != &board_[pacman_.getY()/32][pacman_.getX()/32])
+    std::cout << "ici" << std::endl;
+    if(pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY()/32][pacman_.getX()/32])
     {
-        pacman_.getCurrentCell()->deletePacMan(&pacman_);
-        board_[pacman_.getY()/32][pacman_.getX()/32].addObject(&pacman_);
-        pacman_.setCurrentCell(&board_[pacman_.getY()/32][pacman_.getX()/32]);
+        pacman_.getNeighborhood()[1][1]->deletePacMan(&pacman_);
+        board_[(pacman_.getY()+CELL_SIZE/2)/CELL_SIZE][(pacman_.getX()+CELL_SIZE/2)/CELL_SIZE].addObject(&pacman_);
+        pacman_.setNeighborhood(createNeighborhood((pacman_.getY()+CELL_SIZE/2)/CELL_SIZE,(pacman_.getX()+CELL_SIZE/2)/CELL_SIZE));
     }
+    std::cout << "ici" << std::endl;
 
     if (pacman_.getState() == DEAD)
     {
@@ -114,4 +116,17 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 
     // Pac-Man
     pacman_.display(sprite, window_surface);
+}
+
+CellNeighborhood Game::createNeighborhood(int i,int j)
+{
+    CellNeighborhood res;
+    for(int x = 0;x<3;x++)
+    {
+        for(int y = 0;y<3;y++)
+        {
+            res[x][y] = &board_[(i+x-1)%NB_ROWS][(j+y-1)%NB_COLUMNS];
+        }
+    }
+    return res;
 }

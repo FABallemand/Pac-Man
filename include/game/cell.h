@@ -112,6 +112,10 @@ public:
      */
     void deletePacMan(PacMan * toDelete);
 
+    inline bool isWalled()
+    {
+        return (type_ == WALL) || (type_ == GHOST_WALL);
+    }
 
 private:
     CellType type_;                 //!< Type of the cell
