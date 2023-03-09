@@ -5,11 +5,9 @@
 
 #include "object.h"
 
-
 class Cell; // Forward declaration
 
-using CellNeighborhood = std::array<std::array<Cell*, 3>, 3>;
-
+using CellNeighborhood = std::array<std::array<Cell *, 3>, 3>;
 
 /**
  * \enum MoveableState
@@ -51,7 +49,7 @@ public:
         return direction_;
     }
 
-    CellNeighborhood& getNeighborhood()
+    CellNeighborhood &getNeighborhood()
     {
         return neighborhood_;
     }
@@ -72,22 +70,23 @@ public:
     }
 
 protected:
-    MoveableState state_ = ALIVE;  //!< State of the object
-    Direction direction_ = NONE;   //!< Direction of the object
-    int frame_count_ = 0;          //!< Frame count
-    int sprite_count_ = 0;         //!< Sprite count (for animation)
-    MovingSprites moving_sprites_; //!< Sprites location
+    MoveableState state_ = ALIVE;   //!< State of the object
+    Direction direction_ = NONE;    //!< Direction of the object
+    int frame_count_ = 0;           //!< Frame count
+    int sprite_count_ = 0;          //!< Sprite count (for animation)
+    MovingSprites moving_sprites_;  //!< Sprites location
     CellNeighborhood neighborhood_; //!< Current cell
     bool allow_to_move_;            //!< IsPacmanStuck boolean
+
+    virtual void allowedToMoveStraight() = 0;
 
     /**
      * \brief Indicate whether a movement is legal or not
      *
-     * \param direction Direction in which to move
      * \return true If Object is allowed to move in this direction
      * \return false If Object is not allowed to move in this direction
      */
-    virtual void allowedToMove(Direction direction) = 0;
+    virtual void allowedToMove() = 0;
 
     /**
      * \brief Handle movement of the moveable object

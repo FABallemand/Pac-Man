@@ -93,7 +93,7 @@ int main(int argc, char **argv)
 
     LOG(GAME) << "Quitting the game";
 
-    SDL_Delay(3000); // Delay
+    SDL_Delay(500); // Delay
 
     // Unload assets
     unloadAssets(sprite);

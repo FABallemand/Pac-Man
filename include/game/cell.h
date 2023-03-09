@@ -38,15 +38,15 @@ class Cell : public Object
 public:
     Cell(){};
 
-    Cell(int i, int j) : Object{i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{EMPTY}, objects_{}
+    Cell(int i, int j) : Object{j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{EMPTY}, objects_{}
     {
     }
 
-    Cell(int i, int j, std::vector<Object *> objects) : Object{i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{EMPTY}, objects_{objects}
+    Cell(int i, int j, std::vector<Object *> objects) : Object{j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{EMPTY}, objects_{objects}
     {
     }
 
-    Cell(int i, int j, CellType type) : Object{i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{type}, objects_{}
+    Cell(int i, int j, CellType type) : Object{j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE}, type_{type}, objects_{}
     {
     }
 
