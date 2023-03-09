@@ -25,7 +25,7 @@
 #define S2_PACMAN_H 11      //!< PacMan height (on sprite)
 #define PACMAN_W 32         //!< PacMan width
 #define PACMAN_H 32         //!< PacMan height
-#define PACMAN_SPEED 1      //!< PacMan speed
+#define PACMAN_SPEED 2      //!< PacMan speed
 #define NB_MOVING_SPRITES 2 //!< Number of sprites in the moving animation
 #define NB_DYING_SPRITES 10 //!< Number of sprites in the dying animation
 
