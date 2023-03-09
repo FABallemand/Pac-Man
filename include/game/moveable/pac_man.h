@@ -18,7 +18,8 @@ public:
     void update(const Uint8 *key_state);
 
 private:
-    Direction input_direction_ = NONE;                         //!< USer wanted direction
+    Direction input_direction_ = NONE;                         //!< User wanted direction
+    Direction action_direction_ = NONE;                        //!< Action
     SDL_Rect initial_sprite_{3, 89, S1_PACMAN_W, S1_PACMAN_H}; //!< Initial sprite
     DyingSprites dying_sprites_ = {SDL_Rect{3, 106, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{22, 106, S1_PACMAN_W, S1_PACMAN_H},
                                    SDL_Rect{41, 106, S1_PACMAN_W, S1_PACMAN_H}, SDL_Rect{60, 106, S1_PACMAN_W, S1_PACMAN_H},
@@ -33,13 +34,17 @@ private:
      */
     void handleUserInputs(const Uint8 *key_state);
 
+    void turn(); // In moveable??
+
     void align();
 
     void allowedToMove() override;
 
     void move();
 
-    void updateSprite();
+    void handleMovement() override;
+
+    void updateSprite(); // IN moveable
 };
 
 #endif

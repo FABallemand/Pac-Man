@@ -34,7 +34,11 @@ enum Direction
     RIGHT,
     UP,
     DOWN,
-    NONE // Only for initial position
+    NONE, // Only for initial position
+    UP_RIGHT,
+    UP_LEFT,
+    DOWN_RIGHT,
+    DOWN_LEFT
 };
 
 class Moveable : public Object
@@ -88,11 +92,13 @@ protected:
      */
     virtual void allowedToMove() = 0;
 
+    virtual void move() = 0;
+
     /**
      * \brief Handle movement of the moveable object
      *
      */
-    virtual void move() = 0;
+    virtual void handleMovement() = 0;
 };
 
 #endif

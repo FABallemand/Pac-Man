@@ -18,13 +18,8 @@ void PacMan::update(const Uint8 *key_state)
         // Handle user input
         handleUserInputs(key_state);
 
-        allowedToMove();
-        if (allow_to_move_)
-        {
-            align();
-        }
-        // Game movement
-        move();
+        // Handle movement
+        handleMovement();
     }
 
     // Update sprite
@@ -57,12 +52,112 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
     }
 }
 
+void PacMan::turn()
+{
+    if (input_direction_ != direction_) // If user wants to turn
+    {
+        switch (direction_)
+        {
+        case NONE:
+            LOG(ERROR) << "IMPOSSIBLE";
+            break;
+        case RIGHT:
+            switch (input_direction_)
+            {
+            case LEFT:
+                direction_ = input_direction_;        // Update direction
+                action_direction_ = input_direction_; // Update action
+                break;
+            case UP:
+                if (!neighborhood_[0][1]->isWalled()) // UP
+                {
+                    direction_ = input_direction_; // Update direction
+                    action_direction_ = UP;        // Update action
+                }
+                else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 2) && !neighborhood_[0][2]->isWalled()) // UP_RIGHT
+                {
+                    direction_ = input_direction_; // Update direction
+                    action_direction_ = UP_RIGHT;  // Update action
+                }
+                break;
+            case DOWN:
+                if (!neighborhood_[2][1]->isWalled() || !neighborhood_[2][2]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            }
+            break;
+        case LEFT:
+            switch (input_direction_)
+            {
+            case RIGHT:
+                direction_ = input_direction_;
+                break;
+            case UP:
+                if (!neighborhood_[0][0]->isWalled() || !neighborhood_[0][1]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            case DOWN:
+                if (!neighborhood_[2][0]->isWalled() || !neighborhood_[2][1]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            }
+            break;
+        case UP:
+            switch (input_direction_)
+            {
+            case RIGHT:
+                if (!neighborhood_[1][2]->isWalled() || !neighborhood_[0][2]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            case LEFT:
+                if (!neighborhood_[1][0]->isWalled() || !neighborhood_[0][0]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            case DOWN:
+                direction_ = input_direction_;
+                break;
+            }
+            break;
+        case DOWN:
+            switch (input_direction_)
+            {
+            case RIGHT:
+                if (!neighborhood_[1][2]->isWalled() || !neighborhood_[2][2]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            case LEFT:
+                if (!neighborhood_[1][0]->isWalled() || !neighborhood_[2][0]->isWalled())
+                {
+                    direction_ = input_direction_;
+                }
+                break;
+            case UP:
+                direction_ = input_direction_;
+                break;
+            }
+            break;
+        }
+    }
+}
+
 void PacMan::align()
 {
     // SWITCH
     if (direction_ == RIGHT)
     {
-        if (position_.x <= neighborhood_[1][1]->getX() + CELL_SIZE /3)
+        if (position_.x <= neighborhood_[1][1]->getX() + CELL_SIZE / 2)
         {
             position_.y = neighborhood_[1][1]->getY();
         }
@@ -73,7 +168,7 @@ void PacMan::align()
     }
     else if (direction_ == LEFT)
     {
-        if (position_.x > neighborhood_[1][1]->getX() + CELL_SIZE /3)
+        if (position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 2)
         {
             position_.y = neighborhood_[1][1]->getY();
         }
@@ -84,7 +179,7 @@ void PacMan::align()
     }
     else if (direction_ == UP)
     {
-        if (position_.y <= neighborhood_[1][1]->getY() + CELL_SIZE /3)
+        if (position_.y <= neighborhood_[1][1]->getY() + CELL_SIZE / 2)
         {
             position_.x = neighborhood_[1][1]->getX();
         }
@@ -95,7 +190,7 @@ void PacMan::align()
     }
     else if (direction_ == DOWN)
     {
-        if (position_.y <= neighborhood_[1][1]->getY() + CELL_SIZE /3)
+        if (position_.y <= neighborhood_[1][1]->getY() + CELL_SIZE / 2)
         {
             position_.x = neighborhood_[1][1]->getX();
         }
@@ -106,37 +201,12 @@ void PacMan::align()
     }
 }
 
-void PacMan::allowedToMove()
-{
-    // Test if can move straight
-    if (direction_ == RIGHT && (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWalled()))
-    {
-        allow_to_move_ = true;
-        direction_ = input_direction_;
-    }
-    else if (direction_ == LEFT && (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWalled()))
-    {
-        allow_to_move_ = true;
-        direction_ = input_direction_;
-    }
-    else if (direction_ == UP && (position_.y > neighborhood_[1][1]->getY() || !neighborhood_[0][1]->isWalled()))
-    {
-        allow_to_move_ = true;
-        direction_ = input_direction_;
-    }
-    else if (direction_ == DOWN && (position_.y < neighborhood_[1][1]->getY() || !neighborhood_[2][1]->isWalled()))
-    {
-        allow_to_move_ = true;
-        direction_ = input_direction_;
-    }
-    // else
-    // Tests if can move diag
-    
-}
-
 void PacMan::move()
 {
     LOG(DEBUG) << "PacMan::move";
+
+    align(); // Align PacMan
+
     if (direction_ == RIGHT && allow_to_move_)
     {
         position_.x += PACMAN_SPEED;
@@ -153,6 +223,15 @@ void PacMan::move()
     {
         position_.y += PACMAN_SPEED;
     }
+}
+
+void PacMan::handleMovement()
+{
+    // Turn
+    turn();
+
+    // Move
+    move();
 }
 
 void PacMan::updateSprite()
