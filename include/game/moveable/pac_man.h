@@ -32,7 +32,7 @@ private:
      */
     void handleUserInputs(const Uint8 *key_state);
 
-    bool allowedToMove(Direction direction);
+    void allowedToMove(Direction direction) override;
 
     void move();
 

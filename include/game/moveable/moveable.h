@@ -78,6 +78,7 @@ protected:
     int sprite_count_ = 0;         //!< Sprite count (for animation)
     MovingSprites moving_sprites_; //!< Sprites location
     CellNeighborhood neighborhood_; //!< Current cell
+    bool allow_to_move_;            //!< IsPacmanStuck boolean
 
     /**
      * \brief Indicate whether a movement is legal or not
@@ -86,7 +87,7 @@ protected:
      * \return true If Object is allowed to move in this direction
      * \return false If Object is not allowed to move in this direction
      */
-    virtual bool allowedToMove(Direction direction) = 0;
+    virtual void allowedToMove(Direction direction) = 0;
 
     /**
      * \brief Handle movement of the moveable object

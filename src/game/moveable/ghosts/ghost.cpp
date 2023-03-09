@@ -1,8 +1,8 @@
 #include "ghost.h"
 
-bool Ghost::allowedToMove(Direction direction)
+void Ghost::allowedToMove(Direction direction)
 {
-    return true;
+    allow_to_move_ = true;
 }
 
 void Ghost::move()

@@ -24,7 +24,7 @@ protected:
                                           SDL_Rect{105, 195, S_GHOST_W, S_GHOST_H},
                                           SDL_Rect{122, 195, S_GHOST_W, S_GHOST_H}}; //!< Sprites location
 
-    bool allowedToMove(Direction direction);
+    void allowedToMove(Direction direction) override;
 
     void move();
 };
