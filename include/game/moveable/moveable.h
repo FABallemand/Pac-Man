@@ -80,9 +80,7 @@ protected:
     int sprite_count_ = 0;          //!< Sprite count (for animation)
     MovingSprites moving_sprites_;  //!< Sprites location
     CellNeighborhood neighborhood_; //!< Current cell
-    bool allow_to_move_;            //!< IsPacmanStuck boolean
-
-    virtual void allowedToMoveStraight() = 0;
+    bool allow_to_move_ = true;            //!< IsPacmanStuck boolean
 
     /**
      * \brief Indicate whether a movement is legal or not
