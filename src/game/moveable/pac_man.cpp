@@ -3,18 +3,21 @@
 
 PacMan::PacMan(int x, int y) : Moveable{x, y, PACMAN_W, PACMAN_H, &initial_sprite_}
 {
-    moving_sprites_ = {{{SDL_Rect{47, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{63, 89, S2_PACMAN_W, S1_PACMAN_H},  */ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},    // Left
-                        {SDL_Rect{20, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{35, 89, S2_PACMAN_W, S1_PACMAN_H},  */ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},    // Right
-                        {SDL_Rect{75, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{92, 94, S1_PACMAN_W, S2_PACMAN_H},  */ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},    // Up
-                        {SDL_Rect{109, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{126, 94, S1_PACMAN_W, S2_PACMAN_H}, */ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}}}}; // Down
+    moving_sprites_ = {{{SDL_Rect{47, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{63, 89, S2_PACMAN_W, S1_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Left
+                        {SDL_Rect{20, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{35, 89, S2_PACMAN_W, S1_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Right
+                        {SDL_Rect{75, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{92, 94, S1_PACMAN_W, S2_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Up
+                        {SDL_Rect{109, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{126, 94, S1_PACMAN_W, S2_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}}}}; // Down
 }
 
-void PacMan::update(const Uint8 *key_state)
+void PacMan::update(const Uint8 *key_state, const float delta_t)
 {
     LOG(DEBUG) << "PacMan::update";
 
     if (state_ == ALIVE)
     {
+        // Remember delta_t
+        delta_t_ = delta_t;
+
         // Handle user input
         handleUserInputs(key_state);
 
@@ -28,7 +31,6 @@ void PacMan::update(const Uint8 *key_state)
 
 void PacMan::handleUserInputs(const Uint8 *key_state)
 {
-    LOG(DEBUG) << "PacMan::handleUserInputs";
     if (key_state[SDL_SCANCODE_RIGHT])
     {
         input_direction_ = RIGHT;
@@ -50,282 +52,283 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
         state_ = DYING;
         sprite_count_ = 0;
     }
+    else
+    {
+        input_direction_ = NONE; // To avoid automatic turning
+    }
+}
+
+void PacMan::turnLeft()
+{
+    switch (direction_)
+    {
+    case RIGHT:
+        direction_ = LEFT;
+        action_direction_ = LEFT;
+        break;
+    case UP:
+        if (!neighborhood_[1][0]->isWall())
+        {
+            direction_ = LEFT;
+            action_direction_ = LEFT;
+        }
+        else if ((position_.y > neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[0][0]->isWall())
+        {
+            direction_ = LEFT;
+            action_direction_ = UP_LEFT;
+        }
+        break;
+    case DOWN:
+        if (!neighborhood_[1][0]->isWall())
+        {
+            direction_ = LEFT;
+            action_direction_ = LEFT;
+        }
+        else if ((position_.y < neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[2][0]->isWall())
+        {
+            direction_ = LEFT;
+            action_direction_ = DOWN_LEFT;
+        }
+        break;
+    }
+}
+
+void PacMan::turnRight()
+{
+    switch (direction_)
+    {
+    case LEFT:
+        direction_ = RIGHT;
+        action_direction_ = RIGHT;
+        break;
+    case UP:
+        if (!neighborhood_[1][2]->isWall())
+        {
+            direction_ = RIGHT;
+            action_direction_ = RIGHT;
+        }
+        else if ((position_.y > neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[0][2]->isWall())
+        {
+            direction_ = RIGHT;
+            action_direction_ = UP_RIGHT;
+        }
+        break;
+    case DOWN:
+        if (!neighborhood_[1][2]->isWall())
+        {
+            direction_ = RIGHT;
+            action_direction_ = RIGHT;
+        }
+        else if ((position_.y < neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[2][2]->isWall())
+        {
+            direction_ = RIGHT;
+            action_direction_ = DOWN_RIGHT;
+        }
+        break;
+    }
+}
+
+void PacMan::turnUp()
+{
+    switch (direction_)
+    {
+    case LEFT:
+        if (!neighborhood_[0][1]->isWall())
+        {
+            direction_ = UP;
+            action_direction_ = UP;
+        }
+        else if ((position_.x < neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[0][0]->isWall())
+        {
+            direction_ = UP;
+            action_direction_ = UP_LEFT;
+        }
+        break;
+    case RIGHT:
+        if (!neighborhood_[0][1]->isWall()) // UP
+        {
+            direction_ = UP;
+            action_direction_ = UP;
+        }
+        else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[0][2]->isWall()) // UP_RIGHT
+        {
+            direction_ = UP;
+            action_direction_ = UP_RIGHT;
+        }
+        break;
+    case DOWN:
+        direction_ = UP;
+        action_direction_ = UP;
+        break;
+    }
+}
+
+void PacMan::turnDown()
+{
+    switch (direction_)
+    {
+    case LEFT:
+        if (!neighborhood_[2][1]->isWall())
+        {
+            direction_ = DOWN;
+            action_direction_ = DOWN;
+        }
+        else if ((position_.x < neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[2][0]->isWall())
+        {
+            direction_ = DOWN;
+            action_direction_ = DOWN_LEFT;
+        }
+        break;
+    case RIGHT:
+        if (!neighborhood_[2][1]->isWall())
+        {
+            direction_ = DOWN;
+            action_direction_ = DOWN;
+        }
+        else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[2][2]->isWall())
+        {
+            direction_ = DOWN;
+            action_direction_ = DOWN_RIGHT;
+        }
+        break;
+    case UP:
+        direction_ = DOWN;
+        action_direction_ = DOWN;
+        break;
+    }
 }
 
 void PacMan::turn()
 {
-    if (input_direction_ != direction_) // If user wants to turn
+    if (direction_ == NONE) // PacMan has no direction (beginning of the game)
     {
-        switch (direction_)
+        direction_ = input_direction_;
+        action_direction_ = input_direction_;
+    }
+    else if (input_direction_ != direction_) // Player wants to turn
+    {
+        switch (input_direction_)
         {
-        case NONE:
-            direction_ = input_direction_;        // Update direction
-            action_direction_ = input_direction_; // Update action
+        case LEFT:
+            turnLeft();
             break;
         case RIGHT:
-            switch (input_direction_)
-            {
-            case LEFT:
-                direction_ = input_direction_;        // Update direction
-                action_direction_ = input_direction_; // Update action
-                break;
-            case UP:
-                if (!neighborhood_[0][1]->isWalled()) // UP
-                {
-                    direction_ = input_direction_; // Update direction
-                    action_direction_ = UP;        // Update action
-                }
-                else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[0][2]->isWalled()) // UP_RIGHT
-                {
-                    direction_ = input_direction_; // Update direction
-                    action_direction_ = UP_RIGHT;  // Update action
-                }
-                break;
-            case DOWN:
-                if (!neighborhood_[2][1]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = DOWN;
-                }
-                else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[2][2]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = DOWN_RIGHT;
-                }
-                break;
-            }
-            break;
-        case LEFT:
-            switch (input_direction_)
-            {
-            case RIGHT:
-                direction_ = input_direction_;        // Update direction
-                action_direction_ = input_direction_; // Update action
-                break;
-            case UP:
-                if (!neighborhood_[0][1]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = UP;
-                }
-                else if ((position_.x < neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[0][0]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = UP_LEFT;
-                }
-                break;
-            case DOWN:
-                if (!neighborhood_[2][1]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = DOWN;
-                }
-                else if ((position_.x < neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[2][0]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = DOWN_LEFT;
-                }
-                break;
-            }
+            turnRight();
             break;
         case UP:
-            switch (input_direction_)
-            {
-            case RIGHT:
-                if (!neighborhood_[1][2]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = RIGHT;
-                }
-                else if ((position_.y > neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[0][2]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = UP_RIGHT;
-                }
-                break;
-            case LEFT:
-                if (!neighborhood_[1][0]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = LEFT;
-                }
-                else if ((position_.y > neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[0][0]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = UP_LEFT;
-                }
-                break;
-            case DOWN:
-                direction_ = input_direction_; // Update direction
-                action_direction_ = DOWN;      // Update action
-                break;
-            }
+            turnUp();
             break;
         case DOWN:
-            switch (input_direction_)
-            {
-            case RIGHT:
-                if (!neighborhood_[1][2]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = RIGHT;
-                }
-                else if ((position_.y < neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[2][2]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = DOWN_RIGHT;
-                }
-                break;
-            case LEFT:
-                if (!neighborhood_[1][0]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = LEFT;
-                }
-                else if ((position_.y < neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[2][0]->isWalled())
-                {
-                    direction_ = input_direction_;
-                    action_direction_ = DOWN_LEFT;
-                }
-                break;
-            case UP:
-                direction_ = input_direction_;        // Update direction
-                action_direction_ = input_direction_; // Update action
-                break;
-            }
+            turnDown();
             break;
+        default:
+            LOG(ERROR) << "Invalid input direction";
         }
     }
 }
 
-void PacMan::align()
+void PacMan::fixDimensions()
 {
-    // SWITCH
-    if (direction_ == RIGHT)
+    if (position_.x >= WINDOW_W - PACMAN_W)
     {
-        if (position_.x <= neighborhood_[1][1]->getX() + CELL_SIZE / 2)
-        {
-            position_.y = neighborhood_[1][1]->getY();
-        }
-        else
-        {
-            position_.y = neighborhood_[1][2]->getY();
-        }
+        position_.w = 0;
+        position_.h = 0;
     }
-    else if (direction_ == LEFT)
+    else
     {
-        if (position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 2)
-        {
-            position_.y = neighborhood_[1][1]->getY();
-        }
-        else
-        {
-            position_.y = neighborhood_[1][0]->getY();
-        }
-    }
-    else if (direction_ == UP)
-    {
-        if (position_.y <= neighborhood_[1][1]->getY() + CELL_SIZE / 2)
-        {
-            position_.x = neighborhood_[1][1]->getX();
-        }
-        else
-        {
-            position_.x = neighborhood_[0][1]->getX();
-        }
-    }
-    else if (direction_ == DOWN)
-    {
-        if (position_.y <= neighborhood_[1][1]->getY() + CELL_SIZE / 2)
-        {
-            position_.x = neighborhood_[1][1]->getX();
-        }
-        else
-        {
-            position_.x = neighborhood_[2][1]->getX();
-        }
+        position_.w = PACMAN_W;
+        position_.h = PACMAN_H;
     }
 }
 
 void PacMan::move()
 {
-    LOG(DEBUG) << "PacMan::move";
-
-    // align(); // Align PacMan
-
+    LOG(DEBUG) << "delta_t_ = " << delta_t_;
+    LOG(DEBUG) << "PACMAN_SPEED * delta_t_ = " << PACMAN_SPEED * delta_t_;
+    allowed_to_move_ = false;
     switch (action_direction_)
     {
-    case RIGHT:
-        if (direction_ == action_direction_ && (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWalled()))
-        {
-            position_.y = neighborhood_[1][1]->getY();
-            position_.x += PACMAN_SPEED;
-        }
-        else
-            allow_to_move_ = false;
-        break;
     case LEFT:
-        if (direction_ == action_direction_ && (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWalled()))
+        if (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWall())
         {
+            position_.x -= PACMAN_SPEED * delta_t_;
+            if (position_.x <= 0)
+            {
+                position_.x = WINDOW_W - 1;
+                position_.w = PACMAN_W;
+                position_.h = PACMAN_H;
+            }
+            fixDimensions();
             position_.y = neighborhood_[1][1]->getY();
-            position_.x -= PACMAN_SPEED;
+            allowed_to_move_ = true;
         }
-        else
-            allow_to_move_ = false;
+        break;
+    case RIGHT:
+        if (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWall())
+        {
+            position_.x += PACMAN_SPEED * delta_t_;
+            if (position_.x >= WINDOW_W)
+            {
+                position_.x = 0;
+                position_.w = PACMAN_W;
+                position_.h = PACMAN_H;
+            }
+            fixDimensions();
+            position_.y = neighborhood_[1][1]->getY();
+            allowed_to_move_ = true;
+        }
         break;
     case UP:
-        if (direction_ == action_direction_ && (position_.y > neighborhood_[1][1]->getY() || !neighborhood_[0][1]->isWalled()))
+        if (position_.y > neighborhood_[1][1]->getY() || !neighborhood_[0][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y -= PACMAN_SPEED;
+            position_.y -= PACMAN_SPEED * delta_t_;
+            allowed_to_move_ = true;
         }
-        else
-            allow_to_move_ = false;
         break;
     case DOWN:
-        if (direction_ == action_direction_ && (position_.y < neighborhood_[1][1]->getY() || !neighborhood_[2][1]->isWalled()))
+        if (position_.y < neighborhood_[1][1]->getY() || !neighborhood_[2][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y += PACMAN_SPEED;
+            position_.y += PACMAN_SPEED * delta_t_;
+            allowed_to_move_ = true;
         }
-        else
-            allow_to_move_ = false;
-        break;
-    case UP_RIGHT:
-        position_.x = neighborhood_[0][2]->getX();
-        position_.y = neighborhood_[0][2]->getY();
-        action_direction_ = direction_;
-        if (direction_ == UP)
-            position_.y += (CELL_SIZE - CELL_SIZE / 3);
-        else
-            position_.x -= (CELL_SIZE - CELL_SIZE / 3);
         break;
     case UP_LEFT:
         position_.x = neighborhood_[0][0]->getX();
         position_.y = neighborhood_[0][0]->getY();
-        action_direction_ = direction_;
+        action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == UP)
-            position_.y += (CELL_SIZE - CELL_SIZE / 3);
+            position_.y += move_diag_offset_;
         else
-            position_.x += (CELL_SIZE - CELL_SIZE / 3);
+            position_.x += move_diag_offset_;
         break;
-    case DOWN_RIGHT:
-        position_.x = neighborhood_[2][2]->getX();
-        position_.y = neighborhood_[2][2]->getY();
-        action_direction_ = direction_;
-        if (direction_ == DOWN)
-            position_.y -= (CELL_SIZE - CELL_SIZE / 3);
+    case UP_RIGHT:
+        position_.x = neighborhood_[0][2]->getX();
+        position_.y = neighborhood_[0][2]->getY();
+        action_direction_ = direction_; // move function uses action_direction_ in a switch
+        if (direction_ == UP)
+            position_.y += move_diag_offset_;
         else
-            position_.x -= (CELL_SIZE - CELL_SIZE / 3);
+            position_.x -= move_diag_offset_;
         break;
     case DOWN_LEFT:
         position_.x = neighborhood_[2][0]->getX();
         position_.y = neighborhood_[2][0]->getY();
-        action_direction_ = direction_;
+        action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == DOWN)
-            position_.y -= (CELL_SIZE - CELL_SIZE / 3);
+            position_.y -= move_diag_offset_;
         else
-            position_.x += (CELL_SIZE - CELL_SIZE / 3);
+            position_.x += move_diag_offset_;
+        break;
+    case DOWN_RIGHT:
+        position_.x = neighborhood_[2][2]->getX();
+        position_.y = neighborhood_[2][2]->getY();
+        action_direction_ = direction_; // move function uses action_direction_ in a switch
+        if (direction_ == DOWN)
+            position_.y -= move_diag_offset_;
+        else
+            position_.x -= move_diag_offset_;
         break;
     default:
         break;
@@ -335,7 +338,10 @@ void PacMan::move()
 void PacMan::handleMovement()
 {
     // Turn
-    turn();
+    if (input_direction_ != NONE) // To avoid automatic turning
+    {
+        turn();
+    }
 
     // Move
     move();
@@ -343,11 +349,9 @@ void PacMan::handleMovement()
 
 void PacMan::updateSprite()
 {
-    // Dead
-    LOG(DEBUG) << "PacMan::updateSprite";
-    if (state_ == DYING)
+    switch (state_)
     {
-        // current_sprite_ = sprite_count_ < NB_DYING_SPRITES ? &(dying_sprites_[sprite_count_]) : nullptr;
+    case DYING:
         if (sprite_count_ < NB_DYING_SPRITES)
         {
             current_sprite_ = &(dying_sprites_[sprite_count_++]);
@@ -357,16 +361,13 @@ void PacMan::updateSprite()
             current_sprite_ = &dead_sprite_;
             state_ = DEAD;
         }
-    }
-    else if (state_ == ALIVE)
-    {
-        // Alive
+        break;
+    case ALIVE:
         if (direction_ != NONE)
         {
-            if (allow_to_move_ == false)
+            if (allowed_to_move_ == false)
             {
-                allow_to_move_ = true;
-                sprite_count_ = 0; // pacman is then sutck against le wall with is mouth open
+                sprite_count_ = 0; // PacMan is stuck against the wall with his mouth open
             }
             else if (++frame_count_ == NB_SPRITE_FRAME)
             {
@@ -375,14 +376,9 @@ void PacMan::updateSprite()
             }
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
         }
-    }
-    else
-    {
+        break;
+    default:
         LOG(ERROR) << "Invalid state for PacMan object";
+        break;
     }
-}
-
-void PacMan::allowedToMove()
-{
-    return;
 }

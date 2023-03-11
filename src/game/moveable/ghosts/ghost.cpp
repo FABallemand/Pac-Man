@@ -1,10 +1,13 @@
 #include "ghost.h"
 
-void Ghost::allowedToMove()
+void Ghost::turn()
 {
-    allow_to_move_ = true;
 }
 
 void Ghost::move()
+{
+}
+
+void Ghost::updateSprite()
 {
 }

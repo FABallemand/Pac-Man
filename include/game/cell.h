@@ -112,7 +112,7 @@ public:
      */
     void deletePacMan(PacMan * toDelete);
 
-    inline bool isWalled()
+    inline bool isWall()
     {
         return (type_ == WALL) || (type_ == GHOST_WALL);
     }

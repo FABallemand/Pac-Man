@@ -30,8 +30,12 @@ int main(int argc, char **argv)
     Game game{};
 
     // Timer
-    Timer Timer;
-    Timer.start();
+    Timer timer;
+    timer.start();
+
+    // Physics
+    float previous_time = 0;
+    float current_time = 0;
 
     // FPS
     Uint64 frame_start_time, frame_end_time;
@@ -66,7 +70,7 @@ int main(int argc, char **argv)
         }
 
         // Calculate and correct fps
-        float avgFPS = counted_frames / (Timer.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
+        float avgFPS = counted_frames / (timer.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
         if (avgFPS > 2000000)
         {
             avgFPS = 0;
@@ -74,7 +78,9 @@ int main(int argc, char **argv)
         LOG(INFO) << "FPS: " << avgFPS;
 
         // Update game
-        quit = quit ? quit : game.update(key_state);
+        previous_time = current_time;
+        current_time = timer.getTicks() / 1000.f;
+        quit = quit ? quit : game.update(key_state, current_time - previous_time);
 
         // Display
         game.display(sprite, window_surface);

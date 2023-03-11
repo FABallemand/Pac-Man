@@ -75,15 +75,15 @@ public:
         state_ = state_ == NORMAL ? BLINK : NORMAL;
     }
 
-    bool update(const Uint8 *key_state);
+    bool update(const Uint8 *key_state, const float delta_t);
 
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
 private:
-    int life_remaining_ = 3;              //!< Life remaining
-    int game_score_ = 0;                  //!< Score
-    GameState state_ = NORMAL;            //!< Game state
-    PacMan pacman_{CELL_SIZE, CELL_SIZE*13}; //!< Pac-Man!!
+    int life_remaining_ = 3;                   //!< Life remaining
+    int game_score_ = 0;                       //!< Score
+    GameState state_ = NORMAL;                 //!< Game state
+    PacMan pacman_{CELL_SIZE, CELL_SIZE * 13}; //!< Pac-Man!!
     // std::vector<Ghost> ghosts_ = std::vector<Ghost>{Blinky{}, Clyde{}, Inky{}, Pinky{}};                //!< Ghosts
     std::vector<Ghost> ghosts_;                                                                         //!< Ghosts
     std::vector<Gomme> gommes_;                                                                         //!< Gommes
@@ -95,7 +95,7 @@ private:
     static constexpr int offset_super_gomme_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
 
     void endOfGame();
-    CellNeighborhood createNeighborhood(int i,int j);
+    CellNeighborhood createNeighborhood(int i, int j);
 };
 
 #endif

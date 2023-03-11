@@ -69,14 +69,11 @@ Game::Game()
     }
 }
 
-bool Game::update(const Uint8 *key_state)
+bool Game::update(const Uint8 *key_state, const float delta_t)
 {
-    LOG(DEBUG) << "Game::update";
-
-    pacman_.update(key_state);
+    pacman_.update(key_state, delta_t);
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
     {
-        std::cout << "ici" << std::endl;
         pacman_.getNeighborhood()[1][1]->deletePacMan(&pacman_);
         board_[(pacman_.getY() + CELL_SIZE / 2) / CELL_SIZE][(pacman_.getX() + CELL_SIZE / 2) / CELL_SIZE].addObject(&pacman_);
         pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + CELL_SIZE / 2) / CELL_SIZE, (pacman_.getX() + CELL_SIZE / 2) / CELL_SIZE));
@@ -93,8 +90,6 @@ bool Game::update(const Uint8 *key_state)
 
 void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 {
-    LOG(DEBUG) << "Game::display";
-
     // Clear window
     SDL_FillRect(window_surface, nullptr, 0);
 

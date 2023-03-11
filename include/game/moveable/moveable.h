@@ -7,11 +7,11 @@
 
 class Cell; // Forward declaration
 
-using CellNeighborhood = std::array<std::array<Cell *, 3>, 3>;
+using CellNeighborhood = std::array<std::array<Cell *, NEIGHBORHOOD_SIZE>, NEIGHBORHOOD_SIZE>;
 
 /**
  * \enum MoveableState
- * \brief Describe the state of a Moveable object
+ * \brief Describe the state of a moveable object
  *
  */
 enum MoveableState
@@ -26,7 +26,9 @@ using MovingSprites = std::array<std::array<SDL_Rect, NB_MOVING_SPRITES>, NB_DIR
 
 /**
  * \enum Direction
- * \brief Orientation of Pac-Man relatively to the screen
+ * \brief Orientation of a moveable object
+ *
+ * \remark Relative to the screen
  */
 enum Direction
 {
@@ -35,12 +37,17 @@ enum Direction
     UP,
     DOWN,
     NONE, // Only for initial position
-    UP_RIGHT,
     UP_LEFT,
-    DOWN_RIGHT,
-    DOWN_LEFT
+    UP_RIGHT,
+    DOWN_LEFT,
+    DOWN_RIGHT
 };
 
+/**
+ * \class Moveable
+ * \brief Represents an object that has the ability to move
+ *
+ */
 class Moveable : public Object
 {
 public:
@@ -80,16 +87,18 @@ protected:
     int sprite_count_ = 0;          //!< Sprite count (for animation)
     MovingSprites moving_sprites_;  //!< Sprites location
     CellNeighborhood neighborhood_; //!< Current cell
-    bool allow_to_move_ = true;            //!< IsPacmanStuck boolean
+    bool allowed_to_move_ = true;   //!< IsPacmanStuck boolean
 
     /**
-     * \brief Indicate whether a movement is legal or not
+     * \brief Turn moveable object on the board
      *
-     * \return true If Object is allowed to move in this direction
-     * \return false If Object is not allowed to move in this direction
      */
-    virtual void allowedToMove() = 0;
+    virtual void turn() = 0;
 
+    /**
+     * \brief Move the moveable object on the board
+     *
+     */
     virtual void move() = 0;
 
     /**
@@ -97,6 +106,12 @@ protected:
      *
      */
     virtual void handleMovement() = 0;
+
+    /**
+     * \brief Update sprite to display
+     *
+     */
+    virtual void updateSprite() = 0;
 };
 
 #endif

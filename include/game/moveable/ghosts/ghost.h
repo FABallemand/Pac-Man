@@ -23,10 +23,11 @@ protected:
                                           SDL_Rect{89, 195, S_GHOST_W, S_GHOST_H},
                                           SDL_Rect{105, 195, S_GHOST_W, S_GHOST_H},
                                           SDL_Rect{122, 195, S_GHOST_W, S_GHOST_H}}; //!< Sprites location
-
-    void allowedToMove() override;
+    void turn() override;
 
     void move();
+
+    void updateSprite() override;
 };
 
 #endif

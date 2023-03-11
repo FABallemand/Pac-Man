@@ -1,7 +1,7 @@
 // Window =====================================================================
-#define WINDOW_W 700    //!< Window width
-#define WINDOW_H 900    //!< Window height
-#define FRAME_DELAY 16; //!< Delay between each frame
+#define WINDOW_W 700   //!< Window width
+#define WINDOW_H 900   //!< Window height
+#define FRAME_DELAY 16 //!< Delay between each frame
 
 // Game =======================================================================
 #define NB_ROWS 27    //!< Number of rows
@@ -15,8 +15,9 @@
 #define CELL_SIZE 32 //!< Cell size
 
 // Moveable ===============================================
-#define NB_DIRECTION 4    //!< Number of possible directions (except NONE)
-#define NB_SPRITE_FRAME 3 //!< Number of frame each sprite is displayed before going to the next sprite in the animation
+#define NB_DIRECTION 4      //!< Number of possible directions (except NONE)
+#define NB_SPRITE_FRAME 3   //!< Number of frame each sprite is displayed before going to the next sprite in the animation
+#define NEIGHBORHOOD_SIZE 3 //!< Neighborhood size (in cell)
 
 // PacMan
 #define S1_PACMAN_W 16      //!< PacMan width (on sprite)
@@ -25,7 +26,7 @@
 #define S2_PACMAN_H 11      //!< PacMan height (on sprite)
 #define PACMAN_W 32         //!< PacMan width
 #define PACMAN_H 32         //!< PacMan height
-#define PACMAN_SPEED 2      //!< PacMan speed
+#define PACMAN_SPEED 100    //!< PacMan speed
 #define NB_MOVING_SPRITES 2 //!< Number of sprites in the moving animation
 #define NB_DYING_SPRITES 10 //!< Number of sprites in the dying animation
 
