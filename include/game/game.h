@@ -1,7 +1,9 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
+#include <string>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <array>
 
@@ -94,7 +96,10 @@ private:
     static constexpr int offset_gomme_ = (CELL_SIZE - GOMME_SIZE) / 2;
     static constexpr int offset_super_gomme_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
 
-    void endOfGame();
+    void createCell(int i, int j, int type);
+
+    void loadMaze();
+
     CellNeighborhood createNeighborhood(int i, int j);
 };
 
