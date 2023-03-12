@@ -15,10 +15,15 @@ class PacMan : public Moveable
 public:
     PacMan(int x, int y);
 
+    ~PacMan()
+    {
+    }
+
+    void eat(Object *eatable);
+
     void update(const Uint8 *key_state, const float delta_t);
 
 private:
-    float delta_t_;                                            //!< Elapsed time since last update
     Direction input_direction_ = NONE;                         //!< User wanted direction
     Direction action_direction_ = NONE;                        //!< Action
     SDL_Rect initial_sprite_{3, 89, S1_PACMAN_W, S1_PACMAN_H}; //!< Initial sprite

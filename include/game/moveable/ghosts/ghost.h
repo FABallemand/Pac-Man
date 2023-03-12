@@ -8,11 +8,13 @@ using GhostSpecialSprites = std::array<SDL_Rect, NB_DIRECTION>;
 class Ghost : public Moveable
 {
 public:
-    Ghost(int x, int y) : Moveable{x, y, GHOST_W, GHOST_H, &(moving_sprites_[0][0]), NONE}
+    Ghost(int x, int y) : Moveable{GHOST, x, y, GHOST_W, GHOST_H, &(moving_sprites_[0][0]), NONE}
     {
     }
 
     virtual void strategy() = 0;
+
+    void update(const float delta_t);
 
 protected:
     GhostSpecialSprites eatable_sprites_ = {SDL_Rect{3, 195, S_GHOST_W, S_GHOST_H},

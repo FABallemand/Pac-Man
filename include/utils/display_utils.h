@@ -12,7 +12,7 @@
 // #define ORANGE "\033[0;33m"  // ORANGE (conflict with fruit.h)
 #define BORANGE "\033[1;33m" // ORANGE BOLD
 #define BRED "\033[1;31m"    // RED BOLD
-#define BGREEN "\033[1;32m"   // GREEN BOLD
+#define BGREEN "\033[1;32m"  // GREEN BOLD
 #define GREEN "\033[0;32m"   // GREEN
 #define YELLOW "\033[0;33m"  // YELLOW
 #define BLUE "\033[0;34m"    // BLUE
@@ -104,7 +104,7 @@ private:
      * \param type Type of the log message
      * \return std::string Header of the log message
      */
-    inline std::string getHeader(LogType type)
+    std::string getHeader(LogType type)
     {
         std::string header;
         switch (type)

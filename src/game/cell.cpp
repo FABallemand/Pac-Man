@@ -1,63 +1,15 @@
 #include "cell.h"
 
-bool Cell::containGomme()
+Object *Cell::containObject(ObjectType type)
 {
     for (Object *object : objects_)
     {
-        if (typeid(object) == typeid(Gomme *))
+        if (object->getType() == type)
         {
-            return true;
+            return object;
         }
     }
-    return false;
-}
-
-bool Cell::containSuperGomme()
-{
-    for (Object *object : objects_)
-    {
-        if (typeid(object) == typeid(SuperGomme *))
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Cell::containFruit()
-{
-    for (Object *object : objects_)
-    {
-        if (typeid(object) == typeid(Fruit *))
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Cell::containGhost()
-{
-    for (Object *object : objects_)
-    {
-        if (typeid(object) == typeid(Ghost *))
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Cell::containPacMan()
-{
-    for (Object *object : objects_)
-    {
-        if (typeid(object) == typeid(PacMan *))
-        {
-            return true;
-        }
-    }
-    return false;
+    return nullptr;
 }
 
 void Cell::deleteEatable()
@@ -68,10 +20,11 @@ void Cell::deleteGhost()
 {
 }
 
-void Cell::deletePacMan(PacMan * toDelete)
+void Cell::deletePacMan(PacMan *toDelete)
 {
-    auto f = std::find(objects_.begin(),objects_.end(),toDelete);
-    if(f == objects_.end()){
+    auto f = std::find(objects_.begin(), objects_.end(), toDelete);
+    if (f == objects_.end())
+    {
         LOG(ERROR) << "PACMAN NOT FOUND";
     }
     else
@@ -79,3 +32,62 @@ void Cell::deletePacMan(PacMan * toDelete)
         objects_.erase(f);
     }
 }
+
+// void Cell::update()
+// {
+//     Object *pacman = nullptr;
+//     if (pacman = containObject(PACMAN))
+//     {
+//         // LOG(DEBUG) << "CELL (" << position_.x << "," << position_.y << ") contains PacMan";
+
+//         Object *eatable = nullptr;
+
+//         // std::vector<ObjectType> eatable_types{GOMME, SUPER_GOMME, FRUIT};
+//         // for (ObjectType eatable_type : eatable_types)
+//         // {
+//         //     if (eatable = containObject(eatable_type))
+//         //     {
+//         //     }
+//         // }
+
+//         // if (eatable = containObject(GOMME))
+//         // {
+//         //     // objects_.erase(eatable);
+//         //     ((Gomme *)eatable)->~Gomme();
+//         // }
+//         // if (eatable = containObject(GOMME))
+//         // {
+//         //     ((SuperGomme *)eatable)->~SuperGomme();
+//         // }
+//         // if (eatable = containObject(GOMME))
+//         // {
+//         // }
+
+//         int i = 0;
+//         for (std::vector<Object *>::iterator it = objects_.begin(); it != objects_.end(); ++it)
+//         {
+//             Object *eatable = objects_[i];
+//             ObjectType object_type = eatable->getType();
+//             if (object_type == GOMME)
+//             {
+//                 LOG(DEBUG) << "EATING A GOMME!!";
+//                 objects_.erase(it);
+//                 ((Gomme *)eatable)->~Gomme();
+//                 break;
+//             }
+//             else if (object_type == SUPER_GOMME)
+//             {
+//                 objects_.erase(it);
+//                 ((SuperGomme *)eatable)->~SuperGomme();
+//                 break;
+//             }
+//             else if (object_type == FRUIT)
+//             {
+//                 objects_.erase(it);
+//                 ((Fruit *)eatable)->~Fruit();
+//                 break;
+//             }
+//             ++i;
+//         }
+//     }
+// }

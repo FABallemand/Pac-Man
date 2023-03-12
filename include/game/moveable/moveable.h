@@ -51,8 +51,13 @@ enum Direction
 class Moveable : public Object
 {
 public:
-    Moveable(int x, int y, int w, int h, SDL_Rect *current_sprite, Direction direction = NONE) : Object{x, y, w, h, current_sprite}, direction_{direction}
+    Moveable(ObjectType type, int x, int y, int w, int h, SDL_Rect *current_sprite, Direction direction = NONE) : Object{type, x, y, w, h, current_sprite}, direction_{direction}
     {
+    }
+
+    MoveableState getState() const
+    {
+        return state_;
     }
 
     Direction getDirection() const
@@ -65,14 +70,9 @@ public:
         return neighborhood_;
     }
 
-    void setNeighborhood(CellNeighborhood neighborhood)
+    Cell *getCurrentCell()
     {
-        neighborhood_ = neighborhood;
-    }
-
-    MoveableState getState() const
-    {
-        return state_;
+        return neighborhood_[1][1];
     }
 
     void setDirection(const Direction direction)
@@ -80,9 +80,15 @@ public:
         direction_ = direction;
     }
 
+    void setNeighborhood(CellNeighborhood neighborhood)
+    {
+        neighborhood_ = neighborhood;
+    }
+
 protected:
     MoveableState state_ = ALIVE;   //!< State of the object
     Direction direction_ = NONE;    //!< Direction of the object
+    float delta_t_;                 //!< Elapsed time since last update
     int frame_count_ = 0;           //!< Frame count
     int sprite_count_ = 0;          //!< Sprite count (for animation)
     MovingSprites moving_sprites_;  //!< Sprites location

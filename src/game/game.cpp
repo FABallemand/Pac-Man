@@ -7,7 +7,9 @@ Game::Game()
 
 bool Game::update(const Uint8 *key_state, const float delta_t)
 {
+    // Update PacMan
     pacman_.update(key_state, delta_t);
+    // Update PacMan neighborhood
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
     {
         pacman_.getNeighborhood()[1][1]->deletePacMan(&pacman_);
@@ -15,6 +17,47 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
         pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + CELL_SIZE / 2) / CELL_SIZE, (pacman_.getX() + CELL_SIZE / 2) / CELL_SIZE));
     }
 
+    // Update board (only need to update the cell where PacMan is located...)
+    Cell *cell_to_update = pacman_.getCurrentCell();
+    std::vector<Object *> objects_to_update = cell_to_update->getObjects();
+    int i = 0;
+    for (std::vector<Object *>::iterator it = objects_to_update.begin(); it != objects_to_update.end(); ++it)
+    {
+        Object *eatable = objects_to_update[i];
+        ObjectType object_type = eatable->getType();
+        if (object_type == GOMME)
+        {
+            LOG(DEBUG) << "EATING A GOMME!!";
+            objects_to_update.erase(it);
+            removeObject(GOMME, eatable);
+            // std::erase(gommes_, eatable); // Delete object from gomme
+            // ((Gomme *)eatable)->~Gomme(); // Useless ?
+            break;
+        }
+        else if (object_type == SUPER_GOMME)
+        {
+            objects_to_update.erase(it);
+            // ((SuperGomme *)eatable)->~SuperGomme();
+            break;
+        }
+        else if (object_type == FRUIT)
+        {
+            objects_to_update.erase(it);
+            // ((Fruit *)eatable)->~Fruit();
+            break;
+        }
+        ++i;
+    }
+
+    // for (auto row : board_)
+    // {
+    //     for (Cell cell : row)
+    //     {
+    //         cell.update();
+    //     }
+    // }
+
+    // Check for end of the game
     if (pacman_.getState() == DEAD)
     {
         state_ = END;
@@ -53,26 +96,26 @@ void Game::createCell(int i, int j, int type)
     LOG(DEBUG) << "Game::createCell(" << i << "," << j << "," << type << ")";
     switch (type)
     {
-    case EMPTY:
+    case 0:
         board_[i][j] = Cell{i, j}; // Create empty cell
         break;
-    case GOMME:
+    case 1:
         board_[i][j] = Cell{i, j};                                                          // Create empty cell
-        gommes_.emplace_back(j * CELL_SIZE + offset_gomme_, i * CELL_SIZE + offset_gomme_); // Create gomme
+        gommes_.emplace_back(j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_); // Create gomme
         board_[i][j].addObject(&gommes_.back());                                            // Add gomme in the cell
         break;
-    case SUPER_GOMME:
+    case 2:
         board_[i][j] = Cell{i, j};                                                                            // Create empty cell
-        gommes_.emplace_back(j * CELL_SIZE + offset_super_gomme_, i * CELL_SIZE + offset_super_gomme_, true); // Create gomme
+        gommes_.emplace_back(j * CELL_SIZE + super_gomme_offset_, i * CELL_SIZE + super_gomme_offset_, true); // Create gomme
         board_[i][j].addObject(&gommes_.back());                                                              // Add gomme in the cell
         break;
-    case WALL:
+    case 3:
         board_[i][j] = Cell{i, j, WALL}; // Create wall
         break;
-    case GHOST_WALL:
+    case 4:
         board_[i][j] = Cell{i, j, GHOST_WALL}; // Create special wall
         break;
-    case PAC_MAN:
+    case 5:
         board_[i][j] = Cell{i, j};                         // Create empty cell
         board_[i][j].addObject(&pacman_);                  // Add pacman in the cell
         pacman_.setNeighborhood(createNeighborhood(i, j)); // Tell pacman where he is
@@ -128,4 +171,21 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
         }
     }
     return res;
+}
+
+void Game::removeObject(ObjectType object_type, Object *object)
+{
+    if (object_type == GOMME)
+    {
+        // The following code MUST be improved...disgusting...
+        int i = 0;
+        for (std::vector<Gomme>::iterator it = gommes_.begin(); it != gommes_.end(); ++it)
+        {
+            if (&gommes_[i] == (Gomme *)object)
+            {
+                gommes_.erase(it);
+            }
+            ++i;
+        }
+    }
 }

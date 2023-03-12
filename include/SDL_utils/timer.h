@@ -21,7 +21,7 @@ public:
     }
 
 
-    inline Uint32 getTicks()
+     Uint32 getTicks()
     {
     // The actual timer time
     Uint32 time = 0;
@@ -45,13 +45,13 @@ public:
     return time;
 }
 
-    inline bool isStarted()
+     bool isStarted()
     {
         // Timer is running and paused or unpaused
         return started;
     }
 
-    inline bool isPaused()
+     bool isPaused()
     {
         // Timer is running and paused
         return paused && started;
@@ -60,7 +60,7 @@ public:
     /**
      * \brief Start the timer
      */
-    inline void start()
+     void start()
     {
         // Start the timer
         started = true;
@@ -75,7 +75,7 @@ public:
     /**
      * \brief Stop the timer
      */
-    inline void stop()
+     void stop()
     {
         // Stop the timer
         started = false;
@@ -91,7 +91,7 @@ public:
     /**
      * \brief Pause the timer
      */
-    inline void pause()
+     void pause()
     {
         // If the timer is running and isn't already paused
         if (started && !paused)
@@ -109,7 +109,7 @@ public:
     /**
      * \brief Unpause the timer
      */
-    inline void unpause()
+     void unpause()
     {
         // If the timer is running and paused
         if (started && paused)

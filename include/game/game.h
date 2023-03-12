@@ -93,14 +93,16 @@ private:
     Board board_;                                                                                       //!< Board of cells
     std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background
     SDL_Rect maze_position_{0, 0, 0, 0};                                                                //!< Maze position on the window
-    static constexpr int offset_gomme_ = (CELL_SIZE - GOMME_SIZE) / 2;
-    static constexpr int offset_super_gomme_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
+    static constexpr int gomme_offset_ = (CELL_SIZE - GOMME_SIZE) / 2;
+    static constexpr int super_gomme_offset_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
 
     void createCell(int i, int j, int type);
 
     void loadMaze();
 
     CellNeighborhood createNeighborhood(int i, int j);
+
+    void removeObject(ObjectType object_type, Object *object);
 };
 
 #endif

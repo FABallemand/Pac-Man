@@ -8,12 +8,17 @@ class Game; // Forward declaration
 class Eatable : public Object
 {
 protected:
-    Eatable(int x, int y, int w, int h, int score, SDL_Rect *sprite) : Object{x, y, w, h, sprite}, score_{score}
+    Eatable(ObjectType type, int x, int y, int w, int h, int score, SDL_Rect *sprite) : Object{type, x, y, w, h, sprite}, score_{score}
     {
     }
 
     virtual ~Eatable()
     {
+    }
+
+    int getScore()
+    {
+        return score_;
     }
 
 public:
