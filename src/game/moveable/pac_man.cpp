@@ -255,7 +255,7 @@ void PacMan::move()
     case LEFT:
         if (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWall())
         {
-            position_.x -= PACMAN_SPEED * delta_t_;
+            position_.x -= round(PACMAN_SPEED * delta_t_);
             if (position_.x <= 0)
             {
                 position_.x = WINDOW_W - 1;
@@ -270,7 +270,7 @@ void PacMan::move()
     case RIGHT:
         if (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWall())
         {
-            position_.x += PACMAN_SPEED * delta_t_;
+            position_.x += round(PACMAN_SPEED * delta_t_);
             if (position_.x >= WINDOW_W)
             {
                 position_.x = 0;
@@ -286,7 +286,7 @@ void PacMan::move()
         if (position_.y > neighborhood_[1][1]->getY() || !neighborhood_[0][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y -= PACMAN_SPEED * delta_t_;
+            position_.y -= round(PACMAN_SPEED * delta_t_);
             allowed_to_move_ = true;
         }
         break;
@@ -294,7 +294,7 @@ void PacMan::move()
         if (position_.y < neighborhood_[1][1]->getY() || !neighborhood_[2][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y += PACMAN_SPEED * delta_t_;
+            position_.y += round(PACMAN_SPEED * delta_t_);
             allowed_to_move_ = true;
         }
         break;

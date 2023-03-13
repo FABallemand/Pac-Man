@@ -2,7 +2,7 @@
 #define __PAC_MAN_H__
 
 #include "moveable.h"
-
+#include <cmath>
 using DyingSprites = std::array<SDL_Rect, NB_DYING_SPRITES>;
 
 /**
