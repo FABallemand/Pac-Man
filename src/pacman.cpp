@@ -20,7 +20,7 @@ LogConf LOGGER_CONFIG;
 int main(int argc, char **argv)
 {
     // Init SDL
-    initSDL(window, window_surface, "Pac-Man", CELL_SIZE * NB_COLUMNS, CELL_SIZE * NB_ROWS, false);
+    initSDL(window, window_surface, (char *)"Pac-Man", CELL_SIZE * NB_COLUMNS, CELL_SIZE * NB_ROWS, false);
 
     // Load assets
     loadAssets(sprite);
@@ -29,73 +29,7 @@ int main(int argc, char **argv)
     LOG(GAME) << "Entering the game";
     Game game{};
 
-    // Timer
-    Timer timer;
-    timer.start();
-
-    // Physics
-    float previous_time = 0;
-    float current_time = 0;
-
-    // FPS
-    Uint64 frame_start_time, frame_end_time;
-    int counted_frames = 0;
-
-    // Main loop
-    bool quit = false;
-    while (!quit)
-    {
-        LOG(INFO) << "NEW FRAME";
-        frame_start_time = SDL_GetTicks64();
-        frame_end_time = frame_start_time + FRAME_DELAY;
-
-        SDL_Event event;
-        while (!quit && SDL_PollEvent(&event))
-        {
-            switch (event.type)
-            {
-            case SDL_QUIT:
-                quit = true;
-                break;
-            default:
-                break;
-            }
-        }
-
-        // Keyboard
-        const Uint8 *key_state = SDL_GetKeyboardState(nullptr);
-        if (key_state[SDL_SCANCODE_ESCAPE])
-        {
-            quit = true;
-        }
-
-        // Calculate and correct fps
-        float avgFPS = counted_frames / (timer.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
-        if (avgFPS > 2000000)
-        {
-            avgFPS = 0;
-        }
-        LOG(INFO) << "FPS: " << avgFPS;
-
-        // Update game
-        previous_time = current_time;
-        current_time = timer.getTicks() / 1000.f;
-        quit = quit ? quit : game.update(key_state, current_time - previous_time);
-
-        // Display
-        game.display(sprite, window_surface);
-
-        // Update window
-        if (SDL_UpdateWindowSurface(window) != 0)
-        {
-            LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
-            exit(1);
-        }
-
-        counted_frames++;
-        while (SDL_GetTicks64() < frame_end_time)
-            ;
-    }
+    game.run(window, window_surface, sprite);
 
     LOG(GAME) << "Quitting the game";
 

@@ -3,8 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
-#include <typeinfo> // Maybe useless
-#include <algorithm>
+#include <memory> // Maybe useless
 
 #include "const.h"
 #include "display_utils.h"
@@ -101,8 +100,9 @@ public:
     // void update();
 
 private:
-    CellType cell_type_;            //!< Type of the cell
-    std::vector<Object *> objects_; //!< Objects currently in the cell
+    CellType cell_type_;               //!< Type of the cell
+    std::vector<Object *> objects_;    //!< Objects currently in the cell (change type for moveable??)
+    std::unique_ptr<Eatable> eatable_; //!< Pointer to an eatable (a cell can contain only a single eatable at once)
 };
 
 #endif

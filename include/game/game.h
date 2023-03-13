@@ -9,6 +9,7 @@
 
 #include "const.h"
 #include "display_utils.h"
+#include "timer.h"
 
 // Cell
 #include "cell.h"
@@ -76,6 +77,8 @@ public:
     {
         state_ = state_ == NORMAL ? BLINK : NORMAL;
     }
+
+    void run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite);
 
     bool update(const Uint8 *key_state, const float delta_t);
 

@@ -5,6 +5,72 @@ Game::Game()
     loadMaze();
 }
 
+void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite)
+{
+    // Timer
+    Timer timer;
+    timer.start();
+
+    // Physics
+    float previous_time = 0;
+    float current_time = 0;
+
+    // FPS
+    int counted_frames = 0;
+
+    // Main loop
+    bool quit = false;
+    while (!quit)
+    {
+        LOG(INFO) << "NEW FRAME";
+
+        SDL_Event event;
+        while (!quit && SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+            case SDL_QUIT:
+                quit = true;
+                break;
+            default:
+                break;
+            }
+        }
+
+        // Keyboard
+        const Uint8 *key_state = SDL_GetKeyboardState(nullptr);
+        if (key_state[SDL_SCANCODE_ESCAPE])
+        {
+            quit = true;
+        }
+
+        // Calculate and correct fps
+        float avgFPS = counted_frames / (timer.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
+        if (avgFPS > 2000000)
+        {
+            avgFPS = 0;
+        }
+        LOG(INFO) << "FPS: " << avgFPS;
+
+        // Update game
+        previous_time = current_time;
+        current_time = timer.getTicks() / 1000.f;
+        quit = quit ? quit : update(key_state, current_time - previous_time);
+
+        // Display
+        display(sprite, window_surface);
+
+        // Update window
+        if (SDL_UpdateWindowSurface(window) != 0)
+        {
+            LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
+            exit(1);
+        }
+
+        ++counted_frames;
+    }
+}
+
 bool Game::update(const Uint8 *key_state, const float delta_t)
 {
     // Update PacMan
@@ -30,7 +96,6 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
             LOG(DEBUG) << "EATING A GOMME!!";
             objects_to_update.erase(it);
             removeObject(GOMME, eatable);
-            // std::erase(gommes_, eatable); // Delete object from gomme
             // ((Gomme *)eatable)->~Gomme(); // Useless ?
             break;
         }
@@ -48,14 +113,6 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
         }
         ++i;
     }
-
-    // for (auto row : board_)
-    // {
-    //     for (Cell cell : row)
-    //     {
-    //         cell.update();
-    //     }
-    // }
 
     // Check for end of the game
     if (pacman_.getState() == DEAD)
@@ -177,7 +234,6 @@ void Game::removeObject(ObjectType object_type, Object *object)
 {
     if (object_type == GOMME)
     {
-        // The following code MUST be improved...disgusting...
         int i = 0;
         for (std::vector<Gomme>::iterator it = gommes_.begin(); it != gommes_.end(); ++it)
         {
