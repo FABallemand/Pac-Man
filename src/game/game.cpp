@@ -50,7 +50,7 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         {
             avgFPS = 0;
         }
-        LOG(INFO) << "FPS: " << avgFPS;
+        LOG(INFO) << "FPS: " << avgFPS; // to change
 
         // Update game
         previous_time = current_time;
@@ -58,15 +58,9 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         quit = quit ? quit : update(key_state, current_time - previous_time);
 
         // Display
-        display(sprite, window_surface);
+        display(window, sprite, window_surface);
 
-        // Update window
-        if (SDL_UpdateWindowSurface(window) != 0)
-        {
-            LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
-            exit(1);
-        }
-
+        // SDL_Delay(500); // If game is too slow -> go through walls...
         ++counted_frames;
     }
 }
@@ -85,33 +79,31 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
 
     // Update board (only need to update the cell where PacMan is located...)
     Cell *cell_to_update = pacman_.getCurrentCell();
-    std::vector<Object *> objects_to_update = cell_to_update->getObjects();
-    int i = 0;
-    for (std::vector<Object *>::iterator it = objects_to_update.begin(); it != objects_to_update.end(); ++it)
+    std::vector<Object *> *objects_to_update = cell_to_update->getObjectsAdr();
+    for (int i = 0; i < objects_to_update->size(); ++i)
     {
-        Object *eatable = objects_to_update[i];
+        Object *eatable = objects_to_update->at(i);
         ObjectType object_type = eatable->getType();
-        if (object_type == GOMME)
+        if (object_type == GOMME) // switch
         {
             LOG(DEBUG) << "EATING A GOMME!!";
-            objects_to_update.erase(it);
+            objects_to_update->erase(objects_to_update->begin() + i);
             removeObject(GOMME, eatable);
             // ((Gomme *)eatable)->~Gomme(); // Useless ?
             break;
         }
-        else if (object_type == SUPER_GOMME)
-        {
-            objects_to_update.erase(it);
-            // ((SuperGomme *)eatable)->~SuperGomme();
-            break;
-        }
-        else if (object_type == FRUIT)
-        {
-            objects_to_update.erase(it);
-            // ((Fruit *)eatable)->~Fruit();
-            break;
-        }
-        ++i;
+        // else if (object_type == SUPER_GOMME)
+        // {
+        //     objects_to_update.erase(objects_to_update.begin() + i);
+        //     // ((SuperGomme *)eatable)->~SuperGomme();
+        //     break;
+        // }
+        // else if (object_type == FRUIT)
+        // {
+        //     objects_to_update.erase(objects_to_update.begin() + i);
+        //     // ((Fruit *)eatable)->~Fruit();
+        //     break;
+        // }
     }
 
     // Check for end of the game
@@ -124,7 +116,7 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     return false;
 }
 
-void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
+void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)
 {
     // Clear window
     SDL_FillRect(window_surface, nullptr, 0);
@@ -146,6 +138,13 @@ void Game::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 
     // Pac-Man
     pacman_.display(sprite, window_surface);
+
+    // Update window
+    if (SDL_UpdateWindowSurface(window) != 0)
+    {
+        LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
+        exit(1);
+    }
 }
 
 void Game::createCell(int i, int j, int type)
@@ -234,14 +233,15 @@ void Game::removeObject(ObjectType object_type, Object *object)
 {
     if (object_type == GOMME)
     {
-        int i = 0;
-        for (std::vector<Gomme>::iterator it = gommes_.begin(); it != gommes_.end(); ++it)
+        LOG(DEBUG) << "REMOVING A GOMME";
+        for (int i = 0; i < gommes_.size(); ++i)
         {
-            if (&gommes_[i] == (Gomme *)object)
+            if (&(gommes_[i]) == object)
             {
-                gommes_.erase(it);
+                LOG(DEBUG) << "gommes_.size() = " << gommes_.size();
+                gommes_.erase(gommes_.begin() + i);
+                LOG(DEBUG) << "gommes_.size() = " << gommes_.size();
             }
-            ++i;
         }
     }
 }

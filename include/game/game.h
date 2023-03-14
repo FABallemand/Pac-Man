@@ -82,7 +82,7 @@ public:
 
     bool update(const Uint8 *key_state, const float delta_t);
 
-    void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
+    void display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
 private:
     int life_remaining_ = 3;                   //!< Life remaining

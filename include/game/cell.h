@@ -56,6 +56,26 @@ public:
         return objects_;
     }
 
+    std::vector<Object *> *getObjectsAdr()
+    {
+        return &objects_;
+    }
+
+    size_t getNbObjects() const
+    {
+        return objects_.size();
+    }
+
+    bool isEmpty() const
+    {
+        return objects_.empty();
+    }
+
+    void setObjects(std::vector<Object *> objects)
+    {
+        objects_ = objects;
+    }
+
     /**
      * \brief Add a new object in the cell
      *
@@ -100,9 +120,8 @@ public:
     // void update();
 
 private:
-    CellType cell_type_;               //!< Type of the cell
-    std::vector<Object *> objects_;    //!< Objects currently in the cell (change type for moveable??)
-    std::unique_ptr<Eatable> eatable_; //!< Pointer to an eatable (a cell can contain only a single eatable at once)
+    CellType cell_type_;            //!< Type of the cell
+    std::vector<Object *> objects_; //!< Objects currently in the cell (change type for moveable??)
 };
 
 #endif
