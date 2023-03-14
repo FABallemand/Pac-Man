@@ -79,15 +79,17 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
 
     // Update board (only need to update the cell where PacMan is located...)
     Cell *cell_to_update = pacman_.getCurrentCell();
-    std::vector<Object *> *objects_to_update = cell_to_update->getObjectsAdr();
-    for (int i = 0; i < objects_to_update->size(); ++i)
+    std::vector<Object *> objects_to_update = cell_to_update->getObjects();
+    for (int i = 0; i < objects_to_update.size(); ++i)
     {
-        Object *eatable = objects_to_update->at(i);
+        Object *eatable = objects_to_update[i];
         ObjectType object_type = eatable->getType();
         if (object_type == GOMME) // switch
         {
             LOG(DEBUG) << "EATING A GOMME!!";
-            objects_to_update->erase(objects_to_update->begin() + i);
+            LOG(DEBUG) << "before: " << cell_to_update->getNbObjects();
+            objects_to_update.erase(objects_to_update.begin() + i);
+            LOG(DEBUG) << "after: " << cell_to_update->getNbObjects();
             removeObject(GOMME, eatable);
             // ((Gomme *)eatable)->~Gomme(); // Useless ?
             break;
@@ -156,14 +158,14 @@ void Game::createCell(int i, int j, int type)
         board_[i][j] = Cell{i, j}; // Create empty cell
         break;
     case 1:
-        board_[i][j] = Cell{i, j};                                                          // Create empty cell
-        gommes_.emplace_back(j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_); // Create gomme
-        board_[i][j].addObject(&gommes_.back());                                            // Add gomme in the cell
+        board_[i][j] = Cell{i, j};                                                                 // Create empty cell
+        gommes_.emplace_back(GOMME, j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_); // Create gomme
+        board_[i][j].addObject(&gommes_.back());                                                   // Add gomme in the cell
         break;
     case 2:
-        board_[i][j] = Cell{i, j};                                                                            // Create empty cell
-        gommes_.emplace_back(j * CELL_SIZE + super_gomme_offset_, i * CELL_SIZE + super_gomme_offset_, true); // Create gomme
-        board_[i][j].addObject(&gommes_.back());                                                              // Add gomme in the cell
+        board_[i][j] = Cell{i, j};                                                                                   // Create empty cell
+        gommes_.emplace_back(SUPER_GOMME, j * CELL_SIZE + super_gomme_offset_, i * CELL_SIZE + super_gomme_offset_); // Create gomme
+        board_[i][j].addObject(&gommes_.back());                                                                     // Add gomme in the cell
         break;
     case 3:
         board_[i][j] = Cell{i, j, WALL}; // Create wall

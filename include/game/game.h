@@ -43,6 +43,11 @@ enum GameState
     END
 };
 
+/**
+ * \class Game
+ * \brief Represents a game of Pac-Man
+ *
+ */
 class Game
 {
 public:
@@ -85,17 +90,20 @@ public:
     void display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
 private:
-    int life_remaining_ = 3;                   //!< Life remaining
-    int game_score_ = 0;                       //!< Score
-    GameState state_ = NORMAL;                 //!< Game state
+    // State ==================================================================
+    int life_remaining_ = 3;   //!< Life remaining
+    int game_score_ = 0;       //!< Score
+    GameState state_ = NORMAL; //!< Game state
+    // Objects ================================================================
     PacMan pacman_{CELL_SIZE, CELL_SIZE * 13}; //!< Pac-Man!!
     // std::vector<Ghost> ghosts_ = std::vector<Ghost>{Blinky{}, Clyde{}, Inky{}, Pinky{}};                //!< Ghosts
-    std::vector<Ghost> ghosts_;                                                                         //!< Ghosts
-    std::vector<Gomme> gommes_;                                                                         //!< Gommes
-    std::vector<Fruit> fruits_;                                                                         //!< Fruits
-    Board board_;                                                                                       //!< Board of cells
-    std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background
-    SDL_Rect maze_position_{0, 0, 0, 0};                                                                //!< Maze position on the window
+    std::vector<Ghost> ghosts_; //!< Ghosts
+    std::vector<Gomme> gommes_; //!< Gommes
+    std::vector<Fruit> fruits_; //!< Fruits
+    Board board_;               //!< Board of cells
+    // Parameters =============================================================
+    const std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background
+    const SDL_Rect maze_position_{0, 0, 0, 0};                                                                //!< Maze position on the window
     static constexpr int gomme_offset_ = (CELL_SIZE - GOMME_SIZE) / 2;
     static constexpr int super_gomme_offset_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
 

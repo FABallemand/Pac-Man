@@ -8,7 +8,7 @@ class Game; // Forward declaration
 class Gomme : public Eatable
 {
 public:
-    Gomme(int x, int y, bool super_gomme = false) : Eatable{GOMME, x, y, super_gomme ? SUPER_GOMME_SIZE : GOMME_SIZE, super_gomme ? SUPER_GOMME_SIZE : GOMME_SIZE, super_gomme ? SUPER_GOMME_SCORE : GOMME_SCORE, super_gomme ? &sprite_super_gomme_ : &sprite_gomme_}
+    Gomme(ObjectType type, int x, int y) : Eatable{type, x, y, type == SUPER_GOMME ? SUPER_GOMME_SIZE : GOMME_SIZE, type == SUPER_GOMME ? SUPER_GOMME_SIZE : GOMME_SIZE, type == SUPER_GOMME ? SUPER_GOMME_SCORE : GOMME_SCORE, type == SUPER_GOMME ? &sprite_super_gomme_ : &sprite_gomme_}
     {
     }
 

@@ -9,6 +9,11 @@
 #include "const.h"
 #include "game.h"
 
+/**
+ * \class Application
+ * \brief Represents the application that will run the game
+ *
+ */
 class Application
 {
 public:

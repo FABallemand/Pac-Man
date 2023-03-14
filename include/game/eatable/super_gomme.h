@@ -6,9 +6,8 @@
 class SuperGomme : public Gomme
 {
 public:
-    SuperGomme(int x, int y) : Gomme(x, y, true)
+    SuperGomme(int x, int y) : Gomme(SUPER_GOMME, x, y)
     {
-        object_type_ = SUPER_GOMME;
     }
 
     void effect(Game &game);
