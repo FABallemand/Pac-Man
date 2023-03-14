@@ -6,7 +6,7 @@
 #include <memory> // Maybe useless
 
 #include "const.h"
-#include "display_utils.h"
+#include "logger.h"
 #include "object.h"
 
 // Moveable

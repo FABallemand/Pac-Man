@@ -8,7 +8,7 @@
 #include <array>
 
 #include "const.h"
-#include "display_utils.h"
+#include "logger.h"
 #include "timer.h"
 
 // Cell

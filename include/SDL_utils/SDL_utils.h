@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <iostream>
 
-#include "display_utils.h"
+#include "logger.h"
 
 /**
  * \brief Initialise SDL

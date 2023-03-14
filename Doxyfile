@@ -886,7 +886,7 @@ INPUT                  = ../src/ \
 #                         src/game/eatable/fruit.cpp \
 #                         include/SDL_utils/SDL_utils.h \
 #                         include/SDL_utils/timer.h \
-#                         include/utils/display_utils.h \
+#                         include/utils/logger.h \
 #                         include/game/game.h \
 #                         include/game/cell.h \
 #                         include/game/object.h \

@@ -15,8 +15,6 @@ void PacMan::eat(Object *eatable)
 
 void PacMan::update(const Uint8 *key_state, const float delta_t)
 {
-    LOG(DEBUG) << "PacMan::update";
-
     if (state_ == ALIVE)
     {
         // Remember delta_t
@@ -247,8 +245,8 @@ void PacMan::fixDimensions()
 
 void PacMan::move()
 {
-    LOG(DEBUG) << "delta_t_ = " << delta_t_;
-    LOG(DEBUG) << "PACMAN_SPEED * delta_t_ = " << PACMAN_SPEED * delta_t_;
+    // LOG(DEBUG) << "delta_t_ = " << delta_t_;
+    // LOG(DEBUG) << "PACMAN_SPEED * delta_t_ = " << PACMAN_SPEED * delta_t_;
     allowed_to_move_ = false;
     switch (action_direction_)
     {

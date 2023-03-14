@@ -25,6 +25,8 @@ target_sources(${PROJECT_NAME}
                # SDL
                src/SDL_utils/SDL_utils.cpp
                # Utils
+               # Application
+               src/app/application.cpp
                # Game
                src/game/game.cpp
                src/game/cell.cpp
@@ -48,6 +50,7 @@ target_include_directories(${PROJECT_NAME}
                            include
                            include/SDL_utils
                            include/utils
+                           include/app
                            include/game
                            include/game/moveable
                            include/game/moveable/ghosts

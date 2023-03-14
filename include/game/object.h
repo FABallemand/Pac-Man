@@ -4,7 +4,7 @@
 #include <SDL.h>
 
 #include "const.h"
-#include "display_utils.h"
+#include "logger.h"
 
 /**
  * \enum ObjectType

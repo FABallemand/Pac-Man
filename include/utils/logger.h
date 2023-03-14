@@ -1,27 +1,14 @@
-#ifndef _DISPLAY_UTILS_H__
-#define _DISPLAY_UTILS_H__
-
-/**
- * \remark Inspired by: https://stackoverflow.com/questions/5028302/small-logger-class
- */
+#ifndef _LOGGER_H__
+#define _LOGGER_H__
 
 #include <iostream>
 
-#define BLACK "\033[0;30m" // BLACK
-#define RED "\033[0;31m"   // RED
-// #define ORANGE "\033[0;33m"  // ORANGE (conflict with fruit.h)
 #define BORANGE "\033[1;33m" // ORANGE BOLD
 #define BRED "\033[1;31m"    // RED BOLD
 #define BGREEN "\033[1;32m"  // GREEN BOLD
-#define GREEN "\033[0;32m"   // GREEN
-#define YELLOW "\033[0;33m"  // YELLOW
-#define BLUE "\033[0;34m"    // BLUE
 #define BBLUE "\033[1;34m"   // BLUE BOLD
-#define PURPLE "\033[0;35m"  // PURPLE
 #define BPURPLE "\033[1;35m" // PURPLE BOLD
-#define CYAN "\033[0;36m"    // CYAN
 #define BCYAN "\033[1;36m"   // CYAN BOLD
-#define WHITE "\033[0;37m"   // WHITE
 #define RESET "\e[0m"        // RESET
 
 /**
@@ -51,6 +38,7 @@ extern LogConf LOGGER_CONFIG;
 
 /**
  * \brief Logger class
+ * \remark Inspired by: https://stackoverflow.com/questions/5028302/small-logger-class
  *
  */
 class LOG
