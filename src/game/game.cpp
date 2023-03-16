@@ -77,9 +77,9 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
 
     Cell *cell_to_update = pacman_.getCurrentCell();
     Eatable *eatable = cell_to_update->getEatable();
-    if (eatable && eatable->getType() == GOMME)
+    if (eatable)
     {
-        eatObject(GOMME, eatable);
+        eatObject(eatable);
         cell_to_update->setEatable(nullptr);
     }
 
@@ -111,7 +111,10 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     }
     for (SuperGomme sg : super_gommes_) // Super-Gommes
     {
-        sg.display(sprite, window_surface);
+        if (sg.getState() != EATEN)
+        {
+            sg.display(sprite, window_surface);
+        }
     }
     // for (auto f : fruits_) // Fruits
     // {
@@ -140,15 +143,16 @@ void Game::createCell(int i, int j, int type)
         board_[i][j] = Cell{i, j}; // Create empty cell
         break;
     case 1:
-        board_[i][j] = Cell{i, j}; // Create empty cell
-        gommes_[Gomme::nb_gommes_].fillGomme(i, j);
-        board_[i][j].setEatable(&(gommes_[Gomme::nb_gommes_]));
-        LOG(DEBUG) << "# gommes_ # i, j, type : " << gommes_[Gomme::nb_gommes_].getY() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getX() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getType();
-        LOG(DEBUG) << "# board_[i][j] # i, j, type : " << board_[i][j].getEatable()->getY() / CELL_SIZE << "," << board_[i][j].getEatable()->getX() / CELL_SIZE << "," << board_[i][j].getEatable()->getType();
+        gommes_[Gomme::nb_gommes_].fillGomme(i, j);               // Create Gomme
+        board_[i][j] = Cell{i, j, &(gommes_[Gomme::nb_gommes_])}; // Create empty Cell with Gomme inside
+        // LOG(DEBUG) << "# gommes_ # i, j, type : " << gommes_[Gomme::nb_gommes_].getY() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getX() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getType();
+        // LOG(DEBUG) << "# board_[i][j] # i, j, type : " << board_[i][j].getEatable()->getY() / CELL_SIZE << "," << board_[i][j].getEatable()->getX() / CELL_SIZE << "," << board_[i][j].getEatable()->getType();
         ++Gomme::nb_gommes_;
         break;
     case 2:
-        board_[i][j] = Cell{i, j}; // Create empty cell
+        super_gommes_[SuperGomme::nb_super_gommes_].fillSuperGomme(i, j);          // Create SuperGomme
+        board_[i][j] = Cell{i, j, &(super_gommes_[SuperGomme::nb_super_gommes_])}; // Create empty Cell with SuperGomme inside
+        ++SuperGomme::nb_super_gommes_;
         break;
     case 3:
         board_[i][j] = Cell{i, j, WALL}; // Create wall
@@ -230,19 +234,37 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
     return res;
 }
 
-void Game::eatObject(ObjectType object_type, Object *object)
+void Game::eatObject(Object *object)
 {
-    if (object_type == GOMME)
+    switch (object->getType())
     {
-        auto it = std::find(gommes_.begin(), gommes_.end(), *object);
+    case GOMME:
+    {
+        auto it = std::find(gommes_.begin(), gommes_.end(), *object); // TEMPLATE
         if (it != gommes_.end())
         {
-            LOG(DEBUG) << "eating gomme at: " << it->getY() / CELL_SIZE << "," << it->getX() / CELL_SIZE;
             it->setState(EATEN);
         }
         else
         {
             LOG(ERROR) << "Unable to find object";
         }
+    }
+    break;
+    case SUPER_GOMME:
+    {
+        auto it = std::find(super_gommes_.begin(), super_gommes_.end(), *object);
+        if (it != super_gommes_.end())
+        {
+            it->setState(EATEN);
+        }
+        else
+        {
+            LOG(ERROR) << "Unable to find object";
+        }
+    }
+    break;
+    default:
+        LOG(ERROR) << "PacMan cannot eat this type of object...beark";
     }
 }

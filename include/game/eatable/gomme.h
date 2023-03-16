@@ -35,7 +35,7 @@ private:
 public:
     static int nb_gommes_;
     static constexpr int gomme_offset_ = (CELL_SIZE - GOMME_SIZE) / 2;
-    static constexpr int super_gomme_offset_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
+    
 };
 
 #endif

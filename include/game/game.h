@@ -97,11 +97,11 @@ private:
     // Objects ================================================================
     PacMan pacman_{CELL_SIZE, CELL_SIZE * 13}; //!< Pac-Man!!
     // std::vector<Ghost> ghosts_ = std::vector<Ghost>{Blinky{}, Clyde{}, Inky{}, Pinky{}};                //!< Ghosts
-    std::vector<Ghost> ghosts_;            //!< Ghosts
-    std::array<Gomme, 188> gommes_;        //!< Gommes
-    std::vector<SuperGomme> super_gommes_; //!< Super-Gommes
-    std::vector<Fruit> fruits_;            //!< Fruits
-    Board board_;                          //!< Board of cells
+    std::vector<Ghost> ghosts_;              //!< Ghosts
+    std::array<Gomme, 188> gommes_;          //!< Gommes
+    std::array<SuperGomme, 4> super_gommes_; //!< Super-Gommes
+    std::vector<Fruit> fruits_;              //!< Fruits
+    Board board_;                            //!< Board of cells
     // Parameters =============================================================
     const std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background
     const SDL_Rect maze_position_{0, 0, 0, 0};                                                                //!< Maze position on the window
@@ -115,7 +115,7 @@ private:
 
     CellNeighborhood createNeighborhood(int i, int j);
 
-    void eatObject(ObjectType object_type, Object *object);
+    void eatObject(Object *object);
 };
 
 #endif
