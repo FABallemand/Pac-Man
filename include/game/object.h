@@ -13,10 +13,10 @@
  */
 enum ObjectType
 {
-    UNDEFINED,
-    PACMAN,
+    UNDEFINED = 0,
+    PACMAN = 1,
     GHOST,
-    GOMME,
+    GOMME = 3,
     SUPER_GOMME,
     FRUIT,
     CELL
@@ -38,11 +38,11 @@ protected:
     {
     }
 
+public:
     virtual ~Object()
     {
     }
 
-public:
     int getX() const
     {
         return position_.x;
@@ -63,7 +63,12 @@ public:
         return position_.h;
     }
 
-    ObjectType getType()
+    bool operator==(Object o) const
+    {
+        return object_type_ == o.object_type_ && position_.x == o.position_.x && position_.y == o.position_.y;
+    }
+
+    ObjectType getType() const
     {
         return object_type_;
     }

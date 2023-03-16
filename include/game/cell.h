@@ -83,7 +83,7 @@ public:
      */
     void addObject(Object *object)
     {
-        objects_.push_back(object);
+        objects_.emplace_back(object);
     }
 
     /**
@@ -122,6 +122,8 @@ public:
 private:
     CellType cell_type_;            //!< Type of the cell
     std::vector<Object *> objects_; //!< Objects currently in the cell (change type for moveable??)
+public:
+    Eatable *eatable = nullptr; // Test
 };
 
 #endif
