@@ -34,8 +34,18 @@ protected:
     {
     }
 
-    Object(ObjectType type, int x, int y, int w, int h, SDL_Rect *current_sprite = nullptr) : object_type_{type}, position_{x, y, w, h}, current_sprite_{current_sprite}
+    Object(ObjectType object_type, int x, int y, int w, int h, SDL_Rect *current_sprite = nullptr) : object_type_{object_type}, position_{x, y, w, h}, current_sprite_{current_sprite}
     {
+    }
+
+    void fillObject(ObjectType object_type, int x, int y, int w, int h, SDL_Rect *sprite)
+    {
+        object_type_ = object_type;
+        position_.x = x;
+        position_.y = y;
+        position_.w = w;
+        position_.h = h;
+        current_sprite_ = sprite;
     }
 
 public:

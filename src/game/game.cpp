@@ -72,37 +72,15 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     // Update PacMan neighborhood
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
     {
-        pacman_.getNeighborhood()[1][1]->deletePacMan(&pacman_);
-        board_[(pacman_.getY() + CELL_SIZE / 2) / CELL_SIZE][(pacman_.getX() + CELL_SIZE / 2) / CELL_SIZE].addObject(&pacman_);
         pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + CELL_SIZE / 2) / CELL_SIZE, (pacman_.getX() + CELL_SIZE / 2) / CELL_SIZE));
     }
 
-    // Update board (only need to update the cell where PacMan is located...)
-    // Cell *cell_to_update = pacman_.getCurrentCell();
-    // std::vector<Object *> &objects_to_update = cell_to_update->getObjects();
-    // // LOG(DEBUG) << "beforebefore: " << cell_to_update->getNbObjects();
-    // for (int i = 0; i < objects_to_update.size(); ++i)
-    // {
-    //     Object *eatable = objects_to_update[i];
-    //     ObjectType object_type = eatable->getType();
-    //     LOG(DEBUG) << "type: " << object_type;
-    //     if (object_type == GOMME) // switch
-    //     {
-    //         // LOG(DEBUG) << "EATING A GOMME!!";
-    //         // LOG(DEBUG) << "before: " << cell_to_update->getNbObjects();
-    //         objects_to_update.erase(objects_to_update.begin() + i);
-    //         // LOG(DEBUG) << "after: " << cell_to_update->getNbObjects();
-    //         removeObject(GOMME, eatable);
-    //         // ((Gomme *)eatable)->~Gomme(); // Useless ?
-    //     }
-    // }
-
     Cell *cell_to_update = pacman_.getCurrentCell();
-    Eatable *eatable = cell_to_update->eatable;
+    Eatable *eatable = cell_to_update->getEatable();
     if (eatable && eatable->getType() == GOMME)
     {
-        removeObject(GOMME, eatable);
-        cell_to_update->eatable = nullptr;
+        eatObject(GOMME, eatable);
+        cell_to_update->setEatable(nullptr);
     }
 
     // Check for end of the game
@@ -126,8 +104,10 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Eatable
     for (Gomme g : gommes_) // Gommes
     {
-        if (!g.getEaten())
+        if (g.getState() != EATEN)
+        {
             g.display(sprite, window_surface);
+        }
     }
     for (SuperGomme sg : super_gommes_) // Super-Gommes
     {
@@ -161,17 +141,14 @@ void Game::createCell(int i, int j, int type)
         break;
     case 1:
         board_[i][j] = Cell{i, j}; // Create empty cell
-        // gommes_[Gomme::nb_gommes_] = Gomme{j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_}; // Create gomme
-        // gommes_[++Gomme::nb_gommes_].setX();
-        board_[i][j].addObject(&(gommes_[Gomme::nb_gommes_ - 1])); // Add gomme in the cell
-        board_[i][j].eatable = &(gommes_[Gomme::nb_gommes_ - 1]);
-        LOG(DEBUG) << "i, j, type :" << gommes_[Gomme::nb_gommes_ - 1].getY() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_ - 1].getX() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_ - 1].getType();
-        LOG(DEBUG) << "i, j, type :" << board_[i][j].eatable->getY() / CELL_SIZE << "," << board_[i][j].eatable->getX() / CELL_SIZE << "," << board_[i][j].eatable->getType();
+        gommes_[Gomme::nb_gommes_].fillGomme(i, j);
+        board_[i][j].setEatable(&(gommes_[Gomme::nb_gommes_]));
+        LOG(DEBUG) << "# gommes_ # i, j, type : " << gommes_[Gomme::nb_gommes_].getY() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getX() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getType();
+        LOG(DEBUG) << "# board_[i][j] # i, j, type : " << board_[i][j].getEatable()->getY() / CELL_SIZE << "," << board_[i][j].getEatable()->getX() / CELL_SIZE << "," << board_[i][j].getEatable()->getType();
+        ++Gomme::nb_gommes_;
         break;
     case 2:
-        board_[i][j] = Cell{i, j};                                                                            // Create empty cell
-        super_gommes_.emplace_back(j * CELL_SIZE + super_gomme_offset_, i * CELL_SIZE + super_gomme_offset_); // Create gomme
-        board_[i][j].addObject(&super_gommes_.back());                                                        // Add gomme in the cell
+        board_[i][j] = Cell{i, j}; // Create empty cell
         break;
     case 3:
         board_[i][j] = Cell{i, j, WALL}; // Create wall
@@ -181,7 +158,6 @@ void Game::createCell(int i, int j, int type)
         break;
     case 5:
         board_[i][j] = Cell{i, j};                         // Create empty cell
-        board_[i][j].addObject(&pacman_);                  // Add pacman in the cell
         pacman_.setNeighborhood(createNeighborhood(i, j)); // Tell pacman where he is
         break;
     default:
@@ -223,18 +199,22 @@ void Game::loadMaze()
     // Close file
     level.close();
 
+    LOG(DEBUG) << "==== In loading maze ====";
+    LOG(DEBUG) << "# gommes_ #";
     for (Gomme g : gommes_)
     {
-        LOG(DEBUG) << "i, j, type :" << g.getY() / CELL_SIZE << "," << g.getX() / CELL_SIZE << "," << g.getType();
+        LOG(DEBUG) << "i, j, type : " << g.getY() / CELL_SIZE << "," << g.getX() / CELL_SIZE << "," << g.getType();
     }
+    LOG(DEBUG) << "# board_ #";
     for (auto row : board_)
     {
         for (Cell c : row)
         {
-            if (c.eatable)
-                LOG(DEBUG) << "i, j, type :" << c.eatable->getY() / CELL_SIZE << "," << c.eatable->getX() / CELL_SIZE << "," << c.eatable->getType();
+            if (c.getEatable())
+                LOG(DEBUG) << "i, j, type : " << c.getEatable()->getY() / CELL_SIZE << "," << c.getEatable()->getX() / CELL_SIZE << "," << c.getEatable()->getType();
         }
     }
+    LOG(DEBUG) << "=========================";
 }
 
 CellNeighborhood Game::createNeighborhood(int i, int j)
@@ -250,33 +230,19 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
     return res;
 }
 
-void Game::removeObject(ObjectType object_type, Object *object)
+void Game::eatObject(ObjectType object_type, Object *object)
 {
     if (object_type == GOMME)
     {
-        LOG(DEBUG) << "REMOVING A GOMME";
-        // for (int i = 0; i < gommes_.size(); ++i)
-        // {
-        //     if (&(gommes_[i]) == object)
-        //     {
-        //         LOG(DEBUG) << "gommes_.size() = " << gommes_.size();
-        //         gommes_.erase(gommes_.begin() + i);
-        //         LOG(DEBUG) << "gommes_.size() = " << gommes_.size();
-        //     }
-        // }
-
         auto it = std::find(gommes_.begin(), gommes_.end(), *object);
-        // LOG(DEBUG) << "i, j = " << object->getX() / CELL_SIZE << "," << object->getY() / CELL_SIZE;
         if (it != gommes_.end())
         {
-            // LOG(DEBUG) << "before1: " << gommes_.size();
-            // gommes_.erase(it);
-            it->eaten();
-            // LOG(DEBUG) << "after1: " << gommes_.size();
+            LOG(DEBUG) << "eating gomme at: " << it->getY() / CELL_SIZE << "," << it->getX() / CELL_SIZE;
+            it->setState(EATEN);
         }
         else
         {
-            LOG(ERROR) << "object not found";
+            LOG(ERROR) << "Unable to find object";
         }
     }
 }

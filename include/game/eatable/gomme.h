@@ -8,7 +8,9 @@ class Game; // Forward declaration
 class Gomme : public Eatable
 {
 public:
-    Gomme() : Eatable{} {}
+    Gomme() : Eatable{}
+    {
+    }
 
     Gomme(int x, int y) : Eatable{GOMME, x, y, GOMME_SIZE, GOMME_SIZE, GOMME_SCORE, &sprite_gomme_}
     {
@@ -20,29 +22,20 @@ public:
         --nb_gommes_;
     }
 
-    int getNbGommes() const
+    void fillGomme(int i, int j)
     {
-        return nb_gommes_;
-    }
-
-    bool getEaten()
-    {
-        return eaten_;
-    }
-
-    void eaten()
-    {
-        eaten_ = true;
+        fillEatable(GOMME, j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_, GOMME_SIZE, GOMME_SIZE, GOMME_SCORE, &sprite_gomme_);
     }
 
     void effect(Game &game);
 
 private:
     static SDL_Rect sprite_gomme_;
-    bool eaten_ = false;
 
 public:
     static int nb_gommes_;
+    static constexpr int gomme_offset_ = (CELL_SIZE - GOMME_SIZE) / 2;
+    static constexpr int super_gomme_offset_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
 };
 
 #endif
