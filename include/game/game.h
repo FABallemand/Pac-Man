@@ -98,7 +98,7 @@ private:
     PacMan pacman_{CELL_SIZE, CELL_SIZE * 13}; //!< Pac-Man!!
     // std::vector<Ghost> ghosts_ = std::vector<Ghost>{Blinky{}, Clyde{}, Inky{}, Pinky{}};                //!< Ghosts
     std::vector<Ghost> ghosts_;            //!< Ghosts
-    std::vector<Gomme> gommes_;            //!< Gommes
+    std::array<Gomme, 188> gommes_;        //!< Gommes
     std::vector<SuperGomme> super_gommes_; //!< Super-Gommes
     std::vector<Fruit> fruits_;            //!< Fruits
     Board board_;                          //!< Board of cells

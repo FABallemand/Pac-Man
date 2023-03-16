@@ -48,6 +48,11 @@ public:
         return position_.x;
     }
 
+    void setX()
+    {
+        position_.x = 66;
+    }
+
     int getY() const
     {
         return position_.y;

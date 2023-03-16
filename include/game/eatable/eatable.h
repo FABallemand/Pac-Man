@@ -8,6 +8,8 @@ class Game; // Forward declaration
 class Eatable : public Object
 {
 protected:
+    Eatable() : Object{} {}
+    
     Eatable(ObjectType type, int x, int y, int w, int h, int score, SDL_Rect *sprite) : Object{type, x, y, w, h, sprite}, score_{score}
     {
     }

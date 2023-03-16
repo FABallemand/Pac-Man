@@ -126,8 +126,8 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Eatable
     for (Gomme g : gommes_) // Gommes
     {
-        g.display(sprite, window_surface);
-        LOG(DEBUG) << "i, j, type :" << g.getY() / CELL_SIZE << "," << g.getX() / CELL_SIZE << "," << g.getType();
+        if (!g.getEaten())
+            g.display(sprite, window_surface);
     }
     for (SuperGomme sg : super_gommes_) // Super-Gommes
     {
@@ -160,10 +160,13 @@ void Game::createCell(int i, int j, int type)
         board_[i][j] = Cell{i, j}; // Create empty cell
         break;
     case 1:
-        board_[i][j] = Cell{i, j};                                                          // Create empty cell
-        gommes_.emplace_back(j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_); // Create gomme
-        board_[i][j].addObject(&(gommes_[gommes_.size() - 1]));                             // Add gomme in the cell
-        board_[i][j].eatable = &(gommes_[gommes_.size() - 1]);
+        board_[i][j] = Cell{i, j}; // Create empty cell
+        // gommes_[Gomme::nb_gommes_] = Gomme{j * CELL_SIZE + gomme_offset_, i * CELL_SIZE + gomme_offset_}; // Create gomme
+        // gommes_[++Gomme::nb_gommes_].setX();
+        board_[i][j].addObject(&(gommes_[Gomme::nb_gommes_ - 1])); // Add gomme in the cell
+        board_[i][j].eatable = &(gommes_[Gomme::nb_gommes_ - 1]);
+        LOG(DEBUG) << "i, j, type :" << gommes_[Gomme::nb_gommes_ - 1].getY() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_ - 1].getX() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_ - 1].getType();
+        LOG(DEBUG) << "i, j, type :" << board_[i][j].eatable->getY() / CELL_SIZE << "," << board_[i][j].eatable->getX() / CELL_SIZE << "," << board_[i][j].eatable->getType();
         break;
     case 2:
         board_[i][j] = Cell{i, j};                                                                            // Create empty cell
@@ -190,7 +193,7 @@ void Game::createCell(int i, int j, int type)
 void Game::loadMaze()
 {
     // Open file
-    std::ifstream level{"../assets/level/test.lvl", std::ios::in};
+    std::ifstream level{"../assets/level/maze.lvl", std::ios::in};
 
     if (level.is_open())
     {
@@ -223,6 +226,14 @@ void Game::loadMaze()
     for (Gomme g : gommes_)
     {
         LOG(DEBUG) << "i, j, type :" << g.getY() / CELL_SIZE << "," << g.getX() / CELL_SIZE << "," << g.getType();
+    }
+    for (auto row : board_)
+    {
+        for (Cell c : row)
+        {
+            if (c.eatable)
+                LOG(DEBUG) << "i, j, type :" << c.eatable->getY() / CELL_SIZE << "," << c.eatable->getX() / CELL_SIZE << "," << c.eatable->getType();
+        }
     }
 }
 
@@ -259,7 +270,8 @@ void Game::removeObject(ObjectType object_type, Object *object)
         if (it != gommes_.end())
         {
             // LOG(DEBUG) << "before1: " << gommes_.size();
-            gommes_.erase(it);
+            // gommes_.erase(it);
+            it->eaten();
             // LOG(DEBUG) << "after1: " << gommes_.size();
         }
         else
