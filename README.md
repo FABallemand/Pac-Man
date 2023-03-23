@@ -40,3 +40,6 @@ Simply launch the executable and enjoy!
 ## Team
 - ALLEMAND Fabien
 - LEBOT Samuel
+
+TODO:
+- class scene (template?)

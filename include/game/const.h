@@ -4,10 +4,24 @@
 #define FRAME_DELAY 16 //!< Delay between each frame
 
 // Game =======================================================================
-#define NB_ROWS 27    //!< Number of rows
-#define NB_COLUMNS 21 //!< Number of columns
-#define MAZE_W 166    //!< Maze width
-#define MAZE_H 216    //!< Maze height
+/**
+ * \brief Constant related to the game
+ *
+ */
+namespace game
+{
+    constexpr int nb_rows = 27;    //!< Number of rows
+    constexpr int nb_columns = 21; //!< Number of columns
+    constexpr int maze_w = 166;    //!< Maze width
+    constexpr int maze_h = 216;    //!< Maze height
+}
+
+// game::nb_rows
+
+// #define NB_ROWS 27    //!< Number of rows
+// #define NB_COLUMNS 21 //!< Number of columns
+// #define MAZE_W 166    //!< Maze width
+// #define MAZE_H 216    //!< Maze height
 
 // Objects ====================================================================
 

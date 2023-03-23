@@ -88,7 +88,7 @@ public:
 protected:
     MoveableState state_ = ALIVE;   //!< State of the object
     Direction direction_ = NONE;    //!< Direction of the object
-    float delta_t_;                 //!< Elapsed time since last update
+    float delta_t_ = 0.0;           //!< Elapsed time since last update
     int frame_count_ = 0;           //!< Frame count
     int sprite_count_ = 0;          //!< Sprite count (for animation)
     MovingSprites moving_sprites_;  //!< Sprites location

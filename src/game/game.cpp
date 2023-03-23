@@ -12,8 +12,8 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
     timer.start();
 
     // Physics
-    float previous_time = 0;
-    float current_time = 0;
+    float previous_time = 0.f;
+    float current_time = 0.f;
 
     // FPS
     int counted_frames = 0;
@@ -50,7 +50,7 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         {
             avgFPS = 0;
         }
-        // LOG(INFO) << "FPS: " << avgFPS; // to change
+        LOG(INFO) << "FPS: " << avgFPS; // to change
 
         // Update game
         previous_time = current_time;
