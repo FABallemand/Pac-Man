@@ -10,7 +10,7 @@ public:
     {
     }
 
-    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, SUPER_GOMME_SIZE, SUPER_GOMME_SIZE, SUPER_GOMME_SCORE, &sprite_super_gomme_}
+    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::score, &sprite_super_gomme_}
     {
     }
 
@@ -20,7 +20,7 @@ public:
 
     void fillSuperGomme(int i, int j)
     {
-        fillEatable(SUPER_GOMME, j * CELL_SIZE + super_gomme_offset_, i * CELL_SIZE + super_gomme_offset_, GOMME_SIZE, GOMME_SIZE, GOMME_SCORE, &sprite_super_gomme_);
+        fillEatable(SUPER_GOMME, j * gconst::object::cell::size + super_gomme_offset_, i * gconst::object::cell::size + super_gomme_offset_, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::score, &sprite_super_gomme_);
     }
 
     void effect(Game &game);
@@ -30,7 +30,7 @@ protected:
 
 public:
     static int nb_super_gommes_;
-    static constexpr int super_gomme_offset_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2;
+    static constexpr int super_gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::super_gomme::size) / 2;
 };
 
 #endif

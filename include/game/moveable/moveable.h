@@ -7,7 +7,7 @@
 
 class Cell; // Forward declaration
 
-using CellNeighborhood = std::array<std::array<Cell *, NEIGHBORHOOD_SIZE>, NEIGHBORHOOD_SIZE>;
+using CellNeighborhood = std::array<std::array<Cell *, gconst::object::moveable::neighborhood_size>, gconst::object::moveable::neighborhood_size>;
 
 /**
  * \enum MoveableState
@@ -22,7 +22,7 @@ enum MoveableState
     VULNERABLE
 };
 
-using MovingSprites = std::array<std::array<SDL_Rect, NB_MOVING_SPRITES>, NB_DIRECTION>;
+using MovingSprites = std::array<std::array<SDL_Rect, gconst::object::moveable::pacman::nb_moving_sprites>, gconst::object::moveable::nb_directions>;
 
 /**
  * \enum Direction

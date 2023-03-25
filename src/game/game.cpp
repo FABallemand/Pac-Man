@@ -72,7 +72,7 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     // Update PacMan neighborhood
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
     {
-        pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + CELL_SIZE / 2) / CELL_SIZE, (pacman_.getX() + CELL_SIZE / 2) / CELL_SIZE));
+        pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + gconst::object::cell::size / 2) / gconst::object::cell::size, (pacman_.getX() + gconst::object::cell::size / 2) / gconst::object::cell::size));
     }
 
     Cell *cell_to_update = pacman_.getCurrentCell();
@@ -145,8 +145,8 @@ void Game::createCell(int i, int j, int type)
     case 1:
         gommes_[Gomme::nb_gommes_].fillGomme(i, j);               // Create Gomme
         board_[i][j] = Cell{i, j, &(gommes_[Gomme::nb_gommes_])}; // Create empty Cell with Gomme inside
-        // LOG(DEBUG) << "# gommes_ # i, j, type : " << gommes_[Gomme::nb_gommes_].getY() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getX() / CELL_SIZE << "," << gommes_[Gomme::nb_gommes_].getType();
-        // LOG(DEBUG) << "# board_[i][j] # i, j, type : " << board_[i][j].getEatable()->getY() / CELL_SIZE << "," << board_[i][j].getEatable()->getX() / CELL_SIZE << "," << board_[i][j].getEatable()->getType();
+        // LOG(DEBUG) << "# gommes_ # i, j, type : " << gommes_[Gomme::nb_gommes_].getY() / gconst::object::cell::size << "," << gommes_[Gomme::nb_gommes_].getX() / gconst::object::cell::size << "," << gommes_[Gomme::nb_gommes_].getType();
+        // LOG(DEBUG) << "# board_[i][j] # i, j, type : " << board_[i][j].getEatable()->getY() / gconst::object::cell::size << "," << board_[i][j].getEatable()->getX() / gconst::object::cell::size << "," << board_[i][j].getEatable()->getType();
         ++Gomme::nb_gommes_;
         break;
     case 2:
@@ -207,7 +207,7 @@ void Game::loadMaze()
     LOG(DEBUG) << "# gommes_ #";
     for (Gomme g : gommes_)
     {
-        LOG(DEBUG) << "i, j, type : " << g.getY() / CELL_SIZE << "," << g.getX() / CELL_SIZE << "," << g.getType();
+        LOG(DEBUG) << "i, j, type : " << g.getY() / gconst::object::cell::size << "," << g.getX() / gconst::object::cell::size << "," << g.getType();
     }
     LOG(DEBUG) << "# board_ #";
     for (auto row : board_)
@@ -215,7 +215,7 @@ void Game::loadMaze()
         for (Cell c : row)
         {
             if (c.getEatable())
-                LOG(DEBUG) << "i, j, type : " << c.getEatable()->getY() / CELL_SIZE << "," << c.getEatable()->getX() / CELL_SIZE << "," << c.getEatable()->getType();
+                LOG(DEBUG) << "i, j, type : " << c.getEatable()->getY() / gconst::object::cell::size << "," << c.getEatable()->getX() / gconst::object::cell::size << "," << c.getEatable()->getType();
         }
     }
     LOG(DEBUG) << "=========================";
@@ -228,7 +228,7 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
     {
         for (int y = 0; y < 3; y++)
         {
-            res[x][y] = &board_[(i + x - 1) % NB_ROWS][(j + y - 1) % NB_COLUMNS];
+            res[x][y] = &board_[(i + x - 1) % gconst::game::nb_rows][(j + y - 1) % gconst::game::nb_columns];
         }
     }
     return res;

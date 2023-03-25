@@ -29,7 +29,7 @@
 #include "fruit.h"
 
 class Cell; // Forward declaration (why??)
-using Board = std::array<std::array<Cell, NB_COLUMNS>, NB_ROWS>;
+using Board = std::array<std::array<Cell, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
 /**
  * \enum GameState
@@ -95,7 +95,7 @@ private:
     int game_score_ = 0;       //!< Score
     GameState state_ = NORMAL; //!< Game state
     // Objects ================================================================
-    PacMan pacman_{CELL_SIZE, CELL_SIZE * 13}; //!< Pac-Man!!
+    PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
     // std::vector<Ghost> ghosts_ = std::vector<Ghost>{Blinky{}, Clyde{}, Inky{}, Pinky{}};                //!< Ghosts
     std::vector<Ghost> ghosts_;              //!< Ghosts
     std::array<Gomme, 188> gommes_;          //!< Gommes
@@ -103,11 +103,11 @@ private:
     std::vector<Fruit> fruits_;              //!< Fruits
     Board board_;                            //!< Board of cells
     // Parameters =============================================================
-    const std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, MAZE_W, MAZE_H}, SDL_Rect{538, 3, MAZE_W, MAZE_H}}; //!< Background
+    const std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
     const SDL_Rect maze_position_{0, 0, 0, 0};                                                                //!< Maze position on the window
 
-    static constexpr int gomme_offset_ = (CELL_SIZE - GOMME_SIZE) / 2;
-    static constexpr int super_gomme_offset_ = (CELL_SIZE - SUPER_GOMME_SIZE) / 2; // Declaration must be placed in gomme
+    static constexpr int gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::gomme::size) / 2;
+    static constexpr int super_gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::super_gomme::size) / 2; // Declaration must be placed in gomme
 
     void createCell(int i, int j, int type);
 

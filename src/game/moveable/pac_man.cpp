@@ -1,12 +1,12 @@
 #include "pac_man.h"
 #include "cell.h"
 
-PacMan::PacMan(int x, int y) : Moveable{PACMAN, x, y, PACMAN_W, PACMAN_H, &initial_sprite_}
+PacMan::PacMan(int x, int y) : Moveable{PACMAN, x, y, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, &initial_sprite_}
 {
-    moving_sprites_ = {{{SDL_Rect{47, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{63, 89, S2_PACMAN_W, S1_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Left
-                        {SDL_Rect{20, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{35, 89, S2_PACMAN_W, S1_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Right
-                        {SDL_Rect{75, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{92, 94, S1_PACMAN_W, S2_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}},     // Up
-                        {SDL_Rect{109, 89, S1_PACMAN_W, S1_PACMAN_H}, /*SDL_Rect{126, 94, S1_PACMAN_W, S2_PACMAN_H},*/ SDL_Rect{3, 89, S1_PACMAN_W, S1_PACMAN_H}}}}; // Down
+    moving_sprites_ = {{{SDL_Rect{47, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{63, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Left
+                        {SDL_Rect{20, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{35, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Right
+                        {SDL_Rect{75, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{92, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Up
+                        {SDL_Rect{109, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{126, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}}}}; // Down
 }
 
 void PacMan::eat(Object *eatable)
@@ -74,7 +74,7 @@ void PacMan::turnLeft()
             direction_ = LEFT;
             action_direction_ = LEFT;
         }
-        else if ((position_.y > neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[0][0]->isWall())
+        else if ((position_.y > neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[0][0]->isWall())
         {
             direction_ = LEFT;
             action_direction_ = UP_LEFT;
@@ -86,7 +86,7 @@ void PacMan::turnLeft()
             direction_ = LEFT;
             action_direction_ = LEFT;
         }
-        else if ((position_.y < neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[2][0]->isWall())
+        else if ((position_.y < neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[2][0]->isWall())
         {
             direction_ = LEFT;
             action_direction_ = DOWN_LEFT;
@@ -109,7 +109,7 @@ void PacMan::turnRight()
             direction_ = RIGHT;
             action_direction_ = RIGHT;
         }
-        else if ((position_.y > neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[0][2]->isWall())
+        else if ((position_.y > neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[0][2]->isWall())
         {
             direction_ = RIGHT;
             action_direction_ = UP_RIGHT;
@@ -121,7 +121,7 @@ void PacMan::turnRight()
             direction_ = RIGHT;
             action_direction_ = RIGHT;
         }
-        else if ((position_.y < neighborhood_[1][1]->getY() + CELL_SIZE / 3) && !neighborhood_[2][2]->isWall())
+        else if ((position_.y < neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[2][2]->isWall())
         {
             direction_ = RIGHT;
             action_direction_ = DOWN_RIGHT;
@@ -140,7 +140,7 @@ void PacMan::turnUp()
             direction_ = UP;
             action_direction_ = UP;
         }
-        else if ((position_.x < neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[0][0]->isWall())
+        else if ((position_.x < neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[0][0]->isWall())
         {
             direction_ = UP;
             action_direction_ = UP_LEFT;
@@ -152,7 +152,7 @@ void PacMan::turnUp()
             direction_ = UP;
             action_direction_ = UP;
         }
-        else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[0][2]->isWall()) // UP_RIGHT
+        else if ((position_.x > neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[0][2]->isWall()) // UP_RIGHT
         {
             direction_ = UP;
             action_direction_ = UP_RIGHT;
@@ -175,7 +175,7 @@ void PacMan::turnDown()
             direction_ = DOWN;
             action_direction_ = DOWN;
         }
-        else if ((position_.x < neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[2][0]->isWall())
+        else if ((position_.x < neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[2][0]->isWall())
         {
             direction_ = DOWN;
             action_direction_ = DOWN_LEFT;
@@ -187,7 +187,7 @@ void PacMan::turnDown()
             direction_ = DOWN;
             action_direction_ = DOWN;
         }
-        else if ((position_.x > neighborhood_[1][1]->getX() + CELL_SIZE / 3) && !neighborhood_[2][2]->isWall())
+        else if ((position_.x > neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[2][2]->isWall())
         {
             direction_ = DOWN;
             action_direction_ = DOWN_RIGHT;
@@ -231,34 +231,34 @@ void PacMan::turn()
 
 void PacMan::fixDimensions()
 {
-    if (position_.x >= WINDOW_W - PACMAN_W)
+    if (position_.x >= gconst::window::w - gconst::object::moveable::pacman::size)
     {
         position_.w = 0;
         position_.h = 0;
     }
     else
     {
-        position_.w = PACMAN_W;
-        position_.h = PACMAN_H;
+        position_.w = gconst::object::moveable::pacman::size;
+        position_.h = gconst::object::moveable::pacman::size;
     }
 }
 
 void PacMan::move()
 {
     // LOG(DEBUG) << "delta_t_ = " << delta_t_;
-    // LOG(DEBUG) << "PACMAN_SPEED * delta_t_ = " << PACMAN_SPEED * delta_t_;
+    // LOG(DEBUG) << "gconst::object::moveable::pacman::speed * delta_t_ = " << gconst::object::moveable::pacman::speed * delta_t_;
     allowed_to_move_ = false;
     switch (action_direction_)
     {
     case LEFT:
         if (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWall())
         {
-            position_.x -= round(PACMAN_SPEED * delta_t_);
+            position_.x -= round(gconst::object::moveable::pacman::speed * delta_t_);
             if (position_.x <= 0)
             {
-                position_.x = WINDOW_W - 1;
-                position_.w = PACMAN_W;
-                position_.h = PACMAN_H;
+                position_.x = gconst::window::w - 1;
+                position_.w = gconst::object::moveable::pacman::size;
+                position_.h = gconst::object::moveable::pacman::size;
             }
             fixDimensions();
             position_.y = neighborhood_[1][1]->getY();
@@ -268,12 +268,12 @@ void PacMan::move()
     case RIGHT:
         if (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWall())
         {
-            position_.x += round(PACMAN_SPEED * delta_t_);
-            if (position_.x >= WINDOW_W)
+            position_.x += round(gconst::object::moveable::pacman::speed * delta_t_);
+            if (position_.x >= gconst::window::w)
             {
                 position_.x = 0;
-                position_.w = PACMAN_W;
-                position_.h = PACMAN_H;
+                position_.w = gconst::object::moveable::pacman::size;
+                position_.h = gconst::object::moveable::pacman::size;
             }
             fixDimensions();
             position_.y = neighborhood_[1][1]->getY();
@@ -284,7 +284,7 @@ void PacMan::move()
         if (position_.y > neighborhood_[1][1]->getY() || !neighborhood_[0][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y -= round(PACMAN_SPEED * delta_t_);
+            position_.y -= round(gconst::object::moveable::pacman::speed * delta_t_);
             allowed_to_move_ = true;
         }
         break;
@@ -292,7 +292,7 @@ void PacMan::move()
         if (position_.y < neighborhood_[1][1]->getY() || !neighborhood_[2][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y += round(PACMAN_SPEED * delta_t_);
+            position_.y += round(gconst::object::moveable::pacman::speed * delta_t_);
             allowed_to_move_ = true;
         }
         break;
@@ -354,7 +354,7 @@ void PacMan::updateSprite()
     switch (state_)
     {
     case DYING:
-        if (sprite_count_ < NB_DYING_SPRITES)
+        if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
         {
             current_sprite_ = &(dying_sprites_[sprite_count_++]);
         }
@@ -371,10 +371,10 @@ void PacMan::updateSprite()
             {
                 sprite_count_ = 0; // PacMan is stuck against the wall with his mouth open
             }
-            else if (++frame_count_ == NB_SPRITE_FRAME)
+            else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
             {
                 frame_count_ = 0;
-                sprite_count_ = (++sprite_count_) % NB_MOVING_SPRITES;
+                sprite_count_ = (++sprite_count_) % gconst::object::moveable::pacman::nb_moving_sprites;
             }
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
         }

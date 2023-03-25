@@ -34,15 +34,15 @@ class Cell : public Object
 public:
     Cell() {} // Used by Board type
 
-    Cell(int i, int j) : Object{CELL, j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE}
+    Cell(int i, int j) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}
     {
     }
 
-    Cell(int i, int j, Eatable *eatable) : Object{CELL, j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE}, eatable_{eatable}
+    Cell(int i, int j, Eatable *eatable) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}, eatable_{eatable}
     {
     }
 
-    Cell(int i, int j, CellType type) : Object{CELL, j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE}, cell_type_{type}
+    Cell(int i, int j, CellType type) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}, cell_type_{type}
     {
     }
 
