@@ -29,6 +29,8 @@ protected:
 
     void move();
 
+    void handleMovement() override;
+
     void updateSprite() override;
 };
 

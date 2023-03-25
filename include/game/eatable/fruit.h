@@ -20,10 +20,14 @@ enum FruitType
 class Fruit : public Eatable
 {
 public:
-    void effect(Game &game);
+    Fruit(int x, int y, FruitType fruit_type) : Eatable{FRUIT, x, y, gconst::object::eatable::fruit::size, gconst::object::eatable::fruit::size, gconst::object::eatable::fruit::score, nullptr, [](int score) -> int
+                                                        { return score + gconst::object::eatable::fruit::score; }},
+                                                fruit_type_{fruit_type}
+    {
+    }
 
 private:
-    FruitType type_; //!< Fruit type
+    FruitType fruit_type_; //!< Fruit type
 };
 
 #endif

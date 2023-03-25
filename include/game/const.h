@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * \namespace gconst
+ * \brief Contains all global constants
+ *
+ */
 namespace gconst
 {
     namespace window
@@ -10,10 +15,13 @@ namespace gconst
 
     namespace game
     {
-        constexpr int nb_rows = 27;    //!< Number of rows
-        constexpr int nb_columns = 21; //!< Number of columns
-        constexpr int maze_w = 166;    //!< Maze width
-        constexpr int maze_h = 216;    //!< Maze height
+        constexpr int nb_rows = 27;        //!< Number of rows
+        constexpr int nb_columns = 21;     //!< Number of columns
+        constexpr int maze_w = 166;        //!< Maze width
+        constexpr int maze_h = 216;        //!< Maze height
+        constexpr int nb_gommes = 188;     //!< Number of Gommes
+        constexpr int nb_super_gommes = 4; //!< Number of Super-Gommes
+        constexpr int nb_ghosts = 4;       //!< Number of Ghosts
     }
 
     namespace object
@@ -64,7 +72,9 @@ namespace gconst
 
             namespace fruit
             {
-                constexpr int score = 3; //!< Fruit score
+                constexpr int size_s = 0; //!< Fruit size (on sprite)
+                constexpr int size = 0;   //!< Fruit size
+                constexpr int score = 3;  //!< Fruit score
             }
         }
     }

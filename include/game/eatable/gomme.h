@@ -12,7 +12,8 @@ public:
     {
     }
 
-    Gomme(int x, int y) : Eatable{GOMME, x, y, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::score, &sprite_gomme_}
+    Gomme(int x, int y) : Eatable{GOMME, x, y, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::score, &sprite_gomme_, [](int score) -> int
+                                  { return score + gconst::object::eatable::gomme::score; }}
     {
         ++nb_gommes_;
     }
@@ -24,10 +25,9 @@ public:
 
     void fillGomme(int i, int j)
     {
-        fillEatable(GOMME, j * gconst::object::cell::size + gomme_offset_, i * gconst::object::cell::size + gomme_offset_, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::score, &sprite_gomme_);
+        fillEatable(GOMME, j * gconst::object::cell::size + gomme_offset_, i * gconst::object::cell::size + gomme_offset_, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::score, &sprite_gomme_, [](int score) -> int
+                    { return score + gconst::object::eatable::gomme::score; });
     }
-
-    void effect(Game &game);
 
 private:
     static SDL_Rect sprite_gomme_;
@@ -35,7 +35,6 @@ private:
 public:
     static int nb_gommes_;
     static constexpr int gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::gomme::size) / 2;
-    
 };
 
 #endif

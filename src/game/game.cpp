@@ -3,6 +3,11 @@
 Game::Game()
 {
     loadMaze();
+
+    ghosts_.push_back((Ghost *)&blinky_);
+    ghosts_.push_back((Ghost *)&clyde_);
+    ghosts_.push_back((Ghost *)&inky_);
+    ghosts_.push_back((Ghost *)&pinky_);
 }
 
 void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite)
@@ -50,7 +55,7 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         {
             avgFPS = 0;
         }
-        LOG(INFO) << "FPS: " << avgFPS; // to change
+        // LOG(INFO) << "FPS: " << avgFPS;
 
         // Update game
         previous_time = current_time;
@@ -243,6 +248,8 @@ void Game::eatObject(Object *object)
         auto it = std::find(gommes_.begin(), gommes_.end(), *object); // TEMPLATE
         if (it != gommes_.end())
         {
+            updateScore(it->getEffect());
+            LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATEN);
         }
         else
@@ -256,6 +263,8 @@ void Game::eatObject(Object *object)
         auto it = std::find(super_gommes_.begin(), super_gommes_.end(), *object);
         if (it != super_gommes_.end())
         {
+            updateScore(it->getEffect());
+            LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATEN);
         }
         else

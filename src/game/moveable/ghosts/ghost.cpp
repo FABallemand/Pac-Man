@@ -12,6 +12,10 @@ void Ghost::move()
 {
 }
 
+void Ghost::handleMovement()
+{
+}
+
 void Ghost::updateSprite()
 {
 }
