@@ -7,8 +7,6 @@ class Inky : public Ghost
 {
 public:
     Inky();
-
-    void strategy();
 };
 
 #endif

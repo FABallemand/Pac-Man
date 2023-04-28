@@ -7,8 +7,6 @@ class Pinky : public Ghost
 {
 public:
     Pinky();
-
-    void strategy();
 };
 
 #endif

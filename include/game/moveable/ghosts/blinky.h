@@ -7,8 +7,6 @@ class Blinky : public Ghost
 {
 public:
     Blinky();
-
-    void strategy();
 };
 
 #endif

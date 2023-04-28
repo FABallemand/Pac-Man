@@ -7,8 +7,6 @@ class Clyde : public Ghost
 {
 public:
     Clyde();
-
-    void strategy();
 };
 
 #endif

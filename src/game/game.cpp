@@ -3,7 +3,7 @@
 Game::Game()
 {
     loadMaze();
-
+    printf("TEST\n");
     ghosts_.push_back((Ghost *)&blinky_);
     ghosts_.push_back((Ghost *)&clyde_);
     ghosts_.push_back((Ghost *)&inky_);
@@ -109,7 +109,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     SDL_FillRect(window_surface, nullptr, 0);
 
     // Background/Maze
-    if(state_ == BLINK)
+    if (state_ == BLINK)
     {
         SDL_BlitScaled(sprite, &(bg_[BLINK]), window_surface, nullptr);
     }
@@ -117,7 +117,6 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     {
         SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
     }
-    
 
     // Eatable
     for (Gomme g : gommes_) // Gommes
@@ -140,6 +139,10 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // }
 
     // Ghosts
+    for (Ghost *g : ghosts_)
+    {
+        g->display(sprite, window_surface);
+    }
 
     // Pac-Man
     pacman_.display(sprite, window_surface);
@@ -179,8 +182,30 @@ void Game::createCell(int i, int j, int type)
         board_[i][j] = Cell{i, j, GHOST_WALL}; // Create special wall
         break;
     case 5:
-        board_[i][j] = Cell{i, j};                         // Create empty cell
+        board_[i][j] = Cell{i, j}; // Create empty cell
+        pacman_.setX(j * gconst::object::cell::size);
+        pacman_.setY(i * gconst::object::cell::size);
         pacman_.setNeighborhood(createNeighborhood(i, j)); // Tell pacman where he is
+        break;
+    case 6:
+        board_[i][j] = Cell{i, j};
+        inky_.setX(j * gconst::object::cell::size);
+        inky_.setY(i * gconst::object::cell::size);
+        break;
+    case 7:
+        board_[i][j] = Cell{i, j};
+        pinky_.setX(j * gconst::object::cell::size);
+        pinky_.setY(i * gconst::object::cell::size);
+        break;
+    case 8:
+        board_[i][j] = Cell{i, j};
+        clyde_.setX(j * gconst::object::cell::size);
+        clyde_.setY(i * gconst::object::cell::size);
+        break;
+    case 9:
+        board_[i][j] = Cell{i, j};
+        blinky_.setX(j * gconst::object::cell::size);
+        blinky_.setY(i * gconst::object::cell::size);
         break;
     default:
         LOG(ERROR) << "Incorrect maze";

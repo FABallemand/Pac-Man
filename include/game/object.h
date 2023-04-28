@@ -58,14 +58,19 @@ public:
         return position_.x;
     }
 
-    void setX()
+    void setX(int x)
     {
-        position_.x = 66;
+        position_.x = x;
     }
 
     int getY() const
     {
         return position_.y;
+    }
+
+    void setY(int y)
+    {
+        position_.y = y;
     }
 
     int getW() const

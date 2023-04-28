@@ -52,7 +52,7 @@ namespace gconst
             namespace ghost
             {
                 constexpr int size_s = 16; //!< Ghost size (on sprite)
-                constexpr int size = 16;   //!< Ghost size
+                constexpr int size = 32;   //!< Ghost size
             }
         }
 
