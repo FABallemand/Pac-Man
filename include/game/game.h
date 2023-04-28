@@ -40,7 +40,9 @@ enum GameState
 {
     NORMAL,
     BLINK,
-    END
+    END,
+    SUPER,
+    SUPER_BLINK
 };
 
 /**
@@ -78,10 +80,11 @@ public:
         ++game_score_;
     }
 
-    void changeGameState()
-    {
-        state_ = state_ == NORMAL ? BLINK : NORMAL;
-    }
+    // Backkgroung state
+    // void changeGameState()
+    // {
+    //     state_ = (state_ == NORMAL) ? BLINK : NORMAL;
+    // }
 
     void run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite);
 
@@ -91,9 +94,10 @@ public:
 
 private:
     // State ==================================================================
-    int life_remaining_ = 3;   //!< Life remaining
-    int game_score_ = 0;       //!< Score
-    GameState state_ = NORMAL; //!< Game state
+    int life_remaining_ = 3;      //!< Life remaining
+    int game_score_ = 0;          //!< Score
+    GameState state_ = NORMAL;    //!< Game state
+    Timer state_timer_ = Timer(); //!< Timer
     // Objects ================================================================
     // Moveable
     PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
@@ -134,6 +138,19 @@ private:
             LOG(DEBUG) << "NULL";
         }
     }
+
+    /**
+     * \brief Change state of the game and start timer if needed
+     *
+     * \param state New state of the game
+     */
+    void changeGameState(GameState state);
+
+    /**
+     * \brief Check for game state change
+     *
+     */
+    void checkGameStateChange();
 };
 
 #endif

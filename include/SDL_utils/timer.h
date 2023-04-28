@@ -20,38 +20,37 @@ public:
         started = false;
     }
 
-
-     Uint32 getTicks()
+    Uint32 getTicks()
     {
-    // The actual timer time
-    Uint32 time = 0;
+        // The actual timer time
+        Uint32 time = 0;
 
-    // If the timer is running
-    if (started)
-    {
-        // If the timer is paused
-        if (paused)
+        // If the timer is running
+        if (started)
         {
-            // Return the number of ticks when the timer was paused
-            time = pause_ticks;
+            // If the timer is paused
+            if (paused)
+            {
+                // Return the number of ticks when the timer was paused
+                time = pause_ticks;
+            }
+            else
+            {
+                // Return the current time minus the start time
+                time = SDL_GetTicks64() - start_ticks;
+            }
         }
-        else
-        {
-            // Return the current time minus the start time
-            time = SDL_GetTicks64() - start_ticks;
-        }
+
+        return time;
     }
 
-    return time;
-}
-
-     bool isStarted()
+    bool isStarted()
     {
         // Timer is running and paused or unpaused
         return started;
     }
 
-     bool isPaused()
+    bool isPaused()
     {
         // Timer is running and paused
         return paused && started;
@@ -60,7 +59,7 @@ public:
     /**
      * \brief Start the timer
      */
-     void start()
+    void start()
     {
         // Start the timer
         started = true;
@@ -75,7 +74,7 @@ public:
     /**
      * \brief Stop the timer
      */
-     void stop()
+    void stop()
     {
         // Stop the timer
         started = false;
@@ -91,7 +90,7 @@ public:
     /**
      * \brief Pause the timer
      */
-     void pause()
+    void pause()
     {
         // If the timer is running and isn't already paused
         if (started && !paused)
@@ -105,11 +104,10 @@ public:
         }
     }
 
-
     /**
      * \brief Unpause the timer
      */
-     void unpause()
+    void unpause()
     {
         // If the timer is running and paused
         if (started && paused)

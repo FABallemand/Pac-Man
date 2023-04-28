@@ -22,6 +22,8 @@ namespace gconst
         constexpr int nb_gommes = 188;     //!< Number of Gommes
         constexpr int nb_super_gommes = 4; //!< Number of Super-Gommes
         constexpr int nb_ghosts = 4;       //!< Number of Ghosts
+        constexpr int super_duration = 10000;  //!< Duration of SUPER state
+        constexpr int blink_duration = 2000;  //!< Duration of BLINK state
     }
 
     namespace object
@@ -60,14 +62,14 @@ namespace gconst
             {
                 constexpr int size_s = 4; //!< Gomme size (on sprite)
                 constexpr int size = 16;  //!< Gomme size
-                constexpr int score = 1;  //!< Gomme score
+                constexpr int score = 10;  //!< Gomme score
             }
 
             namespace super_gomme
             {
                 constexpr int size_s = 9; //!< Super-Gomme size (on sprite)
-                constexpr int size = 24;  //!< Super-Gomme size
-                constexpr int score = 2;  //!< Super-Gomme score
+                constexpr int size = 32;  //!< Super-Gomme size
+                constexpr int score = 50;  //!< Super-Gomme score
             }
 
             namespace fruit

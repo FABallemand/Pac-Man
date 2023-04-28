@@ -74,12 +74,14 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
 {
     // Update PacMan
     pacman_.update(key_state, delta_t);
+
     // Update PacMan neighborhood
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
     {
         pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + gconst::object::cell::size / 2) / gconst::object::cell::size, (pacman_.getX() + gconst::object::cell::size / 2) / gconst::object::cell::size));
     }
 
+    // Eat
     Cell *cell_to_update = pacman_.getCurrentCell();
     Eatable *eatable = cell_to_update->getEatable();
     if (eatable)
@@ -87,6 +89,9 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
         eatObject(eatable);
         cell_to_update->setEatable(nullptr);
     }
+
+    // Check game state change
+    checkGameStateChange();
 
     // Check for end of the game
     if (pacman_.getState() == DEAD)
@@ -104,7 +109,15 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     SDL_FillRect(window_surface, nullptr, 0);
 
     // Background/Maze
-    SDL_BlitScaled(sprite, &(bg_[state_]), window_surface, nullptr);
+    if(state_ == BLINK)
+    {
+        SDL_BlitScaled(sprite, &(bg_[BLINK]), window_surface, nullptr);
+    }
+    else
+    {
+        SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
+    }
+    
 
     // Eatable
     for (Gomme g : gommes_) // Gommes
@@ -256,8 +269,8 @@ void Game::eatObject(Object *object)
         {
             LOG(ERROR) << "Unable to find object";
         }
+        break;
     }
-    break;
     case SUPER_GOMME:
     {
         auto it = std::find(super_gommes_.begin(), super_gommes_.end(), *object);
@@ -266,14 +279,59 @@ void Game::eatObject(Object *object)
             updateScore(it->getEffect());
             LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATEN);
+            changeGameState(SUPER);
         }
         else
         {
             LOG(ERROR) << "Unable to find object";
         }
+        break;
     }
-    break;
     default:
         LOG(ERROR) << "PacMan cannot eat this type of object...beark";
+    }
+}
+
+void Game::changeGameState(GameState state)
+{
+
+    if (state == SUPER)
+    {
+        state_timer_.start();
+        // pacman_.setState(SUPER); // Not very useful
+        for (Ghost *g : ghosts_)
+        {
+            g->setState(VULNERABLE);
+        }
+    }
+    else if (state == SUPER_BLINK)
+    {
+        state_timer_.start();
+        for (Ghost *g : ghosts_)
+        {
+            g->setState(VULNERABLE_BLINK);
+        }
+    }
+    else if (state_ != NORMAL && state == NORMAL)
+    {
+        for (Ghost *g : ghosts_)
+        {
+            g->setState(ALIVE);
+        }
+    }
+
+    // Change state
+    state_ = state;
+}
+
+void Game::checkGameStateChange()
+{
+    if (state_ == SUPER && state_timer_.getTicks() > gconst::game::super_duration)
+    {
+        changeGameState(SUPER_BLINK);
+    }
+    else if (state_ == SUPER_BLINK && state_timer_.getTicks() > gconst::game::blink_duration)
+    {
+        changeGameState(NORMAL);
     }
 }

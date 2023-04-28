@@ -19,7 +19,8 @@ enum MoveableState
     ALIVE,
     DYING,
     DEAD,
-    VULNERABLE
+    VULNERABLE,
+    VULNERABLE_BLINK
 };
 
 using MovingSprites = std::array<std::array<SDL_Rect, gconst::object::moveable::pacman::nb_moving_sprites>, gconst::object::moveable::nb_directions>;
@@ -58,6 +59,11 @@ public:
     MoveableState getState() const
     {
         return state_;
+    }
+
+    void setState(MoveableState state)
+    {
+        state_ = state;
     }
 
     Direction getDirection() const
