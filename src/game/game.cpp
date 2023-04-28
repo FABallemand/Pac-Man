@@ -65,7 +65,7 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         // Display
         display(window, sprite, window_surface);
 
-        // SDL_Delay(500); // If game is too slow -> go through walls...
+        SDL_Delay(16); // If game is too slow -> go through walls...
         ++counted_frames;
     }
 }
