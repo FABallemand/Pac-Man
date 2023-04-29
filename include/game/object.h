@@ -83,6 +83,16 @@ public:
         return position_.h;
     }
 
+    int getI() const
+    {
+        return position_.y / gconst::object::cell::size;
+    }
+
+    int getJ() const
+    {
+        return position_.x / gconst::object::cell::size;
+    }
+
     bool operator==(Object o) const
     {
         return object_type_ == o.object_type_ && position_.x == o.position_.x && position_.y == o.position_.y;

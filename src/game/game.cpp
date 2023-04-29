@@ -3,7 +3,7 @@
 Game::Game()
 {
     loadMaze();
-    printf("TEST\n");
+    
     ghosts_.push_back((Ghost *)&blinky_);
     ghosts_.push_back((Ghost *)&clyde_);
     ghosts_.push_back((Ghost *)&inky_);
@@ -79,6 +79,12 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
     {
         pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + gconst::object::cell::size / 2) / gconst::object::cell::size, (pacman_.getX() + gconst::object::cell::size / 2) / gconst::object::cell::size));
+    }
+
+    // Update Ghosts
+    for (Ghost *g : ghosts_)
+    {
+        g->update(delta_t, pacman_.getI(), pacman_.getJ());
     }
 
     // Eat
@@ -252,16 +258,6 @@ void Game::loadMaze()
     {
         LOG(DEBUG) << "i, j, type : " << g.getY() / gconst::object::cell::size << "," << g.getX() / gconst::object::cell::size << "," << g.getType();
     }
-    LOG(DEBUG) << "# board_ #";
-    for (auto row : board_)
-    {
-        for (Cell c : row)
-        {
-            if (c.getEatable())
-                LOG(DEBUG) << "i, j, type : " << c.getEatable()->getY() / gconst::object::cell::size << "," << c.getEatable()->getX() / gconst::object::cell::size << "," << c.getEatable()->getType();
-        }
-    }
-    LOG(DEBUG) << "=========================";
 }
 
 CellNeighborhood Game::createNeighborhood(int i, int j)
