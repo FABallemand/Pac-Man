@@ -2,7 +2,7 @@
 #define __GHOST_H__
 
 #include <fstream>
-#include <math.h>
+#include <cmath>
 
 #include "moveable.h"
 
@@ -17,13 +17,27 @@ public:
         loadSimpleMaze();
     }
 
+    void update(const float delta_t, int target_i, int traget_j);
+
+protected:
+    std::string name_;
+    SimpleMaze ghost_board_;
+    /*static constexpr*/ GhostSpecialSprites eatable_sprites_ = {SDL_Rect{3, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                                                 SDL_Rect{20, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                                                 SDL_Rect{37, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                                                 SDL_Rect{54, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}; //!< Sprites location
+    /*static constexpr*/ GhostSpecialSprites eaten_sprites_ = {SDL_Rect{71, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                                               SDL_Rect{89, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                                               SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                                               SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}; //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
+
     /**
      * \brief
      *
      */
     void loadSimpleMaze(); // Argument -> file
 
-    Direction strategy(int target_i, int target_j);
+    void strategy(int target_i, int target_j);
 
     // virtual void scatter() = 0;
 
@@ -31,19 +45,13 @@ public:
 
     // virtual void frightened() = 0;
 
-    void update(const float delta_t, int target_i, int traget_j);
+    void turnLeft();
 
-protected:
-    std::string name_;
-    SimpleMaze ghost_board_;
-    static constexpr GhostSpecialSprites eatable_sprites_ = {SDL_Rect{3, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                             SDL_Rect{20, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                             SDL_Rect{37, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                             SDL_Rect{54, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}; //!< Sprites location
-    static constexpr GhostSpecialSprites eaten_sprites_ = {SDL_Rect{71, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                           SDL_Rect{89, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                           SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                           SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}; //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
+    void turnRight(); // Move to moveable?
+
+    void turnUp();
+
+    void turnDown();
 
     void turn() override;
 

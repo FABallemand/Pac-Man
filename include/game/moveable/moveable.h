@@ -92,14 +92,15 @@ public:
     }
 
 protected:
-    MoveableState state_ = ALIVE;   //!< State of the object
-    Direction direction_ = NONE;    //!< Direction of the object
-    float delta_t_ = 0.0;           //!< Elapsed time since last update
-    int frame_count_ = 0;           //!< Frame count
-    int sprite_count_ = 0;          //!< Sprite count (for animation)
-    MovingSprites moving_sprites_;  //!< Sprites location
-    CellNeighborhood neighborhood_; //!< Current cell
-    bool allowed_to_move_ = true;   //!< IsPacmanStuck boolean
+    MoveableState state_ = ALIVE;       //!< State of the object
+    Direction direction_ = NONE;        //!< Direction of the object
+    Direction action_direction_ = NONE; //!< Future direction of the object
+    float delta_t_ = 0.0;               //!< Elapsed time since last update
+    int frame_count_ = 0;               //!< Frame count
+    int sprite_count_ = 0;              //!< Sprite count (for animation)
+    MovingSprites moving_sprites_;      //!< Sprites location
+    CellNeighborhood neighborhood_;     //!< Cell neighborhood of the object (MOVE TO PACMAN??)
+    bool allowed_to_move_ = true;       //!< Allowed to move indicator
 
     /**
      * \brief Turn moveable object on the board

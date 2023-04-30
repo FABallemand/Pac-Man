@@ -353,17 +353,6 @@ void PacMan::updateSprite()
 {
     switch (state_)
     {
-    case DYING:
-        if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
-        {
-            current_sprite_ = &(dying_sprites_[sprite_count_++]);
-        }
-        else
-        {
-            current_sprite_ = &dead_sprite_;
-            state_ = DEAD;
-        }
-        break;
     case ALIVE:
         if (direction_ != NONE)
         {
@@ -377,6 +366,17 @@ void PacMan::updateSprite()
                 sprite_count_ = (++sprite_count_) % gconst::object::moveable::pacman::nb_moving_sprites;
             }
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
+        }
+        break;
+    case DYING:
+        if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
+        {
+            current_sprite_ = &(dying_sprites_[sprite_count_++]);
+        }
+        else
+        {
+            current_sprite_ = &dead_sprite_;
+            state_ = DEAD;
         }
         break;
     default:

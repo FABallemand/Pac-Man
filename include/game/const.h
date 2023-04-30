@@ -15,14 +15,14 @@ namespace gconst
 
     namespace game
     {
-        constexpr int nb_rows = 27;        //!< Number of rows
-        constexpr int nb_columns = 21;     //!< Number of columns
-        constexpr int maze_w = 166;        //!< Maze width
-        constexpr int maze_h = 216;        //!< Maze height
-        constexpr int nb_gommes = 188;     //!< Number of Gommes
-        constexpr int nb_super_gommes = 4; //!< Number of Super-Gommes
-        constexpr int nb_ghosts = 4;       //!< Number of Ghosts
-        constexpr int super_duration = 10000;  //!< Duration of SUPER state
+        constexpr int nb_rows = 27;           //!< Number of rows
+        constexpr int nb_columns = 21;        //!< Number of columns
+        constexpr int maze_w = 166;           //!< Maze width
+        constexpr int maze_h = 216;           //!< Maze height
+        constexpr int nb_gommes = 188;        //!< Number of Gommes
+        constexpr int nb_super_gommes = 4;    //!< Number of Super-Gommes
+        constexpr int nb_ghosts = 4;          //!< Number of Ghosts
+        constexpr int super_duration = 10000; //!< Duration of SUPER state
         constexpr int blink_duration = 2000;  //!< Duration of BLINK state
     }
 
@@ -51,8 +51,10 @@ namespace gconst
 
             namespace ghost
             {
-                constexpr int size_s = 16; //!< Ghost size (on sprite)
-                constexpr int size = 32;   //!< Ghost size
+                constexpr int size_s = 16;           //!< Ghost size (on sprite)
+                constexpr int size = 32;             //!< Ghost size
+                constexpr int speed = 100;           //!< Ghost speed
+                constexpr int nb_moving_sprites = 2; //!< Number of sprites in the moving animation
             }
         }
 
@@ -62,14 +64,14 @@ namespace gconst
             {
                 constexpr int size_s = 4; //!< Gomme size (on sprite)
                 constexpr int size = 16;  //!< Gomme size
-                constexpr int score = 10;  //!< Gomme score
+                constexpr int score = 10; //!< Gomme score
             }
 
             namespace super_gomme
             {
                 constexpr int size_s = 9; //!< Super-Gomme size (on sprite)
                 constexpr int size = 32;  //!< Super-Gomme size
-                constexpr int score = 50;  //!< Super-Gomme score
+                constexpr int score = 50; //!< Super-Gomme score
             }
 
             namespace fruit

@@ -1,10 +1,10 @@
 # Pac-Man
 
-## Description
+## 🕹️ Description
 
 Pac-Man, the video game...
 
-## Usage
+## 🛠 Usage
 
 This project can be built using CMake.  
 
@@ -27,7 +27,7 @@ Simply launch the executable and enjoy!
 ./pacman
 ```
 
-## References
+## 🔗 References
 
 - SDL: [Wiki](https://wiki.libsdl.org/SDL2/FrontPage)  
 - Lazy Foo' Productions: [SDL tutorials](https://lazyfoo.net/tutorials/SDL/index.php)  
@@ -37,9 +37,12 @@ Simply launch the executable and enjoy!
 - Microsoft: [constexpr (C++)](https://learn.microsoft.com/fr-fr/cpp/cpp/constexpr-cpp?view=msvc-170)  
 - Geeks for Geeks: [Reference to a pointer in C++ with examples and applications](https://www.geeksforgeeks.org/reference-to-a-pointer-in-c-with-examples-and-applications/)  
 
-## Team
+## 👥 Team
 - ALLEMAND Fabien
 - LEBOT Samuel
 
-TODO:
-- class scene (template?)
+## 📋 TODO:
+- [ ] class scene (template?)
+- [ ] Add **const** (constructors)
+- [ ] Neighborhood? allowed_to_move?
+- [ ] Encapsulation in Game::update
