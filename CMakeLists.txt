@@ -38,6 +38,7 @@ target_sources(${PROJECT_NAME}
                src/game/moveable/ghosts/clyde.cpp
                src/game/moveable/ghosts/inky.cpp
                src/game/moveable/ghosts/pinky.cpp
+               src/game/moveable/ghosts/path_finder.cpp
                src/game/eatable/eatable.cpp
                src/game/eatable/gomme.cpp
                src/game/eatable/super_gomme.cpp

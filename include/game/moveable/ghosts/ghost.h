@@ -2,9 +2,9 @@
 #define __GHOST_H__
 
 #include <fstream>
-#include <cmath>
 
 #include "moveable.h"
+#include "path_finder.h"
 
 using GhostSpecialSprites = std::array<SDL_Rect, gconst::object::moveable::nb_directions>;
 using SimpleMaze = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
@@ -47,6 +47,8 @@ protected:
     SimpleMaze ghost_board_; //!< Simple representation of the maze
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
+    // Movement ===============================================================
+    PathFinder find_path_{}; //!< Path finder
     // Sprites ================================================================
     static GhostSpecialSprites eatable_sprites_; //!< Sprites location
     static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
@@ -59,15 +61,13 @@ protected:
 
     void strategy(int target_i, int target_j);
 
-    Direction chase(int target_i, int target_j);
+    // virtual Direction chase() = 0;
 
-    int chaseRec(SimpleMaze maze, int ghost_i, int ghost_j, int target_i, int target_j);
+    // virtual Direction scatter() = 0;
 
-    // virtual void scatter() = 0;
+    // virtual Direction frightened() = 0;
 
-    // virtual void frightened() = 0;
-
-    // virtual void eaten() = 0;
+    // virtual Direction eaten() = 0;
 
     void turn() override;
 
@@ -78,8 +78,6 @@ protected:
     void handleMovement() override;
 
     void updateSprite() override;
-
-    int distance(int i1, int j1, int i2, int j2);
 };
 
 #endif
