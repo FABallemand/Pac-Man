@@ -69,6 +69,7 @@ target_link_libraries(${PROJECT_NAME}
 ## DOCUMENTATION ##
 
 option(BUILD_DOC "Build documentation" ON)
+file(MAKE_DIRECTORY doc)
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
