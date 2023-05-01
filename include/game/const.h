@@ -41,20 +41,22 @@ namespace gconst
 
             namespace pacman
             {
-                constexpr int size_s1 = 16;          //!< PacMan size (on sprite)
-                constexpr int size_s2 = 11;          //!< PacMan size (on sprite)
-                constexpr int size = 32;             //!< PacMan size
-                constexpr int speed = 100;           //!< PacMan speed
-                constexpr int nb_moving_sprites = 2; //!< Number of sprites in the moving animation
-                constexpr int nb_dying_sprites = 10; //!< Number of sprites in the dying animation
+                constexpr int size_s1 = 16;                                            //!< PacMan size (on sprite)
+                constexpr int size_s2 = 11;                                            //!< PacMan size (on sprite)
+                constexpr int size = 32;                                               //!< PacMan size
+                constexpr int speed = 100;                                             //!< PacMan speed
+                constexpr int move_diag_offset = (2 / 3) * gconst::object::cell::size; //!< Offset to which Pac-Man can move diagonaly
+                constexpr int nb_moving_sprites = 2;                                   //!< Number of sprites in the moving animation
+                constexpr int nb_dying_sprites = 10;                                   //!< Number of sprites in the dying animation
             }
 
             namespace ghost
             {
-                constexpr int size_s = 16;           //!< Ghost size (on sprite)
-                constexpr int size = 32;             //!< Ghost size
-                constexpr int speed = 100;           //!< Ghost speed
-                constexpr int nb_moving_sprites = 2; //!< Number of sprites in the moving animation
+                constexpr int size_s = 16;            //!< Ghost size (on sprite)
+                constexpr int size = 32;              //!< Ghost size
+                constexpr int speed = 100;            //!< Ghost speed
+                constexpr int nb_moving_sprites = 2;  //!< Number of sprites in the moving animation
+                constexpr int nb_special_sprites = 2; //!< Number of sprites in the moving animation
             }
         }
 

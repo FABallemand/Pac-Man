@@ -1,6 +1,19 @@
 #include "pac_man.h"
 #include "cell.h"
 
+SDL_Rect PacMan::initial_sprite_{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1};
+
+PacManDyingSprites PacMan::dying_sprites_{SDL_Rect{3, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{22, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{41, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{60, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{79, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{98, 106, 16, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{115, 106, 12, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{128, 106, 8, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{137, 106, 4, gconst::object::moveable::pacman::size_s1},
+                                          SDL_Rect{142, 106, 13, gconst::object::moveable::pacman::size_s1}};
+
 PacMan::PacMan(int x, int y) : Moveable{PACMAN, x, y, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, &initial_sprite_}
 {
     moving_sprites_ = {{{SDL_Rect{47, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{63, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Left
@@ -15,7 +28,7 @@ void PacMan::eat(Object *eatable)
 
 void PacMan::update(const Uint8 *key_state, const float delta_t)
 {
-    if (state_ == ALIVE)
+    if (state_ == PACMAN_ALIVE)
     {
         // Remember delta_t
         delta_t_ = delta_t;
@@ -51,7 +64,7 @@ void PacMan::handleUserInputs(const Uint8 *key_state)
     }
     else if (key_state[SDL_SCANCODE_K]) // for testing purpose only !!!
     {
-        state_ = DYING;
+        state_ = PACMAN_DYING;
         sprite_count_ = 0;
     }
     else
@@ -245,8 +258,6 @@ void PacMan::fixDimensions()
 
 void PacMan::move()
 {
-    // LOG(DEBUG) << "delta_t_ = " << delta_t_;
-    // LOG(DEBUG) << "gconst::object::moveable::pacman::speed * delta_t_ = " << gconst::object::moveable::pacman::speed * delta_t_;
     allowed_to_move_ = false;
     switch (action_direction_)
     {
@@ -254,13 +265,7 @@ void PacMan::move()
         if (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWall())
         {
             position_.x -= round(gconst::object::moveable::pacman::speed * delta_t_);
-            if (position_.x <= 0)
-            {
-                position_.x = gconst::window::w - 1;
-                position_.w = gconst::object::moveable::pacman::size;
-                position_.h = gconst::object::moveable::pacman::size;
-            }
-            fixDimensions();
+            handleShortcut();
             position_.y = neighborhood_[1][1]->getY();
             allowed_to_move_ = true;
         }
@@ -269,13 +274,7 @@ void PacMan::move()
         if (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWall())
         {
             position_.x += round(gconst::object::moveable::pacman::speed * delta_t_);
-            if (position_.x >= gconst::window::w)
-            {
-                position_.x = 0;
-                position_.w = gconst::object::moveable::pacman::size;
-                position_.h = gconst::object::moveable::pacman::size;
-            }
-            fixDimensions();
+            handleShortcut();
             position_.y = neighborhood_[1][1]->getY();
             allowed_to_move_ = true;
         }
@@ -301,36 +300,36 @@ void PacMan::move()
         position_.y = neighborhood_[0][0]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == UP)
-            position_.y += move_diag_offset_;
+            position_.y += gconst::object::moveable::pacman::move_diag_offset;
         else
-            position_.x += move_diag_offset_;
+            position_.x += gconst::object::moveable::pacman::move_diag_offset;
         break;
     case UP_RIGHT:
         position_.x = neighborhood_[0][2]->getX();
         position_.y = neighborhood_[0][2]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == UP)
-            position_.y += move_diag_offset_;
+            position_.y += gconst::object::moveable::pacman::move_diag_offset;
         else
-            position_.x -= move_diag_offset_;
+            position_.x -= gconst::object::moveable::pacman::move_diag_offset;
         break;
     case DOWN_LEFT:
         position_.x = neighborhood_[2][0]->getX();
         position_.y = neighborhood_[2][0]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == DOWN)
-            position_.y -= move_diag_offset_;
+            position_.y -= gconst::object::moveable::pacman::move_diag_offset;
         else
-            position_.x += move_diag_offset_;
+            position_.x += gconst::object::moveable::pacman::move_diag_offset;
         break;
     case DOWN_RIGHT:
         position_.x = neighborhood_[2][2]->getX();
         position_.y = neighborhood_[2][2]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == DOWN)
-            position_.y -= move_diag_offset_;
+            position_.y -= gconst::object::moveable::pacman::move_diag_offset;
         else
-            position_.x -= move_diag_offset_;
+            position_.x -= gconst::object::moveable::pacman::move_diag_offset;
         break;
     default:
         break;
@@ -353,7 +352,7 @@ void PacMan::updateSprite()
 {
     switch (state_)
     {
-    case ALIVE:
+    case PACMAN_ALIVE:
         if (direction_ != NONE)
         {
             if (allowed_to_move_ == false)
@@ -368,7 +367,7 @@ void PacMan::updateSprite()
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
         }
         break;
-    case DYING:
+    case PACMAN_DYING:
         if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
         {
             current_sprite_ = &(dying_sprites_[sprite_count_++]);
@@ -376,7 +375,7 @@ void PacMan::updateSprite()
         else
         {
             current_sprite_ = &dead_sprite_;
-            state_ = DEAD;
+            state_ = PACMAN_DEAD;
         }
         break;
     default:

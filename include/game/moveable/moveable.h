@@ -8,21 +8,6 @@
 class Cell; // Forward declaration
 
 using CellNeighborhood = std::array<std::array<Cell *, gconst::object::moveable::neighborhood_size>, gconst::object::moveable::neighborhood_size>;
-
-/**
- * \enum MoveableState
- * \brief Describe the state of a moveable object
- *
- */
-enum MoveableState
-{
-    ALIVE,
-    DYING,
-    DEAD,
-    VULNERABLE,
-    VULNERABLE_BLINK
-};
-
 using MovingSprites = std::array<std::array<SDL_Rect, gconst::object::moveable::pacman::nb_moving_sprites>, gconst::object::moveable::nb_directions>;
 
 /**
@@ -56,57 +41,39 @@ public:
     {
     }
 
-    MoveableState getState() const
-    {
-        return state_;
-    }
-
-    void setState(MoveableState state)
-    {
-        state_ = state;
-    }
-
-    Direction getDirection() const
-    {
-        return direction_;
-    }
-
-    CellNeighborhood &getNeighborhood()
-    {
-        return neighborhood_;
-    }
-
-    Cell *getCurrentCell()
-    {
-        return neighborhood_[1][1];
-    }
-
     void setDirection(const Direction direction)
     {
         direction_ = direction;
     }
 
-    void setNeighborhood(CellNeighborhood neighborhood)
-    {
-        neighborhood_ = neighborhood;
-    }
-
 protected:
-    MoveableState state_ = ALIVE;       //!< State of the object
+    // Movement ===============================================================
+    bool allowed_to_move_ = true;       //!< Allowed to move indicator
+    float delta_t_ = 0.0;               //!< Elapsed time since last update
     Direction direction_ = NONE;        //!< Direction of the object
     Direction action_direction_ = NONE; //!< Future direction of the object
-    float delta_t_ = 0.0;               //!< Elapsed time since last update
-    int frame_count_ = 0;               //!< Frame count
-    int sprite_count_ = 0;              //!< Sprite count (for animation)
-    MovingSprites moving_sprites_;      //!< Sprites location
-    CellNeighborhood neighborhood_;     //!< Cell neighborhood of the object (MOVE TO PACMAN??)
-    bool allowed_to_move_ = true;       //!< Allowed to move indicator
+    // Sprites ================================================================
+    int frame_count_ = 0;          //!< Frame count
+    int sprite_count_ = 0;         //!< Sprite count (for animation)
+    MovingSprites moving_sprites_; //!< Sprites location
 
     /**
      * \brief Turn moveable object on the board
      *
      */
     virtual void turn() = 0;
+
+    /**
+     * \brief Fix dimensions when taking the shortcut
+     *
+     */
+    virtual void fixDimensions() = 0;
+
+    /**
+     * \brief Handle shortcut
+     *
+     */
+    void handleShortcut();
 
     /**
      * \brief Move the moveable object on the board

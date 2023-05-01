@@ -100,9 +100,9 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     checkGameStateChange();
 
     // Check for end of the game
-    if (pacman_.getState() == DEAD)
+    if (pacman_.getState() == PACMAN_DEAD)
     {
-        state_ = END;
+        state_ = GAME_END;
         SDL_Delay(3000);
         return true;
     }
@@ -115,26 +115,26 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     SDL_FillRect(window_surface, nullptr, 0);
 
     // Background/Maze
-    if (state_ == BLINK)
+    if (state_ == GAME_BLINK)
     {
-        SDL_BlitScaled(sprite, &(bg_[BLINK]), window_surface, nullptr);
+        SDL_BlitScaled(sprite, &(bg_[GAME_BLINK]), window_surface, nullptr);
     }
     else
     {
-        SDL_BlitScaled(sprite, &(bg_[NORMAL]), window_surface, nullptr);
+        SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, nullptr);
     }
 
     // Eatable
     for (Gomme g : gommes_) // Gommes
     {
-        if (g.getState() != EATEN)
+        if (g.getState() != EATABLE_EATEN)
         {
             g.display(sprite, window_surface);
         }
     }
     for (SuperGomme sg : super_gommes_) // Super-Gommes
     {
-        if (sg.getState() != EATEN)
+        if (sg.getState() != EATABLE_EATEN)
         {
             sg.display(sprite, window_surface);
         }
@@ -284,7 +284,7 @@ void Game::eatObject(Object *object)
         {
             updateScore(it->getEffect());
             LOG(DEBUG) << "game_score_ = " << game_score_;
-            it->setState(EATEN);
+            it->setState(EATABLE_EATEN);
         }
         else
         {
@@ -299,8 +299,8 @@ void Game::eatObject(Object *object)
         {
             updateScore(it->getEffect());
             LOG(DEBUG) << "game_score_ = " << game_score_;
-            it->setState(EATEN);
-            changeGameState(SUPER);
+            it->setState(EATABLE_EATEN);
+            changeGameState(GAME_SUPER);
         }
         else
         {
@@ -316,28 +316,27 @@ void Game::eatObject(Object *object)
 void Game::changeGameState(GameState state)
 {
 
-    if (state == SUPER)
-    {
-        state_timer_.start();
-        // pacman_.setState(SUPER); // Not very useful
-        for (Ghost *g : ghosts_)
-        {
-            g->setState(VULNERABLE);
-        }
-    }
-    else if (state == SUPER_BLINK)
+    if (state == GAME_SUPER)
     {
         state_timer_.start();
         for (Ghost *g : ghosts_)
         {
-            g->setState(VULNERABLE_BLINK);
+            g->setState(GHOST_VULNERABLE);
         }
     }
-    else if (state_ != NORMAL && state == NORMAL)
+    else if (state == GAME_SUPER_BLINK)
+    {
+        state_timer_.start();
+        for (Ghost *g : ghosts_)
+        {
+            g->setState(GHOST_VULNERABLE_BLINK);
+        }
+    }
+    else if (state_ != GAME_DEFAULT && state == GAME_DEFAULT)
     {
         for (Ghost *g : ghosts_)
         {
-            g->setState(ALIVE);
+            g->setState(GHOST_DEFAULT);
         }
     }
 
@@ -347,12 +346,12 @@ void Game::changeGameState(GameState state)
 
 void Game::checkGameStateChange()
 {
-    if (state_ == SUPER && state_timer_.getTicks() > gconst::game::super_duration)
+    if (state_ == GAME_SUPER && state_timer_.getTicks() > gconst::game::super_duration)
     {
-        changeGameState(SUPER_BLINK);
+        changeGameState(GAME_SUPER_BLINK);
     }
-    else if (state_ == SUPER_BLINK && state_timer_.getTicks() > gconst::game::blink_duration)
+    else if (state_ == GAME_SUPER_BLINK && state_timer_.getTicks() > gconst::game::blink_duration)
     {
-        changeGameState(NORMAL);
+        changeGameState(GAME_DEFAULT);
     }
 }

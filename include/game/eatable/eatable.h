@@ -14,8 +14,8 @@ class Game; // Forward declaration
  */
 enum EatableState
 {
-    PRESENT,
-    EATEN
+    EATABLE_DEFAULT,
+    EATABLE_EATEN
 };
 
 class Eatable : public Object
@@ -68,9 +68,9 @@ public:
     // virtual void effect(Game &game) = 0;
 
 protected:
-    EatableState state_ = PRESENT;   //!< State of the object (TEMPLATE??)
-    int score_;                      //!< Reward score when eaten (USELESS -> lambda ??)
-    std::function<int(int)> effect_; //!< Effect
+    EatableState state_ = EATABLE_DEFAULT; //!< State of the object (TEMPLATE??)
+    int score_;                            //!< Reward score when eaten (USELESS -> lambda ??)
+    std::function<int(int)> effect_;       //!< Effect
 };
 
 #endif

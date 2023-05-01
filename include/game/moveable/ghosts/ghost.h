@@ -9,6 +9,19 @@
 using GhostSpecialSprites = std::array<SDL_Rect, gconst::object::moveable::nb_directions>;
 using SimpleMaze = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
+/**
+ * \enum GhostState
+ * \brief Describe the state of a ghost
+ *
+ */
+enum GhostState
+{
+    GHOST_DEFAULT,
+    GHOST_VULNERABLE,
+    GHOST_VULNERABLE_BLINK,
+    GHOST_EATEN
+};
+
 class Ghost : public Moveable
 {
 public:
@@ -17,19 +30,26 @@ public:
         loadSimpleMaze();
     }
 
+    GhostState getState() const
+    {
+        return state_;
+    }
+
+    void setState(GhostState state)
+    {
+        state_ = state;
+    }
+
     void update(const float delta_t, int target_i, int traget_j);
 
 protected:
-    std::string name_;
-    SimpleMaze ghost_board_;
-    /*static constexpr*/ GhostSpecialSprites eatable_sprites_ = {SDL_Rect{3, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                                 SDL_Rect{20, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                                 SDL_Rect{37, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                                 SDL_Rect{54, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}; //!< Sprites location
-    /*static constexpr*/ GhostSpecialSprites eaten_sprites_ = {SDL_Rect{71, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                               SDL_Rect{89, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                               SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                                               SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}; //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
+    std::string name_;       //!< Name of the ghost (for logging purpose only)
+    SimpleMaze ghost_board_; //!< Simple representation of the maze
+    // State ==================================================================
+    GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
+    // Sprites ================================================================
+    static GhostSpecialSprites eatable_sprites_; //!< Sprites location
+    static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
 
     /**
      * \brief
@@ -39,29 +59,25 @@ protected:
 
     void strategy(int target_i, int target_j);
 
-    // virtual void scatter() = 0;
-
     Direction chase(int target_i, int target_j);
+
+    int chaseRec(SimpleMaze maze, int ghost_i, int ghost_j, int target_i, int target_j);
+
+    // virtual void scatter() = 0;
 
     // virtual void frightened() = 0;
 
-    void turnLeft();
-
-    void turnRight(); // Move to moveable?
-
-    void turnUp();
-
-    void turnDown();
+    // virtual void eaten() = 0;
 
     void turn() override;
 
-    void move();
+    void fixDimensions() override;
+
+    void move() override;
 
     void handleMovement() override;
 
     void updateSprite() override;
-
-    int chaseRec(SimpleMaze maze, int ghost_i, int ghost_j, int target_i, int target_j);
 
     int distance(int i1, int j1, int i2, int j2);
 };

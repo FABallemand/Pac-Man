@@ -8,6 +8,18 @@
 using PacManDyingSprites = std::array<SDL_Rect, gconst::object::moveable::pacman::nb_dying_sprites>;
 
 /**
+ * \enum PacManState
+ * \brief Describe the state of Pac-Man
+ *
+ */
+enum PacManState
+{
+    PACMAN_ALIVE,
+    PACMAN_DYING,
+    PACMAN_DEAD
+};
+
+/**
  * \class PacMan
  * \brief Everything's in the name :)
  *
@@ -21,25 +33,54 @@ public:
     {
     }
 
+    PacManState getState() const
+    {
+        return state_;
+    }
+
+    void setState(PacManState state)
+    {
+        state_ = state;
+    }
+
+    Direction getDirection() const
+    {
+        return direction_;
+    }
+
+    CellNeighborhood &getNeighborhood()
+    {
+        return neighborhood_;
+    }
+
+    Cell *getCurrentCell()
+    {
+        return neighborhood_[1][1];
+    }
+
+    void setNeighborhood(CellNeighborhood neighborhood)
+    {
+        neighborhood_ = neighborhood;
+    }
+
+    /**
+     * \brief Eat an eatable object
+     *
+     * \param eatable Pointer to the object eaten
+     */
     void eat(Object *eatable);
 
     void update(const Uint8 *key_state, const float delta_t);
 
 private:
-    Direction input_direction_ = NONE;                                                                                                          //!< User wanted direction
-    /*static constexpr*/ SDL_Rect initial_sprite_{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}; //!< Initial sprite
-    /*static constexpr*/ PacManDyingSprites dying_sprites_{SDL_Rect{3, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{22, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{41, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{60, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{79, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{98, 106, 16, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{115, 106, 12, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{128, 106, 8, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{137, 106, 4, gconst::object::moveable::pacman::size_s1},
-                                                       SDL_Rect{142, 106, 13, gconst::object::moveable::pacman::size_s1}}; //!< Dying sprites
-
-    static constexpr int move_diag_offset_ = (2 / 3) * gconst::object::cell::size;
+    // State ==================================================================
+    PacManState state_ = PACMAN_ALIVE; //!< State of Pac-Man
+    // Movement ===============================================================
+    Direction input_direction_ = NONE; //!< User wanted direction
+    CellNeighborhood neighborhood_;    //!< Cell neighborhood of the object
+    // Sprites ================================================================
+    static SDL_Rect initial_sprite_;          //!< Initial sprite
+    static PacManDyingSprites dying_sprites_; //!< Dying sprites
 
     /**
      * \brief Handle user inputs to control PacMan
@@ -58,9 +99,9 @@ private:
 
     void turn() override;
 
-    void fixDimensions();
+    void fixDimensions() override;
 
-    void move();
+    void move() override;
 
     void handleMovement() override;
 

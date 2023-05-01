@@ -38,11 +38,11 @@ using Board = std::array<std::array<Cell, gconst::game::nb_columns>, gconst::gam
  */
 enum GameState
 {
-    NORMAL,
-    BLINK,
-    END,
-    SUPER,
-    SUPER_BLINK
+    GAME_DEFAULT,
+    GAME_BLINK,
+    GAME_END,
+    GAME_SUPER,
+    GAME_SUPER_BLINK
 };
 
 /**
@@ -94,10 +94,10 @@ public:
 
 private:
     // State ==================================================================
-    int life_remaining_ = 3;      //!< Life remaining
-    int game_score_ = 0;          //!< Score
-    GameState state_ = NORMAL;    //!< Game state
-    Timer state_timer_ = Timer(); //!< Timer
+    int life_remaining_ = 3;        //!< Life remaining
+    int game_score_ = 0;            //!< Score
+    GameState state_ = GAME_DEFAULT; //!< Game state
+    Timer state_timer_ = Timer();   //!< Timer
     // Objects ================================================================
     // Moveable
     PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
