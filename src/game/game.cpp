@@ -3,7 +3,7 @@
 Game::Game()
 {
     loadMaze();
-    
+
     ghosts_.push_back((Ghost *)&blinky_);
     ghosts_.push_back((Ghost *)&clyde_);
     ghosts_.push_back((Ghost *)&inky_);
@@ -279,7 +279,7 @@ void Game::eatObject(Object *object)
     {
     case GOMME:
     {
-        auto it = std::find(gommes_.begin(), gommes_.end(), *object); // TEMPLATE
+        auto it = std::find(gommes_.begin(), gommes_.end(), *object);
         if (it != gommes_.end())
         {
             updateScore(it->getEffect());

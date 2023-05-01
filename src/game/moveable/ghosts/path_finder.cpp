@@ -5,6 +5,11 @@ Direction PathFinder::operator()(SimpleMaze maze, int ghost_i, int ghost_j, int 
     // Mark the current position
     maze[ghost_i][ghost_j] = 1;
 
+    if (target_i == ghost_i && target_j == ghost_j)
+    {
+        return NONE;
+    }
+
     // Compute the length of the shortest path to target going in th efour directions
     int path_length[4];
     path_length[LEFT] = pathFindingRec(maze, ghost_i, ghost_j - 1, target_i, target_j);
@@ -41,7 +46,7 @@ int PathFinder::pathFindingRec(SimpleMaze maze, int ghost_i, int ghost_j, int ta
     }
 
     // Compute path length
-    if (target_i == ghost_i && target_j == ghost_j)
+    if (target_i == ghost_i && target_j == ghost_j) // Already handled in wraper
     {
         return 0;
     }

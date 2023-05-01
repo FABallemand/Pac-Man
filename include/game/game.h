@@ -94,30 +94,26 @@ public:
 
 private:
     // State ==================================================================
-    int life_remaining_ = 3;        //!< Life remaining
-    int game_score_ = 0;            //!< Score
+    int life_remaining_ = 3;         //!< Life remaining
+    int game_score_ = 0;             //!< Score
     GameState state_ = GAME_DEFAULT; //!< Game state
-    Timer state_timer_ = Timer();   //!< Timer
+    Timer state_timer_ = Timer();    //!< Timer
     // Objects ================================================================
     // Moveable
     PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
-    Blinky blinky_{};
-    Clyde clyde_{};
-    Inky inky_{};
-    Pinky pinky_{};
-    std::vector<Ghost *> ghosts_; //!< Ghosts
-    // std::array<Ghost, gconst::game::nb_ghosts> ghosts_{Blinky{}, Clyde{}, Inky{}, Pinky{}}; //!< Ghosts
+    Blinky blinky_{};                                                            //!< Blinky (red)
+    Clyde clyde_{};                                                              //!< Clyde (orange)
+    Inky inky_{};                                                                //!< Inky (blue)
+    Pinky pinky_{};                                                              //!< Pinky (pink)
+    std::vector<Ghost *> ghosts_;                                                //!< Ghosts
     // Eatable
     std::array<Gomme, gconst::game::nb_gommes> gommes_;                  //!< Gommes
     std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_; //!< Super-Gommes
     std::vector<Fruit> fruits_;                                          //!< Fruits
     Board board_;                                                        //!< Board of cells
     // Parameters =============================================================
-    const std::array<SDL_Rect, 2> bg_ = {SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
-    const SDL_Rect maze_position_{0, 0, 0, 0};                                                                                                                        //!< Maze position on the window
-
-    static constexpr int gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::gomme::size) / 2;
-    static constexpr int super_gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::super_gomme::size) / 2; // Declaration must be placed in gomme
+    static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
+    static constexpr SDL_Rect maze_position_{0, 0, 0, 0};                                                                                                                     //!< Maze position on the window
 
     void createCell(int i, int j, int type);
 

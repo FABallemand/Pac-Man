@@ -71,17 +71,16 @@ void Ghost::strategy(int target_i, int target_j)
     switch (state_)
     {
     case GHOST_DEFAULT:
-        // action_direction_ = chase(target_i, target_j);
         action_direction_ = find_path_(ghost_board_, getI(), getJ(), target_i, target_j);
         break;
     case GHOST_VULNERABLE:
     case GHOST_VULNERABLE_BLINK:
         // action_direction_ = frightened(target_i, target_j);
-        action_direction_ = NONE;
+        action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
         break;
     case GHOST_EATEN:
         // action_direction_ = frightened(target_i, target_j);
-        action_direction_ = NONE;
+        action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
         break;
     default:
         LOG(ERROR) << "Invalid state";
@@ -161,7 +160,7 @@ void Ghost::updateSprite()
         }
         break;
     case GHOST_VULNERABLE:
-        if (direction_ != NONE)
+        if (direction_ != NONE) // ???
         {
             if (allowed_to_move_ == false)
             {

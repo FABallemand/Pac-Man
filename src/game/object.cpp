@@ -1,5 +1,7 @@
 #include "object.h"
 
+SDL_Rect Object::dead_sprite_ = SDL_Rect{0, 0, 1, 1};
+
 void Object::display(SDL_Surface *sprite, SDL_Surface *window_surface)
 {
     if (SDL_SetColorKey(sprite, SDL_TRUE, 0) != 0)

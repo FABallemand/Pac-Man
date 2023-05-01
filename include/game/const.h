@@ -64,16 +64,18 @@ namespace gconst
         {
             namespace gomme
             {
-                constexpr int size_s = 4; //!< Gomme size (on sprite)
-                constexpr int size = 16;  //!< Gomme size
-                constexpr int score = 10; //!< Gomme score
+                constexpr int size_s = 4;                                                                             //!< Gomme size (on sprite)
+                constexpr int size = 16;                                                                              //!< Gomme size
+                constexpr int score = 10;                                                                             //!< Gomme score
+                constexpr int gomme_offset = (gconst::object::cell::size - gconst::object::eatable::gomme::size) / 2; //!< Gomme display offset
             }
 
             namespace super_gomme
             {
-                constexpr int size_s = 9; //!< Super-Gomme size (on sprite)
-                constexpr int size = 32;  //!< Super-Gomme size
-                constexpr int score = 50; //!< Super-Gomme score
+                constexpr int size_s = 9;                                                                                         //!< Super-Gomme size (on sprite)
+                constexpr int size = 32;                                                                                          //!< Super-Gomme size
+                constexpr int score = 50;                                                                                         //!< Super-Gomme score
+                constexpr int super_gomme_offset = (gconst::object::cell::size - gconst::object::eatable::super_gomme::size) / 2; //!< Super-Gomme display offset
             }
 
             namespace fruit

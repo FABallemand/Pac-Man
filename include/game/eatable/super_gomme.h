@@ -6,11 +6,13 @@
 class SuperGomme : public Eatable
 {
 public:
+    static int nb_super_gommes_;
+
     SuperGomme() : Eatable{}
     {
     }
 
-    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::score, &sprite_super_gomme_, [](int score) -> int
+    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_, [](int score) -> int
                                        { return score + gconst::object::eatable::super_gomme::score; }}
     {
     }
@@ -21,16 +23,12 @@ public:
 
     void fillSuperGomme(int i, int j)
     {
-        fillEatable(SUPER_GOMME, j * gconst::object::cell::size + super_gomme_offset_, i * gconst::object::cell::size + super_gomme_offset_, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::score, &sprite_super_gomme_, [](int score) -> int
+        fillEatable(SUPER_GOMME, j * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::score, &sprite_super_gomme_, [](int score) -> int
                     { return score + gconst::object::eatable::super_gomme::score; });
     }
 
 protected:
     static SDL_Rect sprite_super_gomme_;
-
-public:
-    static int nb_super_gommes_;
-    static constexpr int super_gomme_offset_ = (gconst::object::cell::size - gconst::object::eatable::super_gomme::size) / 2;
 };
 
 #endif

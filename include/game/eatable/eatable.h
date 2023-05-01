@@ -21,9 +21,11 @@ enum EatableState
 class Eatable : public Object
 {
 protected:
-    Eatable() : Object{} {}
+    Eatable() : Object{}
+    {
+    }
 
-    Eatable(ObjectType type, int x, int y, int w, int h, int score, SDL_Rect *sprite, std::function<int(int)> effect) : Object{type, x, y, w, h, sprite}, score_{score}, effect_{effect}
+    Eatable(ObjectType type, int x, int y, int w, int h, SDL_Rect *sprite, std::function<int(int)> effect) : Object{type, x, y, w, h, sprite}, effect_{effect}
     {
     }
 
@@ -35,18 +37,12 @@ public:
     void fillEatable(ObjectType object_type, int x, int y, int w, int h, int score, SDL_Rect *sprite, std::function<int(int)> effect)
     {
         fillObject(object_type, x, y, w, h, sprite);
-        score_ = score;
         effect_ = effect;
     }
 
     EatableState getState() const
     {
         return state_;
-    }
-
-    int getScore() const
-    {
-        return score_;
     }
 
     std::function<int(int)> getEffect() const
@@ -68,8 +64,7 @@ public:
     // virtual void effect(Game &game) = 0;
 
 protected:
-    EatableState state_ = EATABLE_DEFAULT; //!< State of the object (TEMPLATE??)
-    int score_;                            //!< Reward score when eaten (USELESS -> lambda ??)
+    EatableState state_ = EATABLE_DEFAULT; //!< State of the object
     std::function<int(int)> effect_;       //!< Effect
 };
 

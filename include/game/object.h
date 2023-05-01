@@ -15,7 +15,7 @@ enum ObjectType
 {
     UNDEFINED = 0,
     PACMAN = 1,
-    GHOST,
+    GHOST = 2,
     GOMME = 3,
     SUPER_GOMME,
     FRUIT,
@@ -93,23 +93,41 @@ public:
         return position_.x / gconst::object::cell::size;
     }
 
-    bool operator==(Object o) const
-    {
-        return object_type_ == o.object_type_ && position_.x == o.position_.x && position_.y == o.position_.y;
-    }
-
     ObjectType getType() const
     {
         return object_type_;
     }
 
+    /**
+     * \brief Compare to objects relatively to their type et position
+     *
+     * \remark Required to use std::find
+     * \warning Should not be used with moveable objects
+     *
+     * \param o Object
+     * \return true If objects are equal
+     * \return false If object are not equal
+     */
+    bool operator==(Object o) const
+    {
+        return object_type_ == o.object_type_ && position_.x == o.position_.x && position_.y == o.position_.y;
+    }
+
+    /**
+     * \brief Display object
+     *
+     * \param sprite Sprite containing object sprites
+     * \param window_surface Surface to draw on
+     */
     void display(SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL (position_)
 
 protected:
-    ObjectType object_type_;                      //!< Type
-    SDL_Rect position_;                           //!< Board coordinates (x, y) and dimensions (w, h)
-    SDL_Rect *current_sprite_ = nullptr;          //!< Current sprite
-    SDL_Rect dead_sprite_ = SDL_Rect{0, 0, 1, 1}; //!< Dead sprite
+    // General ================================================================
+    ObjectType object_type_; //!< Type
+    SDL_Rect position_;      //!< Board coordinates (x, y) and dimensions (w, h)
+    // Display ================================================================
+    SDL_Rect *current_sprite_ = nullptr; //!< Current sprite
+    static SDL_Rect dead_sprite_;        //!< Dead sprite
 };
 
 #endif
