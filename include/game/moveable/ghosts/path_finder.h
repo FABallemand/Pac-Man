@@ -8,6 +8,7 @@
 #include "logger.h"
 #include "moveable.h"
 
+#define LIMIT_PATH_LENGTH 999999
 using SimpleMaze = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
 /**

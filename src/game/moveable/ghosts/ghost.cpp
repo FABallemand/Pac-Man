@@ -65,8 +65,8 @@ void Ghost::loadSimpleMaze()
     // Create a path to escape the ghost house
     ghost_board_[13][9] = 1;
     ghost_board_[13][11] = 1;
-    ghost_board_[14][9] = 1;
-    ghost_board_[14][11] = 1;
+    ghost_board_[12][9] = 1;
+    ghost_board_[12][11] = 1;
 }
 
 void Ghost::strategy(int target_i, int target_j)
@@ -77,6 +77,8 @@ void Ghost::strategy(int target_i, int target_j)
         action_direction_ = find_path_(ghost_board_, getI(), getJ(), target_i, target_j);
         break;
     case GHOST_VULNERABLE:
+        action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
+        break;
     case GHOST_VULNERABLE_BLINK:
         // action_direction_ = frightened(target_i, target_j);
         action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
@@ -130,6 +132,7 @@ void Ghost::move()
         position_.y += 2;//round(gconst::object::moveable::ghost::speed * delta_t_);
         break;
     default:
+        LOG(ERROR) << "Ghost pathfinding error";
         break;
     }
 }

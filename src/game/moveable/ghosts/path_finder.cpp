@@ -17,9 +17,11 @@ Direction PathFinder::operator()(SimpleMaze maze, int ghost_i, int ghost_j, int 
     path_length[UP] = pathFindingRec(maze, ghost_i - 1, ghost_j, target_i, target_j);
     path_length[DOWN] = pathFindingRec(maze, ghost_i + 1, ghost_j, target_i, target_j);
     int length = path_length[LEFT];
-    Direction direction = LEFT;
+    Direction direction = NONE;
     for (int i = 1; i < 4; ++i)
     {
+        if(path_length[i] >= LIMIT_PATH_LENGTH)
+            continue;
         if (path_length[i] < length)
         {
             direction = (Direction)i;
@@ -32,12 +34,13 @@ Direction PathFinder::operator()(SimpleMaze maze, int ghost_i, int ghost_j, int 
 
 int PathFinder::pathFindingRec(SimpleMaze maze, int ghost_i, int ghost_j, int target_i, int target_j)
 {
-    int res = 9999999;
+    int res = LIMIT_PATH_LENGTH;
     int tmp;
 
     // Check if position has already been explored
     if (maze[ghost_i][ghost_j] == 1)
     {
+        LOG(DEBUG) << " ghost_i : " << ghost_i << " ghost_j : " << ghost_j ;
         return res;
     }
     else
