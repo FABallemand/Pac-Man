@@ -68,10 +68,30 @@ void Ghost::loadSimpleMaze()
 
 void Ghost::strategy(int target_i, int target_j)
 {
+    int tmp_I, tmp_J;
+    if((getY()%gconst::object::cell::size)==0)
+        tmp_I = getI();
+    else if((getI()*gconst::object::cell::size) - getY()<0)
+        tmp_I = getI()-1;
+    else
+        tmp_I = getI()+1;
+
+    if((getX()%gconst::object::cell::size)==0)
+        tmp_J = getJ();
+    else if((getJ()*gconst::object::cell::size) - getX()<0)
+        tmp_J = getJ()-1;
+    else
+        tmp_J = getJ()+1;
+
+
+    LOG(DEBUG) << name_ << ":" << " tmp_I = " << tmp_I << " tmp_J = " << tmp_J;
+    LOG(DEBUG) << name_ << ":" << " Y = " << getY() << " X = " << getX();
+    LOG(DEBUG) << name_ << ":" << " I = " << getI() << " J = " << getJ();
+
     switch (state_)
     {
     case GHOST_DEFAULT:
-        action_direction_ = find_path_(ghost_board_, getI(), getJ(), target_i, target_j);
+        action_direction_ = find_path_(ghost_board_, tmp_I, tmp_J, target_i, target_j);
         break;
     case GHOST_VULNERABLE:
     case GHOST_VULNERABLE_BLINK:
@@ -112,18 +132,18 @@ void Ghost::move()
     {
     case LEFT:
         position_.x -= round(gconst::object::moveable::ghost::speed * delta_t_);
-        position_.y = getI() * gconst::object::cell::size;
+        //position_.y = getI() * gconst::object::cell::size;
         break;
     case RIGHT:
         position_.x += round(gconst::object::moveable::ghost::speed * delta_t_);
-        position_.y = getI() * gconst::object::cell::size;
+        //position_.y = getI() * gconst::object::cell::size;
         break;
     case UP:
-        position_.x = getJ() * gconst::object::cell::size;
+        //position_.x = getJ() * gconst::object::cell::size;
         position_.y -= round(gconst::object::moveable::ghost::speed * delta_t_);
         break;
     case DOWN:
-        position_.x = getJ() * gconst::object::cell::size;
+        //position_.x = getJ() * gconst::object::cell::size;
         position_.y += round(gconst::object::moveable::ghost::speed * delta_t_);
         break;
     default:
