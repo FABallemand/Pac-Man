@@ -16,8 +16,8 @@ void Ghost::update(const float delta_t, int target_i, int target_j)
     delta_t_ = delta_t;
 
     // Handle strategy
-    //LOG(DEBUG) << name_ << " : " < ""
-    if( getY()%gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
+    // LOG(DEBUG) << name_ << " : " < ""
+    if (getY() % gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
     {
         strategy(target_i, target_j);
         LOG(DEBUG) << name_ << " | Pathfinding direction = " << direction_;
@@ -61,12 +61,6 @@ void Ghost::loadSimpleMaze()
 
     // Close file
     level.close();
-
-    // Create a path to escape the ghost house
-    ghost_board_[13][9] = 1;
-    ghost_board_[13][11] = 1;
-    ghost_board_[12][9] = 1;
-    ghost_board_[12][11] = 1;
 }
 
 void Ghost::strategy(int target_i, int target_j)
@@ -116,20 +110,20 @@ void Ghost::move()
     switch (action_direction_)
     {
     case LEFT:
-        position_.x -= 2; //round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.x -= 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
         break;
     case RIGHT:
-        position_.x += 2; //round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.x += 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
         break;
     case UP:
         position_.x = getJ() * gconst::object::cell::size;
-        position_.y -= 2;//round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.y -= 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
         break;
     case DOWN:
         position_.x = getJ() * gconst::object::cell::size;
-        position_.y += 2;//round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.y += 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
         break;
     default:
         LOG(ERROR) << "Ghost pathfinding error";
