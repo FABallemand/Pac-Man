@@ -55,9 +55,10 @@ public:
 };
 
 using SimpleMaze = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
-using AQueue = PriorityQueue<std::pair<int, std::pair<int, int>>, std::vector<std::pair<int, std::pair<int, int>>>, std::greater<std::pair<int, std::pair<int, int>>>>;
+using APriorityQueue = PriorityQueue<std::pair<int, std::pair<int, int>>, std::vector<std::pair<int, std::pair<int, int>>>, std::greater<std::pair<int, std::pair<int, int>>>>;
 using ACost = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
 using Neighbors = std::array<std::pair<int, int>, 4>;
+using AQueue = Queue<std::pair<int, int>>;
 
 /**
  * \class PathFinder
@@ -81,9 +82,11 @@ public:
     Direction operator()(SimpleMaze maze, int ghost_i, int ghost_j, int target_i, int target_j);
 
 private:
-    int pathFinderAStar(SimpleMaze maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
+    AQueue recreatePath(APriorityQueue closed_list, std::pair<int, int> current, ACost cost); // Add references
 
-    int recreatePath(std::pair<int, int> current);
+    Direction bestDirection(std::pair<int, int> ghost_position, APriorityQueue closed_list, std::pair<int, int> current, ACost cost);
+
+    Direction AStar(SimpleMaze maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
 
     /**
      * \brief Compute euclidian distance between two positions

@@ -32,16 +32,46 @@ Direction PathFinder::operator()(SimpleMaze maze, int ghost_i, int ghost_j, int 
     return direction;
 }
 
-int PathFinder::recreatePath(std::pair<int, int> current)
+AQueue recreatePath(APriorityQueue closed_list, std::pair<int, int> current, ACost cost)
 {
-    return 0;
+    AQueue path{current};
+    while (closed_list.find({0, current})) // Add priority
+    {
+        
+    }
+    return path;
 }
 
-int PathFinder::pathFinderAStar(SimpleMaze maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position)
+Direction PathFinder::bestDirection(std::pair<int, int> ghost_position, APriorityQueue closed_list, std::pair<int, int> current, ACost cost)
+{
+    int ghost_i = ghost_position.first();
+    int ghost_j = ghost_position.second();
+    AQueue path = recreatePath(closed_list, current, cost);
+    int i = path.front().first(); // Front??
+    int j = path.front().second();
+    if (ghost_i == i && ghost_j - 1 == j)
+    {
+        return LEFT;
+    }
+    else if (ghost_i == i && ghost_j + 1 == j)
+    {
+        return RIGHT;
+    }
+    else if (ghost_i - 1 == i && ghost_j == j)
+    {
+        return UP;
+    }
+    else if (ghost_i + 1 == i && ghost_j == j)
+    {
+        return DOWN;
+    }
+}
+
+Direction PathFinder::AStar(SimpleMaze maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position)
 {
     // Initialize
-    AQueue closed_list{};
-    AQueue open_list{};
+    APriorityQueue closed_list{};
+    APriorityQueue open_list{};
 
     ACost cost{};
     for (auto row : cost)
@@ -61,7 +91,7 @@ int PathFinder::pathFinderAStar(SimpleMaze maze, std::pair<int, int> ghost_posit
         // Target reached
         if (current == target_position)
         {
-            return recreatePath(current); // TO DO
+            return bestDirection(closed_list, current);
         }
 
         // Target not yet reached
@@ -85,6 +115,10 @@ int PathFinder::pathFinderAStar(SimpleMaze maze, std::pair<int, int> ghost_posit
         }
         closed_list.push({0, current});
     }
+
+    // Error
+    LOG(ERROR) << "AStar is broken...";
+    return NONE;
 }
 
 int PathFinder::distance(std::pair<int, int> position_1, std::pair<int, int> position_2)
