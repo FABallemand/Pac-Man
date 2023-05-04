@@ -44,12 +44,15 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
     APriorityQueue open_list{};
 
     ACost cost{};
-    for (auto row : cost)
-        row.fill(MAX_PATH_LENGTH);
     ACost heuristic{};
-    for (auto row : heuristic)
-        row.fill(MAX_PATH_LENGTH);
-
+    for (size_t i = 0; i < gconst::game::nb_rows; i++)
+    {
+        for (size_t j = 0; j < gconst::game::nb_columns; j++)
+        {
+            cost[i][j] = MAX_PATH_LENGTH;
+            heuristic[i][j] = MAX_PATH_LENGTH; // Use fill (https://en.cppreference.com/w/cpp/container/array/fill)
+        }
+    }
     open_list.push({0.0, ghost_position});
     cost[ghost_position.first][ghost_position.second] = 0;
 
@@ -64,7 +67,7 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
         // Target reached
         if (current == target_position)
         {
-            return bestDirection(ghost_position, cost);
+            return bestDirection(target_position, cost);
         }
 
         // Target not yet reached
