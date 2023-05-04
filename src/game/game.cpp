@@ -72,29 +72,14 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
 
 bool Game::update(const Uint8 *key_state, const float delta_t)
 {
-    // Update PacMan
-    pacman_.update(key_state, delta_t);
-
-    // Update PacMan neighborhood
-    if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / 32][pacman_.getX() / 32])
-    {
-        pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + gconst::object::cell::size / 2) / gconst::object::cell::size, (pacman_.getX() + gconst::object::cell::size / 2) / gconst::object::cell::size));
-    }
+    // Update Pac-Man
+    updatePacMan(key_state, delta_t);
 
     // Update Ghosts
-    for (Ghost *g : ghosts_)
-    {
-        g->update(delta_t, pacman_.getI(), pacman_.getJ());
-    }
+    updateGhosts(delta_t);
 
-    // Eat
-    Cell *cell_to_update = pacman_.getCurrentCell();
-    Eatable *eatable = cell_to_update->getEatable();
-    if (eatable)
-    {
-        eatObject(eatable);
-        cell_to_update->setEatable(nullptr);
-    }
+    // Update eatables
+    updateEatables();
 
     // Check game state change
     checkGameStateChange();
@@ -219,6 +204,19 @@ void Game::createCell(int i, int j, int type)
     }
 }
 
+CellNeighborhood Game::createNeighborhood(int i, int j)
+{
+    CellNeighborhood res;
+    for (int x = 0; x < 3; x++)
+    {
+        for (int y = 0; y < 3; y++)
+        {
+            res[x][y] = &board_[(i + x - 1) % gconst::game::nb_rows][(j + y - 1) % gconst::game::nb_columns];
+        }
+    }
+    return res;
+}
+
 void Game::loadMaze()
 {
     // Open file
@@ -260,17 +258,56 @@ void Game::loadMaze()
     }
 }
 
-CellNeighborhood Game::createNeighborhood(int i, int j)
+void Game::handleBattle(Ghost *ghost)
 {
-    CellNeighborhood res;
-    for (int x = 0; x < 3; x++)
+    // If ghost and Pac-Man are on the same cell
+    if (ghost->getI() == pacman_.getI() && ghost->getJ() == pacman_.getJ())
     {
-        for (int y = 0; y < 3; y++)
+        if (ghost->getState() == GHOST_DEFAULT)
         {
-            res[x][y] = &board_[(i + x - 1) % gconst::game::nb_rows][(j + y - 1) % gconst::game::nb_columns];
+            // Pac-man lose a life and the postion of pacman (and the ghosts) are reset.
+        }
+        else if (ghost->getState() == GHOST_VULNERABLE || ghost->getState() == GHOST_VULNERABLE_BLINK)
+        {
+            // Pac-Man eat ghost and ghost goes back to its initial position
+            ghost->setState(GHOST_EATEN);
+            eating_streak_ += 1;
+            game_score_ += gconst::object::moveable::ghost::score * pow(2, eating_streak_);
         }
     }
-    return res;
+}
+
+void Game::updatePacMan(const Uint8 *key_state, const float delta_t)
+{
+    // Update Pac-Man
+    pacman_.update(key_state, delta_t);
+
+    // Update Pac-Man neighborhood
+    if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / gconst::object::cell::size][pacman_.getX() / gconst::object::cell::size])
+    {
+        pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + gconst::object::cell::size / 2) / gconst::object::cell::size, (pacman_.getX() + gconst::object::cell::size / 2) / gconst::object::cell::size));
+    }
+}
+
+void Game::updateGhosts(const float delta_t)
+{
+    // Update Ghosts
+    for (Ghost *g : ghosts_)
+    {
+        g->update(delta_t, pacman_.getI(), pacman_.getJ());
+        handleBattle(g);
+    }
+}
+
+void Game::updateEatables()
+{
+    Cell *cell_to_update = pacman_.getCurrentCell();
+    Eatable *eatable = cell_to_update->getEatable();
+    if (eatable)
+    {
+        eatObject(eatable);
+        cell_to_update->setEatable(nullptr);
+    }
 }
 
 void Game::eatObject(Object *object)
@@ -338,6 +375,7 @@ void Game::changeGameState(GameState state)
         {
             g->setState(GHOST_DEFAULT);
         }
+        eating_streak_ = 0;
     }
 
     // Change state

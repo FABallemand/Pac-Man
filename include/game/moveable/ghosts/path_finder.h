@@ -117,7 +117,7 @@ public:
      * \param target_j Target column position
      * \return Direction Direction to follow in order to meet the target
      */
-    Direction operator()(SimpleMaze &maze, int ghost_i, int ghost_j, int target_i, int target_j);
+    Direction operator()(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
 
 private:
     Direction bestDirection(std::pair<int, int> ghost_position, ACost &cost);

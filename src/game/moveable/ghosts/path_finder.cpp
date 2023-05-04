@@ -1,17 +1,15 @@
 #include "path_finder.h"
 
-Direction PathFinder::operator()(SimpleMaze &maze, int ghost_i, int ghost_j, int target_i, int target_j)
+Direction PathFinder::operator()(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position)
 {
-    if (target_i == ghost_i && target_j == ghost_j)
+    if (ghost_position == target_position)
     {
         return NONE;
     }
-
-    // return AStar(maze, {ghost_i, ghost_j}, {target_i, target_j});
-    return AStar(maze, {target_i, target_j}, {ghost_i, ghost_j});
+    return AStar(maze, target_position, ghost_position);
 }
 
-Direction PathFinder::bestDirection(std::pair<int, int> target_position, ACost &cost)
+Direction PathFinder::bestDirection(std::pair<int, int> target_position, ACost &cost) // change for source and target
 {
     // Target position
     int target_i = target_position.first;

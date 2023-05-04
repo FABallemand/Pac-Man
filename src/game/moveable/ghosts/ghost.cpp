@@ -1,12 +1,12 @@
 #include "ghost.h"
 
-GhostSpecialSprites Ghost::eatable_sprites_ = {SDL_Rect{3, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                               SDL_Rect{20, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+GhostSpecialSprites Ghost::eatable_sprites_ = {SDL_Rect{20, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                               SDL_Rect{3, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
                                                SDL_Rect{37, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
                                                SDL_Rect{54, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}};
 
-GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{71, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                             SDL_Rect{89, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
+                                             SDL_Rect{71, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
                                              SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
                                              SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}};
 
@@ -15,12 +15,16 @@ void Ghost::update(const float delta_t, int target_i, int target_j)
     // Remember delta_t
     delta_t_ = delta_t;
 
+    // Reset ghost when back at initial position
+    if (state_ == GHOST_EATEN && getI() == initial_position_.first && getJ() == initial_position_.second)
+    {
+        state_ = GHOST_DEFAULT;
+    }
+
     // Handle strategy
-    // LOG(DEBUG) << name_ << " : " < ""
     if (getY() % gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
     {
         strategy(target_i, target_j);
-        LOG(DEBUG) << name_ << " | Pathfinding direction = " << direction_;
     }
     // Handle movement
     handleMovement();
@@ -68,18 +72,16 @@ void Ghost::strategy(int target_i, int target_j)
     switch (state_)
     {
     case GHOST_DEFAULT:
-        action_direction_ = find_path_(ghost_board_, getI(), getJ(), target_i, target_j);
+        action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, {target_i, target_j});
         break;
     case GHOST_VULNERABLE:
-        action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
+        action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
         break;
     case GHOST_VULNERABLE_BLINK:
-        // action_direction_ = frightened(target_i, target_j);
-        action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
+        action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
         break;
     case GHOST_EATEN:
-        // action_direction_ = frightened(target_i, target_j);
-        action_direction_ = find_path_(ghost_board_, getI(), getJ(), 1, 1);
+        action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, initial_position_);
         break;
     default:
         LOG(ERROR) << "Invalid state";

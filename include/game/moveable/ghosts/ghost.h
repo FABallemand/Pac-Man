@@ -37,7 +37,10 @@ public:
 
     void setState(GhostState state)
     {
-        state_ = state;
+        if (state_ != GHOST_EATEN)
+        {
+            state_ = state;
+        }
     }
 
     void update(const float delta_t, int target_i, int traget_j);
@@ -48,9 +51,9 @@ protected:
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
     // Movement ===============================================================
-    std::pair<int, int> initial_position_;    //!< Initial position
+    std::pair<int, int> initial_position_; //!< Initial position
     std::pair<int, int> scatter_position_; //!< Vulnerable position
-    PathFinder find_path_{};                  //!< Path finder
+    PathFinder find_path_{};               //!< Path finder
     // Sprites ================================================================
     static GhostSpecialSprites eatable_sprites_; //!< Sprites location
     static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze

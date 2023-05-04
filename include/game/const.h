@@ -57,6 +57,7 @@ namespace gconst
                 constexpr int speed = 50;             //!< Ghost speed
                 constexpr int nb_moving_sprites = 2;  //!< Number of sprites in the moving animation
                 constexpr int nb_special_sprites = 2; //!< Number of sprites in the moving animation
+                constexpr int score = 100;
             }
         }
 

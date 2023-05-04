@@ -80,12 +80,6 @@ public:
         ++game_score_;
     }
 
-    // Backkgroung state
-    // void changeGameState()
-    // {
-    //     state_ = (state_ == NORMAL) ? BLINK : NORMAL;
-    // }
-
     void run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite);
 
     bool update(const Uint8 *key_state, const float delta_t);
@@ -98,6 +92,7 @@ private:
     int game_score_ = 0;             //!< Score
     GameState state_ = GAME_DEFAULT; //!< Game state
     Timer state_timer_ = Timer();    //!< Timer
+    int eating_streak_ = 0;          //!< Number of ghosts eaten in a row
     // Objects ================================================================
     // Moveable
     PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
@@ -117,11 +112,13 @@ private:
 
     void createCell(int i, int j, int type);
 
-    void loadMaze();
-
     CellNeighborhood createNeighborhood(int i, int j);
 
+    void loadMaze();
+
     void eatObject(Object *object);
+
+    void handleBattle(Ghost *ghost);
 
     void updateScore(std::function<int(int)> effect)
     {
@@ -134,6 +131,12 @@ private:
             LOG(DEBUG) << "NULL";
         }
     }
+
+    void updatePacMan(const Uint8 *key_state, const float delta_t);
+
+    void updateGhosts(const float delta_t);
+
+    void updateEatables();
 
     /**
      * \brief Change state of the game and start timer if needed
