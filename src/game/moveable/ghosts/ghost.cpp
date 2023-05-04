@@ -110,20 +110,36 @@ void Ghost::move()
     switch (action_direction_)
     {
     case LEFT:
-        position_.x -= 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.x -= round(gconst::object::moveable::ghost::speed * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
+        if (ghost_board_[getI()][getJ()] == 1)
+        {
+            position_.x = (getI() + 1) * gconst::object::cell::size;
+        }
         break;
     case RIGHT:
-        position_.x += 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.x += round(gconst::object::moveable::ghost::speed * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
+        if (ghost_board_[getI()][getJ()] == 1)
+        {
+            position_.x = (getI() - 1) * gconst::object::cell::size;
+        }
         break;
     case UP:
         position_.x = getJ() * gconst::object::cell::size;
-        position_.y -= 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.y -= round(gconst::object::moveable::ghost::speed * delta_t_);
+        if (ghost_board_[getI()][getJ()] == 1)
+        {
+            position_.y = (getJ() - 1) * gconst::object::cell::size;
+        }
         break;
     case DOWN:
         position_.x = getJ() * gconst::object::cell::size;
-        position_.y += 1; // round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.y += round(gconst::object::moveable::ghost::speed * delta_t_);
+        if (ghost_board_[getI()][getJ()] == 1)
+        {
+            position_.y = (getJ() + 1) * gconst::object::cell::size;
+        }
         break;
     default:
         LOG(ERROR) << "Ghost pathfinding error";

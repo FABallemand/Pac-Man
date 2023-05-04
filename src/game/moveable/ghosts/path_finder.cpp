@@ -45,6 +45,14 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
 
     ACost cost{};
     ACost heuristic{};
+    // for(auto row : cost)
+    // {
+    //     std::fill_n(row.begin(), gconst::game::nb_columns, MAX_PATH_LENGTH);
+    // }
+    // for(auto row : heuristic)
+    // {
+    //     std::fill_n(row.begin(), gconst::game::nb_columns, MAX_PATH_LENGTH);
+    // }
     for (size_t i = 0; i < gconst::game::nb_rows; i++)
     {
         for (size_t j = 0; j < gconst::game::nb_columns; j++)
@@ -61,8 +69,7 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
     {
         std::pair<int, int> current = open_list.top().second;
         open_list.pop();
-        LOG(DEBUG) << "CURRENT : " << current.first << " | " << current.second << " -> " << heuristic[current.first][current.second];
-        LOG(DEBUG) << "TARGET : " << target_position.first << " | " << target_position.second;
+        // LOG(DEBUG) << "CURRENT : " << current.first << " | " << current.second << " -> " << heuristic[current.first][current.second];
 
         // Target reached
         if (current == target_position)
@@ -77,18 +84,15 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
                                      {current.first + 1, current.second}}};
         for (auto neighbor : current_neighbors)
         {
-            // LOG(DEBUG) << "NEIGHBOR: " << neighbor.first << " | " << neighbor.second;
             // Neighbor is a wall
             if (maze[neighbor.first][neighbor.second] == 1)
             {
-                // LOG(DEBUG) << "WALL";
                 continue;
             }
 
             // If neighbor is not a wall
             if (!(closed_list.find({0.0, neighbor}) || (open_list.find({heuristic[neighbor.first][neighbor.second], neighbor}) && cost[neighbor.first][neighbor.second] < cost[current.first][current.second])))
             {
-                // LOG(DEBUG) << "NOT WALL";
                 cost[neighbor.first][neighbor.second] = cost[current.first][current.second] + 1;
                 heuristic[neighbor.first][neighbor.second] = cost[current.first][current.second] + distance(neighbor, target_position);
                 open_list.push({heuristic[neighbor.first][neighbor.second], neighbor});

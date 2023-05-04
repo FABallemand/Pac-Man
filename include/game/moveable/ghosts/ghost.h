@@ -48,7 +48,9 @@ protected:
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
     // Movement ===============================================================
-    PathFinder find_path_{}; //!< Path finder
+    std::pair<int, int> initial_position_;    //!< Initial position
+    std::pair<int, int> scatter_position_; //!< Vulnerable position
+    PathFinder find_path_{};                  //!< Path finder
     // Sprites ================================================================
     static GhostSpecialSprites eatable_sprites_; //!< Sprites location
     static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
