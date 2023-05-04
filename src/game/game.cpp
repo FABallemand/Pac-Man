@@ -265,7 +265,9 @@ void Game::handleBattle(Ghost *ghost)
     {
         if (ghost->getState() == GHOST_DEFAULT)
         {
-            // Pac-man lose a life and the postion of pacman (and the ghosts) are reset.
+            // Pac-man lose a life and the postion of pacman (and the ghosts) are reset
+            // pacman_.die();
+            --life_remaining_;
         }
         else if (ghost->getState() == GHOST_VULNERABLE || ghost->getState() == GHOST_VULNERABLE_BLINK)
         {

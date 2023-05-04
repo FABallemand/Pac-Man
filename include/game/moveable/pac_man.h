@@ -105,6 +105,8 @@ private:
 
     void handleMovement() override;
 
+    void die();
+
     void updateSprite() override;
 };
 

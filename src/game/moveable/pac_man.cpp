@@ -348,6 +348,12 @@ void PacMan::handleMovement()
     move();
 }
 
+void PacMan::die()
+{
+    state_ = PACMAN_DYING;
+    
+}
+
 void PacMan::updateSprite()
 {
     switch (state_)

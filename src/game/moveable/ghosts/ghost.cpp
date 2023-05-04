@@ -116,7 +116,7 @@ void Ghost::move()
         position_.y = getI() * gconst::object::cell::size;
         if (ghost_board_[getI()][getJ()] == 1)
         {
-            position_.x = (getI() + 1) * gconst::object::cell::size;
+            position_.x = (getJ() + 1) * gconst::object::cell::size;
         }
         break;
     case RIGHT:
@@ -124,7 +124,7 @@ void Ghost::move()
         position_.y = getI() * gconst::object::cell::size;
         if (ghost_board_[getI()][getJ()] == 1)
         {
-            position_.x = (getI() - 1) * gconst::object::cell::size;
+            position_.x = (getJ() - 1) * gconst::object::cell::size;
         }
         break;
     case UP:
@@ -132,7 +132,7 @@ void Ghost::move()
         position_.y -= round(gconst::object::moveable::ghost::speed * delta_t_);
         if (ghost_board_[getI()][getJ()] == 1)
         {
-            position_.y = (getJ() - 1) * gconst::object::cell::size;
+            position_.y = (getI() - 1) * gconst::object::cell::size;
         }
         break;
     case DOWN:
@@ -140,7 +140,7 @@ void Ghost::move()
         position_.y += round(gconst::object::moveable::ghost::speed * delta_t_);
         if (ghost_board_[getI()][getJ()] == 1)
         {
-            position_.y = (getJ() + 1) * gconst::object::cell::size;
+            position_.y = (getI() + 1) * gconst::object::cell::size;
         }
         break;
     default:
