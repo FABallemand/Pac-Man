@@ -46,6 +46,7 @@ namespace gconst
                 constexpr int size = 32;                                               //!< PacMan size
                 constexpr int speed = 100;                                             //!< PacMan speed
                 constexpr int move_diag_offset = (2 / 3) * gconst::object::cell::size; //!< Offset to which Pac-Man can move diagonaly
+                constexpr int dying_time = 3000;                                       //!< Time for Pac-Man to die (in ms)
                 constexpr int nb_moving_sprites = 2;                                   //!< Number of sprites in the moving animation
                 constexpr int nb_dying_sprites = 10;                                   //!< Number of sprites in the dying animation
             }

@@ -22,14 +22,11 @@ PacMan::PacMan(int x, int y) : Moveable{PACMAN, x, y, gconst::object::moveable::
                         {SDL_Rect{109, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{126, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}}}}; // Down
 }
 
-void PacMan::eat(Object *eatable)
-{
-}
-
 void PacMan::update(const Uint8 *key_state, const float delta_t)
 {
-    if (state_ == PACMAN_ALIVE)
+    switch (state_)
     {
+    case PACMAN_ALIVE:
         // Remember delta_t
         delta_t_ = delta_t;
 
@@ -38,6 +35,10 @@ void PacMan::update(const Uint8 *key_state, const float delta_t)
 
         // Handle movement
         handleMovement();
+        break;
+    case PACMAN_DYING:
+        // die();
+        break;
     }
 
     // Update sprite
@@ -348,12 +349,6 @@ void PacMan::handleMovement()
     move();
 }
 
-void PacMan::die()
-{
-    state_ = PACMAN_DYING;
-    
-}
-
 void PacMan::updateSprite()
 {
     switch (state_)
@@ -363,7 +358,7 @@ void PacMan::updateSprite()
         {
             if (allowed_to_move_ == false)
             {
-                sprite_count_ = 0; // PacMan is stuck against the wall with his mouth open
+                sprite_count_ = 0; // Pac-Man is stuck against the wall with his mouth open
             }
             else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
             {
@@ -376,6 +371,7 @@ void PacMan::updateSprite()
     case PACMAN_DYING:
         if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
         {
+            LOG(DEBUG) << "DYING";
             current_sprite_ = &(dying_sprites_[sprite_count_++]);
         }
         else
@@ -384,8 +380,10 @@ void PacMan::updateSprite()
             state_ = PACMAN_DEAD;
         }
         break;
+    case PACMAN_DEAD:
+        break;
     default:
-        LOG(ERROR) << "Invalid state for PacMan object";
+        LOG(ERROR) << "updateSprite: Invalid state for PacMan object";
         break;
     }
 }

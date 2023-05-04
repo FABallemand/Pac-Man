@@ -46,6 +46,11 @@ public:
         direction_ = direction;
     }
 
+    void setSpriteCount(const int count)
+    {
+        sprite_count_ = count;
+    }
+
 protected:
     // Movement ===============================================================
     bool allowed_to_move_ = true;       //!< Allowed to move indicator

@@ -136,7 +136,22 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     }
 
     // Pac-Man
-    pacman_.display(sprite, window_surface);
+    if (pacman_.getState() == PACMAN_ALIVE)
+    {
+        pacman_.display(sprite, window_surface);
+    }
+    else
+    {
+        pacman_.setSpriteCount(0);
+        Timer dying_timer{};
+        dying_timer.start();
+        while (dying_timer.getTicks() < gconst::object::moveable::pacman::dying_time)
+        {
+            pacman_.display(sprite, window_surface);
+            pacman_.update(nullptr, 0.);
+            SDL_Delay(16);
+        }
+    }
 
     // Update window
     if (SDL_UpdateWindowSurface(window) != 0)
@@ -266,7 +281,7 @@ void Game::handleBattle(Ghost *ghost)
         if (ghost->getState() == GHOST_DEFAULT)
         {
             // Pac-man lose a life and the postion of pacman (and the ghosts) are reset
-            // pacman_.die();
+            pacman_.setState(PACMAN_DYING);
             --life_remaining_;
         }
         else if (ghost->getState() == GHOST_VULNERABLE || ghost->getState() == GHOST_VULNERABLE_BLINK)

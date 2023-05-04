@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "moveable.h"
+#include "timer.h"
 
 using PacManDyingSprites = std::array<SDL_Rect, gconst::object::moveable::pacman::nb_dying_sprites>;
 
@@ -63,13 +64,6 @@ public:
         neighborhood_ = neighborhood;
     }
 
-    /**
-     * \brief Eat an eatable object
-     *
-     * \param eatable Pointer to the object eaten
-     */
-    void eat(Object *eatable);
-
     void update(const Uint8 *key_state, const float delta_t);
 
 private:
@@ -104,8 +98,6 @@ private:
     void move() override;
 
     void handleMovement() override;
-
-    void die();
 
     void updateSprite() override;
 };
