@@ -38,7 +38,6 @@ void PacMan::update(const Uint8 *key_state, const float delta_t)
         handleMovement();
         break;
     case PACMAN_DYING:
-        // die();
         break;
     }
 

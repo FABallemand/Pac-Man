@@ -89,7 +89,6 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     {
         if (life_remaining_ > 0)
         {
-            LOG(DEBUG) << "GOING TO RESPAWN";
             respawn();
         }
         else
@@ -156,11 +155,11 @@ void Game::respawn()
 {
     SDL_Delay(1000);
     pacman_.respawn();
+    pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
     for (Ghost *g : ghosts_)
     {
         g->respawn();
     }
-    SDL_Delay(1000);
 }
 
 void Game::quitGame()
@@ -293,6 +292,10 @@ void Game::handleBattle(Ghost *ghost)
         {
             // Pac-man lose a life and the postion of pacman (and the ghosts) are reset
             pacman_.setState(PACMAN_DYING);
+            for (Ghost *g : ghosts_)
+            {
+                g->setState(GHOST_STOP);
+            }
             --life_remaining_;
         }
         else if (ghost->getState() == GHOST_VULNERABLE || ghost->getState() == GHOST_VULNERABLE_BLINK)
@@ -313,7 +316,7 @@ void Game::updatePacMan(const Uint8 *key_state, const float delta_t)
     // Update Pac-Man neighborhood
     if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / gconst::object::cell::size][pacman_.getX() / gconst::object::cell::size])
     {
-        pacman_.setNeighborhood(createNeighborhood((pacman_.getY() + gconst::object::cell::size / 2) / gconst::object::cell::size, (pacman_.getX() + gconst::object::cell::size / 2) / gconst::object::cell::size));
+        pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
     }
 }
 
@@ -381,29 +384,38 @@ void Game::eatObject(Object *object)
 void Game::changeGameState(GameState state)
 {
 
-    if (state == GAME_SUPER)
+    switch (state)
     {
+    case GAME_SUPER:
         state_timer_.start();
         for (Ghost *g : ghosts_)
         {
             g->setState(GHOST_VULNERABLE);
         }
-    }
-    else if (state == GAME_SUPER_BLINK)
-    {
+        break;
+    case GAME_SUPER_BLINK:
         state_timer_.start();
         for (Ghost *g : ghosts_)
         {
-            g->setState(GHOST_VULNERABLE_BLINK);
+            if (g->getState() == GHOST_VULNERABLE)
+            {
+                g->setState(GHOST_VULNERABLE_BLINK);
+            }
         }
-    }
-    else if (state_ != GAME_DEFAULT && state == GAME_DEFAULT)
-    {
-        for (Ghost *g : ghosts_)
+        break;
+    case GAME_DEFAULT:
+        if (state_ != GAME_DEFAULT)
         {
-            g->setState(GHOST_DEFAULT);
+            for (Ghost *g : ghosts_)
+            {
+                if (g->getState() == GHOST_VULNERABLE_BLINK)
+                {
+                    g->setState(GHOST_DEFAULT);
+                }
+            }
+            eating_streak_ = 0;
         }
-        eating_streak_ = 0;
+        break;
     }
 
     // Change state

@@ -19,7 +19,8 @@ enum GhostState
     GHOST_DEFAULT,
     GHOST_VULNERABLE,
     GHOST_VULNERABLE_BLINK,
-    GHOST_EATEN
+    GHOST_EATEN,
+    GHOST_STOP
 };
 
 class Ghost : public Moveable
