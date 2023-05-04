@@ -391,6 +391,8 @@ void PacMan::respawn()
 {
     state_ = PACMAN_ALIVE;
     direction_ = NONE;
+    action_direction_ = NONE;
+    input_direction_ = NONE;
     position_.x = initial_position_.second * gconst::object::cell::size;
     position_.y = initial_position_.first * gconst::object::cell::size;
     sprite_count_ = 0;

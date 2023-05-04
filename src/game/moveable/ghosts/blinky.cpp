@@ -9,3 +9,8 @@ Blinky::Blinky() : Ghost{0, 0, "Blinky"} // Temporary
     scatter_position_ = {1, 19};
     initial_position_ = {12, 10};
 }
+
+Direction Blinky::chase(std::pair<int, int> target_position, Direction target_direction)
+{
+    return find_path_(ghost_board_, {getI(), getJ()}, target_position);
+}

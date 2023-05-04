@@ -44,7 +44,7 @@ public:
         }
     }
 
-    void update(const float delta_t, int target_i, int traget_j);
+    void update(const float delta_t, int target_i, int traget_j, Direction direction);
 
     void respawn();
 
@@ -66,15 +66,9 @@ protected:
      */
     void loadSimpleMaze(); // Argument -> file
 
-    void strategy(int target_i, int target_j);
+    void strategy(int target_i, int target_j, Direction target_direction = NONE);
 
-    // virtual Direction chase() = 0;
-
-    // virtual Direction scatter() = 0;
-
-    // virtual Direction frightened() = 0;
-
-    // virtual Direction eaten() = 0;
+    virtual Direction chase(std::pair<int, int> target_position, Direction target_direction) = 0;
 
     void turn() override;
 

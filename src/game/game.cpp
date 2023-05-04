@@ -325,7 +325,7 @@ void Game::updateGhosts(const float delta_t)
     // Update Ghosts
     for (Ghost *g : ghosts_)
     {
-        g->update(delta_t, pacman_.getI(), pacman_.getJ());
+        g->update(delta_t, pacman_.getI(), pacman_.getJ(),pacman_.getDirection());
         handleBattle(g);
     }
 }

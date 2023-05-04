@@ -9,3 +9,8 @@ Inky::Inky() : Ghost{0, 0, "Inky"}
     scatter_position_ = {25, 19};
     initial_position_ = {13, 9};
 }
+
+Direction Inky::chase(std::pair<int, int> target_position, Direction target_direction)
+{
+    return find_path_(ghost_board_, {getI(), getJ()}, target_position);
+}

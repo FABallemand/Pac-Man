@@ -10,7 +10,7 @@ GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::m
                                              SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
                                              SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}};
 
-void Ghost::update(const float delta_t, int target_i, int target_j)
+void Ghost::update(const float delta_t, int target_i, int target_j,Direction direction)
 {
     // No movement during respawn
     if (state_ == GHOST_STOP)
@@ -30,7 +30,7 @@ void Ghost::update(const float delta_t, int target_i, int target_j)
     // Handle strategy
     if (getY() % gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
     {
-        strategy(target_i, target_j);
+        strategy(target_i, target_j, direction);
     }
     // Handle movement
     handleMovement();
@@ -43,6 +43,7 @@ void Ghost::respawn()
 {
     state_ = GHOST_DEFAULT;
     direction_ = NONE;
+    action_direction_ = NONE;
     position_.x = initial_position_.second * gconst::object::cell::size;
     position_.y = initial_position_.first * gconst::object::cell::size;
     sprite_count_ = 0;
@@ -82,12 +83,13 @@ void Ghost::loadSimpleMaze()
     level.close();
 }
 
-void Ghost::strategy(int target_i, int target_j)
+void Ghost::strategy(int target_i, int target_j, Direction target_direction)
 {
     switch (state_)
     {
     case GHOST_DEFAULT:
-        action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, {target_i, target_j});
+        // action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, {target_i, target_j});
+        action_direction_ = chase({target_i, target_j}, direction_);
         break;
     case GHOST_VULNERABLE:
         action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);

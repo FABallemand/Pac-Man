@@ -74,7 +74,13 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "fstream": "cpp",
-        "*.old": "cpp"
+        "*.old": "cpp",
+        "forward_list": "cpp",
+        "executor": "cpp",
+        "io_context": "cpp",
+        "netfwd": "cpp",
+        "timer": "cpp",
+        "future": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
