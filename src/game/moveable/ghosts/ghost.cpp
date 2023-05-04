@@ -33,6 +33,15 @@ void Ghost::update(const float delta_t, int target_i, int target_j)
     updateSprite();
 }
 
+void Ghost::respawn()
+{
+    state_ = GHOST_DEFAULT;
+    direction_ = NONE;
+    position_.x = initial_position_.second * gconst::object::cell::size;
+    position_.y = initial_position_.first * gconst::object::cell::size;
+    sprite_count_ = 0;
+}
+
 void Ghost::loadSimpleMaze()
 {
     // Open file

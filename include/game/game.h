@@ -96,11 +96,12 @@ private:
     // Objects ================================================================
     // Moveable
     PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
-    Blinky blinky_{};                                                            //!< Blinky (red)
-    Clyde clyde_{};                                                              //!< Clyde (orange)
-    Inky inky_{};                                                                //!< Inky (blue)
-    Pinky pinky_{};                                                              //!< Pinky (pink)
-    std::vector<Ghost *> ghosts_;                                                //!< Ghosts
+    int pacman_dying_frame = 0;
+    Blinky blinky_{};             //!< Blinky (red)
+    Clyde clyde_{};               //!< Clyde (orange)
+    Inky inky_{};                 //!< Inky (blue)
+    Pinky pinky_{};               //!< Pinky (pink)
+    std::vector<Ghost *> ghosts_; //!< Ghosts
     // Eatable
     std::array<Gomme, gconst::game::nb_gommes> gommes_;                  //!< Gommes
     std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_; //!< Super-Gommes
@@ -150,6 +151,10 @@ private:
      *
      */
     void checkGameStateChange();
+
+    void respawn();
+
+    void quitGame();
 };
 
 #endif

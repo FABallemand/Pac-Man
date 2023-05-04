@@ -66,6 +66,8 @@ public:
 
     void update(const Uint8 *key_state, const float delta_t);
 
+    void respawn();
+
 private:
     // State ==================================================================
     PacManState state_ = PACMAN_ALIVE; //!< State of Pac-Man

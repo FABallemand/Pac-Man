@@ -51,12 +51,19 @@ public:
         sprite_count_ = count;
     }
 
+    /**
+     * \brief Respawn moveable object
+     *
+     */
+    virtual void respawn() = 0;
+
 protected:
     // Movement ===============================================================
-    bool allowed_to_move_ = true;       //!< Allowed to move indicator
-    float delta_t_ = 0.0;               //!< Elapsed time since last update
-    Direction direction_ = NONE;        //!< Direction of the object
-    Direction action_direction_ = NONE; //!< Future direction of the object
+    bool allowed_to_move_ = true;          //!< Allowed to move indicator
+    float delta_t_ = 0.0;                  //!< Elapsed time since last update
+    Direction direction_ = NONE;           //!< Direction of the object
+    Direction action_direction_ = NONE;    //!< Future direction of the object
+    std::pair<int, int> initial_position_; //!< Initial position
     // Sprites ================================================================
     int frame_count_ = 0;          //!< Frame count
     int sprite_count_ = 0;         //!< Sprite count (for animation)

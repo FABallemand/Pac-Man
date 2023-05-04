@@ -20,6 +20,7 @@ PacMan::PacMan(int x, int y) : Moveable{PACMAN, x, y, gconst::object::moveable::
                         {SDL_Rect{20, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{35, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Right
                         {SDL_Rect{75, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{92, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Up
                         {SDL_Rect{109, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{126, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}}}}; // Down
+    initial_position_ = {20, 10};
 }
 
 void PacMan::update(const Uint8 *key_state, const float delta_t)
@@ -371,7 +372,6 @@ void PacMan::updateSprite()
     case PACMAN_DYING:
         if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
         {
-            LOG(DEBUG) << "DYING";
             current_sprite_ = &(dying_sprites_[sprite_count_++]);
         }
         else
@@ -386,4 +386,14 @@ void PacMan::updateSprite()
         LOG(ERROR) << "updateSprite: Invalid state for PacMan object";
         break;
     }
+}
+
+void PacMan::respawn()
+{
+    state_ = PACMAN_ALIVE;
+    direction_ = NONE;
+    position_.x = initial_position_.second * gconst::object::cell::size;
+    position_.y = initial_position_.first * gconst::object::cell::size;
+    sprite_count_ = 0;
+    current_sprite_ = &(initial_sprite_);
 }

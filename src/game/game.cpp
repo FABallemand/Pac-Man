@@ -84,12 +84,18 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
     // Check game state change
     checkGameStateChange();
 
-    // Check for end of the game
+    // Respawn if Pac-Man is dead
     if (pacman_.getState() == PACMAN_DEAD)
     {
-        state_ = GAME_END;
-        SDL_Delay(3000);
-        return true;
+        if (life_remaining_ > 0)
+        {
+            LOG(DEBUG) << "GOING TO RESPAWN";
+            respawn();
+        }
+        else
+        {
+            quitGame();
+        }
     }
     return false;
 }
@@ -136,22 +142,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     }
 
     // Pac-Man
-    if (pacman_.getState() == PACMAN_ALIVE)
-    {
-        pacman_.display(sprite, window_surface);
-    }
-    else
-    {
-        pacman_.setSpriteCount(0);
-        Timer dying_timer{};
-        dying_timer.start();
-        while (dying_timer.getTicks() < gconst::object::moveable::pacman::dying_time)
-        {
-            pacman_.display(sprite, window_surface);
-            pacman_.update(nullptr, 0.);
-            SDL_Delay(16);
-        }
-    }
+    pacman_.display(sprite, window_surface);
 
     // Update window
     if (SDL_UpdateWindowSurface(window) != 0)
@@ -159,6 +150,21 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
         LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
         exit(1);
     }
+}
+
+void Game::respawn()
+{
+    SDL_Delay(1000);
+    pacman_.respawn();
+    for (Ghost *g : ghosts_)
+    {
+        g->respawn();
+    }
+    SDL_Delay(1000);
+}
+
+void Game::quitGame()
+{
 }
 
 void Game::createCell(int i, int j, int type)
@@ -275,8 +281,13 @@ void Game::loadMaze()
 
 void Game::handleBattle(Ghost *ghost)
 {
+    if (pacman_.getState() != PACMAN_ALIVE)
+    {
+        return;
+    }
+
     // If ghost and Pac-Man are on the same cell
-    if (ghost->getI() == pacman_.getI() && ghost->getJ() == pacman_.getJ())
+    else if (ghost->getI() == pacman_.getI() && ghost->getJ() == pacman_.getJ())
     {
         if (ghost->getState() == GHOST_DEFAULT)
         {

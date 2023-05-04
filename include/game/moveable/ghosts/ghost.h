@@ -45,13 +45,14 @@ public:
 
     void update(const float delta_t, int target_i, int traget_j);
 
+    void respawn();
+
 protected:
     std::string name_;       //!< Name of the ghost (for logging purpose only)
     SimpleMaze ghost_board_; //!< Simple representation of the maze
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
     // Movement ===============================================================
-    std::pair<int, int> initial_position_; //!< Initial position
     std::pair<int, int> scatter_position_; //!< Vulnerable position
     PathFinder find_path_{};               //!< Path finder
     // Sprites ================================================================
