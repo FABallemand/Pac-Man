@@ -14,7 +14,7 @@ PacManDyingSprites PacMan::dying_sprites_{SDL_Rect{3, 106, gconst::object::movea
                                           SDL_Rect{137, 106, 4, gconst::object::moveable::pacman::size_s1},
                                           SDL_Rect{142, 106, 13, gconst::object::moveable::pacman::size_s1}};
 
-PacMan::PacMan(int x, int y) : Moveable{PACMAN, x, y, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, &initial_sprite_}
+PacMan::PacMan() : Moveable{PACMAN, 0, 0, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, &initial_sprite_}
 {
     moving_sprites_ = {{{SDL_Rect{47, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{63, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Left
                         {SDL_Rect{20, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{35, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Right

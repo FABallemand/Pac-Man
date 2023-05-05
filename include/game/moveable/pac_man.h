@@ -28,7 +28,7 @@ enum PacManState
 class PacMan : public Moveable
 {
 public:
-    PacMan(int x, int y);
+    PacMan();
 
     ~PacMan()
     {

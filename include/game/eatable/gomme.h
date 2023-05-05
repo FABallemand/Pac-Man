@@ -17,12 +17,10 @@ public:
     Gomme(int x, int y) : Eatable{GOMME, x, y, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
                                   { return score + gconst::object::eatable::gomme::score; }}
     {
-        ++nb_gommes_;
     }
 
     ~Gomme()
     {
-        --nb_gommes_;
     }
 
     void fillGomme(int i, int j)
@@ -32,7 +30,8 @@ public:
     }
 
 private:
-    static SDL_Rect sprite_gomme_;
+    // Sprites ================================================================
+    static SDL_Rect sprite_gomme_; //!< Sprites
 };
 
 #endif

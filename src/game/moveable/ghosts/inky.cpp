@@ -15,7 +15,6 @@ Direction Inky::chase(std::pair<int, int> target_position, Direction target_dire
     if (target_direction == NONE)
     {
         // Scatter if Pac-Man has not moved yet
-        LOG(DEBUG) << name_ << " : scatter";
         offset_i_ = scatter_position_.first;
         offset_j_ = scatter_position_.second;
         return find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);

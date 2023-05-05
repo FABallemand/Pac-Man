@@ -91,8 +91,6 @@ void Ghost::strategy(int target_i, int target_j, Direction target_direction)
     switch (state_)
     {
     case GHOST_DEFAULT:
-        // action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, {target_i, target_j});
-        LOG(DEBUG) << name_ << " is chasing Pac-Man";
         action_direction_ = chase({target_i, target_j}, target_direction);
         break;
     case GHOST_VULNERABLE:

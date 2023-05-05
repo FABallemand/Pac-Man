@@ -93,8 +93,14 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
         }
         else
         {
-            quitGame();
+            return quitGame();
         }
+    }
+
+    // Change level
+    if (Gomme::nb_gommes_ == 0 && SuperGomme::nb_super_gommes_ == 0)
+    {
+        nextLevel();
     }
     return false;
 }
@@ -119,6 +125,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     {
         if (g.getState() != EATABLE_EATEN)
         {
+            LOG(DEBUG) << "ICI";
             g.display(sprite, window_surface);
         }
     }
@@ -162,8 +169,13 @@ void Game::respawn()
     }
 }
 
-void Game::quitGame()
+bool Game::quitGame()
 {
+    LOG(INFO) << "GAME OVER!!!";
+    LOG(INFO) << "YOUR SCORE IS: " << game_score_;
+    SDL_Delay(2000);
+
+    return true;
 }
 
 void Game::createCell(int i, int j, int type)
@@ -177,8 +189,6 @@ void Game::createCell(int i, int j, int type)
     case 1:
         gommes_[Gomme::nb_gommes_].fillGomme(i, j);               // Create Gomme
         board_[i][j] = Cell{i, j, &(gommes_[Gomme::nb_gommes_])}; // Create empty Cell with Gomme inside
-        // LOG(DEBUG) << "# gommes_ # i, j, type : " << gommes_[Gomme::nb_gommes_].getY() / gconst::object::cell::size << "," << gommes_[Gomme::nb_gommes_].getX() / gconst::object::cell::size << "," << gommes_[Gomme::nb_gommes_].getType();
-        // LOG(DEBUG) << "# board_[i][j] # i, j, type : " << board_[i][j].getEatable()->getY() / gconst::object::cell::size << "," << board_[i][j].getEatable()->getX() / gconst::object::cell::size << "," << board_[i][j].getEatable()->getType();
         ++Gomme::nb_gommes_;
         break;
     case 2:
@@ -351,7 +361,9 @@ void Game::updateEatables()
     }
     if (game_score_ > score_to_reach_)
     {
-        fruit_.setFruitType(static_cast<FruitType>(static_cast<int>(next_fruit_type_) + 1));
+        int next_fruit_type = (static_cast<int>(next_fruit_type_) + 1) % gconst::object::eatable::fruit::nb_fruit;
+        next_fruit_type = next_fruit_type == 0 ? ++next_fruit_type : next_fruit_type;
+        fruit_.setFruitType(static_cast<FruitType>(next_fruit_type));
         score_to_reach_ += gconst::object::eatable::fruit::spawn_interval;
     }
 }
@@ -368,6 +380,7 @@ void Game::eatObject(Object *object)
             updateScore(it->getEffect());
             LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATABLE_EATEN);
+            --Gomme::nb_gommes_;
         }
         else
         {
@@ -383,6 +396,7 @@ void Game::eatObject(Object *object)
             updateScore(it->getEffect());
             LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATABLE_EATEN);
+            --SuperGomme::nb_super_gommes_;
             changeGameState(GAME_SUPER);
         }
         else
@@ -441,5 +455,24 @@ void Game::checkGameStateChange()
     else if (state_ == GAME_SUPER_BLINK && state_timer_.getTicks() > gconst::game::blink_duration)
     {
         changeGameState(GAME_DEFAULT);
+    }
+}
+
+void Game::nextLevel()
+{
+    // Game
+    eating_streak_ = 0;
+    ++level;
+
+    loadMaze();
+
+    // Gommes and SuperGommes
+    for (Gomme g : gommes_)
+    {
+        g.setState(EATABLE_DEFAULT);
+    }
+    for (SuperGomme sg : super_gommes_)
+    {
+        sg.setState(EATABLE_DEFAULT);
     }
 }

@@ -13,7 +13,7 @@ public:
     }
 
     SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_, [](int score) -> int
-                                       { return score + gconst::object::eatable::super_gomme::score; }}
+                                            { return score + gconst::object::eatable::super_gomme::score; }}
     {
     }
 
@@ -28,7 +28,8 @@ public:
     }
 
 protected:
-    static SDL_Rect sprite_super_gomme_;
+    // Sprites ================================================================
+    static SDL_Rect sprite_super_gomme_; //!< Sprites
 };
 
 #endif
