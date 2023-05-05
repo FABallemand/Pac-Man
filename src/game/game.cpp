@@ -125,7 +125,6 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     {
         if (g.getState() != EATABLE_EATEN)
         {
-            LOG(DEBUG) << "ICI";
             g.display(sprite, window_surface);
         }
     }
@@ -250,7 +249,7 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
 void Game::loadMaze()
 {
     // Open file
-    std::ifstream level{"../assets/level/maze.lvl", std::ios::in};
+    std::ifstream level{"../assets/level/maze_2_gomme.lvl", std::ios::in};
 
     if (level.is_open())
     {
@@ -461,18 +460,23 @@ void Game::checkGameStateChange()
 void Game::nextLevel()
 {
     // Game
-    eating_streak_ = 0;
+    changeGameState(GAME_DEFAULT);
     ++level;
 
-    loadMaze();
+    // Pac-Man and Ghosts
+    respawn();
 
     // Gommes and SuperGommes
     for (Gomme g : gommes_)
     {
+        LOG(DEBUG) << "REINITIALISATION GOMME";
         g.setState(EATABLE_DEFAULT);
+        LOG(DEBUG) << g.getState();
     }
     for (SuperGomme sg : super_gommes_)
     {
         sg.setState(EATABLE_DEFAULT);
     }
+
+    loadMaze();
 }
