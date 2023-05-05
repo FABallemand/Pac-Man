@@ -249,7 +249,7 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
 void Game::loadMaze()
 {
     // Open file
-    std::ifstream level{"../assets/level/maze_2_gomme.lvl", std::ios::in};
+    std::ifstream level{"../assets/level/maze.lvl", std::ios::in};
 
     if (level.is_open())
     {
@@ -467,16 +467,14 @@ void Game::nextLevel()
     respawn();
 
     // Gommes and SuperGommes
-    for (Gomme g : gommes_)
-    {
-        LOG(DEBUG) << "REINITIALISATION GOMME";
-        g.setState(EATABLE_DEFAULT);
-        LOG(DEBUG) << g.getState();
-    }
-    for (SuperGomme sg : super_gommes_)
-    {
-        sg.setState(EATABLE_DEFAULT);
-    }
-
     loadMaze();
+
+    for (int i = 0; i < gconst::game::nb_gommes; i++)
+    {
+        gommes_[i].setState(EATABLE_DEFAULT);
+    }
+    for (int i = 0; i < gconst::game::nb_super_gommes; i++)
+    {
+        super_gommes_[i].setState(EATABLE_DEFAULT);
+    }
 }

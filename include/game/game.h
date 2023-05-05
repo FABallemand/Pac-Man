@@ -97,7 +97,7 @@ private:
     // Objects ================================================================
     Board board_; //!< Board of cells
     // Moveable
-    PacMan pacman_{};         //!< Pac-Man!!
+    PacMan pacman_{};             //!< Pac-Man!!
     Blinky blinky_{};             //!< Blinky (red)
     Clyde clyde_{};               //!< Clyde (orange)
     Inky inky_{};                 //!< Inky (blue)
