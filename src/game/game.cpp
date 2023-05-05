@@ -390,7 +390,8 @@ void Game::changeGameState(GameState state)
         state_timer_.start();
         for (Ghost *g : ghosts_)
         {
-            g->setState(GHOST_VULNERABLE_BLINK);
+            if(g->getState() == GHOST_VULNERABLE)
+                g->setState(GHOST_VULNERABLE_BLINK);
         }
         break;
     case GAME_DEFAULT:

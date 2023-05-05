@@ -2,6 +2,7 @@
 #define __INKY_H__
 
 #include "ghost.h"
+#include "timer.h"
 
 class Inky : public Ghost
 {

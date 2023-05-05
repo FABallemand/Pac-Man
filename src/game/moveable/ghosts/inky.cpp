@@ -12,5 +12,21 @@ Inky::Inky() : Ghost{0, 0, "Inky"}
 
 Direction Inky::chase(std::pair<int, int> target_position, Direction target_direction)
 {
-    return find_path_(ghost_board_, {getI(), getJ()}, target_position);
+    if(target_direction == NONE)
+    {
+        // Scatter if Pac-Man has not moved yet
+        LOG(DEBUG) << name_ << " : scatter";
+        return find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
+    }
+    long offset_i = (random() % 9) - 4;
+    long offset_j = (random() % 9) - 4;
+    while((target_position.first+offset_i<1 ||target_position.first+offset_i > gconst::game::nb_rows-2 ) || 
+          (target_position.second+offset_j<1 ||target_position.second+offset_j > gconst::game::nb_columns-2)|| 
+          (ghost_board_[target_position.first+offset_i][target_position.second+offset_j] == 1))
+    {
+        //if the cells drew is not valid we redraw till it becomes valide.
+        offset_i = (random() % 9) - 4;
+        offset_j = (random() % 9) - 4;
+    }
+    return find_path_(ghost_board_, {getI(), getJ()}, {target_position.first+offset_i,target_position.second+offset_j});
 }
