@@ -127,6 +127,8 @@ private:
      */
     void handleBattle(Ghost *ghost);
 
+    void handleFruitBattle();
+
     /**
      * \brief Update score
      *

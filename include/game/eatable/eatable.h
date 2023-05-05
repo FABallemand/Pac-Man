@@ -48,7 +48,7 @@ public:
         return state_;
     }
 
-    std::function<int(int)> getEffect() const
+    std::function<int(T)> getEffect() const
     {
         return effect_;
     }

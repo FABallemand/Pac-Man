@@ -301,6 +301,15 @@ void Game::handleBattle(Ghost *ghost)
     }
 }
 
+void Game::handleFruitBattle()
+{
+    if (pacman_.getI() == fruit_.getI() && pacman_.getJ() == fruit_.getJ())
+    {
+        updateScore(fruit_.getEffect());
+        fruit_.setFruitType(FRUIT_NONE);
+    }
+}
+
 void Game::updatePacMan(const Uint8 *key_state, const float delta_t)
 {
     // Update Pac-Man
@@ -338,6 +347,7 @@ void Game::updateEatables()
     if (fruit_.getFruitType() != FRUIT_NONE)
     {
         fruit_.update();
+        handleFruitBattle();
     }
     if (game_score_ > score_to_reach_)
     {

@@ -93,7 +93,7 @@ namespace gconst
                 constexpr int i = 15;                                                     //!< Fruit position i
                 constexpr int j = 10;                                                     //!< Fruit position i
                 constexpr int time = 10000;                                               //!< Time before fruit expiration
-                constexpr int spawn_interval = 1000;                                      //!< score interval between to fruit spawning
+                constexpr int spawn_interval = 2000;                                      //!< score interval between to fruit spawning
             }
         }
     }

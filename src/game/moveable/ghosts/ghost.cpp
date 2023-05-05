@@ -30,7 +30,6 @@ void Ghost::update(const float delta_t, int target_i, int target_j, Direction di
     // Handle strategy
     if (getY() % gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
     {
-        LOG(DEBUG) << name_ << " is handling strategy";
         strategy(target_i, target_j, direction);
     }
 
