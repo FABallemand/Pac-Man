@@ -48,6 +48,7 @@ void Ghost::respawn()
     action_direction_ = NONE;
     position_.x = initial_position_.second * gconst::object::cell::size;
     position_.y = initial_position_.first * gconst::object::cell::size;
+    fixDimensions();
     sprite_count_ = 0;
     current_sprite_ = &(moving_sprites_[0][0]);
 }
@@ -111,7 +112,10 @@ void Ghost::strategy(int target_i, int target_j, Direction target_direction)
 
 void Ghost::turn()
 {
-    direction_ = action_direction_;
+    if(action_direction_ != (direction_ + 1) % 2) // action_direction_ != opposite of direction_
+    {
+        direction_ = action_direction_;
+    }
 }
 
 void Ghost::fixDimensions()
@@ -135,6 +139,7 @@ void Ghost::move()
     case LEFT:
         position_.x -= round(gconst::object::moveable::ghost::speed * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
+        handleShortcut();
         if (ghost_board_[getI()][getJ()] == 1)
         {
             position_.x = (getJ() + 1) * gconst::object::cell::size;
@@ -143,6 +148,7 @@ void Ghost::move()
     case RIGHT:
         position_.x += round(gconst::object::moveable::ghost::speed * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
+        handleShortcut();
         if (ghost_board_[getI()][getJ()] == 1)
         {
             position_.x = (getJ() - 1) * gconst::object::cell::size;
