@@ -81,8 +81,8 @@ namespace gconst
 
             namespace fruit
             {
-                constexpr int size_s = 0; //!< Fruit size (on sprite)
-                constexpr int size = 0;   //!< Fruit size
+                constexpr int size_s = 16; //!< Fruit size (on sprite)
+                constexpr int size = 32;   //!< Fruit size
                 constexpr int score[8] = {100,300,500,700,1000,2000,3000,5000}; //!< Fruit score
             }
         }
