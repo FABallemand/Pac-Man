@@ -40,6 +40,7 @@ public:
     void setFruitType(FruitType fruit_type)
     {
         fruit_type_ = fruit_type;
+        current_sprite_ = &(fruit_sprite_[fruit_type_ - 1][0]);
         despawn_timer_.start();
     }
 

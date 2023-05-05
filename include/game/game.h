@@ -103,11 +103,11 @@ private:
     Pinky pinky_{};                                                              //!< Pinky (pink)
     std::vector<Ghost *> ghosts_;                                                //!< Ghosts
     // Eatable
-    std::array<Gomme, gconst::game::nb_gommes> gommes_;                  //!< Gommes
-    std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_; //!< Super-Gommes
-    FruitType next_fruit_type_ = FRUIT_NONE;                             //!< Next type of fruit to appear
-    int score_to_reach_ = 0;                                             //!< Score to reach before next fruit
-    Fruit fruit_;                                                        //!< Fruit
+    std::array<Gomme, gconst::game::nb_gommes> gommes_;                             //!< Gommes
+    std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_;            //!< Super-Gommes
+    FruitType next_fruit_type_ = FRUIT_NONE;                                        //!< Next type of fruit to appear
+    int score_to_reach_ = gconst::object::eatable::fruit::spawn_interval; //!< Score to reach before next fruit
+    Fruit fruit_{};                                                                 //!< Fruit
     // Parameters =============================================================
     static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
     static constexpr SDL_Rect maze_position_{0, 0, 0, 0};                                                                                                                     //!< Maze position on the window
