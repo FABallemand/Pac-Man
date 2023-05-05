@@ -33,6 +33,11 @@ namespace gconst
             constexpr int size = 32; //!< Cell size
         }
 
+        namespace pacchar
+        {
+            constexpr int size_s = 7; //!< Char size (on sprite)
+        }
+
         namespace moveable
         {
             constexpr int nb_directions = 4;     //!< Number of possible directions (except NONE)
