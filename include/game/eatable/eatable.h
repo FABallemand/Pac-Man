@@ -18,6 +18,7 @@ enum EatableState
     EATABLE_EATEN
 };
 
+template <typename T>
 class Eatable : public Object
 {
 protected:
@@ -25,7 +26,9 @@ protected:
     {
     }
 
-    Eatable(ObjectType type, int x, int y, int w, int h, SDL_Rect *sprite, std::function<int(int)> effect) : Object{type, x, y, w, h, sprite}, effect_{effect}
+    Eatable(
+        ObjectType type, int x, int y, int w, int h, SDL_Rect *sprite, std::function<int(T)> effect = [](T values) -> int
+        { return 0; }) : Object{type, x, y, w, h, sprite}, effect_{effect}
     {
     }
 
@@ -55,17 +58,9 @@ public:
         state_ = state;
     }
 
-public:
-    /**
-     * \brief Effect of the object when eaten
-     *
-     * \param game The game
-     */
-    // virtual void effect(Game &game) = 0;
-
 protected:
     EatableState state_ = EATABLE_DEFAULT; //!< State of the object
-    std::function<int(int)> effect_;       //!< Effect
+    std::function<int(T)> effect_;         //!< Effect
 };
 
 #endif

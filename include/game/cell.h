@@ -38,7 +38,7 @@ public:
     {
     }
 
-    Cell(int i, int j, Eatable *eatable) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}, eatable_{eatable}
+    Cell(int i, int j, Eatable<int> *eatable) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}, eatable_{eatable}
     {
     }
 
@@ -51,7 +51,7 @@ public:
         return cell_type_;
     }
 
-    Eatable *getEatable()
+    Eatable<int> *getEatable()
     {
         return eatable_;
     }
@@ -61,14 +61,14 @@ public:
         return (cell_type_ == WALL) || (cell_type_ == GHOST_WALL);
     }
 
-    void setEatable(Eatable *eatable)
+    void setEatable(Eatable<int> *eatable)
     {
         eatable_ = eatable;
     }
 
 private:
-    CellType cell_type_ = EMPTY; //!< Type of the cell
-    Eatable *eatable_ = nullptr; //!< Pointer to the eatable object currently in the cell
+    CellType cell_type_ = EMPTY;    //!< Type of the cell
+    Eatable<int> *eatable_ = nullptr; //!< Pointer to the eatable object currently in the cell
 };
 
 #endif

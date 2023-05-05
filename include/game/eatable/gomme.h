@@ -5,7 +5,7 @@
 
 class Game; // Forward declaration
 
-class Gomme : public Eatable
+class Gomme : public Eatable<int>
 {
 public:
     static int nb_gommes_;

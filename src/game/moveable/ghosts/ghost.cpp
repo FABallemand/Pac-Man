@@ -112,10 +112,11 @@ void Ghost::strategy(int target_i, int target_j, Direction target_direction)
 
 void Ghost::turn()
 {
-    if(action_direction_ != (direction_ + 1) % 2) // action_direction_ != opposite of direction_
-    {
-        direction_ = action_direction_;
-    }
+    // if(action_direction_ != (direction_ + 1) % 2) // action_direction_ != opposite of direction_
+    // {
+    //     direction_ = action_direction_;
+    // }
+    direction_ = action_direction_;
 }
 
 void Ghost::fixDimensions()
@@ -205,34 +206,28 @@ void Ghost::updateSprite()
         }
         break;
     case GHOST_VULNERABLE:
-        if (direction_ != NONE) // ???
+        if (allowed_to_move_ == false)
         {
-            if (allowed_to_move_ == false)
-            {
-                sprite_count_ = 0; // Ghost is stuck against the wall
-            }
-            else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
-            {
-                frame_count_ = 0;
-                sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_special_sprites;
-            }
-            current_sprite_ = &(eatable_sprites_[sprite_count_]);
+            sprite_count_ = 0; // Ghost is stuck against the wall
         }
+        else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+        {
+            frame_count_ = 0;
+            sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_special_sprites;
+        }
+        current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;
     case GHOST_VULNERABLE_BLINK:
-        if (direction_ != NONE)
+        if (allowed_to_move_ == false)
         {
-            if (allowed_to_move_ == false)
-            {
-                sprite_count_ = 0; // Ghost is stuck against the wall
-            }
-            else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
-            {
-                frame_count_ = 0;
-                sprite_count_ = (++sprite_count_) % (2 * gconst::object::moveable::ghost::nb_special_sprites);
-            }
-            current_sprite_ = &(eatable_sprites_[sprite_count_]);
+            sprite_count_ = 0; // Ghost is stuck against the wall
         }
+        else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+        {
+            frame_count_ = 0;
+            sprite_count_ = (++sprite_count_) % (2 * gconst::object::moveable::ghost::nb_special_sprites);
+        }
+        current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;
     case GHOST_EATEN:
         current_sprite_ = &(eaten_sprites_[direction_]);

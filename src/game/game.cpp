@@ -129,10 +129,10 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
             sg.display(sprite, window_surface);
         }
     }
-    // for (auto f : fruits_) // Fruits
-    // {
-    //     f.display();
-    // }
+    if (fruit_.getFruitType() != FRUIT_NONE)
+    {
+        fruit_.display(sprite, window_surface);
+    }
 
     // Ghosts
     for (Ghost *g : ghosts_)
@@ -325,12 +325,24 @@ void Game::updateGhosts(const float delta_t)
 
 void Game::updateEatables()
 {
+    // Gommes and SuperGommes
     Cell *cell_to_update = pacman_.getCurrentCell();
-    Eatable *eatable = cell_to_update->getEatable();
+    Eatable<int> *eatable = cell_to_update->getEatable();
     if (eatable)
     {
         eatObject(eatable);
         cell_to_update->setEatable(nullptr);
+    }
+
+    // Fruits
+    if (fruit_.getFruitType() != FRUIT_NONE)
+    {
+        fruit_.update();
+    }
+    if (game_score_ > score_to_reach_)
+    {
+        fruit_.setFruitType(static_cast<FruitType>(static_cast<int>(next_fruit_type_) + 1));
+        score_to_reach_ += gconst::object::eatable::fruit::spawn_interval;
     }
 }
 
@@ -390,7 +402,7 @@ void Game::changeGameState(GameState state)
         state_timer_.start();
         for (Ghost *g : ghosts_)
         {
-            if(g->getState() == GHOST_VULNERABLE)
+            if (g->getState() == GHOST_VULNERABLE)
                 g->setState(GHOST_VULNERABLE_BLINK);
         }
         break;

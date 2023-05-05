@@ -3,7 +3,7 @@
 
 #include "gomme.h"
 
-class SuperGomme : public Eatable
+class SuperGomme : public Eatable<int>
 {
 public:
     static int nb_super_gommes_;

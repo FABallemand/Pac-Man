@@ -94,19 +94,20 @@ private:
     Timer state_timer_ = Timer();    //!< Timer
     int eating_streak_ = 0;          //!< Number of ghosts eaten in a row
     // Objects ================================================================
+    Board board_; //!< Board of cells
     // Moveable
     PacMan pacman_{gconst::object::cell::size, gconst::object::cell::size * 13}; //!< Pac-Man!!
-    int pacman_dying_frame = 0;
-    Blinky blinky_{};             //!< Blinky (red)
-    Clyde clyde_{};               //!< Clyde (orange)
-    Inky inky_{};                 //!< Inky (blue)
-    Pinky pinky_{};               //!< Pinky (pink)
-    std::vector<Ghost *> ghosts_; //!< Ghosts
+    Blinky blinky_{};                                                            //!< Blinky (red)
+    Clyde clyde_{};                                                              //!< Clyde (orange)
+    Inky inky_{};                                                                //!< Inky (blue)
+    Pinky pinky_{};                                                              //!< Pinky (pink)
+    std::vector<Ghost *> ghosts_;                                                //!< Ghosts
     // Eatable
     std::array<Gomme, gconst::game::nb_gommes> gommes_;                  //!< Gommes
     std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_; //!< Super-Gommes
-    std::vector<Fruit> fruits_;                                          //!< Fruits
-    Board board_;                                                        //!< Board of cells
+    FruitType next_fruit_type_ = FRUIT_NONE;                             //!< Next type of fruit to appear
+    int score_to_reach_ = 0;                                             //!< Score to reach before next fruit
+    Fruit fruit_;                                                        //!< Fruit
     // Parameters =============================================================
     static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
     static constexpr SDL_Rect maze_position_{0, 0, 0, 0};                                                                                                                     //!< Maze position on the window
@@ -119,24 +120,58 @@ private:
 
     void eatObject(Object *object);
 
+    /**
+     * \brief Handle battle or collision between Pac-Man and a ghost
+     *
+     * \param ghost Pointer to the ghost
+     */
     void handleBattle(Ghost *ghost);
 
+    /**
+     * \brief Update score
+     *
+     * \param effect Lambda function used to update score
+     */
     void updateScore(std::function<int(int)> effect)
     {
         if (effect != nullptr)
         {
             game_score_ = effect(game_score_);
         }
-        else
+    }
+
+    /**
+     * \brief Update score
+     *
+     * \param effect Lambda function used to update score
+     */
+    void updateScore(std::function<int(std::pair<int, int>)> effect)
+    {
+        if (effect != nullptr)
         {
-            LOG(DEBUG) << "NULL";
+            game_score_ = effect({game_score_, fruit_.getType()});
         }
     }
 
+    /**
+     * \brief Update Pac-Man
+     *
+     * \param key_state State of the keyboard
+     * \param delta_t Elapsed time between two frames
+     */
     void updatePacMan(const Uint8 *key_state, const float delta_t);
 
+    /**
+     * \brief Update ghosts
+     *
+     * \param delta_t Elapsed time between two frames
+     */
     void updateGhosts(const float delta_t);
 
+    /**
+     * \brief Update all eatables in the game (Gommes, SuperGommes, Fruits)
+     *
+     */
     void updateEatables();
 
     /**
@@ -152,8 +187,16 @@ private:
      */
     void checkGameStateChange();
 
+    /**
+     * \brief Reset Pac-Man and ghosts position (used when Pac-Man dies)
+     *
+     */
     void respawn();
 
+    /**
+     * \brief Quit the game when Pac-Man dies for the third time
+     *
+     */
     void quitGame();
 };
 

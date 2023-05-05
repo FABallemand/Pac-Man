@@ -62,7 +62,8 @@ namespace gconst
                 constexpr int speed = 50;             //!< Ghost speed
                 constexpr int nb_moving_sprites = 2;  //!< Number of sprites in the moving animation
                 constexpr int nb_special_sprites = 2; //!< Number of sprites in the moving animation
-                constexpr int score = 100;
+                constexpr int score = 100;            //!< Ghost base score
+                constexpr int chase_time = 2000;      //!< Time before Inky change target
             }
         }
 
@@ -86,9 +87,13 @@ namespace gconst
 
             namespace fruit
             {
-                constexpr int size_s = 16; //!< Fruit size (on sprite)
-                constexpr int size = 32;   //!< Fruit size
-                constexpr int score[8] = {100,300,500,700,1000,2000,3000,5000}; //!< Fruit score
+                constexpr int size_s = 16;                                      //!< Fruit size (on sprite)
+                constexpr int size = 32;                                        //!< Fruit size
+                constexpr int score[9] = {0,100,300,500,700,1000,2000,3000,5000}; //!< Fruit score
+                constexpr int i = 15;                                           //!< Fruit position i
+                constexpr int j = 10;                                           //!< Fruit position i
+                constexpr int time = 10000;                                     //!< Time before fruit expiration
+                constexpr int spawn_interval = 4000;                           //!< score interval between to fruit spawning
             }
         }
     }
