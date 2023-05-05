@@ -10,7 +10,7 @@ GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::m
                                              SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
                                              SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}};
 
-void Ghost::update(const float delta_t, int target_i, int target_j,Direction direction)
+void Ghost::update(const float delta_t, int target_i, int target_j, Direction direction)
 {
     // No movement during respawn
     if (state_ == GHOST_STOP)
@@ -30,8 +30,10 @@ void Ghost::update(const float delta_t, int target_i, int target_j,Direction dir
     // Handle strategy
     if (getY() % gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
     {
+        LOG(DEBUG) << name_ << " is handling strategy";
         strategy(target_i, target_j, direction);
     }
+
     // Handle movement
     handleMovement();
 
@@ -47,6 +49,7 @@ void Ghost::respawn()
     position_.x = initial_position_.second * gconst::object::cell::size;
     position_.y = initial_position_.first * gconst::object::cell::size;
     sprite_count_ = 0;
+    current_sprite_ = &(moving_sprites_[0][0]);
 }
 
 void Ghost::loadSimpleMaze()
@@ -89,7 +92,8 @@ void Ghost::strategy(int target_i, int target_j, Direction target_direction)
     {
     case GHOST_DEFAULT:
         // action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, {target_i, target_j});
-        action_direction_ = chase({target_i, target_j}, direction_);
+        LOG(DEBUG) << name_ << " is chasing Pac-Man";
+        action_direction_ = chase({target_i, target_j}, target_direction);
         break;
     case GHOST_VULNERABLE:
         action_direction_ = find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
@@ -149,7 +153,7 @@ void Ghost::move()
         position_.y -= round(gconst::object::moveable::ghost::speed * delta_t_);
         if (ghost_board_[getI()][getJ()] == 1)
         {
-            position_.y = (getI() - 1) * gconst::object::cell::size;
+            position_.y = (getI() + 1) * gconst::object::cell::size;
         }
         break;
     case DOWN:
@@ -157,7 +161,7 @@ void Ghost::move()
         position_.y += round(gconst::object::moveable::ghost::speed * delta_t_);
         if (ghost_board_[getI()][getJ()] == 1)
         {
-            position_.y = (getI() + 1) * gconst::object::cell::size;
+            position_.y = (getI() - 1) * gconst::object::cell::size;
         }
         break;
     default:

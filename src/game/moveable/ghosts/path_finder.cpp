@@ -1,5 +1,7 @@
 #include "path_finder.h"
 
+std::array<float, gconst::game::nb_columns> PathFinder::init_row_ = {{MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH, MAX_PATH_LENGTH}};
+
 Direction PathFinder::operator()(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position)
 {
     if (ghost_position == target_position)
@@ -42,23 +44,11 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
     APriorityQueue open_list{};
 
     ACost cost{};
+    cost.fill(init_row_);
+
     ACost heuristic{};
-    // for(auto row : cost)
-    // {
-    //     std::fill_n(row.begin(), gconst::game::nb_columns, MAX_PATH_LENGTH);
-    // }
-    // for(auto row : heuristic)
-    // {
-    //     std::fill_n(row.begin(), gconst::game::nb_columns, MAX_PATH_LENGTH);
-    // }
-    for (size_t i = 0; i < gconst::game::nb_rows; i++)
-    {
-        for (size_t j = 0; j < gconst::game::nb_columns; j++)
-        {
-            cost[i][j] = MAX_PATH_LENGTH;
-            heuristic[i][j] = MAX_PATH_LENGTH; // Use fill (https://en.cppreference.com/w/cpp/container/array/fill)
-        }
-    }
+    heuristic.fill(init_row_);
+
     open_list.push({0.0, ghost_position});
     cost[ghost_position.first][ghost_position.second] = 0;
 

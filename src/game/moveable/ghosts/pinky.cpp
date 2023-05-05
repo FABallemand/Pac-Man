@@ -17,44 +17,40 @@ Direction Pinky::chase(std::pair<int, int> target_position, Direction target_dir
     {
     case LEFT:
         new_target_j = std::max(1, target_position.second - 4);
-        for (; new_target_j <= target_position.second; ++new_target_j)
+        while (ghost_board_[target_position.first][new_target_j] == 1)
         {
-            if (ghost_board_[target_position.first][new_target_j] == 0)
-            {
-                break;
-            }
+            ++new_target_j;
         }
-        return find_path_(ghost_board_, {getI(), getJ()}, {target_position.first, new_target_j});
+        LOG(DEBUG) << name_ << " : target = (" << target_position.first << "," << new_target_j << ")";
+        return find_path_(ghost_board_, {getI(), getJ()}, {target_position.first, new_target_j}); // ghost_board_ should be a static member of PathFinder
     case RIGHT:
         new_target_j = std::min(gconst::game::nb_columns - 2, target_position.second + 4);
-        for (; new_target_j >= target_position.second; --new_target_j)
+        while (ghost_board_[target_position.first][new_target_j] == 1)
         {
-            if (ghost_board_[target_position.first][new_target_j] == 0)
-            {
-                break;
-            }
+            --new_target_j;
         }
+        LOG(DEBUG) << name_ << " : target = (" << target_position.first << "," << new_target_j << ")";
         return find_path_(ghost_board_, {getI(), getJ()}, {target_position.first, new_target_j});
     case UP:
         new_target_i = std::max(1, target_position.first - 4);
-        for (; new_target_i <= target_position.first; ++new_target_i)
+        while (ghost_board_[new_target_i][target_position.second] == 1)
         {
-            if (ghost_board_[new_target_i][target_position.second] == 0)
-            {
-                break;
-            }
+            ++new_target_i;
         }
+        LOG(DEBUG) << name_ << " : target = (" << new_target_j << "," << target_position.second << ")";
         return find_path_(ghost_board_, {getI(), getJ()}, {new_target_i, target_position.second});
     case DOWN:
         new_target_i = std::min(gconst::game::nb_rows - 2, target_position.first + 4);
-        for (; new_target_i >= target_position.first; --new_target_i)
+        while (ghost_board_[new_target_i][target_position.second] == 1)
         {
-            if (ghost_board_[new_target_i][target_position.second] == 0)
-            {
-                break;
-            }
+            --new_target_i;
         }
+        LOG(DEBUG) << name_ << " : target = (" << new_target_j << "," << target_position.second << ")";
         return find_path_(ghost_board_, {getI(), getJ()}, {new_target_i, target_position.second});
+    case NONE:
+        // Scatter if Pac-Man has not moved yet
+        LOG(DEBUG) << name_ << " : scatter";
+        return find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
     }
 
     // Error

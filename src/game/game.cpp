@@ -269,13 +269,6 @@ void Game::loadMaze()
 
     // Close file
     level.close();
-
-    LOG(DEBUG) << "==== In loading maze ====";
-    LOG(DEBUG) << "# gommes_ #";
-    for (Gomme g : gommes_)
-    {
-        LOG(DEBUG) << "i, j, type : " << g.getY() / gconst::object::cell::size << "," << g.getX() / gconst::object::cell::size << "," << g.getType();
-    }
 }
 
 void Game::handleBattle(Ghost *ghost)
@@ -325,7 +318,7 @@ void Game::updateGhosts(const float delta_t)
     // Update Ghosts
     for (Ghost *g : ghosts_)
     {
-        g->update(delta_t, pacman_.getI(), pacman_.getJ(),pacman_.getDirection());
+        g->update(delta_t, pacman_.getI(), pacman_.getJ(), pacman_.getDirection());
         handleBattle(g);
     }
 }
@@ -397,10 +390,7 @@ void Game::changeGameState(GameState state)
         state_timer_.start();
         for (Ghost *g : ghosts_)
         {
-            if (g->getState() == GHOST_VULNERABLE)
-            {
-                g->setState(GHOST_VULNERABLE_BLINK);
-            }
+            g->setState(GHOST_VULNERABLE_BLINK);
         }
         break;
     case GAME_DEFAULT:
@@ -408,10 +398,7 @@ void Game::changeGameState(GameState state)
         {
             for (Ghost *g : ghosts_)
             {
-                if (g->getState() == GHOST_VULNERABLE_BLINK)
-                {
-                    g->setState(GHOST_DEFAULT);
-                }
+                g->setState(GHOST_DEFAULT);
             }
             eating_streak_ = 0;
         }

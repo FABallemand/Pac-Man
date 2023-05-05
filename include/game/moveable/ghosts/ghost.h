@@ -31,6 +31,11 @@ public:
         loadSimpleMaze();
     }
 
+    std::string getName() const
+    {
+        return name_;
+    }
+
     GhostState getState() const
     {
         return state_;
@@ -54,8 +59,8 @@ protected:
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
     // Movement ===============================================================
-    std::pair<int, int> scatter_position_; //!< Vulnerable position
-    PathFinder find_path_{};               //!< Path finder
+    std::pair<int, int> scatter_position_;   //!< Vulnerable position
+    PathFinder find_path_{};                 //!< Path finder
     // Sprites ================================================================
     static GhostSpecialSprites eatable_sprites_; //!< Sprites location
     static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze

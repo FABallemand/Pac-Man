@@ -120,6 +120,8 @@ public:
     Direction operator()(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
 
 private:
+    static std::array<float, gconst::game::nb_columns> init_row_;
+
     Direction bestDirection(std::pair<int, int> ghost_position, ACost &cost);
 
     Direction AStar(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
