@@ -98,9 +98,7 @@ namespace gconst
 
     namespace window
     {
-        // constexpr int w = 672; //!< Window width
-        // constexpr int h = 864; //!< Window height
-        constexpr int w = gconst::object::cell::size * gconst::game::nb_columns; //!< Window width
-        constexpr int h = gconst::object::cell::size * gconst::game::nb_rows;    //!< Window height
+        constexpr int w = gconst::object::cell::size * gconst::game::nb_columns;    //!< Window width
+        constexpr int h = gconst::object::cell::size * (gconst::game::nb_rows + 3); //!< Window height
     }
 }

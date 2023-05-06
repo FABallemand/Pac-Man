@@ -1,5 +1,7 @@
 #include "game.h"
 
+SDL_Rect Game::maze_position_{0, 0, gconst::game::nb_columns *gconst::object::cell::size, gconst::game::nb_rows *gconst::object::cell::size};
+
 Game::Game()
 {
     loadMaze();
@@ -93,6 +95,7 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
         }
         else
         {
+
             return quitGame();
         }
     }
@@ -113,11 +116,15 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Background/Maze
     if (state_ == GAME_BLINK)
     {
-        SDL_BlitScaled(sprite, &(bg_[GAME_BLINK]), window_surface, nullptr);
+        if (++frame_count_ % gconst::object::moveable::nb_sprite_frame == 0)
+        {
+            current_sprite_ = ++current_sprite_ % 2;
+        }
+        SDL_BlitScaled(sprite, &(bg_[current_sprite_]), window_surface, &maze_position_);
     }
     else
     {
-        SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, nullptr);
+        SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, &maze_position_);
     }
 
     // Eatable
@@ -160,6 +167,14 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
 void Game::respawn()
 {
     SDL_Delay(1000);
+    changeGameState(GAME_BLINK);
+    Timer timer{};
+    timer.start();
+    while (timer.getTicks() < truc)
+    {
+        display();
+    }
+    timer.stop();
     pacman_.respawn();
     pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
     for (Ghost *g : ghosts_)

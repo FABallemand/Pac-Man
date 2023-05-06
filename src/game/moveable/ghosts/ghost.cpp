@@ -147,7 +147,7 @@ void Ghost::turn()
     {
         // Forbid turn-around
         if ((action_direction_ == LEFT && direction_ == RIGHT) || (action_direction_ == RIGHT && direction_ == LEFT) ||
-            (action_direction_ == UP && direction_ == DOWN) || (action_direction_ == DOWN && direction_ == UP))
+            (action_direction_ == UP && direction_ == DOWN) || (action_direction_ == DOWN && direction_ == UP) || action_direction_ == NONE)
         {
             followPath();
             return;
@@ -204,7 +204,6 @@ void Ghost::move()
         else if (ghost_board_[getI()][getJ() + 1] == 1)
         {
             position_.x += fmin(((getJ()) * gconst::object::cell::size) - getX(), round(speed_ * delta_t_));
-            LOG(DEBUG) << name_ << " : x = " << position_.x;
         }
         else
         {
@@ -213,7 +212,6 @@ void Ghost::move()
         position_.y = getI() * gconst::object::cell::size;
         break;
     case UP:
-
         if (ghost_board_[getI() - 1][getJ()] == 1)
         {
             position_.y -= fmin(getY() - ((getI()) * gconst::object::cell::size), round(speed_ * delta_t_));
@@ -228,7 +226,6 @@ void Ghost::move()
         if (ghost_board_[getI() + 1][getJ()] == 1)
         {
             position_.y += fmin(((getI()) * gconst::object::cell::size) - getY(), round(speed_ * delta_t_));
-            LOG(DEBUG) << name_ << " : y = " << position_.y;
         }
         else
         {
@@ -270,7 +267,7 @@ void Ghost::updateSprite()
         if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
         {
             frame_count_ = 0;
-            sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_special_sprites;
+            sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_special_sprites; // mod 2 => no blink
         }
         current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;
@@ -278,12 +275,15 @@ void Ghost::updateSprite()
         if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
         {
             frame_count_ = 0;
-            sprite_count_ = (++sprite_count_) % (2 * gconst::object::moveable::ghost::nb_special_sprites);
+            sprite_count_ = (++sprite_count_) % (2 * gconst::object::moveable::ghost::nb_special_sprites); // mod 4 => blink
         }
         current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;
     case GHOST_EATEN:
-        current_sprite_ = &(eaten_sprites_[direction_]);
+        if (direction_ != NONE)
+        {
+            current_sprite_ = &(eaten_sprites_[direction_]);
+        }
         break;
     default:
         LOG(ERROR) << name_ << " | Invalid state";

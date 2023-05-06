@@ -7,7 +7,7 @@
 #include "moveable.h"
 #include "path_finder.h"
 
-using GhostSpecialSprites = std::array<SDL_Rect, gconst::object::moveable::nb_directions>;
+using GhostSpecialSprites = std::array<SDL_Rect, 2 * gconst::object::moveable::ghost::nb_special_sprites>;
 using SimpleMaze = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
 /**
@@ -64,8 +64,8 @@ protected:
     std::pair<int, int> scatter_position_; //!< Vulnerable position
     PathFinder find_path_{};               //!< Path finder
     // Sprites ================================================================
-    static GhostSpecialSprites eatable_sprites_; //!< Sprites location
-    static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
+    static GhostSpecialSprites eatable_sprites_; //!< Sprites location for GHOST_VULNERABLE and GHOST_VULNERABLE_BLINK state
+    static GhostSpecialSprites eaten_sprites_;   //!< Sprites location for GHOST_EATEN state
 
     /**
      * \brief

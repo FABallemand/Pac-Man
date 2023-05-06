@@ -110,8 +110,10 @@ private:
     int score_to_reach_ = gconst::object::eatable::fruit::spawn_interval; //!< Score to reach before next fruit
     Fruit fruit_{};                                                       //!< Fruit
     // Parameters =============================================================
+    int frame_count_ = 0;                                                                                                                                                     //!< Frame count
+    int current_sprite_ = 0;                                                                                                                                                  //!< Current sprite
     static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
-    static constexpr SDL_Rect maze_position_{0, 0, 0, 0};                                                                                                                     //!< Maze position on the window
+    static SDL_Rect maze_position_;                                                                                                                                           //!< Maze position on the window
 
     void createCell(int i, int j, int type);
 
