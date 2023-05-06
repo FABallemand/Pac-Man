@@ -5,3 +5,13 @@ CMakeFiles/
 *.xcf
 *.txt
 *.log
+
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.out
+*.toc
+*.log
