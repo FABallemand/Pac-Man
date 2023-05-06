@@ -7,12 +7,6 @@
  */
 namespace gconst
 {
-    namespace window
-    {
-        constexpr int w = 700; //!< Window width
-        constexpr int h = 900; //!< Window height
-    }
-
     namespace game
     {
         constexpr int nb_rows = 27;           //!< Number of rows
@@ -100,5 +94,13 @@ namespace gconst
                 constexpr int nb_fruit_type = 9;
             }
         }
+    }
+
+    namespace window
+    {
+        // constexpr int w = 672; //!< Window width
+        // constexpr int h = 864; //!< Window height
+        constexpr int w = gconst::object::cell::size * gconst::game::nb_columns; //!< Window width
+        constexpr int h = gconst::object::cell::size * gconst::game::nb_rows;    //!< Window height
     }
 }

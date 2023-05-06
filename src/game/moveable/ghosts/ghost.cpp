@@ -12,6 +12,7 @@ GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::m
 
 void Ghost::update(const float delta_t, int target_i, int target_j, Direction direction)
 {
+    LOG(DEBUG) << name_ << " : POSITION = (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << ")";
     // No movement during respawn
     if (state_ == GHOST_STOP)
     {
@@ -187,7 +188,7 @@ void Ghost::move()
         position_.y = getI() * gconst::object::cell::size;
         if (getI() == 13 && (getJ() < 4 || getJ() > 16))
         {
-            LOG(DEBUG) << name_ << " : HANDLE SHORTCUT ";
+            LOG(DEBUG) << name_ << " : HANDLE SHORTCUT";
             handleShortcut();
         }
         else if (ghost_board_[getI()][getJ()] == 1)

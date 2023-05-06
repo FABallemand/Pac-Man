@@ -24,7 +24,7 @@ public:
     void run()
     {
         // Init SDL
-        initSDL(window, window_surface, (char *)"Pac-Man", gconst::object::cell::size * gconst::game::nb_columns, gconst::object::cell::size * gconst::game::nb_rows, false);
+        initSDL(window, window_surface, (char *)"Pac-Man", gconst::window::w, gconst::window::h, false);
 
         // Load assets
         loadAssets(sprite);
