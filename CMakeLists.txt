@@ -29,7 +29,7 @@ target_sources(${PROJECT_NAME}
                src/app/application.cpp
                # Game
                src/game/game.cpp
-               src/game/pac_character.cpp
+               src/game/pac_string.cpp
                src/game/cell.cpp
                src/game/object.cpp
                src/game/moveable/moveable.cpp

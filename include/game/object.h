@@ -29,7 +29,7 @@ enum ObjectType
  */
 class Object
 {
-protected:
+public:
     Object() : object_type_{UNDEFINED} // Used by Board type
     {
     }
@@ -48,7 +48,6 @@ protected:
         current_sprite_ = sprite;
     }
 
-public:
     virtual ~Object()
     {
     }

@@ -28,6 +28,9 @@
 #include "gomme.h"
 #include "fruit.h"
 
+// Overlay
+#include "pac_string.h"
+
 class Cell; // Forward declaration (why??)
 using Board = std::array<std::array<Cell, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
@@ -109,9 +112,13 @@ private:
     FruitType next_fruit_type_ = FRUIT_NONE;                              //!< Next type of fruit to appear
     int score_to_reach_ = gconst::object::eatable::fruit::spawn_interval; //!< Score to reach before next fruit
     Fruit fruit_{};                                                       //!< Fruit
+    // Display ================================================================
+    int frame_count_ = 0;                                                             //!< Frame count
+    int current_sprite_ = 0;                                                          //!< Current sprite
+    PacString score_string_{"score 0", gconst::game::score_x, gconst::game::score_y}; //!< Score display
+    PacString life_string_{"$$$", gconst::game::life_x, gconst::game::life_y};        //!< Remaining life display
+    PacString level_string_{"level 1", gconst::game::level_x, gconst::game::level_y}; //!< Level display
     // Parameters =============================================================
-    int frame_count_ = 0;                                                                                                                                                     //!< Frame count
-    int current_sprite_ = 0;                                                                                                                                                  //!< Current sprite
     static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
     static SDL_Rect maze_position_;                                                                                                                                           //!< Maze position on the window
 
@@ -133,6 +140,15 @@ private:
     void handleFruitBattle();
 
     /**
+     * \brief Update score string
+     *
+     */
+    void updateScoreString()
+    {
+        score_string_ = PacString("score " + std::to_string(game_score_), gconst::game::score_x, gconst::game::score_y);
+    }
+
+    /**
      * \brief Update score
      *
      * \param effect Lambda function used to update score
@@ -143,6 +159,7 @@ private:
         {
             game_score_ = effect(game_score_);
         }
+        updateScoreString();
     }
 
     /**
@@ -156,6 +173,7 @@ private:
         {
             game_score_ = effect({game_score_, fruit_.getType()});
         }
+        updateScoreString();
     }
 
     /**

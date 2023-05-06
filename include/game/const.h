@@ -18,6 +18,12 @@ namespace gconst
         constexpr int nb_ghosts = 4;          //!< Number of Ghosts
         constexpr int super_duration = 10000; //!< Duration of SUPER state
         constexpr int blink_duration = 2000;  //!< Duration of BLINK state
+        constexpr int score_x = 0;
+        constexpr int score_y = 896;
+        constexpr int life_x = 576;
+        constexpr int life_y = 896;
+        constexpr int level_x = 0;
+        constexpr int level_y = 928;
     }
 
     namespace object

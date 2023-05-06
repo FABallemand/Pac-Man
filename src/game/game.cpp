@@ -156,6 +156,11 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Pac-Man
     pacman_.display(sprite, window_surface);
 
+    // Overlay
+    score_string_.display(sprite, window_surface);
+    life_string_.display(sprite, window_surface);
+    level_string_.display(sprite, window_surface);
+
     // Update window
     if (SDL_UpdateWindowSurface(window) != 0)
     {
@@ -170,9 +175,9 @@ void Game::respawn()
     changeGameState(GAME_BLINK);
     Timer timer{};
     timer.start();
-    while (timer.getTicks() < truc)
+    while (timer.getTicks() < gconst::game::blink_duration)
     {
-        display();
+        // display();
     }
     timer.stop();
     pacman_.respawn();
@@ -314,6 +319,7 @@ void Game::handleBattle(Ghost *ghost)
                 g->setState(GHOST_STOP);
             }
             --life_remaining_;
+            life_string_ = PacString(std::string(life_remaining_, '$'), gconst::game::life_x, gconst::game::life_y);
         }
         else if (ghost->getState() == GHOST_VULNERABLE || ghost->getState() == GHOST_VULNERABLE_BLINK)
         {
@@ -476,7 +482,7 @@ void Game::nextLevel()
 {
     // Game
     changeGameState(GAME_DEFAULT);
-    ++level;
+    level_string_ = PacString("level " + std::to_string(++level), gconst::game::level_x, gconst::game::level_y);
 
     // Pac-Man and Ghosts
     respawn();
