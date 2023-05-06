@@ -22,6 +22,9 @@ void Ghost::update(const float delta_t, int target_i, int target_j, Direction di
     // Remember delta_t
     delta_t_ = delta_t;
 
+    // Check if it is in shortchut
+    is_in_shortcut_ = getI() == 13 && (getJ() < 4 || getJ() > 16);
+
     // Reset ghost when back at initial position
     if (state_ == GHOST_EATEN && getI() == initial_position_.first && getJ() == initial_position_.second)
     {
@@ -111,20 +114,22 @@ void Ghost::strategy(int target_i, int target_j, Direction target_direction)
 void Ghost::followPath()
 {
     // Go in the same direction
-    if ((direction_ == LEFT && (getI() == 13 || ghost_board_[getI()][getJ() - 1] == 0)) || (direction_ == RIGHT && (getI() == 13 || ghost_board_[getI()][getJ() + 1] == 0)) ||
-        (direction_ == UP && ghost_board_[getI() - 1][getJ()] == 0) || (direction_ == DOWN && ghost_board_[getI() + 1][getJ()] == 0))
+    if ((direction_ == LEFT && (is_in_shortcut_ || ghost_board_[getI()][getJ() - 1] == 0)) ||
+        (direction_ == RIGHT && (is_in_shortcut_ || ghost_board_[getI()][getJ() + 1] == 0)) ||
+        (direction_ == UP && ghost_board_[getI() - 1][getJ()] == 0) ||
+        (direction_ == DOWN && ghost_board_[getI() + 1][getJ()] == 0))
     {
         return;
     }
 
     // Change direction
-    if ((getI() == 13 || ghost_board_[getI()][getJ() - 1] == 0) && direction_ != RIGHT)
-    {
-        direction_ = LEFT;
-    }
-    if ((getI() == 13 || ghost_board_[getI()][getJ() + 1] == 0) && direction_ != LEFT)
+    if ((is_in_shortcut_ || ghost_board_[getI()][getJ() + 1] == 0) && direction_ != LEFT)
     {
         direction_ = RIGHT;
+    }
+    if ((is_in_shortcut_ || ghost_board_[getI()][getJ() - 1] == 0) && direction_ != RIGHT)
+    {
+        direction_ = LEFT;
     }
     if (ghost_board_[getI() - 1][getJ()] == 0 && direction_ != DOWN)
     {
@@ -172,7 +177,7 @@ void Ghost::move()
     {
     case LEFT:
         // Going in the shortcut
-        if (getI() == 13 && (getJ() < 4 || getJ() > 16))
+        if (is_in_shortcut_)
         {
             position_.x -= round(speed_ * delta_t_);
             handleShortcut();
@@ -190,7 +195,7 @@ void Ghost::move()
         break;
     case RIGHT:
         // Going in the shortcut
-        if (getI() == 13 && (getJ() < 4 || getJ() > 16))
+        if (is_in_shortcut_)
         {
             position_.x += round(speed_ * delta_t_);
             handleShortcut();

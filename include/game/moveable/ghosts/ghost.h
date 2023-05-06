@@ -60,6 +60,7 @@ protected:
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
     // Movement ===============================================================
+    bool is_in_shortcut_ = false;          //!< Indicates if ghost is in shortcut
     std::pair<int, int> scatter_position_; //!< Vulnerable position
     PathFinder find_path_{};               //!< Path finder
     // Sprites ================================================================

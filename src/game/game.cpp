@@ -361,8 +361,8 @@ void Game::updateEatables()
     if (game_score_ > score_to_reach_)
     {
         int next_fruit_type = (static_cast<int>(next_fruit_type_) + 1) % gconst::object::eatable::fruit::nb_fruit_type;
-        next_fruit_type = next_fruit_type == 0 ? ++next_fruit_type : next_fruit_type;
-        fruit_.setFruitType(static_cast<FruitType>(next_fruit_type));
+        next_fruit_type_ = static_cast<FruitType>(next_fruit_type == 0 ? ++next_fruit_type : next_fruit_type);
+        fruit_.setFruitType(next_fruit_type_);
         score_to_reach_ += gconst::object::eatable::fruit::spawn_interval;
     }
 }
