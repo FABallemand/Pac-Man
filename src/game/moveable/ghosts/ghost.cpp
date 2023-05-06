@@ -171,46 +171,63 @@ void Ghost::move()
     switch (direction_)
     {
     case LEFT:
-        position_.x -= round(speed_ * delta_t_);
-        position_.y = getI() * gconst::object::cell::size;
+        // Going in the shortcut
         if (getI() == 13 && (getJ() < 4 || getJ() > 16))
         {
-            LOG(DEBUG) << name_ << " : HANDLE SHORTCUT";
+            position_.x -= round(speed_ * delta_t_);
             handleShortcut();
         }
-        else if (ghost_board_[getI()][getJ()] == 1)
+        // Going elsewhere
+        else if (ghost_board_[getI()][getJ() - 1] == 1)
         {
-            position_.x = (getJ() + 1) * gconst::object::cell::size;
+            position_.x -= fmin(getX() - ((getJ()) * gconst::object::cell::size), round(speed_ * delta_t_)); // Error when using std::min (needed to use intermediary variables)
         }
+        else
+        {
+            position_.x -= round(speed_ * delta_t_);
+        }
+        position_.y = getI() * gconst::object::cell::size;
         break;
     case RIGHT:
-        position_.x += round(speed_ * delta_t_);
-        position_.y = getI() * gconst::object::cell::size;
+        // Going in the shortcut
         if (getI() == 13 && (getJ() < 4 || getJ() > 16))
         {
-            LOG(DEBUG) << name_ << " : HANDLE SHORTCUT";
+            position_.x += round(speed_ * delta_t_);
             handleShortcut();
         }
-        else if (ghost_board_[getI()][getJ()] == 1)
+        // Going elsewhere
+        else if (ghost_board_[getI()][getJ() + 1] == 1)
         {
-            position_.x = (getJ() - 1) * gconst::object::cell::size;
+            position_.x += fmin(((getJ() + 1) * gconst::object::cell::size) - getX(), round(speed_ * delta_t_));
         }
+        else
+        {
+            position_.x += round(speed_ * delta_t_);
+        }
+        position_.y = getI() * gconst::object::cell::size;
         break;
     case UP:
-        position_.x = getJ() * gconst::object::cell::size;
-        position_.y -= round(speed_ * delta_t_);
-        if (ghost_board_[getI()][getJ()] == 1)
+
+        if (ghost_board_[getI() - 1][getJ()] == 1)
         {
-            position_.y = (getI() + 1) * gconst::object::cell::size;
+            position_.y -= fmin(getY() - ((getI()) * gconst::object::cell::size), round(speed_ * delta_t_));
         }
+        else
+        {
+            position_.y -= round(speed_ * delta_t_);
+        }
+        position_.x = getJ() * gconst::object::cell::size;
         break;
     case DOWN:
-        position_.x = getJ() * gconst::object::cell::size;
-        position_.y += round(speed_ * delta_t_);
-        if (ghost_board_[getI()][getJ()] == 1)
+        if (ghost_board_[getI() + 1][getJ()] == 1)
         {
-            position_.y = (getI() - 1) * gconst::object::cell::size;
+            position_.y += fmin(((getI() + 1) * gconst::object::cell::size) - getY(), round(speed_ * delta_t_));
         }
+        else
+        {
+            position_.y += round(speed_ * delta_t_);
+        }
+        position_.x = getJ() * gconst::object::cell::size;
         break;
     default:
         LOG(ERROR) << "Ghost pathfinding error";

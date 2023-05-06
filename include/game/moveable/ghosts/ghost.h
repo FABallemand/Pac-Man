@@ -2,6 +2,7 @@
 #define __GHOST_H__
 
 #include <fstream>
+#include <cmath>
 
 #include "moveable.h"
 #include "path_finder.h"
