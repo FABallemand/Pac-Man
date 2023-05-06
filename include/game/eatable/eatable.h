@@ -37,7 +37,7 @@ public:
     {
     }
 
-    void fillEatable(ObjectType object_type, int x, int y, int w, int h, int score, SDL_Rect *sprite, std::function<int(T)> effect)
+    void fillEatable(ObjectType object_type, int x, int y, int w, int h, SDL_Rect *sprite, std::function<int(T)> effect)
     {
         fillObject(object_type, x, y, w, h, sprite);
         effect_ = effect;

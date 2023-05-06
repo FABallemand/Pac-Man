@@ -48,6 +48,9 @@ public:
         {
             state_ = state;
         }
+
+        frame_count_ = 0;
+        sprite_count_ = 0;
     }
 
     void update(const float delta_t, int target_i, int traget_j, Direction direction);
@@ -58,7 +61,8 @@ public:
     {
         LOG(DEBUG) << name_ << " : (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << "," << position_.w << "," << position_.h << ")"
                    << "[" << state_ << "]"
-                   << "{" << current_sprite_->x << "," << current_sprite_->y << "," << current_sprite_->w << "," << current_sprite_->h << "}";
+                   << "{" << current_sprite_->x << "," << current_sprite_->y << "," << current_sprite_->w << "," << current_sprite_->h << "}"
+                   << "|" << sprite_count_;
     }
 
 protected:

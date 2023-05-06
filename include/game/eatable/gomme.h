@@ -25,7 +25,7 @@ public:
 
     void fillGomme(int i, int j)
     {
-        fillEatable(GOMME, j * gconst::object::cell::size + gconst::object::eatable::gomme::gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::gomme::gomme_offset, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::score, &sprite_gomme_, [](int score) -> int
+        fillEatable(GOMME, j * gconst::object::cell::size + gconst::object::eatable::gomme::gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::gomme::gomme_offset, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
                     { return score + gconst::object::eatable::gomme::score; });
     }
 
