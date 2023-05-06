@@ -90,7 +90,11 @@ public:
     void display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface); // No const due to SDL
 
 private:
+    // Physics ==================================================================
+    float previous_time_ = 0.f;
+    float current_time_ = 0.f;
     // State ==================================================================
+    Timer game_timer_{};             //!< Global gmae timer
     int life_remaining_ = 3;         //!< Life remaining
     int game_score_ = 0;             //!< Score
     GameState state_ = GAME_DEFAULT; //!< Game state
@@ -100,12 +104,12 @@ private:
     // Objects ================================================================
     Board board_; //!< Board of cells
     // Moveable
-    PacMan pacman_{};             //!< Pac-Man!!
-    Blinky blinky_{};             //!< Blinky (red)
-    Clyde clyde_{};               //!< Clyde (orange)
-    Inky inky_{};                 //!< Inky (blue)
-    Pinky pinky_{};               //!< Pinky (pink)
-    std::vector<Ghost *> ghosts_; //!< Ghosts
+    PacMan pacman_{};               //!< Pac-Man!!
+    Blinky blinky_{};               //!< Blinky (red)
+    Clyde clyde_{};                 //!< Clyde (orange)
+    Inky inky_{};                   //!< Inky (blue)
+    Pinky pinky_{};                 //!< Pinky (pink)
+    std::array<Ghost *, 4> ghosts_; //!< Ghosts
     // Eatable
     std::array<Gomme, gconst::game::nb_gommes> gommes_;                   //!< Gommes
     std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_;  //!< Super-Gommes

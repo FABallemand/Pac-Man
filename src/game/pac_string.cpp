@@ -1,43 +1,43 @@
 #include "pac_string.h"
 
-std::array<SDL_Rect, 27> PacString::letter_sprite_ = {{SDL_Rect{12, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // A
-                                                       SDL_Rect{20, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // B
-                                                       SDL_Rect{28, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // C
-                                                       SDL_Rect{36, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // D
-                                                       SDL_Rect{44, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // E
-                                                       SDL_Rect{52, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // F
-                                                       SDL_Rect{60, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // G
-                                                       SDL_Rect{68, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // H
-                                                       SDL_Rect{76, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // I
-                                                       SDL_Rect{84, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // J
-                                                       SDL_Rect{92, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // K
-                                                       SDL_Rect{100, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // L
-                                                       SDL_Rect{108, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // M
-                                                       SDL_Rect{116, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // N
-                                                       SDL_Rect{124, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // O
-                                                       SDL_Rect{4, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},   // P
-                                                       SDL_Rect{12, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // Q
-                                                       SDL_Rect{20, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // R
-                                                       SDL_Rect{28, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // S
-                                                       SDL_Rect{36, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // T
-                                                       SDL_Rect{44, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // U
-                                                       SDL_Rect{52, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // V
-                                                       SDL_Rect{60, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // W
-                                                       SDL_Rect{68, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // X
-                                                       SDL_Rect{76, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // Y
-                                                       SDL_Rect{84, 69, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // Z
-                                                       SDL_Rect{4, 61, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}}}; //[SPACE]
+std::array<SDL_Rect, 27> PacString::letter_sprite_ = {{SDL_Rect{11, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // A
+                                                       SDL_Rect{19, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // B
+                                                       SDL_Rect{27, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // C
+                                                       SDL_Rect{35, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // D
+                                                       SDL_Rect{43, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // E
+                                                       SDL_Rect{51, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // F
+                                                       SDL_Rect{59, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // G
+                                                       SDL_Rect{67, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // H
+                                                       SDL_Rect{75, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // I
+                                                       SDL_Rect{83, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // J
+                                                       SDL_Rect{91, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // K
+                                                       SDL_Rect{99, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // L
+                                                       SDL_Rect{107, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // M
+                                                       SDL_Rect{115, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // N
+                                                       SDL_Rect{123, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}, // O
+                                                       SDL_Rect{3, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},   // P
+                                                       SDL_Rect{11, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // Q
+                                                       SDL_Rect{19, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // R
+                                                       SDL_Rect{27, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // S
+                                                       SDL_Rect{35, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // T
+                                                       SDL_Rect{43, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // U
+                                                       SDL_Rect{51, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // V
+                                                       SDL_Rect{59, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // W
+                                                       SDL_Rect{67, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // X
+                                                       SDL_Rect{75, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // Y
+                                                       SDL_Rect{83, 68, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},  // Z
+                                                       SDL_Rect{3, 60, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}}}; //[SPACE]
 
-std::array<SDL_Rect, 10> PacString::num_sprite_ = {{SDL_Rect{4, 53, 7, 7},
-                                                    SDL_Rect{12, 53, 7, 7},
-                                                    SDL_Rect{20, 53, 7, 7},
-                                                    SDL_Rect{28, 53, 7, 7},
-                                                    SDL_Rect{36, 53, 7, 7},
-                                                    SDL_Rect{44, 53, 7, 7},
-                                                    SDL_Rect{52, 53, 7, 7},
-                                                    SDL_Rect{60, 53, 7, 7},
-                                                    SDL_Rect{68, 53, 7, 7},
-                                                    SDL_Rect{76, 53, 7, 7}}};
+std::array<SDL_Rect, 10> PacString::num_sprite_ = {{SDL_Rect{ 3, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{11, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{19, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{27, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{35, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{43, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{51, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{59, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{67, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s},
+                                                    SDL_Rect{75, 52, gconst::object::pacchar::size_s, gconst::object::pacchar::size_s}}};
 
 SDL_Rect PacString::life_sprite_ = {168,76,12,12};
 

@@ -6,21 +6,21 @@ Game::Game()
 {
     loadMaze();
 
-    ghosts_.push_back((Ghost *)&blinky_);
-    ghosts_.push_back((Ghost *)&clyde_);
-    ghosts_.push_back((Ghost *)&inky_);
-    ghosts_.push_back((Ghost *)&pinky_);
+    // ghosts_.push_back((Ghost *)&blinky_);
+    // ghosts_.push_back((Ghost *)&clyde_);
+    // ghosts_.push_back((Ghost *)&inky_);
+    // ghosts_.push_back((Ghost *)&pinky_);
+
+    ghosts_[0] = (Ghost *)&blinky_;
+    ghosts_[1] = (Ghost *)&clyde_;
+    ghosts_[2] = (Ghost *)&inky_;
+    ghosts_[3] = (Ghost *)&pinky_;
 }
 
 void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite)
 {
     // Timer
-    Timer timer;
-    timer.start();
-
-    // Physics
-    float previous_time = 0.f;
-    float current_time = 0.f;
+    game_timer_.start();
 
     // FPS
     int counted_frames = 0;
@@ -52,7 +52,7 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         }
 
         // Calculate and correct fps
-        float avgFPS = counted_frames / (timer.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
+        float avgFPS = counted_frames / (game_timer_.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
         if (avgFPS > 2000000)
         {
             avgFPS = 0;
@@ -60,9 +60,9 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         // LOG(INFO) << "FPS: " << avgFPS;
 
         // Update game
-        previous_time = current_time;
-        current_time = timer.getTicks() / 1000.f;
-        quit = quit ? quit : update(key_state, current_time - previous_time);
+        previous_time_ = current_time_;
+        current_time_ = game_timer_.getTicks() / 1000.f;
+        quit = quit ? quit : update(key_state, current_time_ - previous_time_);
 
         // Display
         display(window, sprite, window_surface);
@@ -172,14 +172,6 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
 void Game::respawn()
 {
     SDL_Delay(1000);
-    changeGameState(GAME_BLINK);
-    Timer timer{};
-    timer.start();
-    while (timer.getTicks() < gconst::game::blink_duration)
-    {
-        // display();
-    }
-    timer.stop();
     pacman_.respawn();
     pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
     for (Ghost *g : ghosts_)
@@ -398,7 +390,6 @@ void Game::eatObject(Object *object)
         if (it != gommes_.end())
         {
             updateScore(it->getEffect());
-            LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATABLE_EATEN);
             --Gomme::nb_gommes_;
         }
@@ -414,7 +405,6 @@ void Game::eatObject(Object *object)
         if (it != super_gommes_.end())
         {
             updateScore(it->getEffect());
-            LOG(DEBUG) << "game_score_ = " << game_score_;
             it->setState(EATABLE_EATEN);
             --SuperGomme::nb_super_gommes_;
             changeGameState(GAME_SUPER);
@@ -447,7 +437,9 @@ void Game::changeGameState(GameState state)
         for (Ghost *g : ghosts_)
         {
             if (g->getState() == GHOST_VULNERABLE)
+            {
                 g->setState(GHOST_VULNERABLE_BLINK);
+            }
         }
         break;
     case GAME_DEFAULT:
@@ -480,12 +472,25 @@ void Game::checkGameStateChange()
 
 void Game::nextLevel()
 {
-    // Game
-    changeGameState(GAME_DEFAULT);
     level_string_ = PacString("level " + std::to_string(++level), gconst::game::level_x, gconst::game::level_y);
 
-    // Pac-Man and Ghosts
-    respawn();
+    // Stop ghosts
+    for (Ghost *g : ghosts_)
+    {
+        g->setState(GHOST_STOP);
+    }
+
+    // Game
+    changeGameState(GAME_BLINK);
+    game_timer_.stop();
+    previous_time_ = 0.f;
+    current_time_ = 0.f;
+    game_timer_.start();
+    while (game_timer_.getTicks() < gconst::game::blink_duration)
+    {
+        // display();
+    }
+    game_timer_.stop();
 
     // Gommes and SuperGommes
     loadMaze(); // Place gommes in cells
@@ -497,4 +502,10 @@ void Game::nextLevel()
     {
         sg.setState(EATABLE_DEFAULT);
     }
+
+    // Pac-Man and Ghosts
+    respawn();
+
+    changeGameState(GAME_DEFAULT);
+    game_timer_.start();
 }

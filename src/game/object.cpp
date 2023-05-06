@@ -11,6 +11,9 @@ void Object::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     SDL_BlitScaled(sprite, current_sprite_, window_surface, &position_);
 
     // For testing purpose
-    // SDL_Rect test{position_.x, position_.y, 1, position_.h};
-    // SDL_FillRect(window_surface, &test, 255);
+    if (object_type_ == GHOST)
+    {
+        SDL_Rect test{position_.x, position_.y, 4, position_.h};
+        SDL_FillRect(window_surface, &test, 255);
+    }
 }

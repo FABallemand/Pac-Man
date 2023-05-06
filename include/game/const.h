@@ -35,7 +35,7 @@ namespace gconst
 
         namespace pacchar
         {
-            constexpr int size_s = 7; //!< Char size (on sprite)
+            constexpr int size_s = 8; //!< Char size (on sprite)
         }
 
         namespace moveable

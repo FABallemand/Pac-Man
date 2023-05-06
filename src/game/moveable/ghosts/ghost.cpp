@@ -12,7 +12,7 @@ GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::m
 
 void Ghost::update(const float delta_t, int target_i, int target_j, Direction direction)
 {
-    // LOG(DEBUG) << name_ << " : POSITION = (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << ")";
+    LOG(DEBUG) << name_ << " : POSITION = (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << ")";
     // No movement during respawn
     if (state_ == GHOST_STOP)
     {
@@ -47,6 +47,7 @@ void Ghost::update(const float delta_t, int target_i, int target_j, Direction di
 void Ghost::respawn()
 {
     state_ = GHOST_DEFAULT;
+    delta_t_ = 0;
     direction_ = NONE;
     action_direction_ = NONE;
     position_.x = initial_position_.second * gconst::object::cell::size;
