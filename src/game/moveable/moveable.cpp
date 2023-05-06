@@ -12,6 +12,6 @@ void Moveable::handleShortcut()
         position_.x = 0;
     }
 
-    // Handle Pac-Man dimensions
+    // Fix dimensions
     fixDimensions();
 }

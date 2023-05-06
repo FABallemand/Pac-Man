@@ -40,15 +40,15 @@ namespace gconst
 
         namespace moveable
         {
-            constexpr int nb_directions = 4;     //!< Number of possible directions (except NONE)
-            constexpr int nb_sprite_frame = 3;   //!< Number of frame each sprite is displayed before going to the next sprite in the animation
-            constexpr int neighborhood_size = 3; //!< Neighborhood size (in cell)
+            constexpr int nb_directions = 4;   //!< Number of possible directions (except NONE)
+            constexpr int nb_sprite_frame = 3; //!< Number of frame each sprite is displayed before going to the next sprite in the animation
 
             namespace pacman
             {
                 constexpr int size_s1 = 16;                                            //!< PacMan size (on sprite)
                 constexpr int size_s2 = 11;                                            //!< PacMan size (on sprite)
                 constexpr int size = 32;                                               //!< PacMan size
+                constexpr int neighborhood_size = 3;                                   //!< Neighborhood size (in cell)
                 constexpr int speed = 100;                                             //!< PacMan speed
                 constexpr int move_diag_offset = (2 / 3) * gconst::object::cell::size; //!< Offset to which Pac-Man can move diagonaly
                 constexpr int nb_moving_sprites = 2;                                   //!< Number of sprites in the moving animation
@@ -59,7 +59,10 @@ namespace gconst
             {
                 constexpr int size_s = 16;            //!< Ghost size (on sprite)
                 constexpr int size = 32;              //!< Ghost size
-                constexpr int speed = 50;             //!< Ghost speed
+                constexpr int blinky_speed = 50;      //!< Blinky speed
+                constexpr int clyde_speed = 52;       //!< Clyde speed
+                constexpr int inky_speed = 54;        //!< Inky speed
+                constexpr int pinky_speed = 56;       //!< Pinky speed
                 constexpr int nb_moving_sprites = 2;  //!< Number of sprites in the moving animation
                 constexpr int nb_special_sprites = 2; //!< Number of sprites in the moving animation
                 constexpr int score = 100;            //!< Ghost base score
@@ -93,8 +96,8 @@ namespace gconst
                 constexpr int i = 15;                                                     //!< Fruit position i
                 constexpr int j = 10;                                                     //!< Fruit position i
                 constexpr int time = 10000;                                               //!< Time before fruit expiration
-                constexpr int spawn_interval = 2000;                                      //!< score interval between to fruit spawning
-                constexpr int nb_fruit = 9;
+                constexpr int spawn_interval = 2000;                                      //!< Number of fruit
+                constexpr int nb_fruit_type = 9;
             }
         }
     }

@@ -360,7 +360,7 @@ void Game::updateEatables()
     }
     if (game_score_ > score_to_reach_)
     {
-        int next_fruit_type = (static_cast<int>(next_fruit_type_) + 1) % gconst::object::eatable::fruit::nb_fruit;
+        int next_fruit_type = (static_cast<int>(next_fruit_type_) + 1) % gconst::object::eatable::fruit::nb_fruit_type;
         next_fruit_type = next_fruit_type == 0 ? ++next_fruit_type : next_fruit_type;
         fruit_.setFruitType(static_cast<FruitType>(next_fruit_type));
         score_to_reach_ += gconst::object::eatable::fruit::spawn_interval;
@@ -467,14 +467,13 @@ void Game::nextLevel()
     respawn();
 
     // Gommes and SuperGommes
-    loadMaze();
-
-    for (int i = 0; i < gconst::game::nb_gommes; i++)
+    loadMaze(); // Place gommes in cells
+    for (Gomme &g : gommes_)
     {
-        gommes_[i].setState(EATABLE_DEFAULT);
+        g.setState(EATABLE_DEFAULT);
     }
-    for (int i = 0; i < gconst::game::nb_super_gommes; i++)
+    for (SuperGomme &sg : super_gommes_)
     {
-        super_gommes_[i].setState(EATABLE_DEFAULT);
+        sg.setState(EATABLE_DEFAULT);
     }
 }

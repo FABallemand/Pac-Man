@@ -7,7 +7,7 @@
 
 class Cell; // Forward declaration
 
-using CellNeighborhood = std::array<std::array<Cell *, gconst::object::moveable::neighborhood_size>, gconst::object::moveable::neighborhood_size>;
+using CellNeighborhood = std::array<std::array<Cell *, gconst::object::moveable::pacman::neighborhood_size>, gconst::object::moveable::pacman::neighborhood_size>;
 using MovingSprites = std::array<std::array<SDL_Rect, gconst::object::moveable::pacman::nb_moving_sprites>, gconst::object::moveable::nb_directions>;
 
 /**
@@ -37,7 +37,7 @@ enum Direction
 class Moveable : public Object
 {
 public:
-    Moveable(ObjectType type, int x, int y, int w, int h, SDL_Rect *current_sprite, Direction direction = NONE) : Object{type, x, y, w, h, current_sprite}, direction_{direction}
+    Moveable(ObjectType type, int x, int y, int w, int h, int speed, SDL_Rect *current_sprite, Direction direction = NONE) : Object{type, x, y, w, h, current_sprite}, speed_{speed}, direction_{direction}
     {
     }
 
@@ -59,7 +59,7 @@ public:
 
 protected:
     // Movement ===============================================================
-    bool allowed_to_move_ = true;          //!< Allowed to move indicator
+    int speed_;                            //!< Speed
     float delta_t_ = 0.0;                  //!< Elapsed time since last update
     Direction direction_ = NONE;           //!< Direction of the object
     Direction action_direction_ = NONE;    //!< Future direction of the object

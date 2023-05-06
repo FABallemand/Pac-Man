@@ -72,6 +72,7 @@ private:
     // State ==================================================================
     PacManState state_ = PACMAN_ALIVE; //!< State of Pac-Man
     // Movement ===============================================================
+    bool allowed_to_move_ = true;      //!< Allowed to move indicator
     Direction input_direction_ = NONE; //!< User wanted direction
     CellNeighborhood neighborhood_;    //!< Cell neighborhood of the object
     // Sprites ================================================================

@@ -107,12 +107,47 @@ void Ghost::strategy(int target_i, int target_j, Direction target_direction)
     }
 }
 
+void Ghost::followPath()
+{
+    // Go in the same direction
+    if ((direction_ == LEFT && (getI() == 13 || ghost_board_[getI()][getJ() - 1] == 0)) || (direction_ == RIGHT && (getI() == 13 || ghost_board_[getI()][getJ() + 1] == 0)) ||
+        (direction_ == UP && ghost_board_[getI() - 1][getJ()] == 0) || (direction_ == DOWN && ghost_board_[getI() + 1][getJ()] == 0))
+    {
+        return;
+    }
+
+    // Change direction
+    if ((getI() == 13 || ghost_board_[getI()][getJ() - 1] == 0) && direction_ != RIGHT)
+    {
+        direction_ = LEFT;
+    }
+    if ((getI() == 13 || ghost_board_[getI()][getJ() + 1] == 0) && direction_ != LEFT)
+    {
+        direction_ = RIGHT;
+    }
+    if (ghost_board_[getI() - 1][getJ()] == 0 && direction_ != DOWN)
+    {
+        direction_ = UP;
+    }
+    if (ghost_board_[getI() + 1][getJ()] == 0 && direction_ != UP)
+    {
+        direction_ = DOWN;
+    }
+}
+
 void Ghost::turn()
 {
-    // if(action_direction_ != (direction_ + 1) % 2) // action_direction_ != opposite of direction_
-    // {
-    //     direction_ = action_direction_;
-    // }
+    if (state_ != GHOST_EATEN)
+    {
+        // Forbid turn-around
+        if ((action_direction_ == LEFT && direction_ == RIGHT) || (action_direction_ == RIGHT && direction_ == LEFT) ||
+            (action_direction_ == UP && direction_ == DOWN) || (action_direction_ == DOWN && direction_ == UP))
+        {
+            followPath();
+            return;
+        }
+    }
+
     direction_ = action_direction_;
 }
 
@@ -132,29 +167,37 @@ void Ghost::fixDimensions()
 
 void Ghost::move()
 {
-    switch (action_direction_)
+    switch (direction_)
     {
     case LEFT:
-        position_.x -= round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.x -= round(speed_ * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
-        handleShortcut();
-        if (ghost_board_[getI()][getJ()] == 1)
+        if (getI() == 13 && (getJ() < 4 || getJ() > 16))
+        {
+            LOG(DEBUG) << name_ << " : HANDLE SHORTCUT";
+            handleShortcut();
+        }
+        else if (ghost_board_[getI()][getJ()] == 1)
         {
             position_.x = (getJ() + 1) * gconst::object::cell::size;
         }
         break;
     case RIGHT:
-        position_.x += round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.x += round(speed_ * delta_t_);
         position_.y = getI() * gconst::object::cell::size;
-        handleShortcut();
-        if (ghost_board_[getI()][getJ()] == 1)
+        if (getI() == 13 && (getJ() < 4 || getJ() > 16))
+        {
+            LOG(DEBUG) << name_ << " : HANDLE SHORTCUT ";
+            handleShortcut();
+        }
+        else if (ghost_board_[getI()][getJ()] == 1)
         {
             position_.x = (getJ() - 1) * gconst::object::cell::size;
         }
         break;
     case UP:
         position_.x = getJ() * gconst::object::cell::size;
-        position_.y -= round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.y -= round(speed_ * delta_t_);
         if (ghost_board_[getI()][getJ()] == 1)
         {
             position_.y = (getI() + 1) * gconst::object::cell::size;
@@ -162,7 +205,7 @@ void Ghost::move()
         break;
     case DOWN:
         position_.x = getJ() * gconst::object::cell::size;
-        position_.y += round(gconst::object::moveable::ghost::speed * delta_t_);
+        position_.y += round(speed_ * delta_t_);
         if (ghost_board_[getI()][getJ()] == 1)
         {
             position_.y = (getI() - 1) * gconst::object::cell::size;
@@ -190,11 +233,7 @@ void Ghost::updateSprite()
     case GHOST_DEFAULT:
         if (direction_ != NONE)
         {
-            if (allowed_to_move_ == false)
-            {
-                sprite_count_ = 0; // Ghost is stuck against the wall
-            }
-            else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+            if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
             {
                 frame_count_ = 0;
                 sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_moving_sprites;
@@ -203,11 +242,7 @@ void Ghost::updateSprite()
         }
         break;
     case GHOST_VULNERABLE:
-        if (allowed_to_move_ == false)
-        {
-            sprite_count_ = 0; // Ghost is stuck against the wall
-        }
-        else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+        if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
         {
             frame_count_ = 0;
             sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_special_sprites;
@@ -215,11 +250,7 @@ void Ghost::updateSprite()
         current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;
     case GHOST_VULNERABLE_BLINK:
-        if (allowed_to_move_ == false)
-        {
-            sprite_count_ = 0; // Ghost is stuck against the wall
-        }
-        else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+        if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
         {
             frame_count_ = 0;
             sprite_count_ = (++sprite_count_) % (2 * gconst::object::moveable::ghost::nb_special_sprites);

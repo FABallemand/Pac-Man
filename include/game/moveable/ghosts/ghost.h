@@ -26,7 +26,7 @@ enum GhostState
 class Ghost : public Moveable
 {
 public:
-    Ghost(int x, int y, std::string name) : Moveable{GHOST, x, y, gconst::object::moveable::ghost::size, gconst::object::moveable::ghost::size, &(moving_sprites_[0][0]), NONE}, name_{name}
+    Ghost(int x, int y, int speed, std::string name) : Moveable{GHOST, x, y, gconst::object::moveable::ghost::size, gconst::object::moveable::ghost::size, speed, &(moving_sprites_[0][0]), NONE}, name_{name}
     {
         loadSimpleMaze();
     }
@@ -59,8 +59,8 @@ protected:
     // State ==================================================================
     GhostState state_ = GHOST_DEFAULT; //!< State of the ghost
     // Movement ===============================================================
-    std::pair<int, int> scatter_position_;   //!< Vulnerable position
-    PathFinder find_path_{};                 //!< Path finder
+    std::pair<int, int> scatter_position_; //!< Vulnerable position
+    PathFinder find_path_{};               //!< Path finder
     // Sprites ================================================================
     static GhostSpecialSprites eatable_sprites_; //!< Sprites location
     static GhostSpecialSprites eaten_sprites_;   //!< Sprites location                                                                                                                                  //!< Simple representation of the maze
@@ -74,6 +74,8 @@ protected:
     void strategy(int target_i, int target_j, Direction target_direction = NONE);
 
     virtual Direction chase(std::pair<int, int> target_position, Direction target_direction) = 0;
+
+    void followPath();
 
     void turn() override;
 

@@ -14,7 +14,7 @@ PacManDyingSprites PacMan::dying_sprites_{SDL_Rect{3, 106, gconst::object::movea
                                           SDL_Rect{137, 106, 4, gconst::object::moveable::pacman::size_s1},
                                           SDL_Rect{142, 106, 13, gconst::object::moveable::pacman::size_s1}};
 
-PacMan::PacMan() : Moveable{PACMAN, 0, 0, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, &initial_sprite_}
+PacMan::PacMan() : Moveable{PACMAN, 0, 0, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::speed, &initial_sprite_}
 {
     moving_sprites_ = {{{SDL_Rect{47, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{63, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Left
                         {SDL_Rect{20, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{35, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Right
@@ -265,7 +265,7 @@ void PacMan::move()
     case LEFT:
         if (position_.x > neighborhood_[1][1]->getX() || !neighborhood_[1][0]->isWall())
         {
-            position_.x -= round(gconst::object::moveable::pacman::speed * delta_t_);
+            position_.x -= round(speed_ * delta_t_);
             handleShortcut();
             position_.y = neighborhood_[1][1]->getY();
             allowed_to_move_ = true;
@@ -274,7 +274,7 @@ void PacMan::move()
     case RIGHT:
         if (position_.x < neighborhood_[1][1]->getX() || !neighborhood_[1][2]->isWall())
         {
-            position_.x += round(gconst::object::moveable::pacman::speed * delta_t_);
+            position_.x += round(speed_ * delta_t_);
             handleShortcut();
             position_.y = neighborhood_[1][1]->getY();
             allowed_to_move_ = true;
@@ -284,7 +284,7 @@ void PacMan::move()
         if (position_.y > neighborhood_[1][1]->getY() || !neighborhood_[0][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y -= round(gconst::object::moveable::pacman::speed * delta_t_);
+            position_.y -= round(speed_ * delta_t_);
             allowed_to_move_ = true;
         }
         break;
@@ -292,7 +292,7 @@ void PacMan::move()
         if (position_.y < neighborhood_[1][1]->getY() || !neighborhood_[2][1]->isWall())
         {
             position_.x = neighborhood_[1][1]->getX();
-            position_.y += round(gconst::object::moveable::pacman::speed * delta_t_);
+            position_.y += round(speed_ * delta_t_);
             allowed_to_move_ = true;
         }
         break;

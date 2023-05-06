@@ -1,6 +1,6 @@
 #include "blinky.h"
 
-Blinky::Blinky() : Ghost{0, 0, "Blinky"} // Temporary
+Blinky::Blinky() : Ghost{0, 0, gconst::object::moveable::ghost::blinky_speed, "Blinky"}
 {
     moving_sprites_ = {{{SDL_Rect{37, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{54, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
                         {SDL_Rect{3, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{20, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},

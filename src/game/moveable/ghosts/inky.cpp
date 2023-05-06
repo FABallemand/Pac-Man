@@ -1,6 +1,6 @@
 #include "inky.h"
 
-Inky::Inky() : Ghost{0, 0, "Inky"}
+Inky::Inky() : Ghost{0, 0, gconst::object::moveable::ghost::inky_speed, "Inky"}
 {
     moving_sprites_ = {{{SDL_Rect{37, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{54, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
                         {SDL_Rect{3, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{20, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
