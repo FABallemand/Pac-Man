@@ -6,11 +6,6 @@ Game::Game()
 {
     loadMaze();
 
-    // ghosts_.push_back((Ghost *)&blinky_);
-    // ghosts_.push_back((Ghost *)&clyde_);
-    // ghosts_.push_back((Ghost *)&inky_);
-    // ghosts_.push_back((Ghost *)&pinky_);
-
     ghosts_[0] = (Ghost *)&blinky_;
     ghosts_[1] = (Ghost *)&clyde_;
     ghosts_[2] = (Ghost *)&inky_;
@@ -150,6 +145,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Ghosts
     for (Ghost *g : ghosts_)
     {
+        g->debug();
         g->display(sprite, window_surface);
     }
 

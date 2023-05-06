@@ -54,6 +54,13 @@ public:
 
     void respawn();
 
+    void debug()
+    {
+        LOG(DEBUG) << name_ << " : (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << "," << position_.w << "," << position_.h << ")"
+                   << "[" << state_ << "]"
+                   << "{" << current_sprite_->x << "," << current_sprite_->y << "," << current_sprite_->w << "," << current_sprite_->h << "}";
+    }
+
 protected:
     std::string name_;       //!< Name of the ghost (for logging purpose only)
     SimpleMaze ghost_board_; //!< Simple representation of the maze

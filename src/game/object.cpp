@@ -13,7 +13,9 @@ void Object::display(SDL_Surface *sprite, SDL_Surface *window_surface)
     // For testing purpose
     if (object_type_ == GHOST)
     {
-        SDL_Rect test{position_.x, position_.y, 4, position_.h};
-        SDL_FillRect(window_surface, &test, 255);
+        SDL_Rect test1{position_.x, position_.y, 4, position_.h};
+        SDL_FillRect(window_surface, &test1, 255);
+        SDL_Rect test2{position_.x, position_.y, 4, 25};
+        SDL_FillRect(window_surface, &test2, 255);
     }
 }
