@@ -24,8 +24,6 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
     bool quit = false;
     while (!quit)
     {
-        // LOG(INFO) << "NEW FRAME";
-
         SDL_Event event;
         while (!quit && SDL_PollEvent(&event))
         {
@@ -145,7 +143,6 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Ghosts
     for (Ghost *g : ghosts_)
     {
-        g->debug();
         g->display(sprite, window_surface);
     }
 
@@ -187,7 +184,7 @@ bool Game::quitGame()
 
 void Game::createCell(int i, int j, int type)
 {
-    LOG(DEBUG) << "Game::createCell(" << i << "," << j << "," << type << ")";
+    // LOG(DEBUG) << "Game::createCell(" << i << "," << j << "," << type << ")";
     switch (type)
     {
     case 0:
@@ -448,6 +445,9 @@ void Game::changeGameState(GameState state)
             eating_streak_ = 0;
         }
         break;
+    default:
+        LOG(ERROR) << "default";
+        break;
     }
 
     // Change state
@@ -475,6 +475,9 @@ void Game::nextLevel()
     {
         g->setState(GHOST_STOP);
     }
+
+    // Remove fruit
+    fruit_.setFruitType(FRUIT_NONE);
 
     // Game
     changeGameState(GAME_BLINK);

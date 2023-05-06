@@ -25,9 +25,8 @@ PacMan::PacMan() : Moveable{PACMAN, 0, 0, gconst::object::moveable::pacman::size
 
 void PacMan::update(const Uint8 *key_state, const float delta_t)
 {
-    switch (state_)
+    if(state_ == PACMAN_ALIVE)
     {
-    case PACMAN_ALIVE:
         // Remember delta_t
         delta_t_ = delta_t;
 
@@ -36,9 +35,6 @@ void PacMan::update(const Uint8 *key_state, const float delta_t)
 
         // Handle movement
         handleMovement();
-        break;
-    case PACMAN_DYING:
-        break;
     }
 
     // Update sprite
@@ -106,6 +102,8 @@ void PacMan::turnLeft()
             action_direction_ = DOWN_LEFT;
         }
         break;
+    default:
+        LOG(ERROR) << "ERROR : DEFAULT";
     }
 }
 
@@ -141,7 +139,10 @@ void PacMan::turnRight()
             action_direction_ = DOWN_RIGHT;
         }
         break;
+    default:
+        LOG(ERROR) << "ERROR : DEFAULT";
     }
+
 }
 
 void PacMan::turnUp()
@@ -176,7 +177,10 @@ void PacMan::turnUp()
         direction_ = UP;
         action_direction_ = UP;
         break;
+    default:
+        LOG(ERROR) << "ERROR : DEFAULT";
     }
+
 }
 
 void PacMan::turnDown()
@@ -211,7 +215,10 @@ void PacMan::turnDown()
         direction_ = DOWN;
         action_direction_ = DOWN;
         break;
+    default:
+        LOG(ERROR) << "ERROR : DEFAULT";
     }
+    
 }
 
 void PacMan::turn()

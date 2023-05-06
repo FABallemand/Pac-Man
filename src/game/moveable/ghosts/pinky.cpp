@@ -46,6 +46,8 @@ Direction Pinky::chase(std::pair<int, int> target_position, Direction target_dir
     case NONE:
         // Scatter if Pac-Man has not moved yet
         return find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
+    default:
+        break;
     }
 
     // Error

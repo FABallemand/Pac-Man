@@ -163,7 +163,6 @@ void Ghost::turn()
 
 void Ghost::fixDimensions()
 {
-    LOG(DEBUG) << name_ << " : DID FIX DIMENSIONS DESTROYED ME ?";
     if (position_.x >= gconst::window::w - gconst::object::moveable::ghost::size)
     {
         position_.w = 0;

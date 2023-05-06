@@ -57,6 +57,11 @@ public:
 
     void respawn();
 
+    /**
+     * \brief Print relevant info relative to Ghost object
+     * \remark For testing purpose only
+     * 
+     */
     void debug()
     {
         LOG(DEBUG) << name_ << " : (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << "," << position_.w << "," << position_.h << ")"
@@ -86,7 +91,7 @@ protected:
 
     void strategy(int target_i, int target_j, Direction target_direction = NONE);
 
-    virtual Direction chase(std::pair<int, int> target_position, Direction target_direction) = 0;
+    virtual Direction chase(std::pair<int, int> target_position, Direction target_direction = NONE) = 0;
 
     void followPath();
 

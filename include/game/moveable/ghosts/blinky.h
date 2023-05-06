@@ -8,7 +8,7 @@ class Blinky : public Ghost
 public:
     Blinky();
 protected:
-    Direction chase(std::pair<int,int> target_position, Direction target_direction);
+    Direction chase(std::pair<int,int> target_position, Direction target_direction) override;
 };
 
 #endif

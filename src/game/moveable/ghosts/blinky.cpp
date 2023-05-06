@@ -12,5 +12,6 @@ Blinky::Blinky() : Ghost{0, 0, gconst::object::moveable::ghost::blinky_speed, "B
 
 Direction Blinky::chase(std::pair<int, int> target_position, Direction target_direction)
 {
+    (void) target_direction;
     return find_path_(ghost_board_, {getI(), getJ()}, target_position);
 }
