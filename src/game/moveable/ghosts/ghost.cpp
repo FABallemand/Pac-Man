@@ -12,7 +12,7 @@ GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::m
 
 void Ghost::update(const float delta_t, int target_i, int target_j, Direction direction)
 {
-    LOG(DEBUG) << name_ << " : POSITION = (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << ")";
+    // LOG(DEBUG) << name_ << " : POSITION = (" << getI() << "," << getJ() << ")(" << position_.x << "," << position_.y << ")";
     // No movement during respawn
     if (state_ == GHOST_STOP)
     {
@@ -198,7 +198,8 @@ void Ghost::move()
         // Going elsewhere
         else if (ghost_board_[getI()][getJ() + 1] == 1)
         {
-            position_.x += fmin(((getJ() + 1) * gconst::object::cell::size) - getX(), round(speed_ * delta_t_));
+            position_.x += fmin(((getJ()) * gconst::object::cell::size) - getX(), round(speed_ * delta_t_));
+            LOG(DEBUG) << name_ << " : x = " << position_.x;
         }
         else
         {
@@ -221,7 +222,8 @@ void Ghost::move()
     case DOWN:
         if (ghost_board_[getI() + 1][getJ()] == 1)
         {
-            position_.y += fmin(((getI() + 1) * gconst::object::cell::size) - getY(), round(speed_ * delta_t_));
+            position_.y += fmin(((getI()) * gconst::object::cell::size) - getY(), round(speed_ * delta_t_));
+            LOG(DEBUG) << name_ << " : y = " << position_.y;
         }
         else
         {

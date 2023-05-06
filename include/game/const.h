@@ -54,9 +54,9 @@ namespace gconst
                 constexpr int size_s = 16;            //!< Ghost size (on sprite)
                 constexpr int size = 32;              //!< Ghost size
                 constexpr int blinky_speed = 50;      //!< Blinky speed
-                constexpr int clyde_speed = 52;       //!< Clyde speed
-                constexpr int inky_speed = 54;        //!< Inky speed
-                constexpr int pinky_speed = 56;       //!< Pinky speed
+                constexpr int clyde_speed = 50;       //!< Clyde speed
+                constexpr int inky_speed = 50;        //!< Inky speed
+                constexpr int pinky_speed = 50;       //!< Pinky speed
                 constexpr int nb_moving_sprites = 2;  //!< Number of sprites in the moving animation
                 constexpr int nb_special_sprites = 2; //!< Number of sprites in the moving animation
                 constexpr int score = 100;            //!< Ghost base score
