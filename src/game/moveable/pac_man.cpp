@@ -103,7 +103,7 @@ void PacMan::turnLeft()
         }
         break;
     default:
-        LOG(ERROR) << "ERROR : DEFAULT";
+        break;
     }
 }
 
@@ -140,7 +140,7 @@ void PacMan::turnRight()
         }
         break;
     default:
-        LOG(ERROR) << "ERROR : DEFAULT";
+        break;
     }
 
 }
@@ -178,7 +178,7 @@ void PacMan::turnUp()
         action_direction_ = UP;
         break;
     default:
-        LOG(ERROR) << "ERROR : DEFAULT";
+        break;
     }
 
 }
@@ -216,7 +216,7 @@ void PacMan::turnDown()
         action_direction_ = DOWN;
         break;
     default:
-        LOG(ERROR) << "ERROR : DEFAULT";
+        break;
     }
     
 }
