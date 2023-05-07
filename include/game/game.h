@@ -112,11 +112,11 @@ private:
     Pinky pinky_{};                 //!< Pinky (pink)
     std::array<Ghost *, 4> ghosts_; //!< Ghosts
     // Eatable
-    std::array<Gomme, gconst::game::nb_gommes> gommes_;                   //!< Gommes
-    std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_;  //!< Super-Gommes
-    FruitType next_fruit_type_ = FRUIT_NONE;                              //!< Next type of fruit to appear
+    std::array<Gomme, gconst::game::nb_gommes> gommes_;                         //!< Gommes
+    std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_;        //!< Super-Gommes
+    FruitType next_fruit_type_ = FRUIT_NONE;                                    //!< Next type of fruit to appear
     int score_to_reach_ = gconst::game::object::eatable::fruit::spawn_interval; //!< Score to reach before next fruit
-    Fruit fruit_{};                                                       //!< Fruit
+    Fruit fruit_{};                                                             //!< Fruit
     // Display ================================================================
     int frame_count_ = 0;                                                             //!< Frame count
     int current_sprite_ = 0;                                                          //!< Current sprite
@@ -127,21 +127,48 @@ private:
     static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{541, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
     static SDL_Rect maze_position_;                                                                                                                                           //!< Maze position on the window
 
+    /**
+     * \brief Create a Cell object
+     *
+     * \param i Row index
+     * \param j Column index
+     * \param type Type of cell
+     */
     void createCell(int i, int j, int type);
 
+    /**
+     * \brief Create a Neighborhood object
+     *
+     * \param i Row index
+     * \param j Column index
+     * \return CellNeighborhood
+     */
     CellNeighborhood createNeighborhood(int i, int j);
 
+    /**
+     * \brief Load maze
+     *
+     */
     void loadMaze();
 
+    /**
+     * \brief Eat object
+     *
+     * \param object Pointer to the object eaten
+     */
     void eatObject(Object *object);
 
     /**
-     * \brief Handle battle or collision between Pac-Man and a ghost
+     * \brief Handle battle (ie: collision) between Pac-Man and a Ghost
      *
      * \param ghost Pointer to the ghost
      */
     void handleBattle(Ghost *ghost);
 
+    /**
+     * \brief Handle battle (ie: collision) between Pac-Man and the Fruit
+     *
+     */
     void handleFruitBattle();
 
     /**
@@ -233,14 +260,14 @@ private:
      * \return true If game is finished
      */
     bool quitGame();
-    
+
     /**
      * \brief Make the board blink for time_ms millisecond
-     * 
-     * \param time_ms 
-     * \param window 
-     * \param sprite 
-     * \param window_surface 
+     *
+     * \param time_ms
+     * \param window
+     * \param sprite
+     * \param window_surface
      */
     void blinkBoard(uint32_t time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
 };

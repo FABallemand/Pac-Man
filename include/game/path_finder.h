@@ -41,10 +41,25 @@ public:
     Direction operator()(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
 
 private:
-    static std::array<float, gconst::game::nb_columns> init_row_;
+    static std::array<float, gconst::game::nb_columns> init_row_; //!< Row to initialise cost and heuristic array in AStar
 
+    /**
+     * \brief Find best direction according to the result of AStar
+     *
+     * \param ghost_position Position of the ghost
+     * \param cost Array of cost
+     * \return Direction Direction to follow
+     */
     Direction bestDirection(std::pair<int, int> ghost_position, ACost &cost);
 
+    /**
+     * \brief AStar algoorithm, find the best path to go from one position to another
+     *
+     * \param maze Representation of the maze
+     * \param ghost_position Position of the ghost
+     * \param target_position Position of the target
+     * \return Direction Direction to follow
+     */
     Direction AStar(SimpleMaze &maze, std::pair<int, int> ghost_position, std::pair<int, int> target_position);
 
     /**

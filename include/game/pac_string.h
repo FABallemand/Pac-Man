@@ -49,11 +49,11 @@ public:
     void display(SDL_Surface *sprite, SDL_Surface *window_surface);
 
 private:
-    std::string to_print_;
-    std::vector<Object> word_;
-    static std::array<SDL_Rect, 27> letter_sprite_;
-    static std::array<SDL_Rect, 10> num_sprite_;
-    static SDL_Rect life_sprite_;
+    std::string to_print_;                          //!< Word to display
+    std::vector<Object> word_;                      //!< Vector of letters to display
+    static std::array<SDL_Rect, 27> letter_sprite_; //!< Letter sprites
+    static std::array<SDL_Rect, 10> num_sprite_;    //!< Number sprites
+    static SDL_Rect life_sprite_;                   //!< Life sprite
 };
 
 #endif
