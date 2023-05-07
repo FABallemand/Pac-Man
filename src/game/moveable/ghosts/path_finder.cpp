@@ -18,7 +18,7 @@ Direction PathFinder::bestDirection(std::pair<int, int> target_position, ACost &
     int target_j = target_position.second;
 
     // Find minimum cost (ie: where the path comes...)
-    float neighbor_cost[4];
+    std::array<float,4> neighbor_cost;
     neighbor_cost[LEFT] = cost[target_i][target_j - 1];
     neighbor_cost[RIGHT] = cost[target_i][target_j + 1];
     neighbor_cost[UP] = cost[target_i - 1][target_j];
