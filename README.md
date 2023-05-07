@@ -48,4 +48,4 @@ Simply launch the program and enjoy!
 - [ ] Documentation
 - [ ] Encapsulation
 - [ ] Add **const** and **override**
-- [ ] Remove C arrays
+- [x] Remove C arrays

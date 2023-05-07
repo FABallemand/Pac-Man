@@ -31,7 +31,8 @@
 // Overlay
 #include "pac_string.h"
 
-class Cell; // Forward declaration (why??)
+class Cell; // Forward declaration
+
 using Board = std::array<std::array<Cell, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
 /**
@@ -241,7 +242,7 @@ private:
      * \param sprite 
      * \param window_surface 
      */
-    void blink_board(Uint32 time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
+    void blinkBoard(uint32_t time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
 };
 
 #endif

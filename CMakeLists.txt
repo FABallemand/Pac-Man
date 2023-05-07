@@ -30,20 +30,20 @@ target_sources(${PROJECT_NAME}
                # Game
                src/game/game.cpp
                src/game/pac_string.cpp
-               src/game/cell.cpp
-               src/game/object.cpp
-               src/game/moveable/moveable.cpp
-               src/game/moveable/pac_man.cpp
-               src/game/moveable/ghosts/ghost.cpp
-               src/game/moveable/ghosts/blinky.cpp
-               src/game/moveable/ghosts/clyde.cpp
-               src/game/moveable/ghosts/inky.cpp
-               src/game/moveable/ghosts/pinky.cpp
-               src/game/moveable/ghosts/path_finder.cpp
-               src/game/eatable/eatable.cpp
-               src/game/eatable/gomme.cpp
-               src/game/eatable/super_gomme.cpp
-               src/game/eatable/fruit.cpp
+               src/game/path_finder.cpp
+               src/game/object/object.cpp
+               src/game/object/cell.cpp
+               src/game/object/moveable/moveable.cpp
+               src/game/object/moveable/pac_man.cpp
+               src/game/object/moveable/ghosts/ghost.cpp
+               src/game/object/moveable/ghosts/blinky.cpp
+               src/game/object/moveable/ghosts/clyde.cpp
+               src/game/object/moveable/ghosts/inky.cpp
+               src/game/object/moveable/ghosts/pinky.cpp
+               src/game/object/eatable/eatable.cpp
+               src/game/object/eatable/gomme.cpp
+               src/game/object/eatable/super_gomme.cpp
+               src/game/object/eatable/fruit.cpp
                )
 
 target_include_directories(${PROJECT_NAME}
@@ -54,9 +54,10 @@ target_include_directories(${PROJECT_NAME}
                            include/utils
                            include/app
                            include/game
-                           include/game/moveable
-                           include/game/moveable/ghosts
-                           include/game/eatable
+                           include/game/object
+                           include/game/object/moveable
+                           include/game/object/moveable/ghosts
+                           include/game/object/eatable
                            )
 
 target_compile_definitions(${PROJECT_NAME}

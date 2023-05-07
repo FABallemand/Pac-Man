@@ -58,16 +58,16 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         quit = quit ? quit : update(key_state, current_time_ - previous_time_);
 
         // Display
-        if(state_ == GAME_BLINK)
+        if (state_ == GAME_BLINK)
         {
-            blink_board(gconst::game::blink_duration,window, sprite, window_surface);
+            blinkBoard(gconst::game::blink_duration, window, sprite, window_surface);
             changeGameState(GAME_DEFAULT);
         }
         else
         {
             display(window, sprite, window_surface);
         }
-        
+
         SDL_Delay(16); // If game is too slow -> go through walls...
         ++counted_frames;
     }
@@ -117,7 +117,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Background/Maze
     if (state_ == GAME_BLINK)
     {
-        if (++frame_count_ % (gconst::object::moveable::nb_sprite_frame*5) == 0)
+        if (++frame_count_ % (gconst::object::moveable::nb_sprite_frame * 5) == 0)
         {
             current_sprite_ = ++current_sprite_ % 2;
         }
@@ -514,7 +514,7 @@ void Game::nextLevel()
     game_timer_.start();
 }
 
-void Game::blink_board(Uint32 time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)
+void Game::blinkBoard(uint32_t time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)
 {
     game_timer_.start();
     while (game_timer_.getTicks() < time_ms)
