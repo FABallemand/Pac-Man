@@ -232,10 +232,14 @@ private:
      * \return true If game is finished
      */
     bool quitGame();
-
+    
     /**
-     * @brief make the board blink for time_ms millisecond
+     * \brief Make the board blink for time_ms millisecond
      * 
+     * \param time_ms 
+     * \param window 
+     * \param sprite 
+     * \param window_surface 
      */
     void blink_board(int time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
 };

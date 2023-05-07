@@ -24,7 +24,8 @@ All files were formated using the C/C++ VSCode extension from Microsoft and code
 Additionnaly, all header files starts with a the preprocessing directives to include the file only once, followed by general imports then imports related to the project. In the same maner, source files start by including their associated header file.
 
 \subsection{C++ Features}
-The entire program relies on classes. From the \textsf{Application} to the small \textsf{Gommes} every element has been programmed as a class. For instance, the class \textsf{LOG} implements a logger. Using heritage, it is easy to add features to a class whitout starting from scratch. Following the afore mentionned file hierarchy, the class \textsf{Ghost} is a sub-class of \textsf{Moveable} which itself derives from \textsf{Object}. (Figure \ref{class_hierarchy})
+The entire program relies on classes. From the \textsf{Application} to the small \textsf{Gommes} every element has been programmed as a class. For instance, the class \textsf{LOG} implements a logger. Using heritage, it is easy to add features to a class whitout starting from scratch. Following the afore mentionned file hierarchy, the class \textsf{Ghost} is a sub-class of \textsf{Moveable} which itself derives from \textsf{Object}. (Figure \ref{class_hierarchy})\\
+Some classes are virtual meaning they contain virtual function(s) that must be implemented by the sub-class. For instance \textsf{Moveable} is a virtual class as it does not represent a real game object and contains among other \textsf{move} which is a virtual function. The definition of this method can be found either in \textsf{PacMan} or in \textsf{Ghost}, the two classes that inherits from \textsf{Moveable}.
 
 \begin{figure}
     \center
@@ -40,7 +41,7 @@ Game object that can be eaten by Pac-Man have an \textsf{effect\_} attribute tha
 An particular attention has been paid to \textsf{public}, \textsf{protected} and \textsf{private} sections in order restrict access to object attributes and methods and improving code reliability. In the same maner, \textsf{const} marker is used to avoid programming errors.
 
 \subsection{Standard Template Library Features}
-During the entire game, a single object of the class \textsf{Fruit} is created and updated, that is to say: its \textsf{fruit\_type\_} attributes is set to the correct fruit. In order to keep the lambda function, the \textsf{Eatable} class was templated: \textsf{Gommes} are \textsf{Eatable<int>} (the lambda function takes a single integer argument that corresponds to the current score and returns the new score) and \textsf{Fruit} are \textsf{Eatable<std::pair<int,int>>} (the lambda function takes a pair of interger as argument where the first value is the score of the game and the second value is a array index used to add the value corresponding to a fruit to the score).
+During the entire game, a single object of the class \textsf{Fruit} is created and updated, that is to say: its \textsf{fruit\_type\_} attributes is set to the correct fruit. In order to keep the lambda function, the \textsf{Eatable} class was templated: \textsf{Gommes} are \textsf{Eatable\<int\>} (the lambda function takes a single integer argument that corresponds to the current score and returns the new score) and \textsf{Fruit} are \textsf{Eatable\<std::pair\<int,int\>\>} (the lambda function takes a pair of interger as argument where the first value is the score of the game and the second value is a array index used to add the value corresponding to a fruit to the score).
 
 All containers are \textsf{std::array} or \textsf{std::vector}. For instance in the class \textsf{Game} the \textsf{board\_} attributes used to represent the game board is a two dimentional array made by creating an array of arrays (see name space \textsf{Board}).
 
@@ -50,11 +51,32 @@ All text objects are of type \textsf{std::string}.
 
 Using this containers allows to use operators (\textsf{==}, \textsf{std::min}...) and pre-emplemented algorithms such as \textsf{find}, \textsf{fill} and \textsf{tolower}.
 
-The \textsf{PathFinder} functor required priority queues to implement the Astar algorithm.\cite[astar] However, \textsf{std::priority_queue} does not implement the \textsf{find} method. Using templates, another priority queue implementing the \textsf{find} method has been created \textsf{std::priority_queue}. (See  \textsf{PriorityQueue})
+The \textsf{PathFinder} functor required priority queues to implement the Astar algorithm.\cite[astar] However, \textsf{std::priority\_queue} does not implement the \textsf{find} method. Using templates, another priority queue implementing the \textsf{find} method has been created \textsf{std::priority\_queue}. (See  \textsf{PriorityQueue})
 
 \subsection{SDL Features}
-The SDL was used in order to create a window to display the game inside. Special functions used to initialise and quit the SDL, load and unload image assets are declared in \path{SDL_utils.h} and \path{SDL_utils.cpp} files.
+The SDL was used in order to create a window to display the game inside. Special functions used to initialise and quit the SDL, load and unload image assets are declared in \path{SDL\_utils.h} and \path{SDL\_utils.cpp} files.
 
-The \textsf{SDL_BlitScaled} function is used to display sprites. Additionnaly, the \textsf{SDL_FillRect} function was used to draw object bouding boxes during developement.
+The \textsf{SDL\_BlitScaled} function is used to display sprites. Additionnaly, the \textsf{SDL\_FillRect} function was used to draw object bouding boxes during developement.
 
-A simple timer relying on the \textsf{SDL_GetTicks64} has been implemented as a class (\textsf{Timer}).
+A simple timer relying on the \textsf{SDL\_GetTicks64} has been implemented as a class (\textsf{Timer}).
+
+\subsection{Game Reproduction}
+The goal of this project is to recreate the original Pac-Man game from 1980. Eventhough the game looks really simple, this is not an easy task as every object has multiple states, actions or effect.
+
+Starting with the main character, the main difficulty was to properly handle the movement as it can move continuously on a discrete environnement. In other words, there is always one dimension that is fixed: if \textsf{PacMan} is moving to the left, its y coordinate is fixed to a precise value. Moreover, \textsf{PacMan} can cut corners to enhance playability. To do that we created an object called \textsf{Cell} representing a cell in the maze thus discretizing the board. \textsf{Cell} objects are used to keep track of the cells around \textsf{PacMan} so it is easy to look for walls.
+
+\textsf{Ghost} movement is also difficult to implement as it is not relying on user input but rather on an artifical intelligence. According to its state a \textsf{Ghost} move to a specified target position by following the shortest path. In order to do that, the Astar algorithm has been implemented in the \textsf{PathFinder} class. However, there are constrains that can forbid the \textsf{Ghost} to follow the best path (ie: a \textsf{Ghost} cannot make a 180 degree turn). So if it cannot go in the best computed direction, the \textsf{Ghost} simply follow the walls.\\
+In the original game, every single ghost has its own strategy to chase Pac-Man. Each of the \textsf{Ghost} sub-class redefines the \textsf{chase} method: \textsf{Blinky} (red) directly chase \textsf{PacMan}, \textsf{Inky} (blue) has a target randomly choosen around \textsf{PacMan} and \textsf{Clyde} (orange) and \textsf{Pinky} (pink) try to go four cells in front/behind \textsf{PacMan}.
+
+Every type of eatable object from the original game are implemented. \textsf{Gommes} and \textsf{SuperGommes} classes correspond to the dots pac-man can eat all over the maze and \textsf{Fruit} represent the fruit that appears at given score values.
+
+The overlay uses \textsf{PacString} to display information. This simple class convert a string into an \textsf{Object} that can be easily displayed on the game window.
+
+Level changements as weel as the end of the game are properly recreated and bug-free.
+
+\begin{figure}
+    \center
+    \includegraphics[scale=.25]{img/game.png}
+    \caption{Game screenshot}
+    \label{game}
+\end{figure}

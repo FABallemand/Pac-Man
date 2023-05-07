@@ -4,6 +4,8 @@
 
 Pac-Man, the video game...
 
+![](screenshot.png)
+
 ## 🛠 Usage
 
 This project can be built using CMake.
