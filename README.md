@@ -43,7 +43,7 @@ Simply launch the program and enjoy!
 - LEBOT Samuel
 
 ## 📋 TODO:
-- [ ] class scene (template?)
-- [ ] Add **const** (constructors)
-- [ ] Neighborhood? allowed_to_move?
-- [ ] Encapsulation in Game::update
+- [ ] Documentation
+- [ ] Encapsulation
+- [ ] Add **const** and **override**
+- [ ] Remove C arrays

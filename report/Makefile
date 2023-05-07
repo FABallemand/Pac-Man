@@ -1,4 +1,4 @@
-FILENAME=rapport
+FILENAME=report
 
 all:
 	latexmk -pdf -bibtex -pdflatex="pdflatex -interaction=nonstopmode" -use-make -f $(FILENAME).tex
