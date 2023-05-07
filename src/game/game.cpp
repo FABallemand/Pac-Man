@@ -61,14 +61,13 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         if(state_ == GAME_BLINK)
         {
             blink_board(gconst::game::blink_duration,window, sprite, window_surface);
-            state_= GAME_DEFAULT;
+            changeGameState(GAME_DEFAULT);
         }
         else
         {
             display(window, sprite, window_surface);
         }
         
-
         SDL_Delay(16); // If game is too slow -> go through walls...
         ++counted_frames;
     }
@@ -118,7 +117,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Background/Maze
     if (state_ == GAME_BLINK)
     {
-        if (++frame_count_ % gconst::object::moveable::nb_sprite_frame == 0)
+        if (++frame_count_ % (gconst::object::moveable::nb_sprite_frame*5) == 0)
         {
             current_sprite_ = ++current_sprite_ % 2;
         }
@@ -263,7 +262,7 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
 void Game::loadMaze()
 {
     // Open file
-    std::ifstream level{"../assets/level/maze_2_gomme.lvl", std::ios::in};
+    std::ifstream level{"../assets/level/maze.lvl", std::ios::in};
 
     if (level.is_open())
     {
