@@ -24,19 +24,19 @@ public:
         {
             if (c >= 97 && c <= 122)
             {
-                word_.emplace_back(UNDEFINED, x + i * gconst::object::cell::size, y, gconst::object::cell::size, gconst::object::cell::size, &(letter_sprite_[c - 97]));
+                word_.emplace_back(UNDEFINED, x + i * gconst::game::object::cell::size, y, gconst::game::object::cell::size, gconst::game::object::cell::size, &(letter_sprite_[c - 97]));
             }
             else if (c == 32)
             {
-                word_.emplace_back(UNDEFINED, x + i * gconst::object::cell::size, y, gconst::object::cell::size, gconst::object::cell::size, &(letter_sprite_[26]));
+                word_.emplace_back(UNDEFINED, x + i * gconst::game::object::cell::size, y, gconst::game::object::cell::size, gconst::game::object::cell::size, &(letter_sprite_[26]));
             }
             else if (c >= 48 && c <= 57)
             {
-                word_.emplace_back(UNDEFINED, x + i * gconst::object::cell::size, y, gconst::object::cell::size, gconst::object::cell::size, &(num_sprite_[c - 48]));
+                word_.emplace_back(UNDEFINED, x + i * gconst::game::object::cell::size, y, gconst::game::object::cell::size, gconst::game::object::cell::size, &(num_sprite_[c - 48]));
             }
             else if (c == '$')
             {
-                word_.emplace_back(UNDEFINED, x + i * gconst::object::cell::size, y, gconst::object::cell::size, gconst::object::cell::size, &life_sprite_);
+                word_.emplace_back(UNDEFINED, x + i * gconst::game::object::cell::size, y, gconst::game::object::cell::size, gconst::game::object::cell::size, &life_sprite_);
             }
             else
             {

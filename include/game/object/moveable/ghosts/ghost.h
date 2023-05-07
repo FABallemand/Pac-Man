@@ -7,7 +7,7 @@
 #include "moveable.h"
 #include "path_finder.h"
 
-using GhostSpecialSprites = std::array<SDL_Rect, 2 * gconst::object::moveable::ghost::nb_special_sprites>;
+using GhostSpecialSprites = std::array<SDL_Rect, 2 * gconst::game::object::moveable::ghost::nb_special_sprites>;
 using SimpleMaze = std::array<std::array<int, gconst::game::nb_columns>, gconst::game::nb_rows>;
 
 /**
@@ -27,7 +27,7 @@ enum GhostState
 class Ghost : public Moveable
 {
 public:
-    Ghost(int x, int y, int speed, std::string name) : Moveable{GHOST, x, y, gconst::object::moveable::ghost::size, gconst::object::moveable::ghost::size, speed, &(moving_sprites_[0][0]), NONE}, name_{name}
+    Ghost(int x, int y, int speed, std::string name) : Moveable{GHOST, x, y, gconst::game::object::moveable::ghost::size, gconst::game::object::moveable::ghost::size, speed, &(moving_sprites_[0][0]), NONE}, name_{name}
     {
         loadSimpleMaze();
     }

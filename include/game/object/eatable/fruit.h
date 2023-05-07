@@ -30,9 +30,9 @@ class Fruit : public Eatable<std::pair<int, int>>
 {
 public:
     Fruit() : Eatable<std::pair<int, int>>{
-                  FRUIT, gconst::object::eatable::fruit::j * gconst::object::cell::size, gconst::object::eatable::fruit::i * gconst::object::cell::size, gconst::object::eatable::fruit::size, gconst::object::eatable::fruit::size, nullptr, [](std::pair<int, int> params) -> int
+                  FRUIT, gconst::game::object::eatable::fruit::j * gconst::game::object::cell::size, gconst::game::object::eatable::fruit::i * gconst::game::object::cell::size, gconst::game::object::eatable::fruit::size, gconst::game::object::eatable::fruit::size, nullptr, [](std::pair<int, int> params) -> int
                   {
-                      return params.first + gconst::object::eatable::fruit::score[params.second];
+                      return params.first + gconst::game::object::eatable::fruit::score[params.second];
                   }}
     {
     }

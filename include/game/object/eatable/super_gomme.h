@@ -12,8 +12,8 @@ public:
     {
     }
 
-    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
-                                       { return score + gconst::object::eatable::super_gomme::score; }}
+    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::game::object::eatable::super_gomme::size, gconst::game::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
+                                       { return score + gconst::game::object::eatable::super_gomme::score; }}
     {
     }
 
@@ -23,8 +23,8 @@ public:
 
     void fillSuperGomme(int i, int j)
     {
-        fillEatable(SUPER_GOMME, j * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
-                    { return score + gconst::object::eatable::super_gomme::score; });
+        fillEatable(SUPER_GOMME, j * gconst::game::object::cell::size + gconst::game::object::eatable::super_gomme::super_gomme_offset, i * gconst::game::object::cell::size + gconst::game::object::eatable::super_gomme::super_gomme_offset, gconst::game::object::eatable::super_gomme::size, gconst::game::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
+                    { return score + gconst::game::object::eatable::super_gomme::score; });
     }
 
     /**

@@ -1,14 +1,14 @@
 #include "ghost.h"
 
-GhostSpecialSprites Ghost::eatable_sprites_ = {SDL_Rect{20, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                               SDL_Rect{3, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                               SDL_Rect{37, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                               SDL_Rect{54, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}};
+GhostSpecialSprites Ghost::eatable_sprites_ = {SDL_Rect{20, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s},
+                                               SDL_Rect{3, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s},
+                                               SDL_Rect{37, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s},
+                                               SDL_Rect{54, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}};
 
-GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                             SDL_Rect{71, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                             SDL_Rect{105, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s},
-                                             SDL_Rect{122, 195, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}};
+GhostSpecialSprites Ghost::eaten_sprites_ = {SDL_Rect{89, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s},
+                                             SDL_Rect{71, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s},
+                                             SDL_Rect{105, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s},
+                                             SDL_Rect{122, 195, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}};
 
 void Ghost::update(const float delta_t, int target_i, int target_j, Direction direction)
 {
@@ -35,7 +35,7 @@ void Ghost::update(const float delta_t, int target_i, int target_j, Direction di
     }
 
     // Handle strategy
-    if (getY() % gconst::object::cell::size == 0 && getX() % gconst::object::cell::size == 0)
+    if (getY() % gconst::game::object::cell::size == 0 && getX() % gconst::game::object::cell::size == 0)
     {
         strategy(target_i, target_j, direction);
     }
@@ -53,8 +53,8 @@ void Ghost::respawn()
     delta_t_ = 0;
     direction_ = NONE;
     action_direction_ = NONE;
-    position_.x = initial_position_.second * gconst::object::cell::size;
-    position_.y = initial_position_.first * gconst::object::cell::size;
+    position_.x = initial_position_.second * gconst::game::object::cell::size;
+    position_.y = initial_position_.first * gconst::game::object::cell::size;
     fixDimensions();
     sprite_count_ = 0;
     current_sprite_ = &(moving_sprites_[0][0]);
@@ -163,15 +163,15 @@ void Ghost::turn()
 
 void Ghost::fixDimensions()
 {
-    if (position_.x >= gconst::window::w - gconst::object::moveable::ghost::size)
+    if (position_.x >= gconst::window::w - gconst::game::object::moveable::ghost::size)
     {
         position_.w = 0;
         position_.h = 0;
     }
     else
     {
-        position_.w = gconst::object::moveable::ghost::size;
-        position_.h = gconst::object::moveable::ghost::size;
+        position_.w = gconst::game::object::moveable::ghost::size;
+        position_.h = gconst::game::object::moveable::ghost::size;
     }
 }
 
@@ -189,13 +189,13 @@ void Ghost::move()
         // Going elsewhere
         else if (ghost_board_[getI()][getJ() - 1] == 1)
         {
-            position_.x -= fmin(getX() - ((getJ()) * gconst::object::cell::size), round(speed_ * delta_t_)); // Error when using std::min (needed to use intermediary variables)
+            position_.x -= fmin(getX() - ((getJ()) * gconst::game::object::cell::size), round(speed_ * delta_t_)); // Error when using std::min (needed to use intermediary variables)
         }
         else
         {
             position_.x -= round(speed_ * delta_t_);
         }
-        position_.y = getI() * gconst::object::cell::size;
+        position_.y = getI() * gconst::game::object::cell::size;
         break;
     case RIGHT:
         // Going in the shortcut
@@ -207,35 +207,35 @@ void Ghost::move()
         // Going elsewhere
         else if (ghost_board_[getI()][getJ() + 1] == 1)
         {
-            position_.x += fmin(((getJ()) * gconst::object::cell::size) - getX(), round(speed_ * delta_t_));
+            position_.x += fmin(((getJ()) * gconst::game::object::cell::size) - getX(), round(speed_ * delta_t_));
         }
         else
         {
             position_.x += round(speed_ * delta_t_);
         }
-        position_.y = getI() * gconst::object::cell::size;
+        position_.y = getI() * gconst::game::object::cell::size;
         break;
     case UP:
         if (ghost_board_[getI() - 1][getJ()] == 1)
         {
-            position_.y -= fmin(getY() - ((getI()) * gconst::object::cell::size), round(speed_ * delta_t_));
+            position_.y -= fmin(getY() - ((getI()) * gconst::game::object::cell::size), round(speed_ * delta_t_));
         }
         else
         {
             position_.y -= round(speed_ * delta_t_);
         }
-        position_.x = getJ() * gconst::object::cell::size;
+        position_.x = getJ() * gconst::game::object::cell::size;
         break;
     case DOWN:
         if (ghost_board_[getI() + 1][getJ()] == 1)
         {
-            position_.y += fmin(((getI()) * gconst::object::cell::size) - getY(), round(speed_ * delta_t_));
+            position_.y += fmin(((getI()) * gconst::game::object::cell::size) - getY(), round(speed_ * delta_t_));
         }
         else
         {
             position_.y += round(speed_ * delta_t_);
         }
-        position_.x = getJ() * gconst::object::cell::size;
+        position_.x = getJ() * gconst::game::object::cell::size;
         break;
     default:
         LOG(ERROR) << "Ghost pathfinding error";
@@ -259,27 +259,27 @@ void Ghost::updateSprite()
     case GHOST_DEFAULT:
         if (direction_ != NONE)
         {
-            if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+            if (++frame_count_ == gconst::game::object::moveable::nb_sprite_frame)
             {
                 frame_count_ = 0;
-                sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_moving_sprites;
+                sprite_count_ = (++sprite_count_) % gconst::game::object::moveable::ghost::nb_moving_sprites;
             }
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
         }
         break;
     case GHOST_VULNERABLE:
-        if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+        if (++frame_count_ == gconst::game::object::moveable::nb_sprite_frame)
         {
             frame_count_ = 0;
-            sprite_count_ = (++sprite_count_) % gconst::object::moveable::ghost::nb_special_sprites; // mod 2 => no blink
+            sprite_count_ = (++sprite_count_) % gconst::game::object::moveable::ghost::nb_special_sprites; // mod 2 => no blink
         }
         current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;
     case GHOST_VULNERABLE_BLINK:
-        if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+        if (++frame_count_ == gconst::game::object::moveable::nb_sprite_frame)
         {
             frame_count_ = 0;
-            sprite_count_ = (++sprite_count_) % (2 * gconst::object::moveable::ghost::nb_special_sprites); // mod 4 => blink
+            sprite_count_ = (++sprite_count_) % (2 * gconst::game::object::moveable::ghost::nb_special_sprites); // mod 4 => blink
         }
         current_sprite_ = &(eatable_sprites_[sprite_count_]);
         break;

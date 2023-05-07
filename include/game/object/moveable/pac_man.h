@@ -6,7 +6,7 @@
 #include "moveable.h"
 #include "timer.h"
 
-using PacManDyingSprites = std::array<SDL_Rect, gconst::object::moveable::pacman::nb_dying_sprites>;
+using PacManDyingSprites = std::array<SDL_Rect, gconst::game::object::moveable::pacman::nb_dying_sprites>;
 
 /**
  * \enum PacManState

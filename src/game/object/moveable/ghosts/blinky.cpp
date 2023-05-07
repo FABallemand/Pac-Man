@@ -1,11 +1,11 @@
 #include "blinky.h"
 
-Blinky::Blinky() : Ghost{0, 0, gconst::object::moveable::ghost::blinky_speed, "Blinky"}
+Blinky::Blinky() : Ghost{0, 0, gconst::game::object::moveable::ghost::blinky_speed, "Blinky"}
 {
-    moving_sprites_ = {{{SDL_Rect{37, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{54, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
-                        {SDL_Rect{3, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{20, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
-                        {SDL_Rect{71, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{88, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
-                        {SDL_Rect{105, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{122, 123, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}}};
+    moving_sprites_ = {{{SDL_Rect{37, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{54, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}},
+                        {SDL_Rect{3, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{20, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}},
+                        {SDL_Rect{71, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{88, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}},
+                        {SDL_Rect{105, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{122, 123, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}}}};
     scatter_position_ = {1, 19};
     initial_position_ = {12, 10};
 }

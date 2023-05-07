@@ -7,8 +7,8 @@
 
 class Cell; // Forward declaration
 
-using CellNeighborhood = std::array<std::array<Cell *, gconst::object::moveable::pacman::neighborhood_size>, gconst::object::moveable::pacman::neighborhood_size>;
-using MovingSprites = std::array<std::array<SDL_Rect, gconst::object::moveable::pacman::nb_moving_sprites>, gconst::object::moveable::nb_directions>;
+using CellNeighborhood = std::array<std::array<Cell *, gconst::game::object::moveable::pacman::neighborhood_size>, gconst::game::object::moveable::pacman::neighborhood_size>;
+using MovingSprites = std::array<std::array<SDL_Rect, gconst::game::object::moveable::pacman::nb_moving_sprites>, gconst::game::object::moveable::nb_directions>;
 
 /**
  * \enum Direction

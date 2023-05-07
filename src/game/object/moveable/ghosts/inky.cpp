@@ -1,11 +1,11 @@
 #include "inky.h"
 
-Inky::Inky() : Ghost{0, 0, gconst::object::moveable::ghost::inky_speed, "Inky"}
+Inky::Inky() : Ghost{0, 0, gconst::game::object::moveable::ghost::inky_speed, "Inky"}
 {
-    moving_sprites_ = {{{SDL_Rect{37, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{54, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
-                        {SDL_Rect{3, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{20, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
-                        {SDL_Rect{71, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{88, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}},
-                        {SDL_Rect{105, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}, SDL_Rect{122, 159, gconst::object::moveable::ghost::size_s, gconst::object::moveable::ghost::size_s}}}};
+    moving_sprites_ = {{{SDL_Rect{37, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{54, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}},
+                        {SDL_Rect{3, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{20, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}},
+                        {SDL_Rect{71, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{88, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}},
+                        {SDL_Rect{105, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}, SDL_Rect{122, 159, gconst::game::object::moveable::ghost::size_s, gconst::game::object::moveable::ghost::size_s}}}};
     scatter_position_ = {25, 19};
     initial_position_ = {13, 9};
 }
@@ -19,7 +19,7 @@ Direction Inky::chase(std::pair<int, int> target_position, Direction target_dire
         offset_j_ = scatter_position_.second;
         return find_path_(ghost_board_, {getI(), getJ()}, scatter_position_);
     }
-    if ((chase_timer_.isStarted() && chase_timer_.getTicks() > gconst::object::moveable::ghost::chase_time) || !chase_timer_.isStarted())
+    if ((chase_timer_.isStarted() && chase_timer_.getTicks() > gconst::game::object::moveable::ghost::chase_time) || !chase_timer_.isStarted())
     {
         if (!chase_timer_.isStarted())
         {

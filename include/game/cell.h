@@ -3,7 +3,6 @@
 
 #include <SDL.h>
 #include <vector>
-#include <memory> // Maybe useless
 
 #include "const.h"
 #include "logger.h"
@@ -34,15 +33,15 @@ class Cell : public Object
 public:
     Cell() {} // Used by Board type
 
-    Cell(int i, int j) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}
+    Cell(int i, int j) : Object{CELL, j * gconst::game::object::cell::size, i * gconst::game::object::cell::size, gconst::game::object::cell::size, gconst::game::object::cell::size}
     {
     }
 
-    Cell(int i, int j, Eatable<int> *eatable) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}, eatable_{eatable}
+    Cell(int i, int j, Eatable<int> *eatable) : Object{CELL, j * gconst::game::object::cell::size, i * gconst::game::object::cell::size, gconst::game::object::cell::size, gconst::game::object::cell::size}, eatable_{eatable}
     {
     }
 
-    Cell(int i, int j, CellType type) : Object{CELL, j * gconst::object::cell::size, i * gconst::object::cell::size, gconst::object::cell::size, gconst::object::cell::size}, cell_type_{type}
+    Cell(int i, int j, CellType type) : Object{CELL, j * gconst::game::object::cell::size, i * gconst::game::object::cell::size, gconst::game::object::cell::size, gconst::game::object::cell::size}, cell_type_{type}
     {
     }
 
@@ -67,7 +66,7 @@ public:
     }
 
 private:
-    CellType cell_type_ = EMPTY;    //!< Type of the cell
+    CellType cell_type_ = EMPTY;      //!< Type of the cell
     Eatable<int> *eatable_ = nullptr; //!< Pointer to the eatable object currently in the cell
 };
 

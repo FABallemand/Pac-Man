@@ -84,12 +84,12 @@ public:
 
     int getI() const
     {
-        return (position_.y + gconst::object::cell::size / 2) / gconst::object::cell::size;
+        return (position_.y + gconst::game::object::cell::size / 2) / gconst::game::object::cell::size;
     }
 
     int getJ() const
     {
-        return (position_.x + gconst::object::cell::size / 2) / gconst::object::cell::size;
+        return (position_.x + gconst::game::object::cell::size / 2) / gconst::game::object::cell::size;
     }
 
     ObjectType getType() const

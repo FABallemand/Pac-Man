@@ -1,25 +1,25 @@
 #include "pac_man.h"
 #include "cell.h"
 
-SDL_Rect PacMan::initial_sprite_{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1};
+SDL_Rect PacMan::initial_sprite_{3, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1};
 
-PacManDyingSprites PacMan::dying_sprites_{SDL_Rect{3, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{22, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{41, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{60, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{79, 106, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{98, 106, 16, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{115, 106, 12, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{128, 106, 8, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{137, 106, 4, gconst::object::moveable::pacman::size_s1},
-                                          SDL_Rect{142, 106, 13, gconst::object::moveable::pacman::size_s1}};
+PacManDyingSprites PacMan::dying_sprites_{SDL_Rect{3, 106, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{22, 106, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{41, 106, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{60, 106, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{79, 106, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{98, 106, 16, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{115, 106, 12, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{128, 106, 8, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{137, 106, 4, gconst::game::object::moveable::pacman::size_s1},
+                                          SDL_Rect{142, 106, 13, gconst::game::object::moveable::pacman::size_s1}};
 
-PacMan::PacMan() : Moveable{PACMAN, 0, 0, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::size, gconst::object::moveable::pacman::speed, &initial_sprite_}
+PacMan::PacMan() : Moveable{PACMAN, 0, 0, gconst::game::object::moveable::pacman::size, gconst::game::object::moveable::pacman::size, gconst::game::object::moveable::pacman::speed, &initial_sprite_}
 {
-    moving_sprites_ = {{{SDL_Rect{47, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{63, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Left
-                        {SDL_Rect{20, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{35, 89, gconst::object::moveable::pacman::size_s2, gconst::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Right
-                        {SDL_Rect{75, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{92, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}},     // Up
-                        {SDL_Rect{109, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}, /*SDL_Rect{126, 94, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::object::moveable::pacman::size_s1, gconst::object::moveable::pacman::size_s1}}}}; // Down
+    moving_sprites_ = {{{SDL_Rect{47, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}, /*SDL_Rect{63, 89, gconst::game::object::moveable::pacman::size_s2, gconst::game::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}},     // Left
+                        {SDL_Rect{20, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}, /*SDL_Rect{35, 89, gconst::game::object::moveable::pacman::size_s2, gconst::game::object::moveable::pacman::size_s1},*/ SDL_Rect{3, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}},     // Right
+                        {SDL_Rect{75, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}, /*SDL_Rect{92, 94, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}},     // Up
+                        {SDL_Rect{109, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}, /*SDL_Rect{126, 94, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s2},*/ SDL_Rect{3, 89, gconst::game::object::moveable::pacman::size_s1, gconst::game::object::moveable::pacman::size_s1}}}}; // Down
     initial_position_ = {20, 10};
 }
 
@@ -84,7 +84,7 @@ void PacMan::turnLeft()
             direction_ = LEFT;
             action_direction_ = LEFT;
         }
-        else if ((position_.y > neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[0][0]->isWall())
+        else if ((position_.y > neighborhood_[1][1]->getY() + gconst::game::object::cell::size / 3) && !neighborhood_[0][0]->isWall())
         {
             direction_ = LEFT;
             action_direction_ = UP_LEFT;
@@ -96,7 +96,7 @@ void PacMan::turnLeft()
             direction_ = LEFT;
             action_direction_ = LEFT;
         }
-        else if ((position_.y < neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[2][0]->isWall())
+        else if ((position_.y < neighborhood_[1][1]->getY() + gconst::game::object::cell::size / 3) && !neighborhood_[2][0]->isWall())
         {
             direction_ = LEFT;
             action_direction_ = DOWN_LEFT;
@@ -121,7 +121,7 @@ void PacMan::turnRight()
             direction_ = RIGHT;
             action_direction_ = RIGHT;
         }
-        else if ((position_.y > neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[0][2]->isWall())
+        else if ((position_.y > neighborhood_[1][1]->getY() + gconst::game::object::cell::size / 3) && !neighborhood_[0][2]->isWall())
         {
             direction_ = RIGHT;
             action_direction_ = UP_RIGHT;
@@ -133,7 +133,7 @@ void PacMan::turnRight()
             direction_ = RIGHT;
             action_direction_ = RIGHT;
         }
-        else if ((position_.y < neighborhood_[1][1]->getY() + gconst::object::cell::size / 3) && !neighborhood_[2][2]->isWall())
+        else if ((position_.y < neighborhood_[1][1]->getY() + gconst::game::object::cell::size / 3) && !neighborhood_[2][2]->isWall())
         {
             direction_ = RIGHT;
             action_direction_ = DOWN_RIGHT;
@@ -155,7 +155,7 @@ void PacMan::turnUp()
             direction_ = UP;
             action_direction_ = UP;
         }
-        else if ((position_.x < neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[0][0]->isWall())
+        else if ((position_.x < neighborhood_[1][1]->getX() + gconst::game::object::cell::size / 3) && !neighborhood_[0][0]->isWall())
         {
             direction_ = UP;
             action_direction_ = UP_LEFT;
@@ -167,7 +167,7 @@ void PacMan::turnUp()
             direction_ = UP;
             action_direction_ = UP;
         }
-        else if ((position_.x > neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[0][2]->isWall()) // UP_RIGHT
+        else if ((position_.x > neighborhood_[1][1]->getX() + gconst::game::object::cell::size / 3) && !neighborhood_[0][2]->isWall()) // UP_RIGHT
         {
             direction_ = UP;
             action_direction_ = UP_RIGHT;
@@ -193,7 +193,7 @@ void PacMan::turnDown()
             direction_ = DOWN;
             action_direction_ = DOWN;
         }
-        else if ((position_.x < neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[2][0]->isWall())
+        else if ((position_.x < neighborhood_[1][1]->getX() + gconst::game::object::cell::size / 3) && !neighborhood_[2][0]->isWall())
         {
             direction_ = DOWN;
             action_direction_ = DOWN_LEFT;
@@ -205,7 +205,7 @@ void PacMan::turnDown()
             direction_ = DOWN;
             action_direction_ = DOWN;
         }
-        else if ((position_.x > neighborhood_[1][1]->getX() + gconst::object::cell::size / 3) && !neighborhood_[2][2]->isWall())
+        else if ((position_.x > neighborhood_[1][1]->getX() + gconst::game::object::cell::size / 3) && !neighborhood_[2][2]->isWall())
         {
             direction_ = DOWN;
             action_direction_ = DOWN_RIGHT;
@@ -252,15 +252,15 @@ void PacMan::turn()
 
 void PacMan::fixDimensions()
 {
-    if (position_.x >= gconst::window::w - gconst::object::moveable::pacman::size)
+    if (position_.x >= gconst::window::w - gconst::game::object::moveable::pacman::size)
     {
         position_.w = 0;
         position_.h = 0;
     }
     else
     {
-        position_.w = gconst::object::moveable::pacman::size;
-        position_.h = gconst::object::moveable::pacman::size;
+        position_.w = gconst::game::object::moveable::pacman::size;
+        position_.h = gconst::game::object::moveable::pacman::size;
     }
 }
 
@@ -308,36 +308,36 @@ void PacMan::move()
         position_.y = neighborhood_[0][0]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == UP)
-            position_.y += gconst::object::moveable::pacman::move_diag_offset;
+            position_.y += gconst::game::object::moveable::pacman::move_diag_offset;
         else
-            position_.x += gconst::object::moveable::pacman::move_diag_offset;
+            position_.x += gconst::game::object::moveable::pacman::move_diag_offset;
         break;
     case UP_RIGHT:
         position_.x = neighborhood_[0][2]->getX();
         position_.y = neighborhood_[0][2]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == UP)
-            position_.y += gconst::object::moveable::pacman::move_diag_offset;
+            position_.y += gconst::game::object::moveable::pacman::move_diag_offset;
         else
-            position_.x -= gconst::object::moveable::pacman::move_diag_offset;
+            position_.x -= gconst::game::object::moveable::pacman::move_diag_offset;
         break;
     case DOWN_LEFT:
         position_.x = neighborhood_[2][0]->getX();
         position_.y = neighborhood_[2][0]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == DOWN)
-            position_.y -= gconst::object::moveable::pacman::move_diag_offset;
+            position_.y -= gconst::game::object::moveable::pacman::move_diag_offset;
         else
-            position_.x += gconst::object::moveable::pacman::move_diag_offset;
+            position_.x += gconst::game::object::moveable::pacman::move_diag_offset;
         break;
     case DOWN_RIGHT:
         position_.x = neighborhood_[2][2]->getX();
         position_.y = neighborhood_[2][2]->getY();
         action_direction_ = direction_; // move function uses action_direction_ in a switch
         if (direction_ == DOWN)
-            position_.y -= gconst::object::moveable::pacman::move_diag_offset;
+            position_.y -= gconst::game::object::moveable::pacman::move_diag_offset;
         else
-            position_.x -= gconst::object::moveable::pacman::move_diag_offset;
+            position_.x -= gconst::game::object::moveable::pacman::move_diag_offset;
         break;
     default:
         break;
@@ -367,16 +367,16 @@ void PacMan::updateSprite()
             {
                 sprite_count_ = 0; // Pac-Man is stuck against the wall with his mouth open
             }
-            else if (++frame_count_ == gconst::object::moveable::nb_sprite_frame)
+            else if (++frame_count_ == gconst::game::object::moveable::nb_sprite_frame)
             {
                 frame_count_ = 0;
-                sprite_count_ = (++sprite_count_) % gconst::object::moveable::pacman::nb_moving_sprites;
+                sprite_count_ = (++sprite_count_) % gconst::game::object::moveable::pacman::nb_moving_sprites;
             }
             current_sprite_ = &(moving_sprites_[direction_][sprite_count_]);
         }
         break;
     case PACMAN_DYING:
-        if (sprite_count_ < gconst::object::moveable::pacman::nb_dying_sprites)
+        if (sprite_count_ < gconst::game::object::moveable::pacman::nb_dying_sprites)
         {
             current_sprite_ = &(dying_sprites_[sprite_count_++]);
         }
@@ -400,8 +400,8 @@ void PacMan::respawn()
     direction_ = NONE;
     action_direction_ = NONE;
     input_direction_ = NONE;
-    position_.x = initial_position_.second * gconst::object::cell::size;
-    position_.y = initial_position_.first * gconst::object::cell::size;
+    position_.x = initial_position_.second * gconst::game::object::cell::size;
+    position_.y = initial_position_.first * gconst::game::object::cell::size;
     fixDimensions();
     sprite_count_ = 0;
     current_sprite_ = &(initial_sprite_);

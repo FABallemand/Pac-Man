@@ -90,7 +90,6 @@ Direction PathFinder::AStar(SimpleMaze &maze, std::pair<int, int> ghost_position
     }
 
     // Error
-    LOG(ERROR) << "AStar is broken...";
     return NONE;
 }
 

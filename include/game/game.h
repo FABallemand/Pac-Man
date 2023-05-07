@@ -115,7 +115,7 @@ private:
     std::array<Gomme, gconst::game::nb_gommes> gommes_;                   //!< Gommes
     std::array<SuperGomme, gconst::game::nb_super_gommes> super_gommes_;  //!< Super-Gommes
     FruitType next_fruit_type_ = FRUIT_NONE;                              //!< Next type of fruit to appear
-    int score_to_reach_ = gconst::object::eatable::fruit::spawn_interval; //!< Score to reach before next fruit
+    int score_to_reach_ = gconst::game::object::eatable::fruit::spawn_interval; //!< Score to reach before next fruit
     Fruit fruit_{};                                                       //!< Fruit
     // Display ================================================================
     int frame_count_ = 0;                                                             //!< Frame count

@@ -1,6 +1,6 @@
 #include "game.h"
 
-SDL_Rect Game::maze_position_{0, 0, gconst::game::nb_columns *gconst::object::cell::size, gconst::game::nb_rows *gconst::object::cell::size};
+SDL_Rect Game::maze_position_{0, 0, gconst::game::nb_columns *gconst::game::object::cell::size, gconst::game::nb_rows *gconst::game::object::cell::size};
 
 Game::Game()
 {
@@ -117,7 +117,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     // Background/Maze
     if (state_ == GAME_BLINK)
     {
-        if (++frame_count_ % (gconst::object::moveable::nb_sprite_frame * 5) == 0)
+        if (++frame_count_ % (gconst::game::object::moveable::nb_sprite_frame * 5) == 0)
         {
             current_sprite_ = ++current_sprite_ % 2;
         }
@@ -216,29 +216,29 @@ void Game::createCell(int i, int j, int type)
         break;
     case 5:
         board_[i][j] = Cell{i, j}; // Create empty cell
-        pacman_.setX(j * gconst::object::cell::size);
-        pacman_.setY(i * gconst::object::cell::size);
+        pacman_.setX(j * gconst::game::object::cell::size);
+        pacman_.setY(i * gconst::game::object::cell::size);
         pacman_.setNeighborhood(createNeighborhood(i, j)); // Tell pacman where he is
         break;
     case 6:
         board_[i][j] = Cell{i, j};
-        inky_.setX(j * gconst::object::cell::size);
-        inky_.setY(i * gconst::object::cell::size);
+        inky_.setX(j * gconst::game::object::cell::size);
+        inky_.setY(i * gconst::game::object::cell::size);
         break;
     case 7:
         board_[i][j] = Cell{i, j};
-        pinky_.setX(j * gconst::object::cell::size);
-        pinky_.setY(i * gconst::object::cell::size);
+        pinky_.setX(j * gconst::game::object::cell::size);
+        pinky_.setY(i * gconst::game::object::cell::size);
         break;
     case 8:
         board_[i][j] = Cell{i, j};
-        clyde_.setX(j * gconst::object::cell::size);
-        clyde_.setY(i * gconst::object::cell::size);
+        clyde_.setX(j * gconst::game::object::cell::size);
+        clyde_.setY(i * gconst::game::object::cell::size);
         break;
     case 9:
         board_[i][j] = Cell{i, j};
-        blinky_.setX(j * gconst::object::cell::size);
-        blinky_.setY(i * gconst::object::cell::size);
+        blinky_.setX(j * gconst::game::object::cell::size);
+        blinky_.setY(i * gconst::game::object::cell::size);
         break;
     default:
         LOG(ERROR) << "Incorrect maze";
@@ -319,7 +319,7 @@ void Game::handleBattle(Ghost *ghost)
             // Pac-Man eat ghost and ghost goes back to its initial position
             ghost->setState(GHOST_EATEN);
             eating_streak_ += 1;
-            game_score_ += gconst::object::moveable::ghost::score * pow(2, eating_streak_);
+            game_score_ += gconst::game::object::moveable::ghost::score * pow(2, eating_streak_);
         }
     }
 }
@@ -339,7 +339,7 @@ void Game::updatePacMan(const Uint8 *key_state, const float delta_t)
     pacman_.update(key_state, delta_t);
 
     // Update Pac-Man neighborhood
-    if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / gconst::object::cell::size][pacman_.getX() / gconst::object::cell::size])
+    if (pacman_.getNeighborhood()[1][1] != &board_[pacman_.getY() / gconst::game::object::cell::size][pacman_.getX() / gconst::game::object::cell::size])
     {
         pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
     }
@@ -379,10 +379,10 @@ void Game::updateEatables()
     }
     if (game_score_ > score_to_reach_)
     {
-        int next_fruit_type = (static_cast<int>(next_fruit_type_) + 1) % gconst::object::eatable::fruit::nb_fruit_type;
+        int next_fruit_type = (static_cast<int>(next_fruit_type_) + 1) % gconst::game::object::eatable::fruit::nb_fruit_type;
         next_fruit_type_ = static_cast<FruitType>(next_fruit_type == 0 ? ++next_fruit_type : next_fruit_type);
         fruit_.setFruitType(next_fruit_type_);
-        score_to_reach_ += gconst::object::eatable::fruit::spawn_interval;
+        score_to_reach_ += gconst::game::object::eatable::fruit::spawn_interval;
     }
 }
 

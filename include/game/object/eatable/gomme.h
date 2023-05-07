@@ -14,8 +14,8 @@ public:
     {
     }
 
-    Gomme(int x, int y) : Eatable{GOMME, x, y, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
-                                  { return score + gconst::object::eatable::gomme::score; }}
+    Gomme(int x, int y) : Eatable{GOMME, x, y, gconst::game::object::eatable::gomme::size, gconst::game::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
+                                  { return score + gconst::game::object::eatable::gomme::score; }}
     {
     }
 
@@ -25,8 +25,8 @@ public:
 
     void fillGomme(int i, int j)
     {
-        fillEatable(GOMME, j * gconst::object::cell::size + gconst::object::eatable::gomme::gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::gomme::gomme_offset, gconst::object::eatable::gomme::size, gconst::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
-                    { return score + gconst::object::eatable::gomme::score; });
+        fillEatable(GOMME, j * gconst::game::object::cell::size + gconst::game::object::eatable::gomme::gomme_offset, i * gconst::game::object::cell::size + gconst::game::object::eatable::gomme::gomme_offset, gconst::game::object::eatable::gomme::size, gconst::game::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
+                    { return score + gconst::game::object::eatable::gomme::score; });
     }
 
 private:
