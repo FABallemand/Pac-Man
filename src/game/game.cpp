@@ -514,7 +514,7 @@ void Game::nextLevel()
     game_timer_.start();
 }
 
-void Game::blink_board(int time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)
+void Game::blink_board(Uint32 time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)
 {
     game_timer_.start();
     while (game_timer_.getTicks() < time_ms)

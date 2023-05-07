@@ -241,7 +241,7 @@ private:
      * \param sprite 
      * \param window_surface 
      */
-    void blink_board(int time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
+    void blink_board(Uint32 time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
 };
 
 #endif
