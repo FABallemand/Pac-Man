@@ -123,7 +123,7 @@ private:
     PacString life_string_{"$$$", gconst::game::life_x, gconst::game::life_y};        //!< Remaining life display
     PacString level_string_{"level 1", gconst::game::level_x, gconst::game::level_y}; //!< Level display
     // Parameters =============================================================
-    static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{538, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
+    static constexpr std::array<SDL_Rect, 2> bg_{SDL_Rect{370, 3, gconst::game::maze_w, gconst::game::maze_h}, SDL_Rect{541, 3, gconst::game::maze_w, gconst::game::maze_h}}; //!< Background
     static SDL_Rect maze_position_;                                                                                                                                           //!< Maze position on the window
 
     void createCell(int i, int j, int type);
@@ -232,6 +232,12 @@ private:
      * \return true If game is finished
      */
     bool quitGame();
+
+    /**
+     * @brief make the board blink for time_ms millisecond
+     * 
+     */
+    void blink_board(int time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
 };
 
 #endif

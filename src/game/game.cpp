@@ -58,7 +58,16 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
         quit = quit ? quit : update(key_state, current_time_ - previous_time_);
 
         // Display
-        display(window, sprite, window_surface);
+        if(state_ == GAME_BLINK)
+        {
+            blink_board(gconst::game::blink_duration,window, sprite, window_surface);
+            state_= GAME_DEFAULT;
+        }
+        else
+        {
+            display(window, sprite, window_surface);
+        }
+        
 
         SDL_Delay(16); // If game is too slow -> go through walls...
         ++counted_frames;
@@ -254,7 +263,7 @@ CellNeighborhood Game::createNeighborhood(int i, int j)
 void Game::loadMaze()
 {
     // Open file
-    std::ifstream level{"../assets/level/maze.lvl", std::ios::in};
+    std::ifstream level{"../assets/level/maze_2_gomme.lvl", std::ios::in};
 
     if (level.is_open())
     {
@@ -446,7 +455,6 @@ void Game::changeGameState(GameState state)
         }
         break;
     default:
-        LOG(ERROR) << "default";
         break;
     }
 
@@ -484,12 +492,6 @@ void Game::nextLevel()
     game_timer_.stop();
     previous_time_ = 0.f;
     current_time_ = 0.f;
-    game_timer_.start();
-    while (game_timer_.getTicks() < gconst::game::blink_duration)
-    {
-        // display();
-    }
-    game_timer_.stop();
 
     // Gommes and SuperGommes
     loadMaze(); // Place gommes in cells
@@ -505,6 +507,16 @@ void Game::nextLevel()
     // Pac-Man and Ghosts
     respawn();
 
-    changeGameState(GAME_DEFAULT);
+    game_timer_.start();
+}
+
+void Game::blink_board(int time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)
+{
+    game_timer_.start();
+    while (game_timer_.getTicks() < time_ms)
+    {
+        display(window, sprite, window_surface);
+    }
+    game_timer_.stop();
     game_timer_.start();
 }
