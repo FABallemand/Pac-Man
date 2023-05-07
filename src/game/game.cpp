@@ -117,19 +117,19 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     SDL_FillRect(window_surface, nullptr, 0);
 
     // Background/Maze
-    displayMaze();
+    displayMaze(sprite, window_surface);
 
     // Eatable
-    displayeatable();
+    displayEatable(sprite, window_surface);
 
     // Ghosts
-    displayGhosts();
+    displayGhosts(sprite, window_surface);
 
     // Pac-Man
     pacman_.display(sprite, window_surface);
 
     // Overlay
-    displayOverlay();
+    displayOverlay(sprite,window_surface);
 
     // Update window
     if (SDL_UpdateWindowSurface(window) != 0)

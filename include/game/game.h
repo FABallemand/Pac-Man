@@ -265,7 +265,7 @@ private:
      * \brief Display background
      *
      */
-    void displayMaze()
+    void displayMaze(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
         if (state_ == GAME_BLINK)
         {
@@ -285,7 +285,7 @@ private:
      * \brief Display eatable
      *
      */
-    void displayEatable()
+    void displayEatable(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
         for (Gomme g : gommes_) // Gommes
         {
@@ -311,7 +311,7 @@ private:
      * \brief Display ghosts
      *
      */
-    void displayGhosts()
+    void displayGhosts(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
         for (Ghost *g : ghosts_)
         {
@@ -323,7 +323,7 @@ private:
      * \brief Display overlay
      *
      */
-    void displayOverlay()
+    void displayOverlay(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
         score_string_.display(sprite, window_surface);
         life_string_.display(sprite, window_surface);
