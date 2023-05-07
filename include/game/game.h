@@ -263,7 +263,8 @@ private:
 
     /**
      * \brief Display background
-     *
+     * \param sprite Sprite containing maze sprite
+     * \param window_surface Surface to draw on
      */
     void displayMaze(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
@@ -283,7 +284,8 @@ private:
 
     /**
      * \brief Display eatable
-     *
+     * \param sprite Sprite containing eatable sprite
+     * \param window_surface Surface to draw on
      */
     void displayEatable(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
@@ -309,7 +311,8 @@ private:
 
     /**
      * \brief Display ghosts
-     *
+     * \param sprite Sprite containing ghost sprite
+     * \param window_surface Surface to draw on
      */
     void displayGhosts(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
@@ -321,7 +324,8 @@ private:
 
     /**
      * \brief Display overlay
-     *
+     * \param sprite Sprite containing overlay sprite
+     * \param window_surface Surface to draw on
      */
     void displayOverlay(SDL_Surface *sprite, SDL_Surface *window_surface)
     {
