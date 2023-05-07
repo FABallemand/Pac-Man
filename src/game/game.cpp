@@ -366,6 +366,11 @@ void Game::updateEatables()
         cell_to_update->setEatable(nullptr);
     }
 
+    for (SuperGomme &sg : super_gommes_)
+    {
+        sg.updateSprite();
+    }
+
     // Fruits
     if (fruit_.getFruitType() != FRUIT_NONE)
     {

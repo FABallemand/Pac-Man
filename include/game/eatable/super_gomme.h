@@ -12,7 +12,7 @@ public:
     {
     }
 
-    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_, [](int score) -> int
+    SuperGomme(int x, int y) : Eatable{SUPER_GOMME, x, y, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
                                        { return score + gconst::object::eatable::super_gomme::score; }}
     {
     }
@@ -23,13 +23,22 @@ public:
 
     void fillSuperGomme(int i, int j)
     {
-        fillEatable(SUPER_GOMME, j * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_, [](int score) -> int
+        fillEatable(SUPER_GOMME, j * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, i * gconst::object::cell::size + gconst::object::eatable::super_gomme::super_gomme_offset, gconst::object::eatable::super_gomme::size, gconst::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
                     { return score + gconst::object::eatable::super_gomme::score; });
     }
 
+    /**
+     * \brief Update sprite to display
+     *
+     */
+    void updateSprite();
+
 protected:
     // Sprites ================================================================
-    static SDL_Rect sprite_super_gomme_; //!< Sprites
+    static std::array<SDL_Rect,2> sprite_super_gomme_; //!< Sprites
+    int frame_count_ = 0;          //!< Frame count
+    int sprite_count_ = 0;         //!< Sprite count (for animation)
+
 };
 
 #endif
