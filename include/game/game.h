@@ -262,12 +262,81 @@ private:
     bool quitGame();
 
     /**
+     * \brief Display background
+     *
+     */
+    void displayMaze()
+    {
+        if (state_ == GAME_BLINK)
+        {
+            if (++frame_count_ % (gconst::game::object::moveable::nb_sprite_frame * 5) == 0)
+            {
+                current_sprite_ = ++current_sprite_ % 2;
+            }
+            SDL_BlitScaled(sprite, &(bg_[current_sprite_]), window_surface, &maze_position_);
+        }
+        else
+        {
+            SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, &maze_position_);
+        }
+    }
+
+    /**
+     * \brief Display eatable
+     *
+     */
+    void displayEatable()
+    {
+        for (Gomme g : gommes_) // Gommes
+        {
+            if (g.getState() != EATABLE_EATEN)
+            {
+                g.display(sprite, window_surface);
+            }
+        }
+        for (SuperGomme sg : super_gommes_) // Super-Gommes
+        {
+            if (sg.getState() != EATABLE_EATEN)
+            {
+                sg.display(sprite, window_surface);
+            }
+        }
+        if (fruit_.getFruitType() != FRUIT_NONE)
+        {
+            fruit_.display(sprite, window_surface);
+        }
+    }
+
+    /**
+     * \brief Display ghosts
+     *
+     */
+    void displayGhosts()
+    {
+        for (Ghost *g : ghosts_)
+        {
+            g->display(sprite, window_surface);
+        }
+    }
+
+    /**
+     * \brief Display overlay
+     *
+     */
+    void displayOverlay()
+    {
+        score_string_.display(sprite, window_surface);
+        life_string_.display(sprite, window_surface);
+        level_string_.display(sprite, window_surface);
+    }
+
+    /**
      * \brief Make the board blink for time_ms millisecond
      *
-     * \param time_ms
-     * \param window
-     * \param sprite
-     * \param window_surface
+     * \param time_ms Blinking duration in ms
+     * \param window Window
+     * \param sprite Sprite containing maze sprite
+     * \param window_surface Surface to draw on
      */
     void blinkBoard(uint32_t time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface);
 };

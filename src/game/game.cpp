@@ -4,8 +4,10 @@ SDL_Rect Game::maze_position_{0, 0, gconst::game::nb_columns *gconst::game::obje
 
 Game::Game()
 {
+    // Load maze
     loadMaze();
 
+    // Fill vector of ghosts
     ghosts_[0] = (Ghost *)&blinky_;
     ghosts_[1] = (Ghost *)&clyde_;
     ghosts_[2] = (Ghost *)&inky_;
@@ -115,52 +117,19 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     SDL_FillRect(window_surface, nullptr, 0);
 
     // Background/Maze
-    if (state_ == GAME_BLINK)
-    {
-        if (++frame_count_ % (gconst::game::object::moveable::nb_sprite_frame * 5) == 0)
-        {
-            current_sprite_ = ++current_sprite_ % 2;
-        }
-        SDL_BlitScaled(sprite, &(bg_[current_sprite_]), window_surface, &maze_position_);
-    }
-    else
-    {
-        SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, &maze_position_);
-    }
+    displayMaze();
 
     // Eatable
-    for (Gomme g : gommes_) // Gommes
-    {
-        if (g.getState() != EATABLE_EATEN)
-        {
-            g.display(sprite, window_surface);
-        }
-    }
-    for (SuperGomme sg : super_gommes_) // Super-Gommes
-    {
-        if (sg.getState() != EATABLE_EATEN)
-        {
-            sg.display(sprite, window_surface);
-        }
-    }
-    if (fruit_.getFruitType() != FRUIT_NONE)
-    {
-        fruit_.display(sprite, window_surface);
-    }
+    displayeatable();
 
     // Ghosts
-    for (Ghost *g : ghosts_)
-    {
-        g->display(sprite, window_surface);
-    }
+    displayGhosts();
 
     // Pac-Man
     pacman_.display(sprite, window_surface);
 
     // Overlay
-    score_string_.display(sprite, window_surface);
-    life_string_.display(sprite, window_surface);
-    level_string_.display(sprite, window_surface);
+    displayOverlay();
 
     // Update window
     if (SDL_UpdateWindowSurface(window) != 0)
