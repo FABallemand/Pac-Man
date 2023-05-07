@@ -45,7 +45,7 @@ Simply launch the program and enjoy!
 - LEBOT Samuel
 
 ## 📋 TODO:
-- [ ] Documentation
-- [ ] Encapsulation
-- [ ] Add **const** and **override**
+- [x] Documentation
+- [x] Encapsulation
+- [x] Add **const** and **override**
 - [x] Remove C arrays
