@@ -17,7 +17,7 @@ cd build
 cmake -S ../ -B ./
 cmake --build ./
 ```
-Then use one of the following command to build the project:
+Then use one of the following commands to build the project:
 ```bash
 cmake --build ./
 ```
