@@ -19,15 +19,13 @@ public:
     {
     }
 
-    ~Gomme()
-    {
-    }
-
-    void fillGomme(int i, int j)
-    {
-        fillEatable(GOMME, j * gconst::game::object::cell::size + gconst::game::object::eatable::gomme::gomme_offset, i * gconst::game::object::cell::size + gconst::game::object::eatable::gomme::gomme_offset, gconst::game::object::eatable::gomme::size, gconst::game::object::eatable::gomme::size, &sprite_gomme_, [](int score) -> int
-                    { return score + gconst::game::object::eatable::gomme::score; });
-    }
+    /**
+     * \brief Fill attributes of a Gomme object
+     *
+     * \param i Row index
+     * \param j Column index
+     */
+    void fillGomme(int i, int j);
 
 private:
     // Sprites ================================================================

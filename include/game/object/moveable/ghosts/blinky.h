@@ -3,12 +3,19 @@
 
 #include "ghost.h"
 
+/**
+ * \class Blinky
+ * 
+ * \brief Red Ghost
+ * 
+ */
 class Blinky : public Ghost
 {
 public:
     Blinky();
+
 protected:
-    Direction chase(std::pair<int,int> target_position, Direction target_direction) override;
+    Direction chase(std::pair<int, int> target_position, Direction target_direction) override;
 };
 
 #endif

@@ -17,15 +17,13 @@ public:
     {
     }
 
-    ~SuperGomme()
-    {
-    }
-
-    void fillSuperGomme(int i, int j)
-    {
-        fillEatable(SUPER_GOMME, j * gconst::game::object::cell::size + gconst::game::object::eatable::super_gomme::super_gomme_offset, i * gconst::game::object::cell::size + gconst::game::object::eatable::super_gomme::super_gomme_offset, gconst::game::object::eatable::super_gomme::size, gconst::game::object::eatable::super_gomme::size, &sprite_super_gomme_[0], [](int score) -> int
-                    { return score + gconst::game::object::eatable::super_gomme::score; });
-    }
+    /**
+     * \brief Fill attributes of a SuperGomme object
+     * 
+     * \param i Row index
+     * \param j Column index
+     */
+    void fillSuperGomme(int i, int j);
 
     /**
      * \brief Update sprite to display

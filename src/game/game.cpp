@@ -129,7 +129,7 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     pacman_.display(sprite, window_surface);
 
     // Overlay
-    displayOverlay(sprite,window_surface);
+    displayOverlay(sprite, window_surface);
 
     // Update window
     if (SDL_UpdateWindowSurface(window) != 0)
@@ -137,26 +137,6 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
         LOG(ERROR) << "Window could not be updated! SDL Error: " << SDL_GetError();
         exit(1);
     }
-}
-
-void Game::respawn()
-{
-    SDL_Delay(1000);
-    pacman_.respawn();
-    pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
-    for (Ghost *g : ghosts_)
-    {
-        g->respawn();
-    }
-}
-
-bool Game::quitGame()
-{
-    LOG(INFO) << "GAME OVER!!!";
-    LOG(INFO) << "YOUR SCORE IS: " << game_score_;
-    SDL_Delay(2000);
-
-    return true;
 }
 
 void Game::createCell(int i, int j, int type)
@@ -262,6 +242,46 @@ void Game::loadMaze()
     level.close();
 }
 
+void Game::eatObject(Object *object)
+{
+    switch (object->getType())
+    {
+    case GOMME:
+    {
+        auto it = std::find(gommes_.begin(), gommes_.end(), *object);
+        if (it != gommes_.end())
+        {
+            updateScore(it->getEffect());
+            it->setState(EATABLE_EATEN);
+            --Gomme::nb_gommes_;
+        }
+        else
+        {
+            LOG(ERROR) << "Unable to find object";
+        }
+        break;
+    }
+    case SUPER_GOMME:
+    {
+        auto it = std::find(super_gommes_.begin(), super_gommes_.end(), *object);
+        if (it != super_gommes_.end())
+        {
+            updateScore(it->getEffect());
+            it->setState(EATABLE_EATEN);
+            --SuperGomme::nb_super_gommes_;
+            changeGameState(GAME_SUPER);
+        }
+        else
+        {
+            LOG(ERROR) << "Unable to find object";
+        }
+        break;
+    }
+    default:
+        LOG(ERROR) << "PacMan cannot eat this type of object...beark";
+    }
+}
+
 void Game::handleBattle(Ghost *ghost)
 {
     if (pacman_.getState() != PACMAN_ALIVE)
@@ -300,6 +320,24 @@ void Game::handleFruitBattle()
         updateScore(fruit_.getEffect());
         fruit_.setFruitType(FRUIT_NONE);
     }
+}
+
+void Game::updateScore(std::function<int(int)> effect)
+{
+    if (effect != nullptr)
+    {
+        game_score_ = effect(game_score_);
+    }
+    updateScoreString();
+}
+
+void Game::updateScore(std::function<int(std::pair<int, int>)> effect)
+{
+    if (effect != nullptr)
+    {
+        game_score_ = effect({game_score_, fruit_.getType()});
+    }
+    updateScoreString();
 }
 
 void Game::updatePacMan(const Uint8 *key_state, const float delta_t)
@@ -355,46 +393,6 @@ void Game::updateEatables()
     }
 }
 
-void Game::eatObject(Object *object)
-{
-    switch (object->getType())
-    {
-    case GOMME:
-    {
-        auto it = std::find(gommes_.begin(), gommes_.end(), *object);
-        if (it != gommes_.end())
-        {
-            updateScore(it->getEffect());
-            it->setState(EATABLE_EATEN);
-            --Gomme::nb_gommes_;
-        }
-        else
-        {
-            LOG(ERROR) << "Unable to find object";
-        }
-        break;
-    }
-    case SUPER_GOMME:
-    {
-        auto it = std::find(super_gommes_.begin(), super_gommes_.end(), *object);
-        if (it != super_gommes_.end())
-        {
-            updateScore(it->getEffect());
-            it->setState(EATABLE_EATEN);
-            --SuperGomme::nb_super_gommes_;
-            changeGameState(GAME_SUPER);
-        }
-        else
-        {
-            LOG(ERROR) << "Unable to find object";
-        }
-        break;
-    }
-    default:
-        LOG(ERROR) << "PacMan cannot eat this type of object...beark";
-    }
-}
-
 void Game::changeGameState(GameState state)
 {
 
@@ -447,6 +445,17 @@ void Game::checkGameStateChange()
     }
 }
 
+void Game::respawn()
+{
+    SDL_Delay(1000);
+    pacman_.respawn();
+    pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
+    for (Ghost *g : ghosts_)
+    {
+        g->respawn();
+    }
+}
+
 void Game::nextLevel()
 {
     level_string_ = PacString("level " + std::to_string(++level), gconst::game::level_x, gconst::game::level_y);
@@ -481,6 +490,68 @@ void Game::nextLevel()
     respawn();
 
     game_timer_.start();
+}
+
+bool Game::quitGame()
+{
+    LOG(INFO) << "GAME OVER!!!";
+    LOG(INFO) << "YOUR SCORE IS: " << game_score_;
+    SDL_Delay(2000);
+
+    return true;
+}
+
+void Game::displayMaze(SDL_Surface *sprite, SDL_Surface *window_surface)
+{
+    if (state_ == GAME_BLINK)
+    {
+        if (++frame_count_ % (gconst::game::object::moveable::nb_sprite_frame * 5) == 0)
+        {
+            current_sprite_ = ++current_sprite_ % 2;
+        }
+        SDL_BlitScaled(sprite, &(bg_[current_sprite_]), window_surface, &maze_position_);
+    }
+    else
+    {
+        SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, &maze_position_);
+    }
+}
+
+void Game::displayEatable(SDL_Surface *sprite, SDL_Surface *window_surface)
+{
+    for (Gomme g : gommes_) // Gommes
+    {
+        if (g.getState() != EATABLE_EATEN)
+        {
+            g.display(sprite, window_surface);
+        }
+    }
+    for (SuperGomme sg : super_gommes_) // Super-Gommes
+    {
+        if (sg.getState() != EATABLE_EATEN)
+        {
+            sg.display(sprite, window_surface);
+        }
+    }
+    if (fruit_.getFruitType() != FRUIT_NONE)
+    {
+        fruit_.display(sprite, window_surface);
+    }
+}
+
+void Game::displayGhosts(SDL_Surface *sprite, SDL_Surface *window_surface)
+{
+    for (Ghost *g : ghosts_)
+    {
+        g->display(sprite, window_surface);
+    }
+}
+
+void Game::displayOverlay(SDL_Surface *sprite, SDL_Surface *window_surface)
+{
+    score_string_.display(sprite, window_surface);
+    life_string_.display(sprite, window_surface);
+    level_string_.display(sprite, window_surface);
 }
 
 void Game::blinkBoard(uint32_t time_ms, SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_surface)

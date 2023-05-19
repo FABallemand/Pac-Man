@@ -37,18 +37,7 @@ public:
     {
     }
 
-    void setFruitType(FruitType fruit_type)
-    {
-        fruit_type_ = fruit_type;
-        if (fruit_type == FRUIT_NONE)
-        {
-            despawn_timer_.stop();
-            return;
-        }
-
-        current_sprite_ = &(fruit_sprite_[fruit_type_ - 1][0]);
-        despawn_timer_.start();
-    }
+    void setFruitType(FruitType fruit_type);
 
     FruitType getFruitType() const
     {

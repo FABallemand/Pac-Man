@@ -25,6 +25,7 @@ target_sources(${PROJECT_NAME}
                # SDL
                src/SDL_utils/SDL_utils.cpp
                # Utils
+               src/utils/logger.cpp
                # Application
                src/app/application.cpp
                # Game

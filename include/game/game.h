@@ -185,28 +185,14 @@ private:
      *
      * \param effect Lambda function used to update score
      */
-    void updateScore(std::function<int(int)> effect)
-    {
-        if (effect != nullptr)
-        {
-            game_score_ = effect(game_score_);
-        }
-        updateScoreString();
-    }
+    void updateScore(std::function<int(int)> effect);
 
     /**
      * \brief Update score
      *
      * \param effect Lambda function used to update score
      */
-    void updateScore(std::function<int(std::pair<int, int>)> effect)
-    {
-        if (effect != nullptr)
-        {
-            game_score_ = effect({game_score_, fruit_.getType()});
-        }
-        updateScoreString();
-    }
+    void updateScore(std::function<int(std::pair<int, int>)> effect);
 
     /**
      * \brief Update Pac-Man
@@ -263,76 +249,35 @@ private:
 
     /**
      * \brief Display background
+     *
      * \param sprite Sprite containing maze sprite
      * \param window_surface Surface to draw on
      */
-    void displayMaze(SDL_Surface *sprite, SDL_Surface *window_surface)
-    {
-        if (state_ == GAME_BLINK)
-        {
-            if (++frame_count_ % (gconst::game::object::moveable::nb_sprite_frame * 5) == 0)
-            {
-                current_sprite_ = ++current_sprite_ % 2;
-            }
-            SDL_BlitScaled(sprite, &(bg_[current_sprite_]), window_surface, &maze_position_);
-        }
-        else
-        {
-            SDL_BlitScaled(sprite, &(bg_[GAME_DEFAULT]), window_surface, &maze_position_);
-        }
-    }
+    void displayMaze(SDL_Surface *sprite, SDL_Surface *window_surface);
 
     /**
      * \brief Display eatable
+     *
      * \param sprite Sprite containing eatable sprite
      * \param window_surface Surface to draw on
      */
-    void displayEatable(SDL_Surface *sprite, SDL_Surface *window_surface)
-    {
-        for (Gomme g : gommes_) // Gommes
-        {
-            if (g.getState() != EATABLE_EATEN)
-            {
-                g.display(sprite, window_surface);
-            }
-        }
-        for (SuperGomme sg : super_gommes_) // Super-Gommes
-        {
-            if (sg.getState() != EATABLE_EATEN)
-            {
-                sg.display(sprite, window_surface);
-            }
-        }
-        if (fruit_.getFruitType() != FRUIT_NONE)
-        {
-            fruit_.display(sprite, window_surface);
-        }
-    }
+    void displayEatable(SDL_Surface *sprite, SDL_Surface *window_surface);
 
     /**
      * \brief Display ghosts
+     *
      * \param sprite Sprite containing ghost sprite
      * \param window_surface Surface to draw on
      */
-    void displayGhosts(SDL_Surface *sprite, SDL_Surface *window_surface)
-    {
-        for (Ghost *g : ghosts_)
-        {
-            g->display(sprite, window_surface);
-        }
-    }
+    void displayGhosts(SDL_Surface *sprite, SDL_Surface *window_surface);
 
     /**
      * \brief Display overlay
+     *
      * \param sprite Sprite containing overlay sprite
      * \param window_surface Surface to draw on
      */
-    void displayOverlay(SDL_Surface *sprite, SDL_Surface *window_surface)
-    {
-        score_string_.display(sprite, window_surface);
-        life_string_.display(sprite, window_surface);
-        level_string_.display(sprite, window_surface);
-    }
+    void displayOverlay(SDL_Surface *sprite, SDL_Surface *window_surface);
 
     /**
      * \brief Make the board blink for time_ms millisecond

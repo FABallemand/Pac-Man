@@ -12,6 +12,8 @@
 #define RESET "\e[0m"        // RESET
 
 /**
+ * \enum LogType
+ * 
  * \brief Type of log message
  *
  */
@@ -67,9 +69,9 @@ public:
     /**
      * \brief
      *
-     * \tparam T
-     * \param msg
-     * \return LOG&
+     * \tparam T Type of the log message
+     * \param msg Log message content
+     * \return LOG& Reference to the log message
      */
     template <class T>
     LOG &operator<<(const T &msg)
@@ -92,29 +94,7 @@ private:
      * \param type Type of the log message
      * \return std::string Header of the log message
      */
-    std::string getHeader(LogType type)
-    {
-        std::string header;
-        switch (type)
-        {
-        case DEBUG:
-            header = BPURPLE + std::string{"[DEBUG] "} + RESET;
-            break;
-        case INFO:
-            header = BBLUE + std::string{"[INFO] "} + RESET;
-            break;
-        case WARNING:
-            header = BORANGE + std::string{"[WARNING] "} + RESET;
-            break;
-        case ERROR:
-            header = BRED + std::string{"[ERROR] "} + RESET;
-            break;
-        case GAME:
-            header = BGREEN + std::string{"[GAME] "} + RESET;
-            break;
-        }
-        return header;
-    }
+    std::string getHeader(LogType type);
 };
 
 #endif

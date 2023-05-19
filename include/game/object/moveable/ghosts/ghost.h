@@ -60,7 +60,7 @@ public:
     /**
      * \brief Print relevant info relative to Ghost object
      * \remark For testing purpose only
-     * 
+     *
      */
     void debug()
     {
