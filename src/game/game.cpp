@@ -1,5 +1,6 @@
 #include "game.h"
 
+// Initialize maze position
 SDL_Rect Game::maze_position_{0, 0, gconst::game::nb_columns *gconst::game::object::cell::size, gconst::game::nb_rows *gconst::game::object::cell::size};
 
 Game::Game()
@@ -8,10 +9,10 @@ Game::Game()
     loadMaze();
 
     // Fill vector of ghosts
-    ghosts_[0] = (Ghost *)&blinky_;
-    ghosts_[1] = (Ghost *)&clyde_;
-    ghosts_[2] = (Ghost *)&inky_;
-    ghosts_[3] = (Ghost *)&pinky_;
+    ghosts_[0] = &blinky_;
+    ghosts_[1] = &clyde_;
+    ghosts_[2] = &inky_;
+    ghosts_[3] = &pinky_;
 }
 
 void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *sprite)
@@ -24,18 +25,18 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
 
     // Main loop
     bool quit = false;
+    uint32_t last_time = SDL_GetTicks();
+    uint32_t fps_counter = 0;
+    float avg_fps = 0.0f;
+
     while (!quit)
     {
         SDL_Event event;
         while (!quit && SDL_PollEvent(&event))
         {
-            switch (event.type)
+            if (event.type == SDL_QUIT)
             {
-            case SDL_QUIT:
                 quit = true;
-                break;
-            default:
-                break;
             }
         }
 
@@ -46,13 +47,16 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
             quit = true;
         }
 
-        // Calculate and correct fps
-        float avgFPS = counted_frames / (game_timer_.getTicks() / 1000.f); // Timer.getTicks() / 1000.f = current_time
-        if (avgFPS > 2000000)
+        // FPS Calculation (every second)
+        uint32_t current_time = SDL_GetTicks();
+        fps_counter++;
+        if (current_time - last_time >= 1000)
         {
-            avgFPS = 0;
+            avg_fps = fps_counter * 1000.0f / (current_time - last_time);
+            fps_counter = 0;
+            last_time = current_time;
+            LOG(INFO) << "FPS: " << avg_fps;
         }
-        // LOG(INFO) << "FPS: " << avgFPS;
 
         // Update game
         previous_time_ = current_time_;
@@ -70,7 +74,7 @@ void Game::run(SDL_Window *window, SDL_Surface *window_surface, SDL_Surface *spr
             display(window, sprite, window_surface);
         }
 
-        SDL_Delay(16); // If game is too slow -> go through walls...
+        SDL_Delay(16); // Adjust for smooth frame pacing
         ++counted_frames;
     }
 }
@@ -98,7 +102,6 @@ bool Game::update(const Uint8 *key_state, const float delta_t)
         }
         else
         {
-
             return quitGame();
         }
     }
@@ -139,9 +142,16 @@ void Game::display(SDL_Window *window, SDL_Surface *sprite, SDL_Surface *window_
     }
 }
 
+// Encapsulated method to set up a ghost's position
+void Game::createGhostCell(int i, int j, Ghost &ghost)
+{
+    board_[i][j] = Cell{i, j};
+    ghost.setX(j * gconst::game::object::cell::size);
+    ghost.setY(i * gconst::game::object::cell::size);
+}
+
 void Game::createCell(int i, int j, int type)
 {
-    // LOG(DEBUG) << "Game::createCell(" << i << "," << j << "," << type << ")";
     switch (type)
     {
     case 0:
@@ -170,24 +180,16 @@ void Game::createCell(int i, int j, int type)
         pacman_.setNeighborhood(createNeighborhood(i, j)); // Tell pacman where he is
         break;
     case 6:
-        board_[i][j] = Cell{i, j};
-        inky_.setX(j * gconst::game::object::cell::size);
-        inky_.setY(i * gconst::game::object::cell::size);
+        createGhostCell(i, j, inky_);
         break;
     case 7:
-        board_[i][j] = Cell{i, j};
-        pinky_.setX(j * gconst::game::object::cell::size);
-        pinky_.setY(i * gconst::game::object::cell::size);
+        createGhostCell(i, j, pinky_);
         break;
     case 8:
-        board_[i][j] = Cell{i, j};
-        clyde_.setX(j * gconst::game::object::cell::size);
-        clyde_.setY(i * gconst::game::object::cell::size);
+        createGhostCell(i, j, clyde_);
         break;
     case 9:
-        board_[i][j] = Cell{i, j};
-        blinky_.setX(j * gconst::game::object::cell::size);
-        blinky_.setY(i * gconst::game::object::cell::size);
+        createGhostCell(i, j, blinky_);
         break;
     default:
         LOG(ERROR) << "Incorrect maze";
@@ -290,22 +292,19 @@ void Game::handleBattle(Ghost *ghost)
     }
 
     // If ghost and Pac-Man are on the same cell
-    else if (ghost->getI() == pacman_.getI() && ghost->getJ() == pacman_.getJ())
+    if (ghost->getI() == pacman_.getI() && ghost->getJ() == pacman_.getJ())
     {
         if (ghost->getState() == GHOST_DEFAULT)
         {
-            // Pac-man lose a life and the postion of pacman (and the ghosts) are reset
+            // Pac-man lose a life and the position of pacman (and the ghosts) are reset
             pacman_.setState(PACMAN_DYING);
-            for (Ghost *g : ghosts_)
-            {
-                g->setState(GHOST_STOP);
-            }
+            setGhostsState(GHOST_STOP);
             --life_remaining_;
             life_string_ = PacString(std::string(life_remaining_, '$'), gconst::game::life_x, gconst::game::life_y);
         }
         else if (ghost->getState() == GHOST_VULNERABLE || ghost->getState() == GHOST_VULNERABLE_BLINK)
         {
-            // Pac-Man eat ghost and ghost goes back to its initial position
+            // Pac-Man eats ghost and ghost goes back to its initial position
             ghost->setState(GHOST_EATEN);
             eating_streak_ += 1;
             game_score_ += gconst::game::object::moveable::ghost::score * pow(2, eating_streak_);
@@ -352,6 +351,15 @@ void Game::updatePacMan(const Uint8 *key_state, const float delta_t)
     }
 }
 
+// Encapsulated method to update ghost states
+void Game::setGhostsState(GhostState state)
+{
+    for (Ghost *g : ghosts_)
+    {
+        g->setState(state);
+    }
+}
+
 void Game::updateGhosts(const float delta_t)
 {
     // Update Ghosts
@@ -395,15 +403,11 @@ void Game::updateEatables()
 
 void Game::changeGameState(GameState state)
 {
-
     switch (state)
     {
     case GAME_SUPER:
         state_timer_.start();
-        for (Ghost *g : ghosts_)
-        {
-            g->setState(GHOST_VULNERABLE);
-        }
+        setGhostsState(GHOST_VULNERABLE);
         break;
     case GAME_SUPER_BLINK:
         state_timer_.start();
@@ -418,10 +422,7 @@ void Game::changeGameState(GameState state)
     case GAME_DEFAULT:
         if (state_ != GAME_DEFAULT)
         {
-            for (Ghost *g : ghosts_)
-            {
-                g->setState(GHOST_DEFAULT);
-            }
+            setGhostsState(GHOST_DEFAULT);
             eating_streak_ = 0;
         }
         break;
@@ -450,6 +451,7 @@ void Game::respawn()
     SDL_Delay(1000);
     pacman_.respawn();
     pacman_.setNeighborhood(createNeighborhood(pacman_.getI(), pacman_.getJ()));
+    setGhostsState(GHOST_STOP);
     for (Ghost *g : ghosts_)
     {
         g->respawn();
@@ -461,10 +463,7 @@ void Game::nextLevel()
     level_string_ = PacString("level " + std::to_string(++level), gconst::game::level_x, gconst::game::level_y);
 
     // Stop ghosts
-    for (Ghost *g : ghosts_)
-    {
-        g->setState(GHOST_STOP);
-    }
+    setGhostsState(GHOST_STOP);
 
     // Remove fruit
     fruit_.setFruitType(FRUIT_NONE);
